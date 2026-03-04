@@ -52,9 +52,17 @@ function urlFromFile(htmlFile) {
 }
 
 function extractMeta(html, name) {
-  const m = html.match(new RegExp(`<meta\\s+name=["']${name}["']\\s+content=["']([^"']+)["']`, 'i'))
-    || html.match(new RegExp(`<meta\\s+content=["']([^"']+)["']\\s+name=["']${name}["']`, 'i'));
-  return m ? m[1].trim() : '';
+  // Match content="..." with name before or after content attribute
+  const m = html.match(new RegExp(`<meta\\s+name=["']${name}["'][^>]*content=["']([^"]+)["']`, 'i'))
+    || html.match(new RegExp(`<meta\\s+content=["']([^"]+)["'][^>]*name=["']${name}["']`, 'i'));
+  if (!m) return '';
+  // Decode common HTML entities
+  return m[1].trim()
+    .replace(/&#39;/g, "'")
+    .replace(/&quot;/g, '"')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>');
 }
 
 // ── generate llms.txt ─────────────────────────────────────────────────────────
@@ -62,11 +70,7 @@ function extractMeta(html, name) {
 function generateLlmsTxt() {
   const nav = JSON.parse(fs.readFileSync(path.join(ROOT, 'docs-nav.json'), 'utf-8'));
 
-  const lines = [
-    '# Relay Docs\n',
-    '> Relay is an Obsidian plugin for real-time multiplayer collaboration on notes and Canvases.\n',
-    '\n## Docs\n',
-  ];
+  const pageLines = [];
 
   for (const group of nav.groups) {
     for (const page of group.pages) {
@@ -76,13 +80,24 @@ function generateLlmsTxt() {
       const description = extractMeta(html, 'description');
       const url = `${SITE_URL}/${page.path}/`;
       const desc = description ? `: ${description}` : '';
-      lines.push(`- [${page.title}](${url})${desc}`);
+      pageLines.push(`- [${page.title}](${url})${desc}`);
     }
   }
 
+  const content = [
+    '# Relay Docs',
+    '',
+    '> Relay is an Obsidian plugin for real-time multiplayer collaboration on notes and Canvases.',
+    '',
+    '## Docs',
+    '',
+    ...pageLines,
+    '',
+  ].join('\n');
+
   const out = path.join(SITE_DIR, 'llms.txt');
-  fs.writeFileSync(out, lines.join('\n') + '\n', 'utf-8');
-  console.log(`llms.txt written (${nav.groups.flatMap((g) => g.pages).length} pages)`);
+  fs.writeFileSync(out, content, 'utf-8');
+  console.log(`llms.txt written (${pageLines.length} pages)`);
 }
 
 // ── generate llms-full.txt ────────────────────────────────────────────────────
