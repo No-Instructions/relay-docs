@@ -20,7 +20,8 @@
         { "title": "Upgrade to Relay for teams", "slug": "upgrade-to-relay-for-teams", "path": "guides/upgrade-to-relay-for-teams" },
         { "title": "Update Relay", "slug": "update-relay", "path": "guides/update-relay" },
         { "title": "Obsidian for work", "slug": "obsidian-for-work", "path": "guides/obsidian-for-work" },
-        { "title": "Configure attachments for sharing", "slug": "configure-attachments-for-sharing", "path": "guides/configure-attachments-for-sharing" }
+        { "title": "Configure attachments for sharing", "slug": "configure-attachments-for-sharing", "path": "guides/configure-attachments-for-sharing" },
+        { "title": "Backing up your Obsidian vault", "slug": "backing-up-your-obsidian-vault", "path": "guides/backing-up-your-obsidian-vault" }
       ]
     },
     {
