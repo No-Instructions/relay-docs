@@ -11,14 +11,6 @@ A backup that keeps only the current version of each file is not sufficient. If 
 
 Your backup system must retain file history. Time Machine, git, and versioned cloud backup tools retain history. A file sync service like iCloud or Dropbox (without version history enabled) does not.
 
-## What Relay provides
-
-Relay provides per-note change history, accessible via the tracking changes icon (stack of pages icon) on any note in a shared folder. This lets you view and restore prior versions of individual notes.
-
-Relay does not provide:
-- Bulk restore across multiple notes
-- Server-side version history accessible to users
-- Recovery from deleted files (deletions propagate to all collaborators)
 
 ## What to back up
 
@@ -63,17 +55,17 @@ Use these in order, depending on what happened:
 
 | Situation | Recovery path |
 |-----------|---------------|
-| Note was overwritten or cleared | Obsidian file recovery (Settings → Core plugins → File recovery), or per-note Relay history via the tracking changes icon |
-| Note was deleted locally (not through Relay) | Check Obsidian's `.trash` folder |
-| Note was deleted through Relay | Deletion has propagated to all collaborators. External backup (Time Machine or git) is the only path |
-| Multiple notes lost | External backup only |
+| Note was overwritten or cleared recently | [Obsidian file recovery](https://help.obsidian.md/plugins/file-recovery) (Settings → Core plugins → File recovery) |
+| Note was deleted locally | Check Obsidian's `.trash` folder |
+| Note was deleted or lost through sync | Git history (if configured), or Time Machine |
+| Multiple notes lost | Git history or Time Machine |
 | Fresh install, Relay state missing | Sign in to Relay and rejoin shared folders via share key — Relay re-downloads current state automatically |
 
-**Obsidian file recovery** (Settings → Core plugins → File recovery) maintains a local snapshot history independent of Relay. It can restore a note overwritten recently, but fails if the file was overwritten before you opened Obsidian to check — there may be no prior snapshot.
+**[Obsidian file recovery](https://help.obsidian.md/plugins/file-recovery)** (Settings → Core plugins → File recovery) automatically saves snapshots of your files on a schedule. It can restore a note overwritten recently. It does not help if the file was synced in a bad state from another device before you opened Obsidian — the snapshot will reflect the already-bad state.
 
-**Relay per-note history** (tracking changes icon) shows changes made through Relay and can restore an individual note. It cannot restore deleted files.
+**Git history** is the most reliable recovery path. `git log` shows every commit; `git checkout <hash> -- path/to/file.md` restores any file to any prior state.
 
-**`.trash` folder** (`<vault>/.trash/`) contains files deleted locally through Obsidian's trash function. It does not contain files deleted through Relay sync.
+**`.trash` folder** (`<vault>/.trash/`) contains files deleted locally through Obsidian's trash function. It does not contain files lost through sync.
 
 ## Compatibility with other sync services
 
