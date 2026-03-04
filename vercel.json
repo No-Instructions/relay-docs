@@ -36,6 +36,16 @@
       "permanent": true
     },
     {
+      "source": "/guides/update-obsidian",
+      "destination": "/guides/update-relay/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/update-obsidian/",
+      "destination": "/guides/update-relay/",
+      "permanent": true
+    },
+    {
       "source": "/guides/obsidian-for-work",
       "destination": "/guides/obsidian-for-work/",
       "permanent": true
