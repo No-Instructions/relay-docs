@@ -39,7 +39,7 @@ Local-only git still satisfies the version history requirement — you lose the 
 | Multiple notes lost | Git history |
 | Fresh install | Sign in to Relay and rejoin shared folders — Relay re-downloads current state automatically |
 
-**[Obsidian file recovery](https://help.obsidian.md/plugins/file-recovery)** saves snapshots of your files on a schedule. It can restore a note overwritten recently. It does not help if the file was synced in a bad state from another device before you opened Obsidian — the snapshot will reflect the already-bad state.
+**[Obsidian file recovery](https://help.obsidian.md/plugins/file-recovery)** saves snapshots of your files on a schedule and can restore a note to a recent prior state.
 
 **Git history** is the most reliable recovery path. `git log` shows every commit; `git checkout <hash> -- path/to/file.md` restores any file to any prior state.
 
