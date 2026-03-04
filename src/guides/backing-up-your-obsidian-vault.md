@@ -3,7 +3,7 @@ title: Backing up your Obsidian vault
 description: How to set up backups for an Obsidian vault that uses Relay, and what recovery options are available.
 layout: doc.njk
 ---
-Relay is not a backup system. Relay syncs your vault in real time — that includes destructive changes. If a note is overwritten with blank content or deleted, that change propagates immediately to all connected devices. An independent backup is the only recovery path.
+Relay is not a backup system. Relay syncs your shared folders in real time — that includes destructive changes. If a note is overwritten with blank content or deleted, that change propagates immediately to all connected devices. An independent backup is the only recovery path.
 
 ## The critical failure mode
 
