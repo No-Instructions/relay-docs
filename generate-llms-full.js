@@ -39,8 +39,11 @@ function collectHtmlFiles(dir) {
 
 function stripHtml(html) {
   html = html.replace(/<head[\s\S]*?<\/head>/gi, '');
+  html = html.replace(/<header[\s\S]*?<\/header>/gi, '');
   html = html.replace(/<nav[\s\S]*?<\/nav>/gi, '');
   html = html.replace(/<footer[\s\S]*?<\/footer>/gi, '');
+  // Strip skip-link anchor (sits before <header>, outside stripped regions)
+  html = html.replace(/<a[^>]*class="skip-link"[^>]*>[\s\S]*?<\/a>/gi, '');
   html = html.replace(/<[^>]+>/g, ' ');
   return html.replace(/\s+/g, ' ').trim();
 }

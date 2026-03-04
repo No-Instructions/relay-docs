@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    {% set pageTitle = title + " — " + site.title if title else site.title %}
+    {% set pageTitle = (title + " — " + site.title) if (title and title != site.title) else site.title %}
     {% set pageDescription = description or site.description %}
     <title>{{ pageTitle }}</title>
     <meta name="description" content="{{ pageDescription }}" />
