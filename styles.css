@@ -1,4 +1,4 @@
-/* relay-docs — base styles for M1 scaffold */
+/* relay-docs styles */
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -130,48 +130,135 @@ body {
   flex: 1;
   padding: 2rem 2.5rem;
   max-width: calc(var(--content-max) + 5rem);
+  min-width: 0;
 }
 
 .doc-content h1 {
   margin-top: 0;
   font-size: 1.8rem;
+  line-height: 1.2;
 }
 
 .doc-content h2 {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
+  margin-bottom: 0.5rem;
   font-size: 1.3rem;
 }
 
 .doc-content h3 {
+  margin-top: 1.75rem;
+  margin-bottom: 0.4rem;
   font-size: 1.1rem;
 }
 
+.doc-content h4 {
+  margin-top: 1.25rem;
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
+}
+
+.doc-content p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.doc-content li {
+  margin-bottom: 0.25rem;
+}
+
+.doc-content a {
+  color: var(--color-accent);
+}
+
+.doc-content a:hover {
+  text-decoration: underline;
+}
+
+/* Code */
 .doc-content code {
   font-family: var(--font-mono);
   font-size: 0.875em;
   background: #f3f4f6;
-  padding: 0.1em 0.3em;
+  padding: 0.1em 0.35em;
   border-radius: 3px;
 }
 
 .doc-content pre {
   background: #f3f4f6;
-  padding: 1rem;
+  padding: 1rem 1.25rem;
   border-radius: 6px;
   overflow-x: auto;
+  margin: 1.25rem 0;
 }
 
 .doc-content pre code {
   background: none;
   padding: 0;
+  font-size: 0.875rem;
 }
 
+/* Images */
 .doc-content img {
   max-width: 100%;
+  border-radius: 6px;
+  display: block;
+  margin: 1.25rem 0;
 }
 
-.doc-content a {
-  color: var(--color-accent);
+/* Image captions — italic-only paragraph following an image */
+.doc-content p:has(> em:only-child) {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  margin-top: -0.75rem;
+  text-align: center;
+}
+
+/* Callout blockquotes (Note / Tip / Info) */
+.doc-content blockquote {
+  border-left: 3px solid var(--color-accent);
+  margin: 1.5rem 0;
+  padding: 0.75rem 1rem;
+  background: var(--color-active-bg);
+  border-radius: 0 4px 4px 0;
+  color: var(--color-text);
+}
+
+.doc-content blockquote p:first-child {
+  margin-top: 0;
+}
+
+.doc-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Tables */
+.doc-content table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+  overflow-x: auto;
+  display: block;
+}
+
+.doc-content th,
+.doc-content td {
+  border: 1px solid var(--color-border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.doc-content th {
+  background: var(--color-active-bg);
+  font-weight: 600;
+}
+
+/* Horizontal rule */
+.doc-content hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 2rem 0;
 }
 
 /* Footer */
@@ -179,6 +266,7 @@ body {
   border-top: 1px solid var(--color-border);
   padding: 1rem 1.5rem;
   display: flex;
+  flex-wrap: wrap;
   gap: 1.5rem;
   font-size: 0.875rem;
 }
@@ -186,6 +274,10 @@ body {
 .site-footer a {
   color: var(--color-muted);
   text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: var(--color-text);
 }
 
 /* Mobile */
@@ -202,5 +294,9 @@ body {
   }
   .doc-content {
     padding: 1.5rem 1rem;
+  }
+  .doc-content th,
+  .doc-content td {
+    white-space: normal;
   }
 }

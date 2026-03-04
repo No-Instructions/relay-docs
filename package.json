@@ -1,7 +1,7 @@
 {
   "scripts": {
     "build": "npx @11ty/eleventy",
-    "build:prod": "node generate-search-index.js && npx @11ty/eleventy && node validate-site.js",
+    "build:prod": "npx @11ty/eleventy && node validate-site.js",
     "serve": "npx @11ty/eleventy --serve",
     "validate": "node validate-site.js"
   },

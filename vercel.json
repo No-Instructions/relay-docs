@@ -1,0 +1,64 @@
+{
+  "redirects": [
+    {
+      "source": "/relay-docs-introduction",
+      "destination": "/introduction/",
+      "permanent": true
+    },
+    {
+      "source": "/relay-docs-introduction/",
+      "destination": "/introduction/",
+      "permanent": true
+    },
+    {
+      "source": "/features/hosting-options",
+      "destination": "/features/hosting-options/",
+      "permanent": true
+    },
+    {
+      "source": "/features/canvas-multiplayer",
+      "destination": "/features/canvas-multiplayer/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/using-relay-with-other-sync-services",
+      "destination": "/guides/using-relay-with-other-sync-services/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/upgrade-to-relay-for-teams",
+      "destination": "/guides/upgrade-to-relay-for-teams/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/update-relay",
+      "destination": "/guides/update-relay/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/obsidian-for-work",
+      "destination": "/guides/obsidian-for-work/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/configure-attachments-for-sharing",
+      "destination": "/guides/configure-attachments-for-sharing/",
+      "permanent": true
+    },
+    {
+      "source": "/troubleshooting/troubleshooting-guide---stack-icon-is-gray,-relay-is-not-tracking-updates",
+      "destination": "/troubleshooting/stack-icon-gray/",
+      "permanent": true
+    },
+    {
+      "source": "/user-interface/icons",
+      "destination": "/user-interface/icons/",
+      "permanent": true
+    },
+    {
+      "source": "/how-relay-works/real-time-multiplayer-vs-repurposed-file-sync",
+      "destination": "/how-relay-works/real-time-multiplayer-vs-repurposed-file-sync/",
+      "permanent": true
+    }
+  ]
+}
