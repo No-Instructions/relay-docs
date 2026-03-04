@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "build": "npx @11ty/eleventy",
-    "build:prod": "npx @11ty/eleventy && node validate-site.js",
+    "build": "npx @11ty/eleventy && node generate-llms-full.js",
+    "build:prod": "npx @11ty/eleventy && node generate-llms-full.js && node validate-site.js",
     "serve": "npx @11ty/eleventy --serve",
     "validate": "node validate-site.js"
   },

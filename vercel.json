@@ -51,6 +51,11 @@
       "permanent": true
     },
     {
+      "source": "/troubleshooting/troubleshooting-guide---stack-icon-is-gray,-relay-is-not-tracking-updates/",
+      "destination": "/troubleshooting/stack-icon-gray/",
+      "permanent": true
+    },
+    {
       "source": "/user-interface/icons",
       "destination": "/user-interface/icons/",
       "permanent": true

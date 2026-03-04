@@ -1,0 +1,17 @@
+# Relay Docs
+
+> Relay is an Obsidian plugin for real-time multiplayer collaboration on notes and Canvases.
+
+## Docs
+
+- [Introduction](https://docs.relay.md/introduction/): Relay overview, quick start, key features
+- [Hosting options](https://docs.relay.md/features/hosting-options/): Cloud vs self-hosted deployment
+- [Canvas multiplayer](https://docs.relay.md/features/canvas-multiplayer/): Real-time collaboration on Canvas files
+- [Using Relay with other sync services](https://docs.relay.md/guides/using-relay-with-other-sync-services/): Compatibility with iCloud, Dropbox, Syncthing
+- [Upgrade to Relay for teams](https://docs.relay.md/guides/upgrade-to-relay-for-teams/): Team plan setup and migration
+- [Update Relay](https://docs.relay.md/guides/update-relay/): Plugin update process
+- [Obsidian for work](https://docs.relay.md/guides/obsidian-for-work/): Enterprise and professional use cases
+- [Configure attachments for sharing](https://docs.relay.md/guides/configure-attachments-for-sharing/): Attachment sync settings
+- [Stack icon is gray](https://docs.relay.md/troubleshooting/stack-icon-gray/): Troubleshooting disconnected state
+- [Icons](https://docs.relay.md/user-interface/icons/): Relay icon reference
+- [Real-time multiplayer vs repurposed file sync](https://docs.relay.md/how-relay-works/real-time-multiplayer-vs-repurposed-file-sync/): Architecture explanation
