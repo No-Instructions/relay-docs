@@ -3,15 +3,13 @@ title: Backing up your Obsidian vault
 description: How to set up backups for an Obsidian vault that uses Relay, and what recovery options are available.
 layout: doc.njk
 ---
-Relay is not a backup system. Relay syncs your shared folders in real time — that includes destructive changes. If a note is overwritten with blank content or deleted, that change propagates immediately to all connected devices. An independent backup is the only recovery path.
+Relay is not a backup system. Relay syncs your shared folders in real time. An independent backup with version history is the only recovery path for changes you may not notice until days or months later — a restructured folder, lost metadata, a bulk edit that removed content you needed. Without versioned history, there is nothing to restore from.
 
-## The critical failure mode
+## The requirement: versioned history
 
-Real-time sync does not protect against data loss — it accelerates it. When Relay writes a bad file to disk, your backup tool may run afterward and capture the bad state. If your backup keeps only the current version of each file, you have backed up the bad file and lost the prior version.
+A backup that keeps only the current version of each file is not sufficient. If a change propagates before you notice it, your backup captures the changed state and the prior version is gone.
 
-**The requirement:** your backup system must retain file history, not just the current state.
-
-A backup that keeps only the latest version of each file offers no protection against overwrites. Time Machine, git, and versioned cloud backup tools all retain history. A file sync service like iCloud or Dropbox (without version history) does not satisfy this requirement.
+Your backup system must retain file history. Time Machine, git, and versioned cloud backup tools retain history. A file sync service like iCloud or Dropbox (without version history enabled) does not.
 
 ## What Relay provides
 
@@ -34,19 +32,21 @@ Relay's CRDT state lives in IndexedDB, which is stored outside the vault directo
 
 ## Recommended approaches
 
-### Time Machine (Mac)
-
-Time Machine runs continuously and retains file history. It satisfies the versioned backup requirement without any configuration beyond initial setup. Back up to an external drive or a Time Machine-compatible network drive.
-
-Back up when Obsidian is closed if possible — Relay does not lock files, so backing up while Relay is running is safe, but a closed Obsidian is cleaner. In practice, Time Machine's continuous operation is fine.
-
 ### Git (Obsidian Git plugin)
 
-The [Obsidian Git plugin](https://github.com/Vinzent03/obsidian-git) commits your vault to a git repository on a schedule. Git retains full file history and can be pushed to a remote (GitHub, GitLab, a self-hosted server). This satisfies the versioned backup requirement.
-
-Configure the plugin to commit and push on a regular interval. A commit every 30–60 minutes is sufficient for most workflows.
+The [Obsidian Git plugin](https://github.com/Vinzent03/obsidian-git) commits your vault to a git repository on a schedule. Git retains full file history and can restore any file to any prior state. Configure the plugin to auto-commit every 5 minutes.
 
 Git works alongside Relay without interference. Relay does not create files that would pollute git history.
+
+**Remote push — should you?**
+
+Pushing to a remote (GitHub, GitLab, a self-hosted server) gives you an offsite backup in addition to local version history. The trade-off: your vault content is now on another surface. If your vault contains sensitive personal notes, client work, or anything you would not want on a third-party server, either use a private repository with a provider you trust, a self-hosted git server, or skip remote push and keep history local only.
+
+Local-only git (no remote) still satisfies the version history requirement. You lose the offsite backup.
+
+### Time Machine (Mac)
+
+Time Machine runs continuously and retains hourly snapshots. It is a viable backup for a Mac-only setup. Relay does not lock files, so Time Machine can back up while Obsidian is running.
 
 ## Before risky Relay operations
 
