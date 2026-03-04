@@ -8,4 +8,5 @@ module.exports = {
   url: SITE_URL,
   title: SITE_TITLE,
   description: SITE_DESCRIPTION,
+  year: new Date().getFullYear(),
 };
