@@ -3,7 +3,7 @@ title: Backing up your Obsidian vault
 description: How to set up backups for an Obsidian vault that uses Relay, and what recovery options are available.
 layout: doc.njk
 ---
-Relay syncs your shared folders. It does not back them up. For recovery from changes you might not notice until later — a restructured folder, lost metadata, a bulk edit — you need an independent backup with version history.
+Relay syncs your Shared Folders. It does not back them up. For recovery from changes you might not notice until later — a restructured folder, lost metadata, a bulk edit — you need an independent backup with version history.
 
 ## The requirement: versioned history
 
@@ -37,7 +37,7 @@ Local-only git still satisfies the version history requirement — you lose the 
 | Note was overwritten or cleared | [Obsidian file recovery](https://help.obsidian.md/plugins/file-recovery) (Settings → Core plugins → File recovery), or git history |
 | Note was deleted | Check Obsidian's `.trash` folder, Obsidian file recovery, or git history |
 | Multiple notes lost | Git history |
-| Fresh install | Sign in to Relay and rejoin shared folders — Relay re-downloads current state automatically |
+| Fresh install | Sign in to Relay and rejoin Shared Folders — Relay re-downloads current state automatically |
 
 **[Obsidian file recovery](https://help.obsidian.md/plugins/file-recovery)** saves snapshots of your files on a schedule and can restore a note to a recent prior state.
 
