@@ -28,6 +28,10 @@
   --font-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
 }
 
+html {
+  scroll-padding-top: 57px;
+}
+
 body {
   margin: 0;
   font-family: var(--font-sans);
@@ -38,6 +42,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  font-synthesis-weight: none;
 }
 
 .skip-link {
