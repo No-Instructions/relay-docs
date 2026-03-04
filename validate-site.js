@@ -129,8 +129,8 @@ function checkInternalLinks(htmlFile, html) {
 
     if (!href.startsWith('/')) continue;
 
-    // Styles and favicon are passthrough copies — always valid
-    if (href === '/styles.css' || href === '/favicon.svg') continue;
+    // Styles and favicons are passthrough copies — always valid
+    if (href === '/styles.css' || href.startsWith('/favicon.')) continue;
 
     const [pathname] = href.split(/[?#]/);
     if (!targetExists(pathname)) {
