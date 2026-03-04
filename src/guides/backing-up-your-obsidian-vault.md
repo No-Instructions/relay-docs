@@ -43,7 +43,7 @@ Local-only git still satisfies the version history requirement — you lose the 
 
 **Git history** is the most reliable recovery path. `git log` shows every commit; `git checkout <hash> -- path/to/file.md` restores any file to any prior state.
 
-**`.trash` folder** (`<vault>/.trash/`) contains files deleted locally through Obsidian's trash function. It does not contain files lost through sync.
+**`.trash` folder** (`<vault>/.trash/`) contains files deleted through Obsidian's trash function.
 
 ## Compatibility with other sync services
 
