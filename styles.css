@@ -424,6 +424,18 @@ body {
   padding-top: 1rem;
   font-size: 0.8rem;
   color: var(--color-muted);
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.footer-bottom a {
+  color: var(--color-muted);
+  text-decoration: none;
+}
+
+.footer-bottom a:hover {
+  color: var(--color-text);
 }
 
 /* ============================================================

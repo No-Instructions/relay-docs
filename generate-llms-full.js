@@ -3,16 +3,20 @@
 /**
  * generate-llms-full.js — post-build script for relay-docs.
  *
- * Reads every HTML page in _site/, strips tags, and writes
- * _site/llms-full.txt for LLM consumption.
+ * Generates two files:
+ *   _site/llms.txt      — LLM index (title + description per page, from nav order)
+ *   _site/llms-full.txt — Full text dump of every page (HTML stripped)
  */
 
 const fs = require('fs');
 const path = require('path');
 
-const SITE_DIR = path.join(__dirname, '_site');
-const OUT_FILE = path.join(SITE_DIR, 'llms-full.txt');
+const ROOT = __dirname;
+const SITE_DIR = path.join(ROOT, '_site');
+const SITE_URL = 'https://docs.relay.md';
 const SKIP_DIRS = new Set(['assets']);
+
+// ── helpers ──────────────────────────────────────────────────────────────────
 
 function collectHtmlFiles(dir) {
   const results = [];
@@ -34,16 +38,11 @@ function collectHtmlFiles(dir) {
 }
 
 function stripHtml(html) {
-  // Remove <head>...</head>
   html = html.replace(/<head[\s\S]*?<\/head>/gi, '');
-  // Remove <nav>...</nav> and <footer>...</footer>
   html = html.replace(/<nav[\s\S]*?<\/nav>/gi, '');
   html = html.replace(/<footer[\s\S]*?<\/footer>/gi, '');
-  // Remove remaining tags
   html = html.replace(/<[^>]+>/g, ' ');
-  // Collapse whitespace
-  html = html.replace(/\s+/g, ' ').trim();
-  return html;
+  return html.replace(/\s+/g, ' ').trim();
 }
 
 function urlFromFile(htmlFile) {
@@ -52,34 +51,73 @@ function urlFromFile(htmlFile) {
   return '/' + rel.replace(/\/index\.html$/, '') + '/';
 }
 
-function main() {
-  if (!fs.existsSync(SITE_DIR)) {
-    console.error('_site/ not found. Run npm run build first.');
-    process.exit(1);
+function extractMeta(html, name) {
+  const m = html.match(new RegExp(`<meta\\s+name=["']${name}["']\\s+content=["']([^"']+)["']`, 'i'))
+    || html.match(new RegExp(`<meta\\s+content=["']([^"']+)["']\\s+name=["']${name}["']`, 'i'));
+  return m ? m[1].trim() : '';
+}
+
+// ── generate llms.txt ─────────────────────────────────────────────────────────
+
+function generateLlmsTxt() {
+  const nav = JSON.parse(fs.readFileSync(path.join(ROOT, 'docs-nav.json'), 'utf-8'));
+
+  const lines = [
+    '# Relay Docs\n',
+    '> Relay is an Obsidian plugin for real-time multiplayer collaboration on notes and Canvases.\n',
+    '\n## Docs\n',
+  ];
+
+  for (const group of nav.groups) {
+    for (const page of group.pages) {
+      const htmlFile = path.join(SITE_DIR, page.path, 'index.html');
+      if (!fs.existsSync(htmlFile)) continue;
+      const html = fs.readFileSync(htmlFile, 'utf-8');
+      const description = extractMeta(html, 'description');
+      const url = `${SITE_URL}/${page.path}/`;
+      const desc = description ? `: ${description}` : '';
+      lines.push(`- [${page.title}](${url})${desc}`);
+    }
   }
 
+  const out = path.join(SITE_DIR, 'llms.txt');
+  fs.writeFileSync(out, lines.join('\n') + '\n', 'utf-8');
+  console.log(`llms.txt written (${nav.groups.flatMap((g) => g.pages).length} pages)`);
+}
+
+// ── generate llms-full.txt ────────────────────────────────────────────────────
+
+function generateLlmsFullTxt() {
   const htmlFiles = collectHtmlFiles(SITE_DIR).sort();
   const parts = [
     '# Relay Docs — full content\n',
     '> Relay is an Obsidian plugin for real-time multiplayer collaboration on notes and Canvases.\n',
   ];
 
+  let count = 0;
   for (const htmlFile of htmlFiles) {
     const url = urlFromFile(htmlFile);
-    if (url === '/') continue; // skip root placeholder
+    if (url === '/') continue;
 
     const html = fs.readFileSync(htmlFile, 'utf-8');
-
-    // Extract title
     const titleMatch = html.match(/<title>([^<]+)<\/title>/i);
     const title = titleMatch ? titleMatch[1].replace(/ — Relay Docs$/, '').trim() : url;
-
     const text = stripHtml(html);
-    parts.push(`\n## ${title}\n\nURL: https://docs.relay.md${url}\n\n${text}\n`);
+    parts.push(`\n## ${title}\n\nURL: ${SITE_URL}${url}\n\n${text}\n`);
+    count++;
   }
 
-  fs.writeFileSync(OUT_FILE, parts.join(''), 'utf-8');
-  console.log(`llms-full.txt written (${htmlFiles.length - 1} pages)`);
+  const out = path.join(SITE_DIR, 'llms-full.txt');
+  fs.writeFileSync(out, parts.join(''), 'utf-8');
+  console.log(`llms-full.txt written (${count} pages)`);
 }
 
-main();
+// ── main ──────────────────────────────────────────────────────────────────────
+
+if (!fs.existsSync(SITE_DIR)) {
+  console.error('_site/ not found. Run npm run build first.');
+  process.exit(1);
+}
+
+generateLlmsTxt();
+generateLlmsFullTxt();
