@@ -3,7 +3,7 @@ title: Backing up your Obsidian vault
 description: How to set up backups for an Obsidian vault that uses Relay, and what recovery options are available.
 layout: doc.njk
 ---
-Relay syncs your Shared Folders. It does not back them up. For recovery from changes you might not notice until later — a restructured folder, lost metadata, a bulk edit — you need an independent backup with version history.
+Relay syncs your Shared Folders. It is not designed as a backup tool. You'll want remote backups if your computer is lost or destroyed; local backups are fine for recovering from data loss or corruption (e.g. if a coding agent makes unwelcome changes to your files).
 
 ## The requirement: versioned history
 
