@@ -9,7 +9,7 @@ Relay syncs your shared folders. It does not back them up. For recovery from cha
 
 A backup that keeps only the current version of each file is not sufficient. If a change propagates before you notice it, your backup reflects the changed state and the prior version is no longer available.
 
-Your backup system must retain file history. Time Machine, git, and versioned cloud backup tools retain history. A file sync service like iCloud or Dropbox (without version history enabled) does not.
+Your backup system must retain file history. Git and versioned cloud backup tools retain history. A file sync service like iCloud or Dropbox (without version history enabled) does not.
 
 
 ## What to back up
@@ -34,11 +34,10 @@ Local-only git still satisfies the version history requirement — you lose the 
 
 | Situation | Recovery path |
 |-----------|---------------|
-| Note was overwritten or cleared recently | [Obsidian file recovery](https://help.obsidian.md/plugins/file-recovery) (Settings → Core plugins → File recovery) |
-| Note was deleted locally | Check Obsidian's `.trash` folder |
-| Note was deleted or lost through sync | Git history |
+| Note was overwritten or cleared | [Obsidian file recovery](https://help.obsidian.md/plugins/file-recovery) (Settings → Core plugins → File recovery), or git history |
+| Note was deleted | Check Obsidian's `.trash` folder, Obsidian file recovery, or git history |
 | Multiple notes lost | Git history |
-| Fresh install, Relay state missing | Sign in to Relay and rejoin shared folders via share key — Relay re-downloads current state automatically |
+| Fresh install | Sign in to Relay and rejoin shared folders — Relay re-downloads current state automatically |
 
 **[Obsidian file recovery](https://help.obsidian.md/plugins/file-recovery)** saves snapshots of your files on a schedule. It can restore a note overwritten recently. It does not help if the file was synced in a bad state from another device before you opened Obsidian — the snapshot will reflect the already-bad state.
 
