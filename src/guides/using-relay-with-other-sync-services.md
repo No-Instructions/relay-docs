@@ -34,7 +34,7 @@ This is the same requirement imposed by any sync service, including Obsidian Syn
 
 1. Consider using Relay for your entire vault
 2. If you prefer two services, make sure to set up exclusions to abide by the 'no double coverage' rule:
-	1. **Exclude your Relay shared folders** from the new sync service before enabling it
+	1. **Exclude your Relay Shared Folders** from the new sync service before enabling it
 
 ## Signs you have a sync service collision
 

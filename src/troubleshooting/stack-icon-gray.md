@@ -104,7 +104,7 @@ This includes plugins that have a special view, like Kanban, and plugins (or cus
 3. Click it again to toggle back to colored
 
 **For the folder:**
-1. Right-click the shared folder in the left panel
+1. Right-click the Shared Folder in the left panel
 2. Select `Disconnect`
 3. Right-click again and select `Connect`
 
