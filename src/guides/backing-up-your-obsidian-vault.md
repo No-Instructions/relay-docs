@@ -5,51 +5,34 @@ layout: doc.njk
 ---
 Relay syncs your Shared Folders. It is not designed as a backup tool. You'll want remote backups if your computer is lost or destroyed; local backups are fine for recovering from data loss or corruption (e.g. if a coding agent makes unwelcome changes to your files).
 
-## The requirement: versioned history
+If you're serious about your notes, set up git. It's the right answer for any Obsidian user, Relay or not.
 
-A backup that keeps only the current version of each file is not sufficient. If a change propagates before you notice it, your backup reflects the changed state and the prior version is no longer available.
+## Set up git with Obsidian Git
 
-Your backup system must retain file history. Git and versioned cloud backup tools retain history. A file sync service like iCloud or Dropbox (without version history enabled) does not.
+The [Obsidian Git plugin](https://github.com/Vinzent03/obsidian-git) commits your vault to a git repository on a schedule. Set it to auto-commit every 5 minutes.
 
+Git retains full file history. You can restore any file to any prior state: `git log` to find the commit, `git checkout <hash> -- path/to/file.md` to restore.
 
-## What to back up
+**Should you push to a remote?**
 
-Back up your vault directory. No special exclusions are needed — Relay does not create lock files or temp files inside the vault.
+Pushing to GitHub, GitLab, or a self-hosted server gives you an offsite copy — protection if your machine is lost or destroyed. The trade-off: your vault content lives on another server. If your vault contains sensitive notes or client work, use a private repository, a self-hosted server, or skip remote push and keep history local.
 
-## Recommended approach
+Local-only git still gives you full version history. You lose the offsite copy but keep the recovery path.
 
-### Git (Obsidian Git plugin)
+## If you've already lost data
 
-The [Obsidian Git plugin](https://github.com/Vinzent03/obsidian-git) commits your vault to a git repository on a schedule. Git retains full file history and can restore any file to any prior state. Configure the plugin to auto-commit every 5 minutes.
+If you don't have git set up, these are your options:
 
-Git works alongside Relay without interference. Relay does not create files that would pollute git history.
+- **[Obsidian file recovery](https://help.obsidian.md/plugins/file-recovery)** (Settings → Core plugins → File recovery) — saves snapshots on a schedule, can restore a note to a recent prior state
+- **`.trash` folder** (`<vault>/.trash/`) — check here for recently deleted files
 
-**Remote push — should you?**
-
-Pushing to a remote (GitHub, GitLab, a self-hosted server) gives you an offsite backup in addition to local version history. The trade-off: your vault content is now on another surface. If your vault contains sensitive personal notes, client work, or anything you would not want on a third-party server, use a private repository, a self-hosted git server, or skip remote push and keep history local only.
-
-Local-only git still satisfies the version history requirement — you lose the offsite copy but keep the history.
-
-## Recovery options
-
-| Situation | Recovery path |
-|-----------|---------------|
-| Note was overwritten or cleared | [Obsidian file recovery](https://help.obsidian.md/plugins/file-recovery) (Settings → Core plugins → File recovery), or git history |
-| Note was deleted | Check Obsidian's `.trash` folder, Obsidian file recovery, or git history |
-| Multiple notes lost | Git history |
-| Fresh install | Sign in to Relay and rejoin Shared Folders — Relay re-downloads current state automatically |
-
-**[Obsidian file recovery](https://help.obsidian.md/plugins/file-recovery)** saves snapshots of your files on a schedule and can restore a note to a recent prior state.
-
-**Git history** is the most reliable recovery path. `git log` shows every commit; `git checkout <hash> -- path/to/file.md` restores any file to any prior state.
-
-**`.trash` folder** (`<vault>/.trash/`) contains files deleted through Obsidian's trash function.
+These are better than nothing. Git is better than these.
 
 ## Compatibility with other sync services
 
-Do not run another sync service (iCloud, Dropbox, Obsidian Sync) on the same content as Relay. Two services competing over the same files will cause conflicts and data loss. See [Using Relay with other sync services](/guides/using-relay-with-other-sync-services/) for details.
+Do not run another sync service (iCloud, Dropbox, Obsidian Sync) on the same Shared Folders as Relay. See [Using Relay with other sync services](/guides/using-relay-with-other-sync-services/) for details.
 
-A backup tool is different from a sync service. Git captures state on a schedule and retains history. It does not compete with Relay over live file writes.
+If you use Obsidian Sync for cross-device sync alongside Relay, configure it to exclude your Relay Shared Folders. The [Obsidian Sync Local REST API](https://github.com/coddingtonbear/obsidian-local-rest-api) (headless mode) makes managing those exclusions easier.
 
 ## Need help?
 
