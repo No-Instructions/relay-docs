@@ -22,10 +22,20 @@
   --color-border: #e4e4e7;
   --color-accent: #0D9373;
   --color-active-bg: #f0fdf4;
+  --color-code-bg: #f4f4f5;
   --radius: 0.5rem;
 
   --font-sans: 'geist-sans', system-ui, -apple-system, sans-serif;
   --font-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
+}
+
+[data-theme="dark"] {
+  --color-bg: #09090b;
+  --color-text: #fafafa;
+  --color-muted: #a1a1aa;
+  --color-border: #27272a;
+  --color-active-bg: #052e1c;
+  --color-code-bg: #18181b;
 }
 
 html {
@@ -66,6 +76,11 @@ body {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   z-index: 10;
+}
+
+[data-theme="dark"] .site-header {
+  background: rgba(9, 9, 11, 0.95);
+  border-bottom-color: rgba(39, 39, 42, 0.6);
 }
 
 .site-header-inner {
@@ -117,6 +132,12 @@ body {
   border-radius: calc(var(--radius) - 2px);
   color: rgba(9, 9, 11, 0.7);
   transition: background 0.1s, color 0.1s;
+  /* reset button defaults */
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
 }
 
 .header-icon-btn:hover {
@@ -129,6 +150,21 @@ body {
   height: 1.125rem;
   display: block;
 }
+
+/* Dark mode: header nav link + icon button colors */
+[data-theme="dark"] .header-nav a {
+  color: rgba(250, 250, 250, 0.7);
+}
+
+[data-theme="dark"] .header-icon-btn {
+  color: rgba(250, 250, 250, 0.7);
+}
+
+/* Theme toggle — show moon in light mode, sun in dark mode */
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: block; }
+[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
 /* ============================================================
    Two-column doc layout — centered in shell
@@ -255,14 +291,14 @@ body {
 .doc-content code {
   font-family: var(--font-mono);
   font-size: 0.84em;
-  background: #f4f4f5;
+  background: var(--color-code-bg);
   padding: 0.1em 0.35em;
   border-radius: calc(var(--radius) - 4px);
   border: 1px solid var(--color-border);
 }
 
 .doc-content pre {
-  background: #f4f4f5;
+  background: var(--color-code-bg);
   border: 1px solid var(--color-border);
   padding: 1rem 1.25rem;
   border-radius: var(--radius);
@@ -331,7 +367,7 @@ body {
 }
 
 .doc-content th {
-  background: #f4f4f5;
+  background: var(--color-code-bg);
   font-weight: 600;
   font-size: 0.8rem;
   text-transform: uppercase;
