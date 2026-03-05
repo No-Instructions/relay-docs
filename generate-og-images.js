@@ -25,6 +25,15 @@ const MUTED = '#6ee7b7'; // emerald-300 — readable on dark green
 
 // ── helpers ──────────────────────────────────────────────────────────────────
 
+/** Load the Relay wordmark SVG as a base64 data URI for use in satori img */
+function loadRelayLogoDataUri() {
+  const svgPath = path.join(ROOT, 'src', 'assets', 'relay-wordmark.svg');
+  if (!fs.existsSync(svgPath)) return null;
+  const svgContent = fs.readFileSync(svgPath, 'utf-8');
+  const base64 = Buffer.from(svgContent).toString('base64');
+  return `data:image/svg+xml;base64,${base64}`;
+}
+
 function collectHtmlFiles() {
   const results = [];
   const SKIP = new Set(['assets']);
@@ -75,7 +84,7 @@ function extractPageMeta(html) {
   return { title, description };
 }
 
-function buildElement(title, description) {
+function buildElement(title, description, logoDataUri) {
   const titleSize = title.length > 50 ? 42 : title.length > 30 ? 50 : 58;
 
   return {
@@ -173,18 +182,28 @@ function buildElement(title, description) {
                   children: 'docs.relay.md',
                 },
               },
-              {
-                type: 'div',
-                props: {
-                  style: {
-                    fontSize: '16px',
-                    fontWeight: '600',
-                    color: ACCENT,
-                    letterSpacing: '0.05em',
+              logoDataUri
+                ? {
+                    type: 'img',
+                    props: {
+                      src: logoDataUri,
+                      width: 86,
+                      height: 37,
+                      style: { display: 'block', opacity: '0.85' },
+                    },
+                  }
+                : {
+                    type: 'div',
+                    props: {
+                      style: {
+                        fontSize: '16px',
+                        fontWeight: '600',
+                        color: ACCENT,
+                        letterSpacing: '0.05em',
+                      },
+                      children: 'Relay',
+                    },
                   },
-                  children: 'Relay',
-                },
-              },
             ],
           },
         },
@@ -222,6 +241,9 @@ async function main() {
     console.warn('Warning: Geist TTF fonts not found — text may not render');
   }
 
+  const logoDataUri = loadRelayLogoDataUri();
+  if (!logoDataUri) console.warn('Warning: relay-wordmark.svg not found — logo omitted from OG images');
+
   const htmlFiles = collectHtmlFiles();
   let count = 0;
 
@@ -230,7 +252,7 @@ async function main() {
     const html = fs.readFileSync(htmlFile, 'utf-8');
     const { title, description } = extractPageMeta(html);
 
-    const element = buildElement(title, description);
+    const element = buildElement(title, description, logoDataUri);
 
     const svg = await satori(element, { width: WIDTH, height: HEIGHT, fonts });
     const png = new Resvg(svg, { fitTo: { mode: 'width', value: WIDTH } })
