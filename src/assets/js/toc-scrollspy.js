@@ -66,6 +66,29 @@
     activeId = newId;
   }
 
+  // Returns the topmost heading whose document-top is at or above the
+  // current scroll position + the band's top inset. Falls back to the
+  // first heading if no heading is yet above the band (top of page).
+  //
+  // Uses getBoundingClientRect rather than offsetTop so the comparison
+  // is robust against a future style change adding position: relative
+  // anywhere up the ancestor tree — offsetTop is relative to the
+  // nearest positioned ancestor and would silently desync from scrollY
+  // (which is document-relative).
+  //
+  // Shared between the initial-state pass (for deep-link arrivals) and
+  // the observer fallback (for large scroll jumps where no heading is
+  // currently in the reading band).
+  function pickByScroll() {
+    var bandTop = window.scrollY + 80; // matches TOC_ROOT_MARGIN's top inset
+    var candidate = null;
+    headings.forEach(function (h) {
+      var docTop = h.getBoundingClientRect().top + window.scrollY;
+      if (docTop <= bandTop) candidate = h;
+    });
+    return candidate || headings[0];
+  }
+
   // IntersectionObserver — track the topmost heading in the reading band.
   var inBand = new Set();
   var observer = new IntersectionObserver(
@@ -74,7 +97,14 @@
         if (entry.isIntersecting) inBand.add(entry.target);
         else inBand.delete(entry.target);
       });
-      if (inBand.size === 0) return;
+      if (inBand.size === 0) {
+        // Large scroll jumps (e.g. jump-to-end, swipe-fling, browser
+        // restore-scroll) can leave inBand empty for a tick. Don't hold
+        // a stale activeId — fall back to the scroll-position pick so
+        // the active highlight tracks the user's real position.
+        setActive(pickByScroll().id);
+        return;
+      }
       var sorted = Array.from(inBand).sort(function (a, b) {
         return a.offsetTop - b.offsetTop;
       });
@@ -87,23 +117,11 @@
     observer.observe(h);
   });
 
-  // Initial state: pick the topmost heading whose document-top is at or
-  // above the current scroll position + the band's top inset. Uses
-  // getBoundingClientRect rather than offsetTop so the comparison is
-  // robust against a future style change adding position: relative
-  // anywhere up the ancestor tree — offsetTop is relative to the
-  // nearest positioned ancestor and would silently desync from scrollY
-  // (which is document-relative).
+  // Initial state: same scroll-position pick used for the observer
+  // fallback. Handles deep-link arrivals (anchor in URL, browser scrolls
+  // before the observer settles).
   function initialActive() {
-    var scrollY = window.scrollY;
-    var bandTop = scrollY + 80; // matches TOC_ROOT_MARGIN's top inset
-    var candidate = null;
-    headings.forEach(function (h) {
-      var docTop = h.getBoundingClientRect().top + window.scrollY;
-      if (docTop <= bandTop) candidate = h;
-    });
-    if (candidate) setActive(candidate.id);
-    else setActive(headings[0].id);
+    setActive(pickByScroll().id);
   }
 
   if (document.readyState === 'loading') {
