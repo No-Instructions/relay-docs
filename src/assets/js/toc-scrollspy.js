@@ -89,6 +89,22 @@
     return candidate || headings[0];
   }
 
+  // Click-pin: when the user clicks a TOC entry the click handler sets
+  // active to the clicked id, then this timestamp is set ~500ms in the
+  // future. Both the observer and the scroll listener bail while pinned
+  // so the browser's anchor-jump scroll settle (and any other transient
+  // scroll/intersection activity it triggers) cannot override the click
+  // intent. After the pin expires, normal scroll-spy resumes — but only
+  // when the user actually scrolls (the listener only fires on scroll
+  // events; absent further scroll, the active stays as the click set
+  // it). Caught by QA on end-of-document click-handoff: the page can't
+  // scroll the anchor to band-top so pickByScroll picks the heading
+  // before, and without this pin would override the click within ~16ms.
+  var clickPinUntil = 0;
+  function isClickPinned() {
+    return Date.now() < clickPinUntil;
+  }
+
   // IntersectionObserver — track the topmost heading in the reading band.
   // Increments observerFireCount so the scroll-listener fallback (below)
   // can detect that the observer owned this frame and bail.
@@ -101,6 +117,9 @@
         if (entry.isIntersecting) inBand.add(entry.target);
         else inBand.delete(entry.target);
       });
+      // Click intent overrides scroll-spy for ~500ms. inBand tracking
+      // above is still maintained so post-pin updates are accurate.
+      if (isClickPinned()) return;
       if (inBand.size === 0) {
         // Edge of the band: the last heading just exited. Fall back to
         // pickByScroll so the active highlight reflects the user's
@@ -149,6 +168,13 @@
       var fireCountAtSchedule = observerFireCount;
       window.requestAnimationFrame(function () {
         scrollTickQueued = false;
+        if (isClickPinned()) {
+          // Click intent overrides scroll-spy for ~500ms after a TOC
+          // click — covers the browser's anchor-jump scroll settle and
+          // any clamp-induced quirks (e.g. end-of-document clicks where
+          // the anchor can't reach band-top).
+          return;
+        }
         if (observerFireCount > fireCountAtSchedule) {
           // Observer fired since we scheduled this rAF — it owns the
           // active update. Bail to avoid double-setting.
@@ -179,6 +205,14 @@
   // observer to settle), and close the mobile disclosure if the click
   // came from inside it. The browser still does its default anchor jump
   // (CSS scroll-padding-top: 57px is already in place).
+  //
+  // Setting clickPinUntil suppresses the observer and scroll listener
+  // for ~500ms so the click intent persists through the browser's
+  // anchor-jump scroll settle. Critical for end-of-document clicks
+  // where the anchor can't reach band-top — without the pin, the next
+  // scroll-listener rAF tick would call pickByScroll() and override
+  // the click within ~16ms.
+  var CLICK_PIN_MS = 500;
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[href^="#"]');
     if (!a) return;
@@ -187,6 +221,7 @@
     var id = a.getAttribute('href').slice(1);
     if (!id) return;
     setActive(id);
+    clickPinUntil = Date.now() + CLICK_PIN_MS;
     var disclosure = a.closest('.toc-disclosure');
     if (disclosure && disclosure.hasAttribute('open')) {
       // Defer the close so the browser still does the default anchor
