@@ -14,6 +14,7 @@
   --shell-max: 1280px;
   --sidebar-width: 260px;
   --content-max: 720px;
+  --toc-width: 240px;
 
   /* Tokens aligned to relay-marketing */
   --color-bg: #ffffff;
@@ -171,10 +172,15 @@ body {
    ============================================================ */
 
 .layout {
-  display: flex;
+  display: grid;
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr) var(--toc-width);
   max-width: var(--shell-max);
   margin: 0 auto;
   min-height: calc(100vh - 57px);
+}
+
+body.no-toc .layout {
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
 }
 
 /* Sidebar */
@@ -233,7 +239,6 @@ body {
    ============================================================ */
 
 .doc-content {
-  flex: 1;
   padding: 2rem 2.5rem;
   max-width: calc(var(--content-max) + 5rem);
   min-width: 0;
@@ -346,6 +351,34 @@ body {
 
 .doc-content blockquote p:last-child {
   margin-bottom: 0;
+}
+
+.copy-agent-instructions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+}
+
+.copy-agent-button {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-text);
+  color: var(--color-bg);
+  padding: 0.55rem 0.8rem;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.copy-agent-button:hover {
+  opacity: 0.88;
+}
+
+.copy-agent-status {
+  color: var(--color-muted);
+  font-size: 0.9rem;
 }
 
 /* Tables */
