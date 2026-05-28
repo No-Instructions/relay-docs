@@ -98,10 +98,10 @@
         else inBand.delete(entry.target);
       });
       if (inBand.size === 0) {
-        // Large scroll jumps (e.g. jump-to-end, swipe-fling, browser
-        // restore-scroll) can leave inBand empty for a tick. Don't hold
-        // a stale activeId — fall back to the scroll-position pick so
-        // the active highlight tracks the user's real position.
+        // Edge of the band: the last heading just exited. Fall back to
+        // pickByScroll so the active highlight reflects the user's
+        // real scroll position. (The companion scroll listener below
+        // handles the case where the observer never fires at all.)
         setActive(pickByScroll().id);
         return;
       }
@@ -116,6 +116,38 @@
   headings.forEach(function (h) {
     observer.observe(h);
   });
+
+  // Passive scroll listener — catches large scroll jumps where the
+  // observer is silent. The observer only fires when at least one
+  // heading's intersection state changes. A jump between two positions
+  // where the same set of headings is "not in band" produces no state
+  // change, so the observer never fires, and the active stays stale.
+  //
+  // QA caught this on a P4 jump from scrollY=0 to scrollY=1200 (band
+  // lands in the gap between two headings; inBand stays empty before
+  // and after, observer silent), and on install-relay-beta's jump-to-
+  // bottom case.
+  //
+  // The listener only updates active when inBand is empty — when at
+  // least one heading is in the band, the observer is the authority
+  // (it fires on every intersection-state change anyway). Throttled
+  // to one fire per animation frame so a fling-scroll on a long page
+  // doesn't queue dozens of redundant pickByScroll() calls.
+  var scrollTickQueued = false;
+  window.addEventListener(
+    'scroll',
+    function () {
+      if (scrollTickQueued) return;
+      scrollTickQueued = true;
+      window.requestAnimationFrame(function () {
+        scrollTickQueued = false;
+        if (inBand.size === 0) {
+          setActive(pickByScroll().id);
+        }
+      });
+    },
+    { passive: true }
+  );
 
   // Initial state: same scroll-position pick used for the observer
   // fallback. Handles deep-link arrivals (anchor in URL, browser scrolls
