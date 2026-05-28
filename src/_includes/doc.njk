@@ -1,10 +1,11 @@
 {% extends "base.njk" %}
 
-{# Render the TOC once and count top-level entries. tocCount uses the
-   plugin's own parser so the count matches the visible TOC exactly. #}
+{# Render the TOC and count total entries (top-level + nested) via the
+   plugin's own parser. The total-entry rule means a page with 1 H2 +
+   many H3 children still renders the rail — see eleventy review fix. #}
 {% set tocHtml = content | toc %}
-{% set tocCount = content | tocCount %}
-{% set showToc = tocCount >= 2 %}
+{% set tocEntryCount = content | tocEntryCount %}
+{% set showToc = tocEntryCount >= 2 %}
 
 {% block bodyClass %}{% if not showToc %}no-toc{% endif %}{% endblock %}
 

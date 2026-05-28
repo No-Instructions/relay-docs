@@ -43,17 +43,25 @@ module.exports = function (eleventyConfig) {
     headingText: '',
   });
 
-  // tocCount: count of top-level entries in the parsed TOC tree. Used by
-  // doc.njk to gate rendering — < 2 top-level entries → suppress the
-  // entire rail + disclosure and set body.no-toc.
+  // tocEntryCount: count of total entries in the parsed TOC tree —
+  // top-level entries plus all nested children. Used by doc.njk to gate
+  // rendering: < 2 total entries → suppress the rail + disclosure and
+  // set body.no-toc.
   //
-  // Reuses the plugin's own Toc parser so the count is guaranteed to
-  // match what gets rendered, including the edge case where a page leads
-  // with H3 (no preceding H2) — those land at depth-1 in the tree.
-  eleventyConfig.addFilter('tocCount', (content) => {
+  // Reuses the plugin's own Toc parser. Counting total (not just
+  // top-level) means a page with 1 H2 + many H3 children — e.g.
+  // guides/obsidian-for-work, 1 H2 + 11 H3 — gets the rail it deserves
+  // rather than being suppressed because top-level count is 1.
+  function countAllTocNodes(item) {
+    return item.children.reduce(
+      (sum, child) => sum + 1 + countAllTocNodes(child),
+      0
+    );
+  }
+  eleventyConfig.addFilter('tocEntryCount', (content) => {
     if (!content || typeof content !== 'string') return 0;
     const t = new Toc(content, { tags: ['h2', 'h3'] });
-    return t.get().children.length;
+    return countAllTocNodes(t.get());
   });
 
   return {
