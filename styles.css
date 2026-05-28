@@ -540,12 +540,12 @@ body.no-toc .layout {
 .toc-rail .toc li,
 .toc-disclosure .toc li {
   margin: 0;
-  position: relative;
 }
 
 .toc-rail .toc a,
 .toc-disclosure .toc a {
   display: block;
+  position: relative;       /* containing block for the active ::before */
   padding: 0.3rem 0.5rem;
   color: var(--color-muted);
   text-decoration: none;
