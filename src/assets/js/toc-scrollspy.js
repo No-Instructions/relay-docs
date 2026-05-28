@@ -90,9 +90,13 @@
   }
 
   // IntersectionObserver — track the topmost heading in the reading band.
+  // Increments observerFireCount so the scroll-listener fallback (below)
+  // can detect that the observer owned this frame and bail.
   var inBand = new Set();
+  var observerFireCount = 0;
   var observer = new IntersectionObserver(
     function (entries) {
+      observerFireCount++;
       entries.forEach(function (entry) {
         if (entry.isIntersecting) inBand.add(entry.target);
         else inBand.delete(entry.target);
@@ -128,19 +132,28 @@
   // and after, observer silent), and on install-relay-beta's jump-to-
   // bottom case.
   //
-  // The listener only updates active when inBand is empty — when at
-  // least one heading is in the band, the observer is the authority
-  // (it fires on every intersection-state change anyway). Throttled
-  // to one fire per animation frame so a fling-scroll on a long page
-  // doesn't queue dozens of redundant pickByScroll() calls.
+  // The listener only updates active when inBand is empty AND the
+  // observer didn't already fire in this frame. When inBand has
+  // entries, the observer is the authority (it fires on every
+  // intersection-state change anyway). When the observer fired between
+  // the rAF being scheduled and running, the observer's setActive
+  // already won — bail to avoid a redundant pickByScroll + setActive.
+  // Throttled to one fire per animation frame so a fling-scroll on a
+  // long page doesn't queue dozens of redundant pickByScroll() calls.
   var scrollTickQueued = false;
   window.addEventListener(
     'scroll',
     function () {
       if (scrollTickQueued) return;
       scrollTickQueued = true;
+      var fireCountAtSchedule = observerFireCount;
       window.requestAnimationFrame(function () {
         scrollTickQueued = false;
+        if (observerFireCount > fireCountAtSchedule) {
+          // Observer fired since we scheduled this rAF — it owns the
+          // active update. Bail to avoid double-setting.
+          return;
+        }
         if (inBand.size === 0) {
           setActive(pickByScroll().id);
         }
