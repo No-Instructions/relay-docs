@@ -89,20 +89,30 @@
     return candidate || headings[0];
   }
 
-  // Click-pin: when the user clicks a TOC entry the click handler sets
+  // Click-pin: when the user clicks a TOC entry, the click handler sets
   // active to the clicked id, then this timestamp is set ~500ms in the
-  // future. Both the observer and the scroll listener bail while pinned
-  // so the browser's anchor-jump scroll settle (and any other transient
-  // scroll/intersection activity it triggers) cannot override the click
-  // intent. After the pin expires, normal scroll-spy resumes — but only
-  // when the user actually scrolls (the listener only fires on scroll
-  // events; absent further scroll, the active stays as the click set
-  // it). Caught by QA on end-of-document click-handoff: the page can't
-  // scroll the anchor to band-top so pickByScroll picks the heading
-  // before, and without this pin would override the click within ~16ms.
+  // future. Every active-setter path bails while pinned so the
+  // browser's anchor-jump scroll settle (and any other transient
+  // scroll/intersection activity it triggers) cannot override the
+  // click intent. After the pin expires, normal scroll-spy resumes —
+  // but only when the user actually scrolls (the listener only fires
+  // on scroll events; absent further scroll, the active stays as the
+  // click set it). Caught by QA on end-of-document click-handoff: the
+  // page can't scroll the anchor to band-top so pickByScroll picks the
+  // heading before, and without this pin would override within ~16ms.
+  //
+  // Three active-setter paths exist and each carries an explicit
+  // isClickPinned guard rather than reaching for a cleaner abstraction
+  // (per Lead): (1) initialActive — runs once on page load, no click
+  // can have happened in-session yet so the guard is a no-op, but the
+  // duplication makes the contract uniform; (2) observer callback —
+  // both empty-inBand fallback and topmost-in-band branches; (3) scroll
+  // listener rAF. The pin uses performance.now() so a wall-clock jump
+  // (rare but possible on Windows DST transitions, NTP sync) can't
+  // strand the pin in either direction.
   var clickPinUntil = 0;
   function isClickPinned() {
-    return Date.now() < clickPinUntil;
+    return performance.now() < clickPinUntil;
   }
 
   // IntersectionObserver — track the topmost heading in the reading band.
@@ -190,8 +200,13 @@
 
   // Initial state: same scroll-position pick used for the observer
   // fallback. Handles deep-link arrivals (anchor in URL, browser scrolls
-  // before the observer settles).
+  // before the observer settles). The click-pin guard here is a
+  // duplication-not-cleverness compliance with the click-pin contract:
+  // in practice clickPinUntil is 0 at page load, so this is a no-op,
+  // but the explicit check keeps the active-setter contract uniform
+  // across all three setter paths.
   function initialActive() {
+    if (isClickPinned()) return;
     setActive(pickByScroll().id);
   }
 
@@ -221,7 +236,7 @@
     var id = a.getAttribute('href').slice(1);
     if (!id) return;
     setActive(id);
-    clickPinUntil = Date.now() + CLICK_PIN_MS;
+    clickPinUntil = performance.now() + CLICK_PIN_MS;
     var disclosure = a.closest('.toc-disclosure');
     if (disclosure && disclosure.hasAttribute('open')) {
       // Defer the close so the browser still does the default anchor
