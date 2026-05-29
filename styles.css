@@ -879,14 +879,20 @@ body.no-toc .layout {
   color: var(--color-text);
 }
 
+/* System 3 lockup — match marketing's h-10 w-24 (40px × 96px box).
+   The SVG's intrinsic viewBox is 1191×220 (5.4:1), but the rendered
+   box is 2.4:1. Default preserveAspectRatio="xMidYMid meet" letterboxes
+   the content inside the box: scaled to fit width 96, vertically
+   centered with ~22px top/bottom of empty space. Matches marketing's
+   compact lockup rendering. */
 .system3-lockup {
   height: 2.5rem;
-  width: auto;
+  width: 6rem;
   display: block;
   color: currentColor;
 }
 
-/* Bottom bar — copyright on the left, Discord + llms.txt on the right.
+/* Bottom bar — copyright on the left, Discord on the right.
    Stacked on mobile, side-by-side at md+. */
 .footer-bottom {
   border-top: 1px solid var(--color-border);
