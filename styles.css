@@ -12,7 +12,6 @@
 
 :root {
   --shell-max: 1280px;
-  --frame-max: 1536px;
   --sidebar-width: 260px;
   --content-max: 720px;
   --toc-width: 240px;
@@ -85,14 +84,51 @@ body {
   border-bottom-color: rgba(39, 39, 42, 0.6);
 }
 
+/* Tailwind-container-style per-breakpoint stack — matches marketing's
+   site-header container shape. Default padding 1rem; padding tier shifts
+   to 2rem at sm (640px) and 4rem at lg (1024px). Per-breakpoint max-widths
+   640/768/1024/1280/1536 match Tailwind's default container screens. */
 .site-header-inner {
-  max-width: var(--frame-max);
   margin: 0 auto;
   height: 56px;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .site-header-inner {
+    max-width: 640px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .site-header-inner {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .site-header-inner {
+    max-width: 1024px;
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .site-header-inner {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .site-header-inner {
+    max-width: 1536px;
+  }
 }
 
 .site-logo {
