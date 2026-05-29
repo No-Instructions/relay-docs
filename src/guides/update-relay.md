@@ -43,4 +43,5 @@ If you have trouble updating or the update doesn't seem to work:
 
 ## See also
 
+- [Install the latest Relay beta](/guides/install-relay-beta/) - Test the latest prerelease version with BRAT or a local agent
 - [Gray stack icon](/troubleshooting/stack-icon-gray/) - Fix common issues after updates
