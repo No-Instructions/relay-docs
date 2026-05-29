@@ -1,5 +1,14 @@
 {% extends "base.njk" %}
 
+{# Render the TOC and count total entries (top-level + nested) via the
+   plugin's own parser. The total-entry rule means a page with 1 H2 +
+   many H3 children still renders the rail — see eleventy review fix. #}
+{% set tocHtml = content | toc %}
+{% set tocEntryCount = content | tocEntryCount %}
+{% set showToc = tocEntryCount >= 2 %}
+
+{% block bodyClass %}{% if not showToc %}no-toc{% endif %}{% endblock %}
+
 {% block content %}
 <div class="layout">
   <nav class="sidebar" aria-label="Documentation navigation">
@@ -24,7 +33,26 @@
     {% if title %}
     <h1>{{ title }}</h1>
     {% endif %}
+
+    {% if showToc %}
+    <details class="toc-disclosure">
+      <summary>On this page</summary>
+      <nav aria-label="On this page" class="toc-nav">
+        {{ tocHtml | safe }}
+      </nav>
+    </details>
+    {% endif %}
+
     {{ content | safe }}
   </main>
+
+  {% if showToc %}
+  <aside class="toc-rail">
+    <nav aria-label="On this page" class="toc-nav">
+      <p class="toc-label">On this page</p>
+      {{ tocHtml | safe }}
+    </nav>
+  </aside>
+  {% endif %}
 </div>
 {% endblock %}
