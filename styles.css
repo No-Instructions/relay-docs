@@ -516,7 +516,14 @@ body.no-toc .layout {
   padding: 1.5rem 1rem;
   position: sticky;
   top: 57px;
-  height: calc(100vh - 57px);
+  /* Size to content with a viewport cap. Combined with align-self:start,
+     short TOCs (3-5 entries) only occupy what they need — when .layout's
+     bottom enters the viewport and the rail un-sticks, a short rail
+     pops up a short distance instead of dragging a full viewport's
+     worth of empty rail across the screen. Long TOCs still cap at the
+     viewport and overflow-scroll internally as before. */
+  max-height: calc(100vh - 57px);
+  align-self: start;
   overflow-y: auto;
   font-size: 0.875rem;
 }

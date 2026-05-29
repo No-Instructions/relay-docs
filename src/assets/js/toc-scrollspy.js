@@ -56,11 +56,30 @@
       });
       // Auto-scroll the active rail entry into view (inside the rail
       // only — block: 'nearest' avoids scrolling the document).
+      //
+      // Gate the call behind "is the link actually clipped by the
+      // rail's overflow viewport?" — `scrollIntoView` with
+      // `block: 'nearest'` is supposed to be a no-op when the element
+      // is fully visible, but the call itself can trigger a forced
+      // layout calc and (per Matt's bottom-of-page jitter report) some
+      // browser-internal scroll-related side effects near the sticky-
+      // unstick boundary at the layout's bottom. Skipping the call
+      // when it would be a no-op anyway is free defensive cleanup per
+      // Lead's suggested mitigation.
       var railLink = document.querySelector(
         '.toc-rail .toc a[href="#' + cssEscape(newId) + '"]'
       );
       if (railLink && typeof railLink.scrollIntoView === 'function') {
-        railLink.scrollIntoView({ block: 'nearest', behavior: 'auto' });
+        var rail = railLink.closest('.toc-rail');
+        if (rail) {
+          var rRect = rail.getBoundingClientRect();
+          var lRect = railLink.getBoundingClientRect();
+          var clippedTop = lRect.top < rRect.top;
+          var clippedBot = lRect.bottom > rRect.bottom;
+          if (clippedTop || clippedBot) {
+            railLink.scrollIntoView({ block: 'nearest', behavior: 'auto' });
+          }
+        }
       }
     }
     activeId = newId;
