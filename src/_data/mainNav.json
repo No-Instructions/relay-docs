@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Product",
+    "href": "https://relay.md/relay",
+    "items": [
+      { "title": "Relay overview", "href": "https://relay.md/relay" },
+      { "title": "Roadmap",        "href": "https://relay.md/roadmap" },
+      { "title": "Releases",       "href": "https://relay.md/releases" }
+    ]
+  },
+  {
+    "title": "Docs",
+    "href": "/",
+    "active": true
+  },
+  {
+    "title": "Company",
+    "href": "https://system3.md/company",
+    "items": [
+      { "title": "About us",    "href": "https://system3.md/company" },
+      { "title": "Our ideals",  "href": "https://system3.md/company/ideals" },
+      { "title": "Consulting",  "href": "https://system3.md/consulting" },
+      { "title": "Observatory", "href": "https://observatory.md" }
+    ]
+  },
+  {
+    "title": "Pricing",
+    "href": "https://relay.md/pricing"
+  }
+]
