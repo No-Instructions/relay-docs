@@ -99,52 +99,28 @@ body {
   border-bottom-color: rgba(39, 39, 42, 0.6);
 }
 
-/* Tailwind-container-style per-breakpoint stack — matches marketing's
-   site-header container shape. Default padding 1rem; padding tier shifts
-   to 2rem at sm (640px) and 4rem at lg (1024px). Per-breakpoint max-widths
-   640/768/1024/1280/1536 match Tailwind's default container screens. */
+/* Two-tier container shape — empirical match to marketing's actual
+   rendering (not what marketing's tailwind.config.ts implies).
+   Because marketing's container.screens declares only '2xl': '1400px',
+   the sm/lg/xl entries in container.padding are dead code at the
+   render layer. Marketing actually has TWO tiers: 1rem default + 6rem
+   at 1400+, with max-width 1400 (container cap) overridden to 1536
+   on header by `max-w-screen-2xl` utility class. Footer has no
+   override so it stays at the 1400 container cap. Result: header is
+   136px wider than footer at 1536+ viewports — intentional asymmetry. */
 .site-header-inner {
   margin: 0 auto;
   height: 56px;
+  width: 100%;
+  max-width: 1536px;
   padding: 0 1rem;
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-@media (min-width: 640px) {
-  .site-header-inner {
-    max-width: 640px;
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .site-header-inner {
-    max-width: 768px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .site-header-inner {
-    max-width: 1024px;
-    padding-left: 4rem;
-    padding-right: 4rem;
-  }
-}
-
-@media (min-width: 1280px) {
-  .site-header-inner {
-    max-width: 1280px;
-    padding-left: 5rem;
-    padding-right: 5rem;
-  }
-}
-
 @media (min-width: 1400px) {
   .site-header-inner {
-    max-width: 1400px;
     padding-left: 6rem;
     padding-right: 6rem;
   }
@@ -789,43 +765,16 @@ body.no-toc .layout {
   }
 }
 
-/* Tailwind-container-style per-breakpoint stack — same shape as
-   .site-header-inner. Replicates marketing's container behavior on
-   the inner so total horizontal padding at any viewport matches
-   marketing's outer .site-footer padding + inner container padding. */
+/* Two-tier container shape — same as .site-header-inner BUT no
+   max-width: 1536px override. Marketing's footer doesn't have
+   `max-w-screen-2xl`, so it stays at the container plugin's 1400 cap.
+   At 1400+ viewports, footer content is 136px narrower than header
+   (1400 - 192 = 1208 vs header's 1536 - 192 = 1344). Intentional
+   asymmetry, matches marketing exactly. */
 .site-footer-inner {
   margin: 0 auto;
+  width: 100%;
   padding: 0 1rem;
-}
-
-@media (min-width: 640px) {
-  .site-footer-inner {
-    max-width: 640px;
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .site-footer-inner {
-    max-width: 768px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .site-footer-inner {
-    max-width: 1024px;
-    padding-left: 4rem;
-    padding-right: 4rem;
-  }
-}
-
-@media (min-width: 1280px) {
-  .site-footer-inner {
-    max-width: 1280px;
-    padding-left: 5rem;
-    padding-right: 5rem;
-  }
 }
 
 @media (min-width: 1400px) {
