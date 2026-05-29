@@ -224,6 +224,12 @@ body {
   color: var(--color-text);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .main-nav-link {
+    transition: none;
+  }
+}
+
 /* Dropdown — CSS-only :hover + :focus-within pattern (no JS) */
 .main-nav-item--has-dropdown .dropdown-menu {
   display: none;
@@ -297,6 +303,12 @@ body {
 
 [data-theme="dark"] .consult-cta:hover {
   color: var(--color-text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .consult-cta {
+    transition: none;
+  }
 }
 
 /* ============================================================
