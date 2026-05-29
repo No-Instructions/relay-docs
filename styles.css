@@ -40,7 +40,7 @@
 }
 
 html {
-  scroll-padding-top: 57px;
+  scroll-padding-top: 56px;
 }
 
 body {
@@ -65,6 +65,21 @@ body {
   top: 1rem;
 }
 
+/* Screen-reader-only utility — matches Tailwind preflight's .sr-only.
+   Used by footer link affordances ("(opens in new tab)" hint) and
+   wherever else assistive-text-only spans are needed. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 /* ============================================================
    Header — full-width bar, content centered in shell
    ============================================================ */
@@ -84,13 +99,31 @@ body {
   border-bottom-color: rgba(39, 39, 42, 0.6);
 }
 
+/* Two-tier container shape — empirical match to marketing's actual
+   rendering (not what marketing's tailwind.config.ts implies).
+   Because marketing's container.screens declares only '2xl': '1400px',
+   the sm/lg/xl entries in container.padding are dead code at the
+   render layer. Marketing actually has TWO tiers: 1rem default + 6rem
+   at 1400+, with max-width 1400 (container cap) overridden to 1536
+   on header by `max-w-screen-2xl` utility class. Footer has no
+   override so it stays at the 1400 container cap. Result: header is
+   136px wider than footer at 1536+ viewports — intentional asymmetry. */
 .site-header-inner {
-  max-width: var(--shell-max);
   margin: 0 auto;
-  padding: 0.75rem 1.5rem;
+  height: 56px;
+  width: 100%;
+  max-width: 1536px;
+  padding: 0 1rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 1rem;
+}
+
+@media (min-width: 1400px) {
+  .site-header-inner {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
 }
 
 .site-logo {
@@ -168,6 +201,306 @@ body {
 [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
 /* ============================================================
+   Main nav — desktop (visible ≥ md)
+   ============================================================ */
+
+.main-nav {
+  display: none;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.main-nav .site-logo {
+  display: flex;
+  align-items: center;
+  line-height: 0;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.main-nav-list {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.main-nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.main-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: rgba(9, 9, 11, 0.8);
+  text-decoration: none;
+  transition: color 0.1s;
+  white-space: nowrap;
+}
+
+.main-nav-link:hover,
+.main-nav-link--active {
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .main-nav-link {
+  color: rgba(250, 250, 250, 0.8);
+}
+
+[data-theme="dark"] .main-nav-link:hover,
+[data-theme="dark"] .main-nav-link--active {
+  color: var(--color-text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .main-nav-link {
+    transition: none;
+  }
+}
+
+/* Dropdown — CSS-only :hover + :focus-within pattern (no JS) */
+.main-nav-item--has-dropdown .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: -0.75rem;
+  margin-top: 0.5rem;
+  min-width: 12rem;
+  padding: 0.25rem;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  z-index: 20;
+}
+
+.main-nav-item--has-dropdown:hover .dropdown-menu,
+.main-nav-item--has-dropdown:focus-within .dropdown-menu {
+  display: block;
+}
+
+.dropdown-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: calc(var(--radius) - 4px);
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 0.875rem;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.dropdown-link:hover {
+  background: var(--color-active-bg);
+}
+
+.external-link-icon {
+  opacity: 0.6;
+}
+
+/* Push the right-side header-nav cluster to the right edge */
+.site-header-inner > .header-nav {
+  margin-left: auto;
+}
+
+/* Consult CTA — hidden below md, inline-flex at md+ */
+.consult-cta {
+  display: none;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: calc(var(--radius) - 2px);
+  color: rgba(9, 9, 11, 0.8);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.1s, color 0.1s;
+  white-space: nowrap;
+}
+
+.consult-cta:hover {
+  background: var(--color-active-bg);
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .consult-cta {
+  color: rgba(250, 250, 250, 0.8);
+}
+
+[data-theme="dark"] .consult-cta:hover {
+  color: var(--color-text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .consult-cta {
+    transition: none;
+  }
+}
+
+/* ============================================================
+   Mobile cluster — burger trigger, mobile-only logo, dialog sheet
+   ============================================================ */
+
+.mobile-nav-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: calc(var(--radius) - 2px);
+  color: var(--color-text);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
+.mobile-nav-trigger:hover {
+  background: var(--color-active-bg);
+}
+
+.site-logo--mobile {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-text);
+  text-decoration: none;
+  line-height: 0;
+  margin-right: auto;
+}
+
+.site-logo--mobile .logo-wordmark {
+  height: 24px;
+  width: auto;
+  display: block;
+}
+
+.mobile-nav-dialog {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 80vw;
+  max-width: 320px;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: var(--color-bg);
+  color: var(--color-text);
+  overflow-y: auto;
+}
+
+.mobile-nav-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.mobile-nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.logo-wordmark--small {
+  height: 20px;
+  width: auto;
+  display: block;
+  color: var(--color-text);
+}
+
+.mobile-nav-close {
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: calc(var(--radius) - 2px);
+  background: none;
+  border: none;
+  color: var(--color-text);
+  cursor: pointer;
+  padding: 0;
+}
+
+.mobile-nav-close:hover {
+  background: var(--color-active-bg);
+}
+
+.mobile-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1.25rem;
+}
+
+.mobile-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.4rem 0.5rem;
+  border-radius: calc(var(--radius) - 2px);
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.mobile-nav-link:hover {
+  background: var(--color-active-bg);
+}
+
+.mobile-nav-link--active {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.mobile-nav-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin: 0 0 0.5rem 1rem;
+}
+
+.mobile-nav-sublink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: calc(var(--radius) - 4px);
+  color: rgba(9, 9, 11, 0.8);
+  text-decoration: none;
+  font-size: 0.875rem;
+}
+
+[data-theme="dark"] .mobile-nav-sublink {
+  color: rgba(250, 250, 250, 0.8);
+}
+
+.mobile-nav-sublink:hover {
+  background: var(--color-active-bg);
+  color: var(--color-text);
+}
+
+/* Responsive switches: at md+, show main-nav + consult CTA, hide mobile cluster */
+@media (min-width: 768px) {
+  .main-nav {
+    display: flex;
+  }
+  .consult-cta {
+    display: inline-flex;
+  }
+  .mobile-nav-trigger,
+  .site-logo--mobile {
+    display: none;
+  }
+}
+
+/* ============================================================
    Two-column doc layout — centered in shell
    ============================================================ */
 
@@ -176,7 +509,7 @@ body {
   grid-template-columns: var(--sidebar-width) minmax(0, 1fr) var(--toc-width);
   max-width: var(--shell-max);
   margin: 0 auto;
-  min-height: calc(100vh - 57px);
+  min-height: calc(100vh - 56px);
 }
 
 body.no-toc .layout {
@@ -190,8 +523,8 @@ body.no-toc .layout {
   border-right: 1px solid var(--color-border);
   padding: 1.5rem 1rem;
   position: sticky;
-  top: 57px;
-  height: calc(100vh - 57px);
+  top: 56px;
+  height: calc(100vh - 56px);
   overflow-y: auto;
 }
 
@@ -418,30 +751,69 @@ body.no-toc .layout {
    Footer — full-width bar, content centered in shell
    ============================================================ */
 
+/* Outer footer element — vertical padding always 2rem, horizontal
+   padding 2rem at md+. F1 per Design's spec. Matches marketing's
+   `py-8 md:px-8` exactly. */
 .site-footer {
   border-top: 1px solid var(--color-border);
+  padding: 2rem 0;
 }
 
+@media (min-width: 768px) {
+  .site-footer {
+    padding: 2rem 2rem;
+  }
+}
+
+/* Two-tier container shape — same as .site-header-inner BUT no
+   max-width: 1536px override. Marketing's footer doesn't have
+   `max-w-screen-2xl`, so it stays at the container plugin's 1400 cap.
+   At 1400+ viewports, footer content is 136px narrower than header
+   (1400 - 192 = 1208 vs header's 1536 - 192 = 1344). Intentional
+   asymmetry, matches marketing exactly. */
 .site-footer-inner {
-  max-width: var(--shell-max);
   margin: 0 auto;
-  padding: 2.5rem 1.5rem 1.5rem;
+  width: 100%;
+  padding: 0 1rem;
 }
 
+@media (min-width: 1400px) {
+  .site-footer-inner {
+    max-width: 1400px;
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+}
+
+/* 5-col grid at lg (≥ 1024), 2-col at md (≥ 768), 1-col below.
+   Matches marketing's md:grid-cols-2 lg:grid-cols-5. */
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 2rem;
   margin-bottom: 2rem;
 }
 
+@media (min-width: 768px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* Column heading — text-sm font-semibold per marketing.
+   Previously was 0.7rem uppercase + letter-spacing; revised to match
+   marketing's 0.875rem weight 600 sentence-case. */
 .footer-col-label {
-  font-size: 0.7rem;
+  font-size: 0.875rem;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--color-muted);
-  margin: 0 0 0.5rem 0;
+  color: var(--color-text);
+  margin: 0 0 0.75rem 0;
 }
 
 .footer-col ul {
@@ -451,7 +823,7 @@ body.no-toc .layout {
 }
 
 .footer-col li {
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.5rem;
 }
 
 .footer-col a {
@@ -464,22 +836,41 @@ body.no-toc .layout {
   color: var(--color-text);
 }
 
+.footer-col-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Brand column — logo (centered), tagline (centered), System 3 lockup. */
+.footer-brand {
+  text-align: center;
+}
+
+.footer-brand-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
 .logo-wordmark-footer {
-  height: 1.5rem;
+  height: 3rem;
   width: auto;
   display: block;
   color: var(--color-text);
-  margin-bottom: 0.75rem;
 }
 
 .footer-brand-tagline {
   font-size: 0.875rem;
   color: var(--color-muted);
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.75rem 0;
 }
 
 .footer-brand-attr {
-  font-size: 0.8rem;
+  display: inline-flex;
   color: var(--color-muted);
   text-decoration: none;
 }
@@ -488,14 +879,42 @@ body.no-toc .layout {
   color: var(--color-text);
 }
 
+/* System 3 lockup — match marketing's h-10 w-24 (40px × 96px box).
+   The SVG's intrinsic viewBox is 1191×220 (5.4:1), but the rendered
+   box is 2.4:1. Default preserveAspectRatio="xMidYMid meet" letterboxes
+   the content inside the box: scaled to fit width 96, vertically
+   centered with ~22px top/bottom of empty space. Matches marketing's
+   compact lockup rendering. */
+.system3-lockup {
+  height: 2.5rem;
+  width: 6rem;
+  display: block;
+  color: currentColor;
+}
+
+/* Bottom bar — copyright on the left, Discord on the right.
+   Stacked on mobile, side-by-side at md+. */
 .footer-bottom {
   border-top: 1px solid var(--color-border);
-  padding-top: 1rem;
-  font-size: 0.8rem;
+  padding-top: 2rem;
+  margin-top: 2rem;
+  font-size: 0.875rem;
   color: var(--color-muted);
   display: flex;
-  gap: 1.5rem;
+  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .footer-bottom {
+    flex-direction: row;
+  }
+}
+
+.footer-copyright {
+  margin: 0;
 }
 
 .footer-bottom a {
@@ -507,6 +926,12 @@ body.no-toc .layout {
   color: var(--color-text);
 }
 
+.footer-bottom-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
 /* ============================================================
    Right rail — page outline (desktop)
    ============================================================ */
@@ -515,14 +940,14 @@ body.no-toc .layout {
   border-left: 1px solid var(--color-border);
   padding: 1.5rem 1rem;
   position: sticky;
-  top: 57px;
+  top: 56px;
   /* Size to content with a viewport cap. Combined with align-self:start,
      short TOCs (3-5 entries) only occupy what they need — when .layout's
      bottom enters the viewport and the rail un-sticks, a short rail
      pops up a short distance instead of dragging a full viewport's
      worth of empty rail across the screen. Long TOCs still cap at the
      viewport and overflow-scroll internally as before. */
-  max-height: calc(100vh - 57px);
+  max-height: calc(100vh - 56px);
   align-self: start;
   overflow-y: auto;
   font-size: 0.875rem;
@@ -710,9 +1135,6 @@ body.no-toc .layout {
   .doc-content th,
   .doc-content td {
     white-space: normal;
-  }
-  .footer-grid {
-    grid-template-columns: 1fr;
   }
 }
 
