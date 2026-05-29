@@ -756,14 +756,61 @@ body.no-toc .layout {
    Footer — full-width bar, content centered in shell
    ============================================================ */
 
+/* Outer footer element — vertical padding always 2rem, horizontal
+   padding 2rem at md+. F1 per Design's spec. Matches marketing's
+   `py-8 md:px-8` exactly. */
 .site-footer {
   border-top: 1px solid var(--color-border);
+  padding: 2rem 0;
 }
 
+@media (min-width: 768px) {
+  .site-footer {
+    padding: 2rem 2rem;
+  }
+}
+
+/* Tailwind-container-style per-breakpoint stack — same shape as
+   .site-header-inner. Replicates marketing's container behavior on
+   the inner so total horizontal padding at any viewport matches
+   marketing's outer .site-footer padding + inner container padding. */
 .site-footer-inner {
-  max-width: var(--shell-max);
   margin: 0 auto;
-  padding: 2.5rem 1.5rem 1.5rem;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .site-footer-inner {
+    max-width: 640px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .site-footer-inner {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .site-footer-inner {
+    max-width: 1024px;
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .site-footer-inner {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .site-footer-inner {
+    max-width: 1536px;
+  }
 }
 
 /* 5-col grid at lg (≥ 1024), 2-col at md (≥ 768), 1-col below.
