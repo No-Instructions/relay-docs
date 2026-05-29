@@ -50,6 +50,23 @@
     <header class="site-header">
       <div class="site-header-inner">
 
+        {# Mobile cluster — visible < md, hidden at ≥ md #}
+        <button id="mobile-nav-trigger" class="mobile-nav-trigger" type="button"
+                aria-label="Toggle menu" aria-controls="mobile-nav-dialog" aria-expanded="false">
+          {# Lucide Hamburger, 20px #}
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+               stroke-linejoin="round" aria-hidden="true">
+            <line x1="4" x2="20" y1="12" y2="12"/>
+            <line x1="4" x2="20" y1="6"  y2="6"/>
+            <line x1="4" x2="20" y1="18" y2="18"/>
+          </svg>
+        </button>
+
+        <a href="https://relay.md" class="site-logo site-logo--mobile" aria-label="Relay home">
+          {{ logo("clip-logo-mobile", "logo-wordmark") }}
+        </a>
+
         {# Desktop main-nav cluster — visible ≥ md, hidden below #}
         <div class="main-nav">
           <a href="https://relay.md" class="site-logo" aria-label="Relay home">
@@ -124,6 +141,43 @@
       </div>
     </header>
 
+    {# Mobile burger sheet — HTML5 dialog. Sibling of header, body-level. #}
+    <dialog id="mobile-nav-dialog" class="mobile-nav-dialog" aria-label="Primary navigation">
+      <div class="mobile-nav-header">
+        <a href="https://relay.md" class="site-logo" aria-label="Relay home">
+          {{ logo("clip-logo-dialog", "logo-wordmark--small") }}
+        </a>
+        <button id="mobile-nav-close" class="mobile-nav-close" type="button" aria-label="Close menu">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+               stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 6 6 18"/>
+            <path d="m6 6 12 12"/>
+          </svg>
+        </button>
+      </div>
+      <nav class="mobile-nav-list" aria-label="Primary mobile">
+        {% for item in mainNav %}
+          <a href="{{ item.href }}"
+             class="mobile-nav-link{% if item.active %} mobile-nav-link--active{% endif %}"
+             {% if item.active %}aria-current="page"{% endif %}
+             {% if item.href.startsWith("http") %}target="_blank" rel="noopener noreferrer"{% endif %}>
+            {{ item.title }}
+          </a>
+          {% if item.items %}
+            <div class="mobile-nav-section">
+              {% for sub in item.items %}
+                <a href="{{ sub.href }}" class="mobile-nav-sublink"
+                   {% if sub.href.startsWith("http") %}target="_blank" rel="noopener noreferrer"{% endif %}>
+                  {{ sub.title }}
+                </a>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </nav>
+    </dialog>
+
     {% block content %}
       {{ content | safe }}
     {% endblock %}
@@ -166,6 +220,7 @@
         </div>
       </div>
     </footer>
+    <script src="/assets/js/header-nav.js" defer></script>
     <script src="/assets/js/toc-scrollspy.js" defer></script>
     <script>
       (function () {
