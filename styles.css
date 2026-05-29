@@ -766,20 +766,35 @@ body.no-toc .layout {
   padding: 2.5rem 1.5rem 1.5rem;
 }
 
+/* 5-col grid at lg (≥ 1024), 2-col at md (≥ 768), 1-col below.
+   Matches marketing's md:grid-cols-2 lg:grid-cols-5. */
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 2rem;
   margin-bottom: 2rem;
 }
 
+@media (min-width: 768px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* Column heading — text-sm font-semibold per marketing.
+   Previously was 0.7rem uppercase + letter-spacing; revised to match
+   marketing's 0.875rem weight 600 sentence-case. */
 .footer-col-label {
-  font-size: 0.7rem;
+  font-size: 0.875rem;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--color-muted);
-  margin: 0 0 0.5rem 0;
+  color: var(--color-text);
+  margin: 0 0 0.75rem 0;
 }
 
 .footer-col ul {
@@ -789,7 +804,7 @@ body.no-toc .layout {
 }
 
 .footer-col li {
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.5rem;
 }
 
 .footer-col a {
@@ -802,22 +817,41 @@ body.no-toc .layout {
   color: var(--color-text);
 }
 
+.footer-col-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Brand column — logo (centered), tagline (centered), System 3 lockup. */
+.footer-brand {
+  text-align: center;
+}
+
+.footer-brand-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
 .logo-wordmark-footer {
-  height: 1.5rem;
+  height: 3rem;
   width: auto;
   display: block;
   color: var(--color-text);
-  margin-bottom: 0.75rem;
 }
 
 .footer-brand-tagline {
   font-size: 0.875rem;
   color: var(--color-muted);
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.75rem 0;
 }
 
 .footer-brand-attr {
-  font-size: 0.8rem;
+  display: inline-flex;
   color: var(--color-muted);
   text-decoration: none;
 }
@@ -826,14 +860,36 @@ body.no-toc .layout {
   color: var(--color-text);
 }
 
+.system3-lockup {
+  height: 2.5rem;
+  width: auto;
+  display: block;
+  color: currentColor;
+}
+
+/* Bottom bar — copyright on the left, Discord + llms.txt on the right.
+   Stacked on mobile, side-by-side at md+. */
 .footer-bottom {
   border-top: 1px solid var(--color-border);
-  padding-top: 1rem;
-  font-size: 0.8rem;
+  padding-top: 2rem;
+  margin-top: 2rem;
+  font-size: 0.875rem;
   color: var(--color-muted);
   display: flex;
-  gap: 1.5rem;
+  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .footer-bottom {
+    flex-direction: row;
+  }
+}
+
+.footer-copyright {
+  margin: 0;
 }
 
 .footer-bottom a {
@@ -843,6 +899,12 @@ body.no-toc .layout {
 
 .footer-bottom a:hover {
   color: var(--color-text);
+}
+
+.footer-bottom-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 /* ============================================================
@@ -1048,9 +1110,6 @@ body.no-toc .layout {
   .doc-content th,
   .doc-content td {
     white-space: normal;
-  }
-  .footer-grid {
-    grid-template-columns: 1fr;
   }
 }
 
