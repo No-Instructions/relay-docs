@@ -12,6 +12,7 @@
 
 :root {
   --shell-max: 1280px;
+  --frame-max: 1536px;
   --sidebar-width: 260px;
   --content-max: 720px;
   --toc-width: 240px;
@@ -40,7 +41,7 @@
 }
 
 html {
-  scroll-padding-top: 57px;
+  scroll-padding-top: 56px;
 }
 
 body {
@@ -176,7 +177,7 @@ body {
   grid-template-columns: var(--sidebar-width) minmax(0, 1fr) var(--toc-width);
   max-width: var(--shell-max);
   margin: 0 auto;
-  min-height: calc(100vh - 57px);
+  min-height: calc(100vh - 56px);
 }
 
 body.no-toc .layout {
@@ -190,8 +191,8 @@ body.no-toc .layout {
   border-right: 1px solid var(--color-border);
   padding: 1.5rem 1rem;
   position: sticky;
-  top: 57px;
-  height: calc(100vh - 57px);
+  top: 56px;
+  height: calc(100vh - 56px);
   overflow-y: auto;
 }
 
@@ -515,14 +516,14 @@ body.no-toc .layout {
   border-left: 1px solid var(--color-border);
   padding: 1.5rem 1rem;
   position: sticky;
-  top: 57px;
+  top: 56px;
   /* Size to content with a viewport cap. Combined with align-self:start,
      short TOCs (3-5 entries) only occupy what they need — when .layout's
      bottom enters the viewport and the rail un-sticks, a short rail
      pops up a short distance instead of dragging a full viewport's
      worth of empty rail across the screen. Long TOCs still cap at the
      viewport and overflow-scroll internally as before. */
-  max-height: calc(100vh - 57px);
+  max-height: calc(100vh - 56px);
   align-self: start;
   overflow-y: auto;
   font-size: 0.875rem;
