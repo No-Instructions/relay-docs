@@ -204,7 +204,7 @@ body.no-toc .layout {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--color-muted);
+  color: var(--color-text);
   margin: 0 0 0.35rem 0.5rem;
 }
 
