@@ -271,6 +271,34 @@ body {
   margin-left: auto;
 }
 
+/* Consult CTA — hidden below md, inline-flex at md+ */
+.consult-cta {
+  display: none;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: calc(var(--radius) - 2px);
+  color: rgba(9, 9, 11, 0.8);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.1s, color 0.1s;
+  white-space: nowrap;
+}
+
+.consult-cta:hover {
+  background: var(--color-active-bg);
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .consult-cta {
+  color: rgba(250, 250, 250, 0.8);
+}
+
+[data-theme="dark"] .consult-cta:hover {
+  color: var(--color-text);
+}
+
 /* ============================================================
    Mobile cluster — burger trigger, mobile-only logo, dialog sheet
    ============================================================ */
@@ -415,10 +443,13 @@ body {
   color: var(--color-text);
 }
 
-/* Responsive switches: at md+, show main-nav, hide mobile cluster */
+/* Responsive switches: at md+, show main-nav + consult CTA, hide mobile cluster */
 @media (min-width: 768px) {
   .main-nav {
     display: flex;
+  }
+  .consult-cta {
+    display: inline-flex;
   }
   .mobile-nav-trigger,
   .site-logo--mobile {
