@@ -2,3 +2,10 @@ _site/
 node_modules/
 .vercel/
 .vercel
+
+# Agent memory for project teams
+.parts/
+
+# Local draft workflow (unreviewed source + local preview build)
+drafts/
+_draft_site/
