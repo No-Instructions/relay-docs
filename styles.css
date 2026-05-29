@@ -65,6 +65,21 @@ body {
   top: 1rem;
 }
 
+/* Screen-reader-only utility — matches Tailwind preflight's .sr-only.
+   Used by footer link affordances ("(opens in new tab)" hint) and
+   wherever else assistive-text-only spans are needed. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 /* ============================================================
    Header — full-width bar, content centered in shell
    ============================================================ */
@@ -122,12 +137,16 @@ body {
 @media (min-width: 1280px) {
   .site-header-inner {
     max-width: 1280px;
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
 }
 
-@media (min-width: 1536px) {
+@media (min-width: 1400px) {
   .site-header-inner {
-    max-width: 1536px;
+    max-width: 1400px;
+    padding-left: 6rem;
+    padding-right: 6rem;
   }
 }
 
@@ -804,12 +823,16 @@ body.no-toc .layout {
 @media (min-width: 1280px) {
   .site-footer-inner {
     max-width: 1280px;
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
 }
 
-@media (min-width: 1536px) {
+@media (min-width: 1400px) {
   .site-footer-inner {
-    max-width: 1536px;
+    max-width: 1400px;
+    padding-left: 6rem;
+    padding-right: 6rem;
   }
 }
 
