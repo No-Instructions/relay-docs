@@ -27,8 +27,14 @@ This is the same requirement imposed by any sync service, including Obsidian Syn
 2. **Add those folders to your Relay Server** as Shared Folders
 3. **Exclude those folders from your existing sync service**:
    - [Obsidian Sync exclusions](https://help.obsidian.md/sync/settings#Exclude+a+folder+from+syncing)
-   - [iCloud exclusions](https://support.apple.com/guide/mac-help/exclude-files-from-icloud-drive-mchl97c93511/mac)
+   - If you use iCloud Drive, keep Relay Shared Folders outside iCloud-synced locations like Desktop, Documents, and iCloud Drive. Apple does not currently document a supported per-folder exclusion control for iCloud Drive; [Apple's current guidance](https://support.apple.com/en-us/109344) is to keep separate cloud services in separate locations on your Mac.
    - Check your sync service's documentation for folder exclusion steps
+
+#### iCloud and `.nosync`
+
+Some macOS users append `.nosync` to a folder name to keep that folder out of iCloud Drive. Apple mentions `.nosync` in an [archived iCloud developer guide](https://developer.apple.com/library/archive/documentation/General/Conceptual/iCloudDesignGuide/Chapters/iCloudFundametals.html), and Howard Oakley has a useful [current explanation of iCloud Drive exclusions](https://eclecticlight.co/2024/07/09/excluding-folders-and-files-from-time-machine-spotlight-and-icloud-drive/).
+
+Relay does not recommend `.nosync` as the default setup: it is not exposed as a normal iCloud Drive setting, and renaming a folder can break paths you already use in Obsidian or other apps. If you choose to use it anyway, treat it as an iCloud-specific workaround you need to verify yourself on every device. The safer Relay setup is to put Relay Shared Folders somewhere iCloud is not syncing.
 
 ### If you're not already using a device sync service
 
