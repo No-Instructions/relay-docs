@@ -7,10 +7,35 @@ Relay beta releases are prerelease builds for testing new Relay features before 
 
 There are two ways to install the latest Relay beta:
 
-1. **[Use a local agent](#use-a-local-agent).** This is the easiest path if you already run Claude Code, Codex, Cursor, or another local shell-capable agent on the same computer as your Obsidian vault.
-2. **[Use BRAT](#manual-install-use-brat).** Use this if you want to install from inside Obsidian yourself, do not have a local agent, or are on mobile.
+1. **[Manual install: use BRAT](#manual-install-use-brat).** Install from inside Obsidian yourself. Use this if you do not run a local agent, or are on mobile.
+2. **[Automatic install: use a local agent](#use-a-local-agent).** Have Claude Code, Codex, Cursor, or another local shell-capable agent on the same computer as your vault install it for you. Copy the self-contained install instructions and paste them in:
 
-<h2 id="use-a-local-agent">Use a local agent</h2>
+   <div class="copy-agent-instructions">
+     <button type="button" class="copy-agent-button" data-copy-relay-agent-instructions>Copy agent instructions as Markdown</button>
+     <span class="copy-agent-status" aria-live="polite"></span>
+   </div>
+
+<h2 id="manual-install-use-brat">Manual install: use BRAT</h2>
+
+BRAT (Beta Reviewer's Auto-update Tool) is an Obsidian plugin that can side-load other plugins. Use BRAT if you want to install the beta yourself from inside Obsidian.
+
+1. In Obsidian, open Settings -> Community plugins.
+2. Browse for `BRAT` and install it.
+3. Enable BRAT.
+4. Open the command palette. On macOS, press `Command-P`. On Windows or Linux, use your command palette shortcut.
+5. Run `BRAT: Plugins: Add a beta plugin with frozen version based on a release tag`.
+6. Enter:
+   - Repository: `No-Instructions/Relay`
+   - Release version tag: <code id="latest-relay-beta-tag">checking latest beta...</code>
+   - Enable after installing: checked
+7. Click `Add Plugin`.
+8. Reload Obsidian, or disable and re-enable Relay in Community plugins.
+
+The release tag is pinned. To move to a newer Relay beta later, repeat these steps with the newer release tag.
+
+If the latest tag does not load here, open [Relay releases](https://github.com/No-Instructions/Relay/releases) and choose the newest non-draft prerelease tag ending in `-rcN`, such as `0.8.0-rc11`.
+
+<h2 id="use-a-local-agent">Automatic install: use a local agent</h2>
 
 Have your agent install the beta if it can read and write files inside your Obsidian vault. It can select the latest release candidate, verify GitHub release digests, back up replaced files, preserve Relay settings, and restart Relay in Obsidian when possible.
 
@@ -645,26 +670,6 @@ PLUGIN_DIR="<vault>/.obsidian/plugins/system3-relay"
 ```
 
 After restoring, disable then re-enable Relay in Community plugins, or run `Reload app without saving`, so Obsidian picks up the previous code.
-
-<h2 id="manual-install-use-brat">Manual install: use BRAT</h2>
-
-BRAT (Beta Reviewer's Auto-update Tool) is an Obsidian plugin that can side-load other plugins. Use BRAT if you want to install the beta yourself from inside Obsidian.
-
-1. In Obsidian, open Settings -> Community plugins.
-2. Browse for `BRAT` and install it.
-3. Enable BRAT.
-4. Open the command palette. On macOS, press `Command-P`. On Windows or Linux, use your command palette shortcut.
-5. Run `BRAT: Plugins: Add a beta plugin with frozen version based on a release tag`.
-6. Enter:
-   - Repository: `No-Instructions/Relay`
-   - Release version tag: <code id="latest-relay-beta-tag">checking latest beta...</code>
-   - Enable after installing: checked
-7. Click `Add Plugin`.
-8. Reload Obsidian, or disable and re-enable Relay in Community plugins.
-
-The release tag is pinned. To move to a newer Relay beta later, repeat these steps with the newer release tag.
-
-If the latest tag does not load here, open [Relay releases](https://github.com/No-Instructions/Relay/releases) and choose the newest non-draft prerelease tag ending in `-rcN`, such as `0.8.0-rc11`.
 
 ## Report problems
 
