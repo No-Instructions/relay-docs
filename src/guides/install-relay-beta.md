@@ -33,11 +33,11 @@ BRAT (Beta Reviewer's Auto-update Tool) is an Obsidian plugin that can side-load
 
 The release tag is pinned. To move to a newer Relay beta later, repeat these steps with the newer release tag.
 
-If the latest tag does not load here, open [Relay releases](https://github.com/No-Instructions/Relay/releases) and choose the newest non-draft prerelease tag ending in `-rcN`, such as `0.8.0-rc11`.
+If the latest tag does not load here, open [Relay releases](https://github.com/No-Instructions/Relay/releases) and choose the most recently published non-draft prerelease that has `main.js`, `styles.css`, and a manifest asset, such as `0.8.4`. The tag may or may not end in `-rcN`.
 
 <h2 id="use-a-local-agent">Automatic install: use a local agent</h2>
 
-Have your agent install the beta if it can read and write files inside your Obsidian vault. It can select the latest release candidate, verify GitHub release digests, back up replaced files, preserve Relay settings, and restart Relay in Obsidian when possible.
+Have your agent install the beta if it can read and write files inside your Obsidian vault. It can select the latest beta release, verify GitHub release digests, back up replaced files, preserve Relay settings, and restart Relay in Obsidian when possible.
 
 If your agent can read web pages, have it use this page. Otherwise copy the full self-contained instructions:
 
@@ -49,7 +49,7 @@ If your agent can read web pages, have it use this page. Otherwise copy the full
 <textarea id="relay-agent-instructions" hidden>
 # Install the latest Relay beta
 
-You are a local coding agent running on the same computer as the user's Obsidian vault. Install the newest Relay beta release candidate for the Obsidian community plugin id `system3-relay`.
+You are a local coding agent running on the same computer as the user's Obsidian vault. Install the newest Relay beta release for the Obsidian community plugin id `system3-relay`.
 
 ### Before you start
 
@@ -75,11 +75,11 @@ Only modify:
 3. Query `https://api.github.com/repos/No-Instructions/Relay/releases?per_page=50`.
    Reason: the GitHub Releases API contains the release metadata, asset URLs, and SHA-256 digests.
 
-4. Select the newest release where `draft` is false, `prerelease` is true, the tag ends in `-rcN`, and assets include `main.js`, `styles.css`, and `manifest-beta.json`.
-   Reason: Relay beta installs should use release candidates, not plain staged version tags like `0.8.0`.
+4. Among releases where `draft` is false and `prerelease` is true and assets include `main.js`, `styles.css`, and a manifest (`manifest.json` or `manifest-beta.json`), select the one with the newest `published_at`. Do not filter on the tag name.
+   Reason: Relay betas have shipped under more than one tag convention — release candidates like `0.8.0-rc11`, and plain versions built from `main` like `0.8.4`. Selecting by the prerelease flag, the required assets, and publish date finds the true latest beta no matter how the tag is named, so this does not go stale when the convention changes again.
 
-5. Read the `digest` field for `main.js`, `styles.css`, and `manifest-beta.json`.
-   Reason: GitHub's digest is the source of truth for verifying each downloaded file.
+5. Choose the manifest asset: prefer `manifest.json` if the release has it, otherwise use `manifest-beta.json`. Read the `digest` field for `main.js`, `styles.css`, and the chosen manifest asset.
+   Reason: GitHub's digest is the source of truth for verifying each downloaded file, and different beta releases ship the manifest under different asset names.
 
 6. Prepare `PLUGIN_DIR`, `BACKUP_ROOT`, `BACKUP_DIR`, and `STAGING`.
    Reason: explicit paths make the install auditable and keep writes within the allowed locations.
@@ -90,17 +90,17 @@ Only modify:
 8. Show the user the selected release, publish date, vault path, plugin path, backup path, expected SHA-256 digests, file list, and whether Obsidian CLI restart is available. If the CLI is available, say the install will use the CLI to disable Relay, wait briefly for teardown, then enable Relay after the files are written. If the CLI is not available, say manual reload will be needed. Do not write anything until the user explicitly approves.
    Reason: this is a prerelease install that modifies files in the user's vault.
 
-9. Download `main.js`, `styles.css`, and `manifest-beta.json` into a temporary directory.
+9. Download `main.js`, `styles.css`, and the chosen manifest asset into a temporary directory.
    Reason: failed downloads must not leave the installed plugin half-updated.
 
 10. Verify each downloaded asset's SHA-256 against the expected digest from the API. Stop on any mismatch.
    Reason: a mismatch means the downloaded file is not the expected release asset.
 
-11. Verify `manifest-beta.json` has `id` set to `system3-relay`.
+11. Verify the downloaded manifest asset has `id` set to `system3-relay`.
     Reason: this prevents installing the wrong plugin manifest.
 
-12. Rewrite the downloaded `manifest-beta.json` so its `version` field equals the selected release tag, then save the rewritten file as `manifest.json`.
-    Reason: Relay's beta release manifests intentionally carry the previous stable version to keep normal Obsidian installs from auto-updating to betas, but Obsidian reads the local plugin folder's `manifest.json` to report the installed version.
+12. Set the manifest's `version` field to the selected release tag, then save it as `manifest.json`. Do this regardless of the version the downloaded manifest already declares.
+    Reason: the `version` field in Relay's beta manifests is not reliable — release candidates have carried an old stable version (for example `0.7.4`), and within a single release the `manifest.json` and `manifest-beta.json` assets can declare different versions. The release tag is the one authoritative version, and Obsidian reads the local plugin folder's `manifest.json` to report what is installed.
 
 13. If `PLUGIN_DIR` already exists, create `BACKUP_DIR` and copy `main.js`, `styles.css`, `manifest.json`, and `data.json` into it, skipping any that are not present.
     Reason: rollback only needs the files being replaced plus settings, and `data.json` must be preserved.
@@ -179,17 +179,18 @@ curl -fsSL "https://api.github.com/repos/$REPO/releases?per_page=50" -o "$RELEAS
 
 VERSION="$(jq -r '
   map(select(.draft == false and .prerelease == true))
-  | map(select(.tag_name | test("^[0-9]+\\.[0-9]+\\.[0-9]+-rc[0-9]+$")))
   | map(select(
       ([.assets[].name] | contains(["main.js"]))
       and ([.assets[].name] | contains(["styles.css"]))
-      and ([.assets[].name] | contains(["manifest-beta.json"]))
+      and ([.assets[].name] | (contains(["manifest.json"]) or contains(["manifest-beta.json"])))
     ))
+  | sort_by(.published_at)
+  | reverse
   | .[0].tag_name // empty
 ' "$RELEASES_JSON")"
 
 if [ -z "$VERSION" ]; then
-  echo "No -rcN prerelease found with required Relay beta assets" >&2
+  echo "No prerelease found with required Relay beta assets" >&2
   exit 1
 fi
 
@@ -204,11 +205,17 @@ asset_digest() {
   ' "$RELEASES_JSON"
 }
 
+# Prefer the modern manifest.json asset; fall back to the older manifest-beta.json.
+MANIFEST_ASSET="manifest.json"
+if [ -z "$(asset_digest "$MANIFEST_ASSET")" ]; then
+  MANIFEST_ASSET="manifest-beta.json"
+fi
+
 EXPECTED_DIGEST_MAIN="$(asset_digest main.js)"
 EXPECTED_DIGEST_STYLES="$(asset_digest styles.css)"
-EXPECTED_DIGEST_MANIFEST="$(asset_digest manifest-beta.json)"
+EXPECTED_DIGEST_MANIFEST="$(asset_digest "$MANIFEST_ASSET")"
 
-for pair in "main.js:$EXPECTED_DIGEST_MAIN" "styles.css:$EXPECTED_DIGEST_STYLES" "manifest-beta.json:$EXPECTED_DIGEST_MANIFEST"; do
+for pair in "main.js:$EXPECTED_DIGEST_MAIN" "styles.css:$EXPECTED_DIGEST_STYLES" "$MANIFEST_ASSET:$EXPECTED_DIGEST_MANIFEST"; do
   digest="${pair#*:}"
   asset="${pair%%:*}"
   if [ -z "$digest" ] || [ "${digest#sha256:}" = "$digest" ]; then
@@ -223,9 +230,9 @@ echo "Vault: $VAULT"
 echo "Plugin folder: $PLUGIN_DIR"
 echo "Backup folder: $BACKUP_DIR"
 echo "Expected digests:"
-echo "  main.js            $EXPECTED_DIGEST_MAIN"
-echo "  styles.css         $EXPECTED_DIGEST_STYLES"
-echo "  manifest-beta.json $EXPECTED_DIGEST_MANIFEST"
+printf "  %-18s %s\n" "main.js" "$EXPECTED_DIGEST_MAIN"
+printf "  %-18s %s\n" "styles.css" "$EXPECTED_DIGEST_STYLES"
+printf "  %-18s %s\n" "$MANIFEST_ASSET" "$EXPECTED_DIGEST_MANIFEST"
 echo "Will write: main.js, styles.css, manifest.json"
 echo "Will preserve: data.json"
 if [ -d "$PLUGIN_DIR" ]; then
@@ -254,7 +261,7 @@ BASE="https://github.com/$REPO/releases/download/$VERSION"
 
 curl -fsSL "$BASE/main.js" -o "$TMPDIR/main.js"
 curl -fsSL "$BASE/styles.css" -o "$TMPDIR/styles.css"
-curl -fsSL "$BASE/manifest-beta.json" -o "$TMPDIR/manifest-beta.json"
+curl -fsSL "$BASE/$MANIFEST_ASSET" -o "$TMPDIR/$MANIFEST_ASSET"
 
 verify_digest() {
   local file="$1"
@@ -273,15 +280,16 @@ verify_digest() {
 
 verify_digest "$TMPDIR/main.js" "$EXPECTED_DIGEST_MAIN"
 verify_digest "$TMPDIR/styles.css" "$EXPECTED_DIGEST_STYLES"
-verify_digest "$TMPDIR/manifest-beta.json" "$EXPECTED_DIGEST_MANIFEST"
+verify_digest "$TMPDIR/$MANIFEST_ASSET" "$EXPECTED_DIGEST_MANIFEST"
 
 jq --arg expected "$VERSION" '
   if .id == "system3-relay"
   then .version = $expected
   else error("Unexpected plugin id: \(.id)")
   end
-' "$TMPDIR/manifest-beta.json" > "$TMPDIR/manifest.json"
-echo "Verified id=system3-relay; rewrote manifest.json version to $VERSION"
+' "$TMPDIR/$MANIFEST_ASSET" > "$TMPDIR/manifest.staged.json"
+mv -f "$TMPDIR/manifest.staged.json" "$TMPDIR/manifest.json"
+echo "Verified id=system3-relay; wrote manifest.json with version $VERSION (from $MANIFEST_ASSET)"
 
 if [ "$DRY_RUN" = "1" ]; then
   echo "DRY RUN: all assets downloaded and verified. Would have installed:"
@@ -364,7 +372,7 @@ Use the Obsidian command `Relay: Send bug report` when available. If that does n
 
 ### Agent install instructions
 
-You are a local coding agent running on the same computer as the user's Obsidian vault. Install the newest Relay beta release candidate for the Obsidian community plugin id `system3-relay`.
+You are a local coding agent running on the same computer as the user's Obsidian vault. Install the newest Relay beta release for the Obsidian community plugin id `system3-relay`.
 
 #### Before you start
 
@@ -390,11 +398,11 @@ Only modify:
 3. Query `https://api.github.com/repos/No-Instructions/Relay/releases?per_page=50`.
    Reason: the GitHub Releases API contains the release metadata, asset URLs, and SHA-256 digests.
 
-4. Select the newest release where `draft` is false, `prerelease` is true, the tag ends in `-rcN`, and assets include `main.js`, `styles.css`, and `manifest-beta.json`.
-   Reason: Relay beta installs should use release candidates, not plain staged version tags like `0.8.0`.
+4. Among releases where `draft` is false and `prerelease` is true and assets include `main.js`, `styles.css`, and a manifest (`manifest.json` or `manifest-beta.json`), select the one with the newest `published_at`. Do not filter on the tag name.
+   Reason: Relay betas have shipped under more than one tag convention — release candidates like `0.8.0-rc11`, and plain versions built from `main` like `0.8.4`. Selecting by the prerelease flag, the required assets, and publish date finds the true latest beta no matter how the tag is named, so this does not go stale when the convention changes again.
 
-5. Read the `digest` field for `main.js`, `styles.css`, and `manifest-beta.json`.
-   Reason: GitHub's digest is the source of truth for verifying each downloaded file.
+5. Choose the manifest asset: prefer `manifest.json` if the release has it, otherwise use `manifest-beta.json`. Read the `digest` field for `main.js`, `styles.css`, and the chosen manifest asset.
+   Reason: GitHub's digest is the source of truth for verifying each downloaded file, and different beta releases ship the manifest under different asset names.
 
 6. Prepare `PLUGIN_DIR`, `BACKUP_ROOT`, `BACKUP_DIR`, and `STAGING`.
    Reason: explicit paths make the install auditable and keep writes within the allowed locations.
@@ -405,17 +413,17 @@ Only modify:
 8. Show the user the selected release, publish date, vault path, plugin path, backup path, expected SHA-256 digests, file list, and whether Obsidian CLI restart is available. If the CLI is available, say the install will use the CLI to disable Relay, wait briefly for teardown, then enable Relay after the files are written. If the CLI is not available, say manual reload will be needed. Do not write anything until the user explicitly approves.
    Reason: this is a prerelease install that modifies files in the user's vault.
 
-9. Download `main.js`, `styles.css`, and `manifest-beta.json` into a temporary directory.
+9. Download `main.js`, `styles.css`, and the chosen manifest asset into a temporary directory.
    Reason: failed downloads must not leave the installed plugin half-updated.
 
 10. Verify each downloaded asset's SHA-256 against the expected digest from the API. Stop on any mismatch.
    Reason: a mismatch means the downloaded file is not the expected release asset.
 
-11. Verify `manifest-beta.json` has `id` set to `system3-relay`.
+11. Verify the downloaded manifest asset has `id` set to `system3-relay`.
     Reason: this prevents installing the wrong plugin manifest.
 
-12. Rewrite the downloaded `manifest-beta.json` so its `version` field equals the selected release tag, then save the rewritten file as `manifest.json`.
-    Reason: Relay's beta release manifests intentionally carry the previous stable version to keep normal Obsidian installs from auto-updating to betas, but Obsidian reads the local plugin folder's `manifest.json` to report the installed version.
+12. Set the manifest's `version` field to the selected release tag, then save it as `manifest.json`. Do this regardless of the version the downloaded manifest already declares.
+    Reason: the `version` field in Relay's beta manifests is not reliable — release candidates have carried an old stable version (for example `0.7.4`), and within a single release the `manifest.json` and `manifest-beta.json` assets can declare different versions. The release tag is the one authoritative version, and Obsidian reads the local plugin folder's `manifest.json` to report what is installed.
 
 13. If `PLUGIN_DIR` already exists, create `BACKUP_DIR` and copy `main.js`, `styles.css`, `manifest.json`, and `data.json` into it, skipping any that are not present.
     Reason: rollback only needs the files being replaced plus settings, and `data.json` must be preserved.
@@ -494,17 +502,18 @@ curl -fsSL "https://api.github.com/repos/$REPO/releases?per_page=50" -o "$RELEAS
 
 VERSION="$(jq -r '
   map(select(.draft == false and .prerelease == true))
-  | map(select(.tag_name | test("^[0-9]+\\.[0-9]+\\.[0-9]+-rc[0-9]+$")))
   | map(select(
       ([.assets[].name] | contains(["main.js"]))
       and ([.assets[].name] | contains(["styles.css"]))
-      and ([.assets[].name] | contains(["manifest-beta.json"]))
+      and ([.assets[].name] | (contains(["manifest.json"]) or contains(["manifest-beta.json"])))
     ))
+  | sort_by(.published_at)
+  | reverse
   | .[0].tag_name // empty
 ' "$RELEASES_JSON")"
 
 if [ -z "$VERSION" ]; then
-  echo "No -rcN prerelease found with required Relay beta assets" >&2
+  echo "No prerelease found with required Relay beta assets" >&2
   exit 1
 fi
 
@@ -519,11 +528,17 @@ asset_digest() {
   ' "$RELEASES_JSON"
 }
 
+# Prefer the modern manifest.json asset; fall back to the older manifest-beta.json.
+MANIFEST_ASSET="manifest.json"
+if [ -z "$(asset_digest "$MANIFEST_ASSET")" ]; then
+  MANIFEST_ASSET="manifest-beta.json"
+fi
+
 EXPECTED_DIGEST_MAIN="$(asset_digest main.js)"
 EXPECTED_DIGEST_STYLES="$(asset_digest styles.css)"
-EXPECTED_DIGEST_MANIFEST="$(asset_digest manifest-beta.json)"
+EXPECTED_DIGEST_MANIFEST="$(asset_digest "$MANIFEST_ASSET")"
 
-for pair in "main.js:$EXPECTED_DIGEST_MAIN" "styles.css:$EXPECTED_DIGEST_STYLES" "manifest-beta.json:$EXPECTED_DIGEST_MANIFEST"; do
+for pair in "main.js:$EXPECTED_DIGEST_MAIN" "styles.css:$EXPECTED_DIGEST_STYLES" "$MANIFEST_ASSET:$EXPECTED_DIGEST_MANIFEST"; do
   digest="${pair#*:}"
   asset="${pair%%:*}"
   if [ -z "$digest" ] || [ "${digest#sha256:}" = "$digest" ]; then
@@ -538,9 +553,9 @@ echo "Vault: $VAULT"
 echo "Plugin folder: $PLUGIN_DIR"
 echo "Backup folder: $BACKUP_DIR"
 echo "Expected digests:"
-echo "  main.js            $EXPECTED_DIGEST_MAIN"
-echo "  styles.css         $EXPECTED_DIGEST_STYLES"
-echo "  manifest-beta.json $EXPECTED_DIGEST_MANIFEST"
+printf "  %-18s %s\n" "main.js" "$EXPECTED_DIGEST_MAIN"
+printf "  %-18s %s\n" "styles.css" "$EXPECTED_DIGEST_STYLES"
+printf "  %-18s %s\n" "$MANIFEST_ASSET" "$EXPECTED_DIGEST_MANIFEST"
 echo "Will write: main.js, styles.css, manifest.json"
 echo "Will preserve: data.json"
 if [ -d "$PLUGIN_DIR" ]; then
@@ -569,7 +584,7 @@ BASE="https://github.com/$REPO/releases/download/$VERSION"
 
 curl -fsSL "$BASE/main.js" -o "$TMPDIR/main.js"
 curl -fsSL "$BASE/styles.css" -o "$TMPDIR/styles.css"
-curl -fsSL "$BASE/manifest-beta.json" -o "$TMPDIR/manifest-beta.json"
+curl -fsSL "$BASE/$MANIFEST_ASSET" -o "$TMPDIR/$MANIFEST_ASSET"
 
 verify_digest() {
   local file="$1"
@@ -588,15 +603,16 @@ verify_digest() {
 
 verify_digest "$TMPDIR/main.js" "$EXPECTED_DIGEST_MAIN"
 verify_digest "$TMPDIR/styles.css" "$EXPECTED_DIGEST_STYLES"
-verify_digest "$TMPDIR/manifest-beta.json" "$EXPECTED_DIGEST_MANIFEST"
+verify_digest "$TMPDIR/$MANIFEST_ASSET" "$EXPECTED_DIGEST_MANIFEST"
 
 jq --arg expected "$VERSION" '
   if .id == "system3-relay"
   then .version = $expected
   else error("Unexpected plugin id: \(.id)")
   end
-' "$TMPDIR/manifest-beta.json" > "$TMPDIR/manifest.json"
-echo "Verified id=system3-relay; rewrote manifest.json version to $VERSION"
+' "$TMPDIR/$MANIFEST_ASSET" > "$TMPDIR/manifest.staged.json"
+mv -f "$TMPDIR/manifest.staged.json" "$TMPDIR/manifest.json"
+echo "Verified id=system3-relay; wrote manifest.json with version $VERSION (from $MANIFEST_ASSET)"
 
 if [ "$DRY_RUN" = "1" ]; then
   echo "DRY RUN: all assets downloaded and verified. Would have installed:"
@@ -682,16 +698,17 @@ Use the Obsidian command `Relay: Send bug report` when available. If that does n
   const latestTag = document.getElementById('latest-relay-beta-tag');
 
   const releasesUrl = 'https://api.github.com/repos/No-Instructions/Relay/releases?per_page=50';
-  const requiredAssets = ['main.js', 'styles.css', 'manifest-beta.json'];
-  const rcTagPattern = /^[0-9]+\.[0-9]+\.[0-9]+-rc[0-9]+$/;
+  const requiredAssets = ['main.js', 'styles.css'];
 
   function chooseLatestBeta(releases) {
-    return releases.find((release) => {
-      if (release.draft || !release.prerelease) return false;
-      if (!rcTagPattern.test(release.tag_name)) return false;
-      const assetNames = new Set((release.assets || []).map((asset) => asset.name));
-      return requiredAssets.every((name) => assetNames.has(name));
-    });
+    return releases
+      .filter((release) => {
+        if (release.draft || !release.prerelease) return false;
+        const assetNames = new Set((release.assets || []).map((asset) => asset.name));
+        if (!requiredAssets.every((name) => assetNames.has(name))) return false;
+        return assetNames.has('manifest.json') || assetNames.has('manifest-beta.json');
+      })
+      .sort((a, b) => new Date(b.published_at) - new Date(a.published_at))[0];
   }
 
   if (latestTag) {
@@ -707,7 +724,7 @@ Use the Obsidian command `Relay: Send bug report` when available. If that does n
       })
       .catch(() => {
         const fallback = document.createElement('span');
-        fallback.textContent = 'open Relay releases and choose the newest -rcN tag';
+        fallback.textContent = 'open Relay releases and choose the newest prerelease';
         latestTag.replaceWith(fallback);
       });
   }
