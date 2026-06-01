@@ -5,15 +5,15 @@ layout: doc.njk
 ---
 Relay beta releases are prerelease builds for testing new Relay features before they reach the standard Obsidian community plugin release.
 
-There are two ways to install the latest Relay beta:
+There are two ways to install the latest Relay beta. If you run a local coding agent, use it — that is the smoothest path. If you don't, install it yourself with BRAT.
 
-1. **[Manual install: use BRAT](#manual-install-use-brat).** Install from inside Obsidian yourself. Use this if you do not run a local agent, or are on mobile.
-2. **[Automatic install: use a local agent](#use-a-local-agent).** Have Claude Code, Codex, Cursor, or another local shell-capable agent on the same computer as your vault install it for you. Copy the self-contained install instructions and paste them in:
+1. **[Automatic install: use a local agent](#use-a-local-agent).** Recommended if you have Claude Code, Codex, Cursor, or another local shell-capable agent on the same computer as your vault. It selects the latest beta, verifies GitHub release digests, backs up replaced files, preserves your Relay settings, and restarts Relay. Copy the self-contained instructions and paste them in:
 
    <div class="copy-agent-instructions">
      <button type="button" class="copy-agent-button" data-copy-relay-agent-instructions>Copy agent instructions as Markdown</button>
      <span class="copy-agent-status" aria-live="polite"></span>
    </div>
+2. **[Manual install: use BRAT](#manual-install-use-brat).** Use this if you do not run a local agent, or are on mobile. Install from inside Obsidian yourself.
 
 <h2 id="manual-install-use-brat">Manual install: use BRAT</h2>
 
