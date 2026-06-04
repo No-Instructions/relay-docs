@@ -18,6 +18,7 @@
       "pages": [
         { "title": "Using Relay with other sync services", "slug": "using-relay-with-other-sync-services", "path": "guides/using-relay-with-other-sync-services" },
         { "title": "Upgrade to Relay for teams", "slug": "upgrade-to-relay-for-teams", "path": "guides/upgrade-to-relay-for-teams" },
+        { "title": "Create a private shared folder", "slug": "private-shared-folders", "path": "guides/private-shared-folders" },
         { "title": "Update Relay", "slug": "update-relay", "path": "guides/update-relay" },
         { "title": "Install the latest Relay beta", "slug": "install-relay-beta", "path": "guides/install-relay-beta" },
         { "title": "Obsidian for work", "slug": "obsidian-for-work", "path": "guides/obsidian-for-work" },

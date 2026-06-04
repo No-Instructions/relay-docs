@@ -36,6 +36,11 @@
       "permanent": true
     },
     {
+      "source": "/guides/private-shared-folders",
+      "destination": "/guides/private-shared-folders/",
+      "permanent": true
+    },
+    {
       "source": "/guides/update-relay",
       "destination": "/guides/update-relay/",
       "permanent": true
