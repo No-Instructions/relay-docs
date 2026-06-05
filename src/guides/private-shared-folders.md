@@ -6,7 +6,7 @@ layout: doc.njk
 
 A Shared Folder lets you share a folder and everything inside it with people on a Relay Server. A Shared Folder with private access is shared only with selected Relay Server users.
 
-The important detail is that private access is configured on the Relay Server that has the paid plan. Make sure you are adding the Shared Folder to the Relay Server on Starter. Subscriptions apply to Relay Servers, not to your user account.
+The `Private` toggle appears only on Relay Servers whose subscription includes private access for Shared Folders. If you upgraded Relay but do not see the toggle, make sure you are sharing from the Relay Server that has the subscription. Plans apply to Relay Servers, not to your user account.
 
 ## Watch the flow
 
@@ -78,6 +78,8 @@ The folder appears under `Shared Folders on this Relay Server`.
 ## Troubleshooting
 
 ### I do not see the `Private` toggle
+
+Select a folder first. Relay opens the folder selector in front of the share dialog, and a long folder list can hide the `Private` toggle behind it. Choose or create the local folder you want to share, then check the share dialog again.
 
 Check that you selected a Relay Server with a plan that includes private access. A paid subscription applies to one Relay Server, not to every Relay Server connected to your user account. If you upgraded a different server, switch to that server or [upgrade this Relay Server](/guides/upgrade-to-relay-for-teams/).
 
