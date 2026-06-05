@@ -22,7 +22,6 @@ This video shows how to create a Shared Folder with private access in Relay sett
 
 - The Relay Server must be on a paid plan that includes private access for Shared Folders. If needed, see [our pricing plans](https://relay.md/pricing).
 - You must be a Member or Owner on that Relay Server. Relay Server Members can create Shared Folders with private access; you do not need to be the Relay Server owner.
-- The people who need access should already be users on that Relay Server.
 - Use a current version of the Relay Obsidian plugin. See [Update Relay](/guides/update-relay/), or for the adventurous, [Get the latest Relay beta](/guides/install-relay-beta/).
 
 ## Create the Shared Folder with private access
@@ -95,7 +94,7 @@ Private access is selected from the users already on that Relay Server. Add the 
 
 ### Can I set per-folder view and edit roles?
 
-The current Shared Folder flow lets you choose which Relay Server users can access the folder. It does not expose separate per-folder view/edit role controls in this screen.
+Not yet. Private access currently controls whether a Relay Server user has access to the Shared Folder. A selected user can read and write files in that Shared Folder; a user who is not selected has no access. Relay does not currently support read-only access for Shared Folders.
 
 Use the Relay Server `Users` section for server-level user management. For private access to a Shared Folder, use the `Private` toggle and selected-user list.
 
