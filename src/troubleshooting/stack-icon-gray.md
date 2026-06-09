@@ -76,19 +76,13 @@ This includes plugins that have a special view, like Kanban, and plugins (or cus
 4. If not, try disabling ALL other plugins
 5. Check if the stack icon becomes colored
 
-### 4. Reload Relay
-
-1. Open the command palette (`Cmd+P` on Mac, `Ctrl+P` on Windows/Linux)
-2. Run `Relay: Reload Relay`
-3. Check if the stack icon becomes colored
-
-### 5. Reload Obsidian
+### 4. Reload Obsidian
 
 1. Open the command palette (`Cmd+P` on Mac, `Ctrl+P` on Windows/Linux)
 2. Run `Reload app without saving` (Obsidian saves automatically many times per minute)
 3. Check if the stack icon becomes colored
 
-### 6. Check authentication
+### 5. Check authentication
 
 1. Click the Relay ribbon icon to open Relay settings
 2. If not signed in, log in
@@ -96,7 +90,7 @@ This includes plugins that have a special view, like Kanban, and plugins (or cus
 4. Even if auth looks fine, sometimes logging out and logging back in can resolve a silent authentication issue
 5. Check if the stack icon becomes colored
 
-### 7. Toggle syncing
+### 6. Toggle syncing
 
 **For the individual note:**
 1. Click the satellite icon in the note (top right)
@@ -108,20 +102,20 @@ This includes plugins that have a special view, like Kanban, and plugins (or cus
 2. Select `Disconnect`
 3. Right-click again and select `Connect`
 
-### 8. Restart Obsidian completely
+### 7. Restart Obsidian completely
 
 1. Quit Obsidian entirely (not just close the window)
 2. Restart Obsidian
 3. Check if the stack icon becomes colored
 
-### 9. Disable and re-enable Relay
+### 8. Disable and re-enable Relay
 
 1. Go to Obsidian Settings → Community plugins
 2. Find Relay and toggle it off
 3. Wait a few seconds, then toggle it back on
 4. Check if the stack icon becomes colored
 
-### 10. Restart your machine
+### 9. Restart your machine
 
 Sometimes system-level issues can affect file tracking. Restart your computer and try again.
 
