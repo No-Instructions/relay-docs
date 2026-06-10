@@ -3,7 +3,7 @@ title: Introduction
 description: Relay is an Obsidian plugin that enables real-time multiplayer collaboration on notes and Canvases.
 layout: doc.njk
 ---
-Relay is an Obsidian plugin that enables real-time multiplayer collaboration on notes and Canvases. It's used by
+Relay is an Obsidian plugin that enables real-time multiplayer collaboration on notes and Canvases. It's used by:
 
 - knowledge workers in companies
 - students and researchers in universities and labs
@@ -38,9 +38,9 @@ In order to use Relay you need Obsidian. [Download Obsidian here](https://obsidi
 Startup:
 
 1. Install Relay. Within Obsidian, (1) enable Community Plugins, (2) then browse for the Relay plugin, (3) `Install` it, (4) `Enable` it, and then (5) go to `Options`. For help, see [Obsidian's guide to installing plugins](https://help.obsidian.md/community-plugins).
-2. Create a Relay Server. First navigate to the Relay settings screen. Then click `Create` to create a new server, or enter a `share key` from your teammate to join an existing server.
-3. Add folders. From your Relay Server's settings screen, click `Share a folder` to select a folder from your vault and add it to the Relay Server.
-4. Add team members. Give collaborators your Relay Server's `share key` to invite them to the server.
+2. Create a Relay Server. First navigate to the Relay settings screen. Then click `Create` to create a new server, or enter a `Share Key` from your teammate to join an existing server.
+3. Add folders. From your Relay Server's settings screen, click `Share local folder` to select a folder from your vault and add it to the Relay Server.
+4. Add team members. Give collaborators your Relay Server's `Share Key` to invite them to the server.
 
 ## Key features
 

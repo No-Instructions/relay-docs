@@ -7,7 +7,7 @@ Relay offers flexible hosting options to meet a variety of security, compliance,
 
 You can think of Relay as comprising three components: the Relay Server, the Control Plane, and storage. Each of these can be hosted on our infrastructure or yours.
 
-Note that self/on-premise hosting is a paid feature. See our [pricing](https://relay.md/pricing) page for details.
+Self-hosting a Relay Server is free on every Relay plan. See [Self-hosting Relay is free](https://relay.md/blog/self-hosting-is-free) and [We don't charge for privacy](https://relay.md/blog/we-dont-charge-for-privacy) for the reasoning behind that policy.
 
 ## Why is hosting required to use Relay?
 
@@ -47,27 +47,25 @@ The **Control Plane** is responsible for:
 
 Self-hosting a Relay Server provides total document privacy. Obsidian users are granted document-scoped access tokens by the control plane which are valid for 1 hour. The Relay Server does not need to access the public internet.
 
-If you need a full on-premise deployment (including our Control Plane) for compliance or security reasons, you must be on the Enterprise plan so that we can support your setup and installation.
+If you need a full air-gapped or on-premise deployment, including the Control Plane, that is an Enterprise-positioned waitlist offering. Contact us if you need that level of isolation so we can understand your requirements and plan support.
 
-Note that self/on-premise hosting is a paid feature. See our [pricing](https://relay.md/pricing) page for details.
-
-> **Note: Self-hosting beta (free)**
+> **Note: Self-hosting is free**
 >
-> We are currently offering self-hosting of Relay Servers for free. See our [relay-server-template](https://github.com/no-instructions/relay-server-template) on GitHub for deployment guides and configuration examples. When you self-host a Relay Server you have unmetered storage, but the seat limit still applies.
+> You can self-host a Relay Server on any Relay plan. See our [relay-server-template](https://github.com/no-instructions/relay-server-template) on GitHub for deployment guides and configuration examples. When you self-host a Relay Server you have unmetered storage, but the seat limit still applies.
 
 1. **Relay Cloud:** Host on Relay's infrastructure. The easiest and most cost-effective option.
 2. **Relay Cloud (dedicated)** We run a dedicated host for your Relay Server(s) to add an additional layer of security and isolation. Supports BYO AWS S3-compatible storage.
 3. **Self-hosted Relay Server:** Host Relay Servers on your own infrastructure.
-4. **Full on-premise deployment**: Run our entire cloud offering on your infrastructure.
+4. **Full air-gapped or on-premise deployment:** Enterprise waitlist offering for running the full stack, including the Control Plane, on your infrastructure.
 
 Here's what's available at each tier:
 
 |                | Relay Server (document collaboration) | Control Plane (login & permissions) |
 | -------------- | ------------------------------------- | ----------------------------------- |
-| **Free**       | Relay Cloud                           | Relay Cloud                         |
-| **Team**       | Relay Cloud                           | Relay Cloud                         |
+| **Free**       | Relay Cloud OR self-host              | Relay Cloud                         |
+| **Team**       | Relay Cloud OR self-host              | Relay Cloud                         |
 | **Pro**        | Relay Cloud (dedicated) OR self-host  | Relay Cloud                         |
-| **Enterprise** | Relay Cloud (dedicated) OR self-host  | Relay Cloud OR Air-gapped deploy    |
+| **Enterprise** | Relay Cloud (dedicated) OR self-host; full air-gapped/on-premise by waitlist | Relay Cloud; full air-gapped/on-premise by waitlist |
 
 ## Privacy implications
 
@@ -77,7 +75,7 @@ What Relay staff can technically access depends on which components you host:
 
 - **All components on Relay Cloud**: Standard SaaS model - we could access your data if legally compelled, though we don't under normal operations. See our [security page](https://system3.md/security) for details.
 - **Storage + Relay Server on your infrastructure, Control Plane on Relay Cloud**: We can only see metadata (server names, user emails, document IDs) but no document content
-- **All components on your infrastructure**: We see nothing unless you grant specific access for support
+- **Full air-gapped or on-premise deployment, including the Control Plane**: Enterprise-positioned waitlist offering. If deployed, we see nothing unless you grant specific access for support
 
 ## Choosing the right option
 
@@ -88,12 +86,12 @@ What Relay staff can technically access depends on which components you host:
 
 **Choose Pro tier if:**
 - Need dedicated infrastructure
-- Want to control document storage
+- Want BYO storage while we host dedicated Relay infrastructure
 - Need cross-org collaboration
 
 **Choose Enterprise tier if:**
 - Need complete data sovereignty
-- Air-gapped deployments
+- Need a full air-gapped or on-premise deployment and want to join the waitlist
 - Require full audit control
 
 > **Tip: Need help deciding?**
