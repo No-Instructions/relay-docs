@@ -1,0 +1,286 @@
+{
+  "scenario": "user-avatars",
+  "generatedAt": "2026-06-10T22:39:36.459Z",
+  "status": "partial",
+  "error": null,
+  "ownerPort": "9223",
+  "collabPort": "9224",
+  "relayName": "Docs avatars demo",
+  "folderName": "Docs avatars",
+  "notePath": "Docs avatars/Presence demo.md",
+  "canvasPath": "Docs avatars/Planning board.canvas",
+  "outputDir": "/Users/mattobrien/Development/relay-harness/playwright/capture-results/docs-user-avatars",
+  "docsAssetsDir": "/Users/mattobrien/Development/relay-docs/drafts/assets/user-avatars",
+  "cleanup": {
+    "ownerRelayDestroyed": false,
+    "ownerFolderDeleted": true,
+    "collabFolderDeleted": true,
+    "ownerRelayError": "Could not find relay \"Docs avatars demo\" to destroy"
+  },
+  "screenshots": [
+    {
+      "file": "user-avatars-01-avatar-stack-near-title.png",
+      "title": "Avatar stack near the note title",
+      "description": "A shared Markdown note showing the collaborator avatar stack near the note title.",
+      "required": true
+    },
+    {
+      "file": "user-avatars-02-active-users-popover.png",
+      "title": "Active Users popover",
+      "description": "The Active Users popover showing both collaborators and the current user marked with (You).",
+      "required": true
+    },
+    {
+      "file": "user-avatars-03-author-highlighting-two-authors.png",
+      "title": "Author highlighting with two authors",
+      "description": "A Markdown note with author highlighting enabled for attributable text from both collaborators.",
+      "required": true
+    },
+    {
+      "file": "user-avatars-04-author-highlighting-single-user-focus.png",
+      "title": "Per-user author highlighting focus",
+      "description": "The Active Users popover after selecting one user for focused author highlighting.",
+      "required": true
+    },
+    {
+      "file": "user-avatars-05-canvas-avatar-stack.png",
+      "title": "Canvas avatar stack",
+      "description": "A shared Canvas file showing Relay presence avatars in the Canvas view.",
+      "required": false
+    }
+  ],
+  "captured": [
+    "user-avatars-01-avatar-stack-near-title.png",
+    "user-avatars-02-active-users-popover.png",
+    "user-avatars-03-author-highlighting-two-authors.png",
+    "user-avatars-04-author-highlighting-single-user-focus.png"
+  ],
+  "skipped": [
+    {
+      "file": "user-avatars-05-canvas-avatar-stack.png",
+      "reason": "Canvas capture skipped: Timed out waiting for Canvas provider awareness; last state: {\"activePath\":\"Docs avatars/Planning board.canvas\",\"activeType\":\"canvas\",\"viewCount\":1,\"hasCanvasView\":true,\"connectionState\":{\"status\":\"connected\",\"intent\":\"connected\"},\"providerIntent\":\"connected\",\"providerSynced\":true,\"awarenessCount\":1,\"users\":[\"Arlo\"]}"
+    },
+    {
+      "file": "user-avatars-06-overflow-plus-n.png",
+      "reason": "Skipped: +N overflow requires more than four active users; this docs scenario intentionally uses the requested two-user setup."
+    }
+  ],
+  "verification": {
+    "owner": {
+      "login": {
+        "name": "Arlo",
+        "email": "arlo@system3.dev"
+      },
+      "build": {
+        "version": "0.8.0-rc2-28-g4feecfc",
+        "hasAttributionCommand": true,
+        "userName": "Arlo",
+        "userEmail": "arlo@system3.dev"
+      }
+    },
+    "collab": {
+      "login": {
+        "name": "Bella",
+        "email": "bella@system3.dev"
+      },
+      "build": {
+        "version": "0.8.0-rc2-28-g4feecfc",
+        "hasAttributionCommand": true,
+        "userName": "Bella",
+        "userEmail": "bella@system3.dev"
+      }
+    },
+    "setup": {
+      "shareKeyCaptured": true,
+      "join": {
+        "success": true,
+        "relayName": "Docs avatars demo",
+        "relayId": "7j5gmh62ya1y3n2",
+        "relayGuid": "0f75f7aa-7fcc-42ea-bb24-9daacf1e1cf9",
+        "remoteGuid": "a13f3cd0-f629-44ee-ba72-26dfd3c55e6e",
+        "remoteName": "Docs avatars",
+        "debug": {
+          "before": {
+            "firstLine": "ok",
+            "contentText": "ok\nAccount\nBella\nbella@system3.dev\nLogout\nJoin a Relay Server\nShare key\nEnter the code that was shared with you.\nJoin\nRelay Servers\nCreate\nMy vault\nNo shared folders on this device. Share folders from a Relay Server's settings page to begin collaboration.\nAdd remote folder",
+            "hasBack": false,
+            "relayName": null,
+            "relayGuid": null,
+            "relayId": null,
+            "newRelayNames": [],
+            "localMatches": []
+          },
+          "postJoin": {
+            "firstLine": "Docs avatars demo",
+            "contentText": "Docs avatars demo\nShared Folders on this Relay Server\nDocs avatars\nShare local folder\nUsers\nArlo\n\nOwner\nBella\n\nMember\n2 of 3 seats used\nSharing\nKey sharing\nThe owner of this Relay Server has enabled key sharing.\nShare Key\nShare this key with your collaborators.\nMembership\nLeave Relay Server\nLeave the Relay Server. Local data is preserved.\nLeave",
+            "hasBack": true,
+            "relayName": "Docs avatars demo",
+            "relayGuid": "0f75f7aa-7fcc-42ea-bb24-9daacf1e1cf9",
+            "relayId": "7j5gmh62ya1y3n2",
+            "newRelayNames": [
+              "Docs avatars demo"
+            ],
+            "localMatches": []
+          },
+          "remoteState": {
+            "relayName": "Docs avatars demo",
+            "remoteFolder": {
+              "guid": "a13f3cd0-f629-44ee-ba72-26dfd3c55e6e",
+              "id": "dnqv2oxypggj2hx",
+              "name": "Docs avatars"
+            },
+            "existingByRemoteGuid": []
+          },
+          "addResult": {
+            "clicked": true,
+            "rowText": "Docs avatars"
+          },
+          "finalState": {
+            "sharedFolder": {
+              "path": "Docs avatars",
+              "guid": "a13f3cd0-f629-44ee-ba72-26dfd3c55e6e",
+              "relayId": "0f75f7aa-7fcc-42ea-bb24-9daacf1e1cf9",
+              "remoteGuid": "a13f3cd0-f629-44ee-ba72-26dfd3c55e6e",
+              "remoteName": "Docs avatars",
+              "remoteRelayName": "Docs avatars demo",
+              "connected": true,
+              "synced": true,
+              "ready": true
+            },
+            "vaultFolderExists": true,
+            "childCount": 2
+          }
+        }
+      }
+    },
+    "notePresence": {
+      "hasContainer": true,
+      "hasStack": true,
+      "stackCount": 2,
+      "users": [
+        {
+          "label": "Bella",
+          "text": "",
+          "hasImage": true
+        },
+        {
+          "label": "Arlo",
+          "text": "",
+          "hasImage": true
+        }
+      ],
+      "hasMoreIndicator": false,
+      "moreText": null
+    },
+    "activeUsersPopover": {
+      "text": "Active Users (2)\nArlo (You)\nBella",
+      "rows": [
+        {
+          "text": "Arlo (You)",
+          "pressed": null,
+          "className": "user-item svelte-eta969 current-user clickable"
+        },
+        {
+          "text": "Bella",
+          "pressed": null,
+          "className": "user-item svelte-eta969 clickable"
+        }
+      ],
+      "hasYou": true,
+      "hasAttributionToggle": true
+    },
+    "attributionAll": {
+      "count": 6,
+      "titles": [
+        "Written by Arlo",
+        "Written by Bella"
+      ],
+      "marks": [
+        {
+          "text": "# ",
+          "title": "Written by Arlo",
+          "style": "background-color: #ee635233; border-bottom: 1px solid #ee6352"
+        },
+        {
+          "text": "Avatar demo",
+          "title": "Written by Arlo",
+          "style": "background-color: #ee635233; border-bottom: 1px solid #ee6352"
+        },
+        {
+          "text": "This note is shared with Relay.",
+          "title": "Written by Arlo",
+          "style": "background-color: #ee635233; border-bottom: 1px solid #ee6352"
+        },
+        {
+          "text": "Open it in two vaults to see document presence.",
+          "title": "Written by Arlo",
+          "style": "background-color: #ee635233; border-bottom: 1px solid #ee6352"
+        },
+        {
+          "text": "Arlo wrote the first line for author highlighting.",
+          "title": "Written by Arlo",
+          "style": "background-color: #ee635233; border-bottom: 1px solid #ee6352"
+        },
+        {
+          "text": "Bella added the second line for author highlighting.",
+          "title": "Written by Bella",
+          "style": "background-color: #9ac2c933; border-bottom: 1px solid #9ac2c9"
+        }
+      ]
+    },
+    "attributionFocused": {
+      "popover": {
+        "text": "Active Users (2)\nArlo (You)\nBella",
+        "rows": [
+          {
+            "text": "Arlo (You)",
+            "pressed": "false",
+            "className": "user-item svelte-eta969 current-user clickable attribution-off"
+          },
+          {
+            "text": "Bella",
+            "pressed": "true",
+            "className": "user-item svelte-eta969 clickable attribution-on"
+          }
+        ],
+        "hasYou": true,
+        "hasAttributionToggle": true
+      },
+      "marks": {
+        "count": 1,
+        "titles": [
+          "Written by Bella"
+        ],
+        "marks": [
+          {
+            "text": "Bella added the second line for author highlighting.",
+            "title": "Written by Bella",
+            "style": "background-color: #9ac2c933; border-bottom: 1px solid #9ac2c9"
+          }
+        ]
+      }
+    },
+    "canvasConnectOwner": {
+      "connected": true,
+      "state": {
+        "status": "connected",
+        "intent": "connected"
+      },
+      "synced": true
+    },
+    "canvasConnectCollab": {
+      "connected": true,
+      "state": {
+        "status": "connected",
+        "intent": "connected"
+      },
+      "synced": true
+    }
+  },
+  "notes": [
+    "Owner = Arlo, collaborator = Bella.",
+    "Scenario requires a plugin build containing author-attribution controls from 33b066b; use --plugins=local if latest stable lacks them.",
+    "The relay is created fresh and destroyed on cleanup; no preconfigured staging relay is touched.",
+    "The +N overflow asset is skipped in the default two-user setup because Relay only shows +N above four visible users."
+  ]
+}
