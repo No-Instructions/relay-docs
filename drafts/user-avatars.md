@@ -5,7 +5,7 @@ layout: doc.njk
 ---
 When you open a Shared Folder document with other people, Relay shows who is there with you.
 
-User avatars are presence indicators. They help you answer a simple question before you start editing: who else is looking at this document right now?
+User avatars are presence indicators: they tell you, before you start editing, who else is in the document right now.
 
 ## What you see
 
@@ -21,7 +21,7 @@ If more people are present than fit in the stack, Relay shows a `+N` indicator f
 
 In a shared Markdown note, the avatar stack appears near the note title.
 
-This is separate from live cursors. Live cursors show where people are editing. Avatars show who is present in the document.
+Avatars are separate from live cursors: cursors show where people are editing, avatars show who is present.
 
 ## In Canvas
 
@@ -35,9 +35,9 @@ Canvas multiplayer is currently a beta feature. See [Canvas multiplayer](/featur
 
 In Markdown notes, Relay can highlight text by author.
 
-Open the avatar stack, then click the highlighter button in the `Active Users` popover. Relay highlights attributable text using each author's color.
+Open the avatar stack, then click the highlighter button in the `Active Users` popover. Relay colors attributable text by author.
 
-You can also click an individual person in the `Active Users` list to focus the highlighting on that person.
+To focus on one person's contributions, click that person in the `Active Users` list.
 
 If you prefer the command palette, use:
 
