@@ -1,21 +1,32 @@
 {
   "scenario": "user-avatars",
-  "generatedAt": "2026-06-10T22:39:36.459Z",
-  "status": "partial",
+  "generatedAt": "2026-06-11T20:28:57.399Z",
+  "status": "pass",
   "error": null,
   "ownerPort": "9223",
   "collabPort": "9224",
-  "relayName": "Docs avatars demo",
-  "folderName": "Docs avatars",
-  "notePath": "Docs avatars/Presence demo.md",
-  "canvasPath": "Docs avatars/Planning board.canvas",
+  "relayName": "Product Launch Relay",
+  "folderName": "Launch Planning",
+  "notePath": "Launch Planning/Launch plan.md",
+  "canvasPath": "Launch Planning/Planning board.canvas",
   "outputDir": "/Users/mattobrien/Development/relay-harness/playwright/capture-results/docs-user-avatars",
   "docsAssetsDir": "/Users/mattobrien/Development/relay-docs/drafts/assets/user-avatars",
   "cleanup": {
     "ownerRelayDestroyed": false,
     "ownerFolderDeleted": true,
     "collabFolderDeleted": true,
-    "ownerRelayError": "Could not find relay \"Docs avatars demo\" to destroy"
+    "ownerRelayError": "Could not find relay \"Product Launch Relay\" to destroy"
+  },
+  "captureStyle": {
+    "source": "relay-docs-page skill §Screenshot style (canonical, Matt-ratified 2026-06-10)",
+    "window": {
+      "width": 1240,
+      "height": 620
+    },
+    "zoom": "default webFrame zoom level 0; no webFrame zoom-in because of ticket-2026-06-10-avatar-stack-zoom-rendering-bug",
+    "context": "left sidebar open, right sidebar collapsed",
+    "annotation": "one scripted red arrow per captured screenshot, computed from live DOM bounding boxes",
+    "content": "realistic product-launch planning note; no self-referential demo text"
   },
   "screenshots": [
     {
@@ -43,7 +54,13 @@
       "required": true
     },
     {
-      "file": "user-avatars-05-canvas-avatar-stack.png",
+      "file": "user-avatars-05-cursor-name-rollover.png",
+      "title": "Cursor name rollover",
+      "description": "A shared Markdown note showing a collaborator cursor name flag on hover.",
+      "required": true
+    },
+    {
+      "file": "user-avatars-06-canvas-avatar-stack.png",
       "title": "Canvas avatar stack",
       "description": "A shared Canvas file showing Relay presence avatars in the Canvas view.",
       "required": false
@@ -53,15 +70,117 @@
     "user-avatars-01-avatar-stack-near-title.png",
     "user-avatars-02-active-users-popover.png",
     "user-avatars-03-author-highlighting-two-authors.png",
-    "user-avatars-04-author-highlighting-single-user-focus.png"
+    "user-avatars-04-author-highlighting-single-user-focus.png",
+    "user-avatars-05-cursor-name-rollover.png"
+  ],
+  "screenshotCaptures": [
+    {
+      "file": "user-avatars-01-avatar-stack-near-title.png",
+      "target": {
+        "type": "avatar-stack"
+      },
+      "arrow": {
+        "found": true,
+        "target": {
+          "type": "avatar-stack"
+        },
+        "box": {
+          "x": 1082,
+          "y": 33.4765625,
+          "width": 60,
+          "height": 44
+        },
+        "virtualBox": false
+      }
+    },
+    {
+      "file": "user-avatars-02-active-users-popover.png",
+      "target": {
+        "type": "active-users-popover"
+      },
+      "arrow": {
+        "found": true,
+        "target": {
+          "type": "active-users-popover"
+        },
+        "box": {
+          "x": 1103,
+          "y": 98.4765625,
+          "width": 22,
+          "height": 22
+        },
+        "virtualBox": false
+      }
+    },
+    {
+      "file": "user-avatars-03-author-highlighting-two-authors.png",
+      "target": {
+        "type": "markdown-text",
+        "text": "Bella is packaging the press kit assets"
+      },
+      "arrow": {
+        "found": true,
+        "target": {
+          "type": "markdown-text",
+          "text": "Bella is packaging the press kit assets"
+        },
+        "box": {
+          "x": 702,
+          "y": 398.1015625,
+          "width": 244.99999999999997,
+          "height": 24
+        },
+        "virtualBox": true
+      }
+    },
+    {
+      "file": "user-avatars-04-author-highlighting-single-user-focus.png",
+      "target": {
+        "type": "active-user-row",
+        "text": "Bella"
+      },
+      "arrow": {
+        "found": true,
+        "target": {
+          "type": "active-user-row",
+          "text": "Bella"
+        },
+        "box": {
+          "x": 943,
+          "y": 175.4765625,
+          "width": 198,
+          "height": 38
+        },
+        "virtualBox": false
+      }
+    },
+    {
+      "file": "user-avatars-05-cursor-name-rollover.png",
+      "target": {
+        "type": "cursor-name-rollover"
+      },
+      "arrow": {
+        "found": true,
+        "target": {
+          "type": "cursor-name-rollover"
+        },
+        "box": {
+          "x": 505.6015625,
+          "y": 187.640625,
+          "width": 29.328125,
+          "height": 14
+        },
+        "virtualBox": false
+      }
+    }
   ],
   "skipped": [
     {
-      "file": "user-avatars-05-canvas-avatar-stack.png",
-      "reason": "Canvas capture skipped: Timed out waiting for Canvas provider awareness; last state: {\"activePath\":\"Docs avatars/Planning board.canvas\",\"activeType\":\"canvas\",\"viewCount\":1,\"hasCanvasView\":true,\"connectionState\":{\"status\":\"connected\",\"intent\":\"connected\"},\"providerIntent\":\"connected\",\"providerSynced\":true,\"awarenessCount\":1,\"users\":[\"Arlo\"]}"
+      "file": "user-avatars-06-canvas-avatar-stack.png",
+      "reason": "Canvas presence is not captured or embedded: Relay docs charter correction says Canvas presence is not working yet."
     },
     {
-      "file": "user-avatars-06-overflow-plus-n.png",
+      "file": "user-avatars-07-overflow-plus-n.png",
       "reason": "Skipped: +N overflow requires more than four active users; this docs scenario intentionally uses the requested two-user setup."
     }
   ],
@@ -94,11 +213,11 @@
       "shareKeyCaptured": true,
       "join": {
         "success": true,
-        "relayName": "Docs avatars demo",
-        "relayId": "7j5gmh62ya1y3n2",
-        "relayGuid": "0f75f7aa-7fcc-42ea-bb24-9daacf1e1cf9",
-        "remoteGuid": "a13f3cd0-f629-44ee-ba72-26dfd3c55e6e",
-        "remoteName": "Docs avatars",
+        "relayName": "Product Launch Relay",
+        "relayId": "6nmklw5295w65sh",
+        "relayGuid": "8834c453-d0a4-48a3-afdb-ee3744b40bf5",
+        "remoteGuid": "6c6a5cf1-84dc-4cba-ac4f-e7366e810eb5",
+        "remoteName": "Launch Planning",
         "debug": {
           "before": {
             "firstLine": "ok",
@@ -111,38 +230,38 @@
             "localMatches": []
           },
           "postJoin": {
-            "firstLine": "Docs avatars demo",
-            "contentText": "Docs avatars demo\nShared Folders on this Relay Server\nDocs avatars\nShare local folder\nUsers\nArlo\n\nOwner\nBella\n\nMember\n2 of 3 seats used\nSharing\nKey sharing\nThe owner of this Relay Server has enabled key sharing.\nShare Key\nShare this key with your collaborators.\nMembership\nLeave Relay Server\nLeave the Relay Server. Local data is preserved.\nLeave",
+            "firstLine": "Product Launch Relay",
+            "contentText": "Product Launch Relay\nShared Folders on this Relay Server\nLaunch Planning\nShare local folder\nUsers\nArlo\n\nOwner\nBella\n\nMember\n2 of 3 seats used\nSharing\nKey sharing\nThe owner of this Relay Server has enabled key sharing.\nShare Key\nShare this key with your collaborators.\nMembership\nLeave Relay Server\nLeave the Relay Server. Local data is preserved.\nLeave",
             "hasBack": true,
-            "relayName": "Docs avatars demo",
-            "relayGuid": "0f75f7aa-7fcc-42ea-bb24-9daacf1e1cf9",
-            "relayId": "7j5gmh62ya1y3n2",
+            "relayName": "Product Launch Relay",
+            "relayGuid": "8834c453-d0a4-48a3-afdb-ee3744b40bf5",
+            "relayId": "6nmklw5295w65sh",
             "newRelayNames": [
-              "Docs avatars demo"
+              "Product Launch Relay"
             ],
             "localMatches": []
           },
           "remoteState": {
-            "relayName": "Docs avatars demo",
+            "relayName": "Product Launch Relay",
             "remoteFolder": {
-              "guid": "a13f3cd0-f629-44ee-ba72-26dfd3c55e6e",
-              "id": "dnqv2oxypggj2hx",
-              "name": "Docs avatars"
+              "guid": "6c6a5cf1-84dc-4cba-ac4f-e7366e810eb5",
+              "id": "1mjymttm8h5wg0h",
+              "name": "Launch Planning"
             },
             "existingByRemoteGuid": []
           },
           "addResult": {
             "clicked": true,
-            "rowText": "Docs avatars"
+            "rowText": "Launch Planning"
           },
           "finalState": {
             "sharedFolder": {
-              "path": "Docs avatars",
-              "guid": "a13f3cd0-f629-44ee-ba72-26dfd3c55e6e",
-              "relayId": "0f75f7aa-7fcc-42ea-bb24-9daacf1e1cf9",
-              "remoteGuid": "a13f3cd0-f629-44ee-ba72-26dfd3c55e6e",
-              "remoteName": "Docs avatars",
-              "remoteRelayName": "Docs avatars demo",
+              "path": "Launch Planning",
+              "guid": "6c6a5cf1-84dc-4cba-ac4f-e7366e810eb5",
+              "relayId": "8834c453-d0a4-48a3-afdb-ee3744b40bf5",
+              "remoteGuid": "6c6a5cf1-84dc-4cba-ac4f-e7366e810eb5",
+              "remoteName": "Launch Planning",
+              "remoteRelayName": "Product Launch Relay",
               "connected": true,
               "synced": true,
               "ready": true
@@ -190,39 +309,79 @@
       "hasAttributionToggle": true
     },
     "attributionAll": {
-      "count": 6,
+      "count": 14,
       "titles": [
         "Written by Arlo",
         "Written by Bella"
       ],
       "marks": [
         {
-          "text": "# ",
+          "text": "#⁠⁠Bella⁠ ",
           "title": "Written by Arlo",
-          "style": "background-color: #ee635233; border-bottom: 1px solid #ee6352"
+          "style": "background-color: #30bced33; border-bottom: 1px solid #30bced"
         },
         {
-          "text": "Avatar demo",
+          "text": "Launch plan",
           "title": "Written by Arlo",
-          "style": "background-color: #ee635233; border-bottom: 1px solid #ee6352"
+          "style": "background-color: #30bced33; border-bottom: 1px solid #30bced"
         },
         {
-          "text": "This note is shared with Relay.",
+          "text": "Target date: June 24.",
           "title": "Written by Arlo",
-          "style": "background-color: #ee635233; border-bottom: 1px solid #ee6352"
+          "style": "background-color: #30bced33; border-bottom: 1px solid #30bced"
         },
         {
-          "text": "Open it in two vaults to see document presence.",
+          "text": "",
           "title": "Written by Arlo",
-          "style": "background-color: #ee635233; border-bottom: 1px solid #ee6352"
+          "style": "background-color: #30bced33; border-bottom: 1px solid #30bced"
         },
         {
-          "text": "Arlo wrote the first line for author highlighting.",
+          "text": " Finalize pricing page copy",
           "title": "Written by Arlo",
-          "style": "background-color: #ee635233; border-bottom: 1px solid #ee6352"
+          "style": "background-color: #30bced33; border-bottom: 1px solid #30bced"
         },
         {
-          "text": "Bella added the second line for author highlighting.",
+          "text": "",
+          "title": "Written by Arlo",
+          "style": "background-color: #30bced33; border-bottom: 1px solid #30bced"
+        },
+        {
+          "text": " Record the demo video",
+          "title": "Written by Arlo",
+          "style": "background-color: #30bced33; border-bottom: 1px solid #30bced"
+        },
+        {
+          "text": "",
+          "title": "Written by Arlo",
+          "style": "background-color: #30bced33; border-bottom: 1px solid #30bced"
+        },
+        {
+          "text": " Send beta invite email to the waitlist",
+          "title": "Written by Arlo",
+          "style": "background-color: #30bced33; border-bottom: 1px solid #30bced"
+        },
+        {
+          "text": "",
+          "title": "Written by Arlo",
+          "style": "background-color: #30bced33; border-bottom: 1px solid #30bced"
+        },
+        {
+          "text": " Package press kit assets",
+          "title": "Written by Arlo",
+          "style": "background-color: #30bced33; border-bottom: 1px solid #30bced"
+        },
+        {
+          "text": "Arlo owns the demo video.",
+          "title": "Written by Arlo",
+          "style": "background-color: #30bced33; border-bottom: 1px solid #30bced"
+        },
+        {
+          "text": "Arlo is tightening the onboarding copy before Tuesday.",
+          "title": "Written by Arlo",
+          "style": "background-color: #30bced33; border-bottom: 1px solid #30bced"
+        },
+        {
+          "text": "Bella is packaging the press kit assets for review.",
           "title": "Written by Bella",
           "style": "background-color: #9ac2c933; border-bottom: 1px solid #9ac2c9"
         }
@@ -253,34 +412,19 @@
         ],
         "marks": [
           {
-            "text": "Bella added the second line for author highlighting.",
+            "text": "Bella is packaging the press kit assets for review.",
             "title": "Written by Bella",
             "style": "background-color: #9ac2c933; border-bottom: 1px solid #9ac2c9"
           }
         ]
       }
-    },
-    "canvasConnectOwner": {
-      "connected": true,
-      "state": {
-        "status": "connected",
-        "intent": "connected"
-      },
-      "synced": true
-    },
-    "canvasConnectCollab": {
-      "connected": true,
-      "state": {
-        "status": "connected",
-        "intent": "connected"
-      },
-      "synced": true
     }
   },
   "notes": [
     "Owner = Arlo, collaborator = Bella.",
     "Scenario requires a plugin build containing author-attribution controls from 33b066b; use --plugins=local if latest stable lacks them.",
     "The relay is created fresh and destroyed on cleanup; no preconfigured staging relay is touched.",
-    "The +N overflow asset is skipped in the default two-user setup because Relay only shows +N above four visible users."
+    "The +N overflow asset is skipped in the default two-user setup because Relay only shows +N above four visible users.",
+    "Canvas presence is not captured or embedded because the Relay docs charter correction says Canvas presence is not working yet."
   ]
 }
