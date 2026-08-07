@@ -11,9 +11,18 @@ If you're serious about your notes, set up git. It's the right answer for any Ob
 
 ## Set up git with Obsidian Git
 
-The [Obsidian Git plugin](https://github.com/Vinzent03/obsidian-git) commits your vault to a git repository on a schedule. Set it to auto-commit every 5 minutes.
+The [Obsidian Git plugin](https://github.com/Vinzent03/obsidian-git) commits your vault to a git repository on a schedule. It is listed as **Git** in Obsidian's Community plugins browser.
 
-Git retains full file history. You can restore any file to any prior state: `git log` to find the commit, `git checkout <hash> -- path/to/file.md` to restore.
+In Settings → Git:
+
+| Section | Setting | Set it to |
+|---|---|---|
+| Automatic | **Auto commit-and-sync interval (minutes)** | **5** |
+| Commit-and-sync | **Pull on commit-and-sync** | **Off** — it defaults to **on** |
+
+**Turn "Pull on commit-and-sync" off.** The plugin's commit-and-sync action pulls as well as pushes by default, so setting the interval alone gives you a vault that pulls on a timer — a second sync service running against your Shared Folders, which is the thing this page warns about below. The interval lives in one section and the pull switch in another, so it is easy to set the first and miss the second.
+
+Git retains full file history. You can restore any file to any prior state: `git log` to find the commit, `git checkout <hash> -- path/to/file.md` to restore. That restore is a deliberate one-off write, and Relay propagates it to the rest of the team like any other edit — it is *automatic* pulling that causes trouble, not a single intentional restore.
 
 **Should you push to a remote?**
 
