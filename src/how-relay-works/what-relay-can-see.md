@@ -19,13 +19,13 @@ This page offers further details about what data we can see in each case.
     <tr><th><strong>Can our servers see it?</strong></th><th>Self-hosting *(free on every plan)*</th><th>Relay cloud hosting</th></tr>
   </thead>
   <tbody>
-    <tr class="dp"><td><strong>Data plane — your documents</strong></td><td>No — your server only</td><td>Yes — our servers</td></tr>
-    <tr class="dp"><td>Note titles</td><td>No — your server only</td><td>Yes — our servers</td></tr>
-    <tr class="dp"><td>Note content</td><td>No — your server only</td><td>Yes — our servers</td></tr>
-    <tr class="dp"><td>Attachments</td><td>No — storage you configure</td><td>Yes — our storage</td></tr>
-    <tr class="dp"><td>Filenames and folder paths</td><td>No — requests carry IDs, not names</td><td>Yes — our servers</td></tr>
-    <tr class="dp"><td>Live presence (cursors, who's in a doc)</td><td>No — your server only</td><td>Yes — our servers</td></tr>
-    <tr><td><strong>Control plane — accounts and permissions</strong></td><td>Yes — Relay control plane is global</td><td>Yes</td></tr>
+    <tr class="divider"><td><strong>Data plane — your documents</strong></td><td>No — your server only</td><td>Yes — our servers</td></tr>
+    <tr><td>Note titles</td><td>No — your server only</td><td>Yes — our servers</td></tr>
+    <tr><td>Note content</td><td>No — your server only</td><td>Yes — our servers</td></tr>
+    <tr><td>Attachments</td><td>No — storage you configure</td><td>Yes — our storage</td></tr>
+    <tr><td>Filenames and folder paths</td><td>No — requests carry IDs, not names</td><td>Yes — our servers</td></tr>
+    <tr><td>Live presence (cursors, who's in a doc)</td><td>No — your server only</td><td>Yes — our servers</td></tr>
+    <tr class="divider"><td><strong>Control plane — accounts and permissions</strong></td><td>Yes — Relay control plane is global</td><td>Yes</td></tr>
     <tr><td>Your account (name, email, profile picture)</td><td>Yes</td><td>Yes</td></tr>
     <tr><td>Relay Server name, URL, configuration</td><td>Yes</td><td>Yes</td></tr>
     <tr><td>Who has access to what (membership, roles)</td><td>Yes</td><td>Yes</td></tr>
