@@ -80,7 +80,7 @@ Relay offers three deployment options with different privacy guarantees:
   - Tradeoff: closed collaboration network — can only share with people on your deployment
   - Good for the most security-sensitive organizations
 
-  All options encrypt data in transit and at rest. We do not offer end-to-end encryption.
+  For exactly what data reaches which servers under each hosting option, see [What Relay can see](/how-relay-works/what-relay-can-see/). We do not offer end-to-end encryption.
 
   See [Hosting options](/features/hosting-options/) and [Pricing](https://relay.md/pricing) for details.
 

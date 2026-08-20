@@ -74,7 +74,7 @@ We don't look at your data and we don't sell it. Like all cloud services, we cou
 What Relay staff can technically access depends on which components you host:
 
 - **All components on Relay Cloud**: Standard SaaS model - we could access your data if legally compelled, though we don't under normal operations. See our [security page](https://system3.md/security) for details.
-- **Storage + Relay Server on your infrastructure, Control Plane on Relay Cloud**: We can only see metadata (server names, user emails, document IDs) but no document content
+- **Storage + Relay Server on your infrastructure, Control Plane on Relay Cloud**: Your document content goes to your Relay Server. Account and permission data — including server names, user emails, and document IDs — reaches Relay's cloud. See [What Relay can see](/how-relay-works/what-relay-can-see/) for the full picture.
 - **Full air-gapped or on-premise deployment, including the Control Plane**: Enterprise-positioned waitlist offering. If deployed, we see nothing unless you grant specific access for support
 
 ## Choosing the right option

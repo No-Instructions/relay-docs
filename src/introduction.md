@@ -46,9 +46,9 @@ Startup:
 
 - Multiplayer markdown: Real-time collaboration on `.md` files with live cursors
 - Shared folders: Choose folders from your vault and share them, including all of their subfolders
-- Universal File Sync (paid feature): Sync images, pdfs, and arbitrary file types in addition to markdown files
+- Universal File Sync: Sync images, pdfs, and arbitrary file types in addition to markdown files. Cloud storage is paid; self-hosted storage is free.
 - [Canvas multiplayer](/features/canvas-multiplayer/) (beta): Real-time collaboration on Obsidian Canvas files
-- On-premise/self-hosted deployment (beta): Deploy Relay on your own infrastructure for complete control
+- On-premise/self-hosted deployment: Deploy Relay on your own infrastructure for complete control. Free on every Relay plan — see [What Relay can see](/how-relay-works/what-relay-can-see/).
 
 See our [Pricing](https://relay.md/pricing) page for a more comprehensive list of features, and our [Roadmap](https://relay.md/relay/releases) for a preview of what's to come.
 
