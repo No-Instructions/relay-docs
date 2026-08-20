@@ -70,12 +70,12 @@ Relay offers three deployment options with different privacy guarantees:
   - Our company could see your data if compelled to by a court. This has never happened. We do not read, sell, or train on your data.
 
   Hybrid (you host relay server, we host identity)
-  - Document content never touches our servers — we can't see it even if we wanted to
+  - Your Relay Server runs on your private network, so document content never touches our servers — we couldn't see it if we wanted to
   - We see limited metadata
   - Good for teams wanting privacy guarantees
 
   Air-gapped (you host everything)
-  - We can't see any data, not even metadata
+  - Everything, including the control plane, runs on your infrastructure — currently an Enterprise waitlist offering
   - Total control, requires most setup
   - Tradeoff: closed collaboration network — can only share with people on your deployment
   - Good for the most security-sensitive organizations
