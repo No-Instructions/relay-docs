@@ -1,0 +1,430 @@
+{
+  "scenario": "user-avatars",
+  "generatedAt": "2026-06-11T20:28:57.399Z",
+  "status": "pass",
+  "error": null,
+  "ownerPort": "9223",
+  "collabPort": "9224",
+  "relayName": "Product Launch Relay",
+  "folderName": "Launch Planning",
+  "notePath": "Launch Planning/Launch plan.md",
+  "canvasPath": "Launch Planning/Planning board.canvas",
+  "outputDir": "/Users/mattobrien/Development/relay-harness/playwright/capture-results/docs-user-avatars",
+  "docsAssetsDir": "/Users/mattobrien/Development/relay-docs/drafts/assets/user-avatars",
+  "cleanup": {
+    "ownerRelayDestroyed": false,
+    "ownerFolderDeleted": true,
+    "collabFolderDeleted": true,
+    "ownerRelayError": "Could not find relay \"Product Launch Relay\" to destroy"
+  },
+  "captureStyle": {
+    "source": "relay-docs-page skill §Screenshot style (canonical, Matt-ratified 2026-06-10)",
+    "window": {
+      "width": 1240,
+      "height": 620
+    },
+    "zoom": "default webFrame zoom level 0; no webFrame zoom-in because of ticket-2026-06-10-avatar-stack-zoom-rendering-bug",
+    "context": "left sidebar open, right sidebar collapsed",
+    "annotation": "one scripted red arrow per captured screenshot, computed from live DOM bounding boxes",
+    "content": "realistic product-launch planning note; no self-referential demo text"
+  },
+  "screenshots": [
+    {
+      "file": "user-avatars-01-avatar-stack-near-title.png",
+      "title": "Avatar stack near the note title",
+      "description": "A shared Markdown note showing the collaborator avatar stack near the note title.",
+      "required": true
+    },
+    {
+      "file": "user-avatars-02-active-users-popover.png",
+      "title": "Active Users popover",
+      "description": "The Active Users popover showing both collaborators and the current user marked with (You).",
+      "required": true
+    },
+    {
+      "file": "user-avatars-03-author-highlighting-two-authors.png",
+      "title": "Author highlighting with two authors",
+      "description": "A Markdown note with author highlighting enabled for attributable text from both collaborators.",
+      "required": true
+    },
+    {
+      "file": "user-avatars-04-author-highlighting-single-user-focus.png",
+      "title": "Per-user author highlighting focus",
+      "description": "The Active Users popover after selecting one user for focused author highlighting.",
+      "required": true
+    },
+    {
+      "file": "user-avatars-05-cursor-name-rollover.png",
+      "title": "Cursor name rollover",
+      "description": "A shared Markdown note showing a collaborator cursor name flag on hover.",
+      "required": true
+    },
+    {
+      "file": "user-avatars-06-canvas-avatar-stack.png",
+      "title": "Canvas avatar stack",
+      "description": "A shared Canvas file showing Relay presence avatars in the Canvas view.",
+      "required": false
+    }
+  ],
+  "captured": [
+    "user-avatars-01-avatar-stack-near-title.png",
+    "user-avatars-02-active-users-popover.png",
+    "user-avatars-03-author-highlighting-two-authors.png",
+    "user-avatars-04-author-highlighting-single-user-focus.png",
+    "user-avatars-05-cursor-name-rollover.png"
+  ],
+  "screenshotCaptures": [
+    {
+      "file": "user-avatars-01-avatar-stack-near-title.png",
+      "target": {
+        "type": "avatar-stack"
+      },
+      "arrow": {
+        "found": true,
+        "target": {
+          "type": "avatar-stack"
+        },
+        "box": {
+          "x": 1082,
+          "y": 33.4765625,
+          "width": 60,
+          "height": 44
+        },
+        "virtualBox": false
+      }
+    },
+    {
+      "file": "user-avatars-02-active-users-popover.png",
+      "target": {
+        "type": "active-users-popover"
+      },
+      "arrow": {
+        "found": true,
+        "target": {
+          "type": "active-users-popover"
+        },
+        "box": {
+          "x": 1103,
+          "y": 98.4765625,
+          "width": 22,
+          "height": 22
+        },
+        "virtualBox": false
+      }
+    },
+    {
+      "file": "user-avatars-03-author-highlighting-two-authors.png",
+      "target": {
+        "type": "markdown-text",
+        "text": "Bella is packaging the press kit assets"
+      },
+      "arrow": {
+        "found": true,
+        "target": {
+          "type": "markdown-text",
+          "text": "Bella is packaging the press kit assets"
+        },
+        "box": {
+          "x": 702,
+          "y": 398.1015625,
+          "width": 244.99999999999997,
+          "height": 24
+        },
+        "virtualBox": true
+      }
+    },
+    {
+      "file": "user-avatars-04-author-highlighting-single-user-focus.png",
+      "target": {
+        "type": "active-user-row",
+        "text": "Bella"
+      },
+      "arrow": {
+        "found": true,
+        "target": {
+          "type": "active-user-row",
+          "text": "Bella"
+        },
+        "box": {
+          "x": 943,
+          "y": 175.4765625,
+          "width": 198,
+          "height": 38
+        },
+        "virtualBox": false
+      }
+    },
+    {
+      "file": "user-avatars-05-cursor-name-rollover.png",
+      "target": {
+        "type": "cursor-name-rollover"
+      },
+      "arrow": {
+        "found": true,
+        "target": {
+          "type": "cursor-name-rollover"
+        },
+        "box": {
+          "x": 505.6015625,
+          "y": 187.640625,
+          "width": 29.328125,
+          "height": 14
+        },
+        "virtualBox": false
+      }
+    }
+  ],
+  "skipped": [
+    {
+      "file": "user-avatars-06-canvas-avatar-stack.png",
+      "reason": "Canvas presence is not captured or embedded: Relay docs charter correction says Canvas presence is not working yet."
+    },
+    {
+      "file": "user-avatars-07-overflow-plus-n.png",
+      "reason": "Skipped: +N overflow requires more than four active users; this docs scenario intentionally uses the requested two-user setup."
+    }
+  ],
+  "verification": {
+    "owner": {
+      "login": {
+        "name": "Arlo",
+        "email": "arlo@system3.dev"
+      },
+      "build": {
+        "version": "0.8.0-rc2-28-g4feecfc",
+        "hasAttributionCommand": true,
+        "userName": "Arlo",
+        "userEmail": "arlo@system3.dev"
+      }
+    },
+    "collab": {
+      "login": {
+        "name": "Bella",
+        "email": "bella@system3.dev"
+      },
+      "build": {
+        "version": "0.8.0-rc2-28-g4feecfc",
+        "hasAttributionCommand": true,
+        "userName": "Bella",
+        "userEmail": "bella@system3.dev"
+      }
+    },
+    "setup": {
+      "shareKeyCaptured": true,
+      "join": {
+        "success": true,
+        "relayName": "Product Launch Relay",
+        "relayId": "6nmklw5295w65sh",
+        "relayGuid": "8834c453-d0a4-48a3-afdb-ee3744b40bf5",
+        "remoteGuid": "6c6a5cf1-84dc-4cba-ac4f-e7366e810eb5",
+        "remoteName": "Launch Planning",
+        "debug": {
+          "before": {
+            "firstLine": "ok",
+            "contentText": "ok\nAccount\nBella\nbella@system3.dev\nLogout\nJoin a Relay Server\nShare key\nEnter the code that was shared with you.\nJoin\nRelay Servers\nCreate\nMy vault\nNo shared folders on this device. Share folders from a Relay Server's settings page to begin collaboration.\nAdd remote folder",
+            "hasBack": false,
+            "relayName": null,
+            "relayGuid": null,
+            "relayId": null,
+            "newRelayNames": [],
+            "localMatches": []
+          },
+          "postJoin": {
+            "firstLine": "Product Launch Relay",
+            "contentText": "Product Launch Relay\nShared Folders on this Relay Server\nLaunch Planning\nShare local folder\nUsers\nArlo\n\nOwner\nBella\n\nMember\n2 of 3 seats used\nSharing\nKey sharing\nThe owner of this Relay Server has enabled key sharing.\nShare Key\nShare this key with your collaborators.\nMembership\nLeave Relay Server\nLeave the Relay Server. Local data is preserved.\nLeave",
+            "hasBack": true,
+            "relayName": "Product Launch Relay",
+            "relayGuid": "8834c453-d0a4-48a3-afdb-ee3744b40bf5",
+            "relayId": "6nmklw5295w65sh",
+            "newRelayNames": [
+              "Product Launch Relay"
+            ],
+            "localMatches": []
+          },
+          "remoteState": {
+            "relayName": "Product Launch Relay",
+            "remoteFolder": {
+              "guid": "6c6a5cf1-84dc-4cba-ac4f-e7366e810eb5",
+              "id": "1mjymttm8h5wg0h",
+              "name": "Launch Planning"
+            },
+            "existingByRemoteGuid": []
+          },
+          "addResult": {
+            "clicked": true,
+            "rowText": "Launch Planning"
+          },
+          "finalState": {
+            "sharedFolder": {
+              "path": "Launch Planning",
+              "guid": "6c6a5cf1-84dc-4cba-ac4f-e7366e810eb5",
+              "relayId": "8834c453-d0a4-48a3-afdb-ee3744b40bf5",
+              "remoteGuid": "6c6a5cf1-84dc-4cba-ac4f-e7366e810eb5",
+              "remoteName": "Launch Planning",
+              "remoteRelayName": "Product Launch Relay",
+              "connected": true,
+              "synced": true,
+              "ready": true
+            },
+            "vaultFolderExists": true,
+            "childCount": 2
+          }
+        }
+      }
+    },
+    "notePresence": {
+      "hasContainer": true,
+      "hasStack": true,
+      "stackCount": 2,
+      "users": [
+        {
+          "label": "Bella",
+          "text": "",
+          "hasImage": true
+        },
+        {
+          "label": "Arlo",
+          "text": "",
+          "hasImage": true
+        }
+      ],
+      "hasMoreIndicator": false,
+      "moreText": null
+    },
+    "activeUsersPopover": {
+      "text": "Active Users (2)\nArlo (You)\nBella",
+      "rows": [
+        {
+          "text": "Arlo (You)",
+          "pressed": null,
+          "className": "user-item svelte-eta969 current-user clickable"
+        },
+        {
+          "text": "Bella",
+          "pressed": null,
+          "className": "user-item svelte-eta969 clickable"
+        }
+      ],
+      "hasYou": true,
+      "hasAttributionToggle": true
+    },
+    "attributionAll": {
+      "count": 14,
+      "titles": [
+        "Written by Arlo",
+        "Written by Bella"
+      ],
+      "marks": [
+        {
+          "text": "#⁠⁠Bella⁠ ",
+          "title": "Written by Arlo",
+          "style": "background-color: #30bced33; border-bottom: 1px solid #30bced"
+        },
+        {
+          "text": "Launch plan",
+          "title": "Written by Arlo",
+          "style": "background-color: #30bced33; border-bottom: 1px solid #30bced"
+        },
+        {
+          "text": "Target date: June 24.",
+          "title": "Written by Arlo",
+          "style": "background-color: #30bced33; border-bottom: 1px solid #30bced"
+        },
+        {
+          "text": "",
+          "title": "Written by Arlo",
+          "style": "background-color: #30bced33; border-bottom: 1px solid #30bced"
+        },
+        {
+          "text": " Finalize pricing page copy",
+          "title": "Written by Arlo",
+          "style": "background-color: #30bced33; border-bottom: 1px solid #30bced"
+        },
+        {
+          "text": "",
+          "title": "Written by Arlo",
+          "style": "background-color: #30bced33; border-bottom: 1px solid #30bced"
+        },
+        {
+          "text": " Record the demo video",
+          "title": "Written by Arlo",
+          "style": "background-color: #30bced33; border-bottom: 1px solid #30bced"
+        },
+        {
+          "text": "",
+          "title": "Written by Arlo",
+          "style": "background-color: #30bced33; border-bottom: 1px solid #30bced"
+        },
+        {
+          "text": " Send beta invite email to the waitlist",
+          "title": "Written by Arlo",
+          "style": "background-color: #30bced33; border-bottom: 1px solid #30bced"
+        },
+        {
+          "text": "",
+          "title": "Written by Arlo",
+          "style": "background-color: #30bced33; border-bottom: 1px solid #30bced"
+        },
+        {
+          "text": " Package press kit assets",
+          "title": "Written by Arlo",
+          "style": "background-color: #30bced33; border-bottom: 1px solid #30bced"
+        },
+        {
+          "text": "Arlo owns the demo video.",
+          "title": "Written by Arlo",
+          "style": "background-color: #30bced33; border-bottom: 1px solid #30bced"
+        },
+        {
+          "text": "Arlo is tightening the onboarding copy before Tuesday.",
+          "title": "Written by Arlo",
+          "style": "background-color: #30bced33; border-bottom: 1px solid #30bced"
+        },
+        {
+          "text": "Bella is packaging the press kit assets for review.",
+          "title": "Written by Bella",
+          "style": "background-color: #9ac2c933; border-bottom: 1px solid #9ac2c9"
+        }
+      ]
+    },
+    "attributionFocused": {
+      "popover": {
+        "text": "Active Users (2)\nArlo (You)\nBella",
+        "rows": [
+          {
+            "text": "Arlo (You)",
+            "pressed": "false",
+            "className": "user-item svelte-eta969 current-user clickable attribution-off"
+          },
+          {
+            "text": "Bella",
+            "pressed": "true",
+            "className": "user-item svelte-eta969 clickable attribution-on"
+          }
+        ],
+        "hasYou": true,
+        "hasAttributionToggle": true
+      },
+      "marks": {
+        "count": 1,
+        "titles": [
+          "Written by Bella"
+        ],
+        "marks": [
+          {
+            "text": "Bella is packaging the press kit assets for review.",
+            "title": "Written by Bella",
+            "style": "background-color: #9ac2c933; border-bottom: 1px solid #9ac2c9"
+          }
+        ]
+      }
+    }
+  },
+  "notes": [
+    "Owner = Arlo, collaborator = Bella.",
+    "Scenario requires a plugin build containing author-attribution controls from 33b066b; use --plugins=local if latest stable lacks them.",
+    "The relay is created fresh and destroyed on cleanup; no preconfigured staging relay is touched.",
+    "The +N overflow asset is skipped in the default two-user setup because Relay only shows +N above four visible users.",
+    "Canvas presence is not captured or embedded because the Relay docs charter correction says Canvas presence is not working yet."
+  ]
+}
