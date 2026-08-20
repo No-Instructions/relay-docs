@@ -3,9 +3,9 @@ title: What Relay can see
 description: An explanation of the data that reaches Relay's servers under self-hosted vs Relay-hosted setups.
 layout: doc.njk
 ---
-Relay is how a team shares a set of markdown files without handing content to a vendor. Customers often ask us exactly what customer data our servers can see and what we cannot. The answer depends on which hosting method you're using. 
+Relay is how a team shares a set of markdown files without handing content to a vendor — so customers often ask exactly what data our servers can and cannot see. The answer depends on which hosting method you use. 
 
-- Under self-hosting, our primary deployment model, your Relay Server runs on your private network and your notes never touch our servers — we couldn't see your content if we wanted to. Our control plane sees certain metadata — anything you see in https://console.relay.md. 
+- Under self-hosting, our primary deployment model, your Relay Server runs on your private network and your notes never touch our servers — we couldn't see your content if we wanted to. Our control plane sees certain metadata — anything you see in [console.relay.md](https://console.relay.md). 
 - Under our cloud hosting, offered as a convenience for those who prefer it, your note content does move through our servers — like a traditional SaaS service, it is not end-to-end encrypted. We don't look at customer data, but we could be compelled to (eg by a court). 
 
 Our policy is that [we don't charge for privacy](https://relay.md/blog/we-dont-charge-for-privacy), and we think architectural privacy from vendors should be the default. That's why self-hosting is free. 
@@ -14,24 +14,29 @@ This page offers further details about what data we can see in each case.
 
 ### Quick view — what data can our servers see? 
 
-| **Can our servers see it?**                                                       | Self-hosting *(free on every plan)*                                                                                                                           | Relay cloud hosting                                      |
-| --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| **Data plane — your documents**                                                   | No — your server only                                                                                                                                         | Yes — our servers                                        |
-| Note titles                                                                       | No — your server only                                                                                                                                         | Yes — our servers                                        |
-| Note content                                                                      | No — your server only                                                                                                                                         | Yes — our servers                                        |
-| Attachments                                                                       | No — storage you configure                                                                                                                                    | Yes — our storage                                        |
-| Filenames and folder paths                                                        | No — requests carry IDs, not names                                                                                                                            | Yes — our servers                                        |
-| Live presence (cursors, who's in a doc)                                           | No — your server only                                                                                                                                         | Yes — our servers                                        |
-| **Control plane — accounts and permissions**                                      | Yes — Relay control plane is global                                                                                                                           | Yes                                                      |
-| Your account (name, email, profile picture)                                       | Yes                                                                                                                                                           | Yes                                                      |
-| Relay Server name, URL, configuration                                             | Yes                                                                                                                                                           | Yes                                                      |
-| Who has access to what (membership, roles)                                        | Yes                                                                                                                                                           | Yes                                                      |
-| Shared Folder display names                                                       | Yes — renameable to anything                                                                                                                                  | Yes — renameable to anything                             |
-| Shared Folder's real folder name                                                  | No — only the display name lives on control plane; folder name lives on data plane (but the display name defaults to the real name, so change it if you want) | Yes                                                      |
-| Access identifiers (server, folder, doc, device IDs; attachment hash, type, size) | Yes                                                                                                                                                           | Yes                                                      |
-| Client details (Relay and Obsidian versions; device and vault IDs)                | Yes                                                                                                                                                           | Yes                                                      |
-| **Can we read your notes?**                                                       | **No — we have no route to your server, no copy on ours**                                                                                                     | **Technically yes; by policy no; we could be compelled** |
-| **Where that guarantee comes from**                                               | **Architecture — your network, your server**                                                                                                                  | **Policy — our commitment not to look**                  |
+<table>
+  <thead>
+    <tr><th><strong>Can our servers see it?</strong></th><th>Self-hosting *(free on every plan)*</th><th>Relay cloud hosting</th></tr>
+  </thead>
+  <tbody>
+    <tr class="dp"><td><strong>Data plane — your documents</strong></td><td>No — your server only</td><td>Yes — our servers</td></tr>
+    <tr class="dp"><td>Note titles</td><td>No — your server only</td><td>Yes — our servers</td></tr>
+    <tr class="dp"><td>Note content</td><td>No — your server only</td><td>Yes — our servers</td></tr>
+    <tr class="dp"><td>Attachments</td><td>No — storage you configure</td><td>Yes — our storage</td></tr>
+    <tr class="dp"><td>Filenames and folder paths</td><td>No — requests carry IDs, not names</td><td>Yes — our servers</td></tr>
+    <tr class="dp"><td>Live presence (cursors, who's in a doc)</td><td>No — your server only</td><td>Yes — our servers</td></tr>
+    <tr><td><strong>Control plane — accounts and permissions</strong></td><td>Yes — Relay control plane is global</td><td>Yes</td></tr>
+    <tr><td>Your account (name, email, profile picture)</td><td>Yes</td><td>Yes</td></tr>
+    <tr><td>Relay Server name, URL, configuration</td><td>Yes</td><td>Yes</td></tr>
+    <tr><td>Who has access to what (membership, roles)</td><td>Yes</td><td>Yes</td></tr>
+    <tr><td>Shared Folder display names</td><td>Yes — renameable to anything</td><td>Yes — renameable to anything</td></tr>
+    <tr><td>Shared Folder's real folder name</td><td>No — only the display name lives on control plane; folder name lives on data plane (but the display name defaults to the real name, so change it if you want)</td><td>Yes</td></tr>
+    <tr><td>Access identifiers (server, folder, doc, device IDs; attachment hash, type, size)</td><td>Yes</td><td>Yes</td></tr>
+    <tr><td>Client details (Relay and Obsidian versions; device and vault IDs)</td><td>Yes</td><td>Yes</td></tr>
+    <tr><td><strong>Can we read your notes?</strong></td><td><strong>No — we have no route to your server, no copy on ours</strong></td><td><strong>Technically yes; by policy no; we could be compelled</strong></td></tr>
+    <tr><td><strong>Where that guarantee comes from</strong></td><td><strong>Architecture — your network, your server</strong></td><td><strong>Policy — our commitment not to look</strong></td></tr>
+  </tbody>
+</table>
 
 ## Why can't our servers see your documents?
 

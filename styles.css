@@ -740,6 +740,11 @@ body.no-toc .layout {
   letter-spacing: 0.03em;
 }
 
+.doc-content tr.dp th,
+.doc-content tr.dp td {
+  background: var(--color-active-bg);
+}
+
 /* Horizontal rule */
 .doc-content hr {
   border: none;
