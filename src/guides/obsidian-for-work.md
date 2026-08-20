@@ -63,7 +63,7 @@ These are local files. We recommend you use Git for version history. The Git plu
 
 Obsidian alone is private — like a house with no windows or doors. Add collaboration and you need a server to coordinate edits. That server introduces questions: who controls it? Are they trustworthy? What can they see if trust isn't enough?
 
-Relay offers three deployment options with different privacy guarantees:
+Relay offers two deployment options with different privacy guarantees:
 
   Cloud (we host)
   - Fastest setup
@@ -73,12 +73,6 @@ Relay offers three deployment options with different privacy guarantees:
   - Your Relay Server runs on your private network, so document content never touches our servers — we couldn't see it if we wanted to
   - We see limited metadata
   - Good for teams wanting privacy guarantees
-
-  Air-gapped (you host everything)
-  - Everything, including the control plane, runs on your infrastructure — currently an Enterprise waitlist offering
-  - Total control, requires most setup
-  - Tradeoff: closed collaboration network — can only share with people on your deployment
-  - Good for the most security-sensitive organizations
 
   For exactly what data reaches which servers under each hosting option, see [What Relay can see](/how-relay-works/what-relay-can-see/). We do not offer end-to-end encryption.
 
