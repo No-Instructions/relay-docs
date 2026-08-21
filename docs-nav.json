@@ -72,6 +72,11 @@
           "title": "Backing up your Obsidian vault",
           "slug": "backing-up-your-obsidian-vault",
           "path": "guides/backing-up-your-obsidian-vault"
+        },
+        {
+          "title": "Collaborate on Kanban boards",
+          "slug": "kanban-collaboration",
+          "path": "guides/kanban-collaboration"
         }
       ]
     },
