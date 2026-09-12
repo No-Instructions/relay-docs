@@ -1,8 +1,13 @@
+const { createHash } = require('node:crypto');
+const { readFileSync } = require('node:fs');
 const anchor = require('markdown-it-anchor');
 const pluginTOC = require('eleventy-plugin-nesting-toc');
 const Toc = require('eleventy-plugin-nesting-toc/toc');
 
 module.exports = function (eleventyConfig) {
+  eleventyConfig.addGlobalData('stylesVersion', () =>
+    createHash('sha256').update(readFileSync('styles.css')).digest('hex').slice(0, 12)
+  );
   eleventyConfig.addPassthroughCopy({ 'src/assets': 'assets' });
   eleventyConfig.addPassthroughCopy({ 'src/robots.txt': 'robots.txt' });
   eleventyConfig.addPassthroughCopy({ 'styles.css': 'styles.css' });

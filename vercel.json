@@ -16,23 +16,13 @@
       "permanent": true
     },
     {
-      "source": "/features/hosting-options",
-      "destination": "/features/hosting-options/",
-      "permanent": true
-    },
-    {
-      "source": "/features/canvas-multiplayer",
-      "destination": "/features/canvas-multiplayer/",
-      "permanent": true
-    },
-    {
       "source": "/guides/using-relay-with-other-sync-services",
       "destination": "/guides/using-relay-with-other-sync-services/",
       "permanent": true
     },
     {
       "source": "/guides/upgrade-to-relay-for-teams",
-      "destination": "/guides/upgrade-to-relay-for-teams/",
+      "destination": "/guides/upgrade-to-a-paid-plan/",
       "permanent": true
     },
     {
@@ -88,6 +78,46 @@
     {
       "source": "/how-relay-works/real-time-multiplayer-vs-repurposed-file-sync",
       "destination": "/how-relay-works/real-time-multiplayer-vs-repurposed-file-sync/",
+      "permanent": true
+    },
+    {
+      "source": "/features/canvas-multiplayer",
+      "destination": "/how-relay-works/canvas-collaboration/",
+      "permanent": true
+    },
+    {
+      "source": "/features/canvas-multiplayer/",
+      "destination": "/how-relay-works/canvas-collaboration/",
+      "permanent": true
+    },
+    {
+      "source": "/how-relay-works/canvas-collaboration",
+      "destination": "/how-relay-works/canvas-collaboration/",
+      "permanent": true
+    },
+    {
+      "source": "/features/hosting-options/",
+      "destination": "/guides/choose-how-to-host-relay/",
+      "permanent": true
+    },
+    {
+      "source": "/features/hosting-options",
+      "destination": "/guides/choose-how-to-host-relay/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/choose-how-to-host-relay",
+      "destination": "/guides/choose-how-to-host-relay/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/upgrade-to-relay-for-teams/",
+      "destination": "/guides/upgrade-to-a-paid-plan/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/upgrade-to-a-paid-plan",
+      "destination": "/guides/upgrade-to-a-paid-plan/",
       "permanent": true
     }
   ]

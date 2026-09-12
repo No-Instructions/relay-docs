@@ -21,14 +21,14 @@ This video shows the whole flow: an owner copies the Share Key, and a collaborat
 ## Before you start
 
 - You and your collaborator each need Obsidian with the Relay plugin installed. New to Relay? Start with the [Introduction](/introduction/).
-- You need a Relay Server with at least one Shared Folder. If you have not made one yet, see [Create a Shared Folder with private access](/guides/private-shared-folders/).
-- Relay's free tier supports up to 3 users per Relay Server. For larger teams, or to sync images, PDFs, and other file types, see [Upgrade to Relay for teams](/guides/upgrade-to-relay-for-teams/).
+- You need a Relay Server with at least one Shared Folder. If you have not set these up yet, follow the [Quick start](/introduction/#quick-start).
+- Relay's free tier supports up to 3 users per Relay Server. For larger teams, see [Upgrade to a paid plan](/guides/upgrade-to-a-paid-plan/). To sync images, PDFs, and other attachments, use paid cloud storage or provide your own through self-hosting. See [Attachment storage](/how-relay-works/attachment-storage/).
 
 ## Put your work in a Shared Folder
 
-Anything inside a Shared Folder on your Relay Server is shared with the people on that server — unless the folder uses [private access](/guides/private-shared-folders/), which limits it to selected people. Drag the notes or Canvas you want to collaborate on into a Shared Folder.
+Anything inside a Shared Folder on your Relay Server is shared with the people on that server — unless the folder uses [private access](/guides/private-shared-folders/), which limits it to selected people. Put the notes you want to collaborate on into a Shared Folder.
 
-Because real-time collaboration is powerful, keep a backup copy of anything important before you share it, especially when you are trying a beta feature like [Canvas multiplayer](/features/canvas-multiplayer/).
+Keep a backup copy of important work before you share it.
 
 ## Invite your collaborator
 
@@ -76,33 +76,24 @@ After joining, your collaborator opens the Relay Server from their `Relay Server
 
 *Click the Download button next to the Shared Folder to add it to your vault. Both people now appear under `Users` on the Relay Server.*
 
-## Troubleshooting
+## Collaborate on a Canvas
 
-### My collaborator joined, but our edits aren't showing up
+Canvas collaboration is enabled by default and available on all plans, including Free. Follow [Collaborate on an Obsidian Canvas](/guides/collaborate-on-an-obsidian-canvas/) to create a board in your Shared Folder and check edits on both devices. Images and other attachments require [storage](/how-relay-works/attachment-storage/) to sync.
 
-First, make sure each person has actually added the Shared Folder to their own vault — joining the Relay Server is not enough on its own. On the Relay Server's settings page, the Shared Folder has a Download button to add it locally.
+## Troubleshoot missing edits
 
-If the folder is added on both sides and edits still aren't syncing, a few things can jog it into action:
+If your collaborator has joined but edits aren't appearing, check that each person has added the Shared Folder to their own vault. Joining the Relay Server does not add its folders. On the server's settings page, click the Download button next to the Shared Folder to add it locally.
 
-- Both people reload Obsidian: open the command palette and run `Reload app without saving`.
+If the folder is added on both sides and edits still aren't syncing:
+
 - Right-click the Shared Folder in your file list and choose `Relay: Sync`.
 - Make a fresh copy of the file from your vault and drag the copy into the Shared Folder.
 
-### Do we need Discord to collaborate?
-
-No. The [Relay Discord](https://discord.relay.md) is our community and support server, and it is a great place to ask questions, but it has nothing to do with joining a Relay Server. Your collaborator joins entirely inside Relay using the Share Key.
-
-### We're collaborating on a Canvas
-
-Real-time Canvas collaboration is currently a beta feature and needs to be enabled. See [Canvas multiplayer](/features/canvas-multiplayer/) for how to turn it on and what to expect.
-
-### I want to control who can see each folder
-
-By default, everyone on a Relay Server can access its Shared Folders. To limit a folder to specific people, use a Shared Folder with private access — see [Create a Shared Folder with private access](/guides/private-shared-folders/).
+For help, ask in the [Relay Discord](https://discord.relay.md). Discord is for community and support; it is not required to join a Relay Server or collaborate.
 
 ## Related guides
 
 - [Create a Shared Folder with private access](/guides/private-shared-folders/)
-- [Upgrade to Relay for teams](/guides/upgrade-to-relay-for-teams/)
-- [Canvas multiplayer](/features/canvas-multiplayer/)
+- [Upgrade to a paid plan](/guides/upgrade-to-a-paid-plan/)
+- [Collaborate on an Obsidian Canvas](/guides/collaborate-on-an-obsidian-canvas/)
 - [Introduction](/introduction/)

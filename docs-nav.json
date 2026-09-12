@@ -7,21 +7,41 @@
           "title": "Introduction",
           "slug": "introduction",
           "path": "introduction"
+        },
+        {
+          "title": "Obsidian for work",
+          "slug": "obsidian-for-work",
+          "path": "guides/obsidian-for-work"
         }
       ]
     },
     {
-      "group": "Features",
+      "group": "How Relay works",
       "pages": [
         {
-          "title": "Hosting options",
-          "slug": "hosting-options",
-          "path": "features/hosting-options"
+          "title": "Real-time multiplayer",
+          "slug": "real-time-multiplayer-vs-repurposed-file-sync",
+          "path": "how-relay-works/real-time-multiplayer-vs-repurposed-file-sync"
         },
         {
-          "title": "Canvas multiplayer",
-          "slug": "canvas-multiplayer",
-          "path": "features/canvas-multiplayer"
+          "title": "Device connections",
+          "slug": "device-connections",
+          "path": "how-relay-works/device-connections"
+        },
+        {
+          "title": "What Relay can see",
+          "slug": "what-relay-can-see",
+          "path": "how-relay-works/what-relay-can-see"
+        },
+        {
+          "title": "Attachment storage",
+          "slug": "attachment-storage",
+          "path": "how-relay-works/attachment-storage"
+        },
+        {
+          "title": "Canvas collaboration",
+          "slug": "canvas-collaboration",
+          "path": "how-relay-works/canvas-collaboration"
         }
       ]
     },
@@ -29,24 +49,39 @@
       "group": "Guides",
       "pages": [
         {
-          "title": "Invite someone to collaborate",
+          "title": "Hosting options",
+          "slug": "choose-how-to-host-relay",
+          "path": "guides/choose-how-to-host-relay"
+        },
+        {
+          "title": "Invite collaborators",
           "slug": "invite-a-collaborator",
           "path": "guides/invite-a-collaborator"
         },
         {
-          "title": "Using Relay with other sync services",
+          "title": "Create a private folder",
+          "slug": "private-shared-folders",
+          "path": "guides/private-shared-folders"
+        },
+        {
+          "title": "Collaborate on a Canvas",
+          "slug": "collaborate-on-an-obsidian-canvas",
+          "path": "guides/collaborate-on-an-obsidian-canvas"
+        },
+        {
+          "title": "Share attachments",
+          "slug": "configure-attachments-for-sharing",
+          "path": "guides/configure-attachments-for-sharing"
+        },
+        {
+          "title": "Use other sync services",
           "slug": "using-relay-with-other-sync-services",
           "path": "guides/using-relay-with-other-sync-services"
         },
         {
-          "title": "Upgrade to Relay for teams",
-          "slug": "upgrade-to-relay-for-teams",
-          "path": "guides/upgrade-to-relay-for-teams"
-        },
-        {
-          "title": "Create a Shared Folder with private access",
-          "slug": "private-shared-folders",
-          "path": "guides/private-shared-folders"
+          "title": "Back up your vault",
+          "slug": "backing-up-your-obsidian-vault",
+          "path": "guides/backing-up-your-obsidian-vault"
         },
         {
           "title": "Update Relay",
@@ -54,24 +89,14 @@
           "path": "guides/update-relay"
         },
         {
-          "title": "Install the latest Relay beta",
+          "title": "Install Relay beta",
           "slug": "install-relay-beta",
           "path": "guides/install-relay-beta"
         },
         {
-          "title": "Obsidian for work",
-          "slug": "obsidian-for-work",
-          "path": "guides/obsidian-for-work"
-        },
-        {
-          "title": "Configure attachments for sharing",
-          "slug": "configure-attachments-for-sharing",
-          "path": "guides/configure-attachments-for-sharing"
-        },
-        {
-          "title": "Backing up your Obsidian vault",
-          "slug": "backing-up-your-obsidian-vault",
-          "path": "guides/backing-up-your-obsidian-vault"
+          "title": "Upgrade your plan",
+          "slug": "upgrade-to-a-paid-plan",
+          "path": "guides/upgrade-to-a-paid-plan"
         }
       ]
     },
@@ -92,21 +117,6 @@
           "title": "Icons",
           "slug": "icons",
           "path": "user-interface/icons"
-        }
-      ]
-    },
-    {
-      "group": "How Relay works",
-      "pages": [
-        {
-          "title": "What Relay can see",
-          "slug": "what-relay-can-see",
-          "path": "how-relay-works/what-relay-can-see"
-        },
-        {
-          "title": "Real-time multiplayer vs repurposed file sync",
-          "slug": "real-time-multiplayer-vs-repurposed-file-sync",
-          "path": "how-relay-works/real-time-multiplayer-vs-repurposed-file-sync"
         }
       ]
     }

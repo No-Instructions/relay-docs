@@ -7,9 +7,7 @@ When you paste images or attach files in Obsidian, they need to be saved inside 
 
 This guide shows you how to configure Obsidian so attachments are automatically placed where Relay can sync them.
 
-> **Info: Attachment sync requires a paid plan**
->
-> Attachment sync is only available on Relay for Teams. See [Upgrade to Relay for Teams](/guides/upgrade-to-relay-for-teams/) or visit the [pricing page](https://relay.md/pricing) for details.
+Attachment sync requires storage, available through a paid Relay plan or by self-hosting a Relay Server with your own storage. See [Attachment storage](/how-relay-works/attachment-storage/) for both options.
 
 ## The issue
 

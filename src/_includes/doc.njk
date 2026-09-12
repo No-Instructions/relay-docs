@@ -12,6 +12,11 @@
 {% block content %}
 <div class="layout">
   <nav class="sidebar" aria-label="Documentation navigation">
+    <button class="docs-nav-toggle" aria-expanded="false" aria-controls="docs-nav-items">
+      <span>Browse documentation</span>
+      <svg class="docs-nav-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6" /></svg>
+    </button>
+    <div class="docs-nav-items" id="docs-nav-items">
     {% for group in navigation.groups %}
     <div class="nav-group">
       <p class="nav-group-label">{{ group.group }}</p>
@@ -27,6 +32,7 @@
       </ul>
     </div>
     {% endfor %}
+    </div>
   </nav>
 
   <main id="main" class="doc-content">
@@ -36,7 +42,7 @@
 
     {% if showToc %}
     <details class="toc-disclosure">
-      <summary>On this page</summary>
+      <summary><span>On this page</span><svg class="toc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6" /></svg></summary>
       <nav aria-label="On this page" class="toc-nav">
         {{ tocHtml | safe }}
       </nav>

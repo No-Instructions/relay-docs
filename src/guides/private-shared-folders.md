@@ -80,7 +80,7 @@ The folder appears under `Shared Folders on this Relay Server`.
 
 Select a folder first. Relay opens the folder selector in front of the share dialog, and a long folder list can hide the `Private` toggle behind it. Choose or create the local folder you want to share, then check the share dialog again.
 
-Check that you selected a Relay Server with a plan that includes private access. A paid subscription applies to one Relay Server, not to every Relay Server connected to your user account. If you upgraded a different server, switch to that server or [upgrade this Relay Server](/guides/upgrade-to-relay-for-teams/).
+Check that you selected a Relay Server with a plan that includes private access. A paid subscription applies to one Relay Server, not to every Relay Server connected to your user account. If you upgraded a different server, switch to that server or [upgrade this Relay Server](/guides/upgrade-to-a-paid-plan/).
 
 If you are on the right server and still do not see the toggle, [update the Relay plugin](/guides/update-relay/).
 
@@ -100,6 +100,6 @@ Use the Relay Server `Users` section for server-level user management. For priva
 
 ## Related guides
 
-- [Upgrade to Relay for teams](/guides/upgrade-to-relay-for-teams/)
+- [Upgrade to a paid plan](/guides/upgrade-to-a-paid-plan/)
 - [Update Relay](/guides/update-relay/)
 - [Configure attachments for sharing](/guides/configure-attachments-for-sharing/)

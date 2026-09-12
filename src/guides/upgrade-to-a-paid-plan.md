@@ -1,11 +1,11 @@
 ---
-title: Upgrade to Relay for teams
+title: Upgrade to a paid plan
 description: How to upgrade your Relay Server to a paid subscription.
 layout: doc.njk
 ---
 Relay is entirely funded by subscriptions from our users. We don't sell your data or show you advertisements. If you like what we're doing and you want to see us continue, we'd love to have your support.
 
-Relay's free tier supports up to 3 users per server. When your team grows beyond that, or when you need to sync images, PDFs, and other file types, upgrading to Relay for Teams unlocks these capabilities.
+Relay's free tier supports up to 3 users per Relay Server. Upgrade to a paid plan for larger teams or cloud storage for attachments. You can also provide attachment storage through self-hosting; see [Attachment storage](/how-relay-works/attachment-storage/) for both options.
 
 Follow these steps to upgrade your server to a paid subscription.
 
@@ -50,12 +50,7 @@ If your purchase was successful, you'll see the success screen. You can now retu
 
 ## What happens after upgrade
 
-Your Relay Server will immediately have all the features of the Team plan.
-
-- **Universal File Sync** - Sync images, PDFs, videos, and other file types (not just markdown)
-- **Increased seats**
-- **10GB attachment storage** - Binary files are stored on Relay servers and synced to all team members
-- See https://relay.md/pricing for full list
+Your Relay Server uses the user limits and cloud storage allowance of the plan you selected. See [plans and allowances](https://relay.md/pricing) for details.
 
 You can cancel your subscription at any time from your server settings.
 

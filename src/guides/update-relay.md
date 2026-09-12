@@ -3,45 +3,34 @@ title: Update Relay
 description: How to check your current Relay version and update to the latest release.
 layout: doc.njk
 ---
-Keeping Relay updated ensures you have the latest features, bug fixes, and compatibility improvements. This guide covers how to check your current version and update to the latest release.
+You can check your installed Relay version and update it from Obsidian's community plugin settings.
 
-## Check latest version
+## Check your installed version
 
-You can always find the latest Relay version at https://relay.md/relay/releases
+1. Open Obsidian **Settings**.
+2. Select **Community plugins**.
+3. Under **Installed plugins**, find **Relay** and read the version displayed beneath its name.
+
+![Relay version 0.8.12 displayed under Installed plugins in Obsidian settings.](/assets/canvas-collaboration-20260911/relay-version.png)
+*The installed version appears beneath Relay's name.*
+
+If a feature requires a later version than the one installed, check for an update using the steps below. The [Relay release notes](https://relay.md/relay/releases) describe what each release includes.
 
 ## Update the Relay plugin
 
-![](/assets/update-relay.png)
+1. Open **Settings → Community plugins**.
+2. Select **Check for updates**. This checks for available updates without installing them.
+3. Under **Installed plugins**, select **Update** next to Relay if an update is available.
+4. Check the version beneath Relay's name again to confirm the update.
 
-1. Open Obsidian settings by clicking the settings icon (gear icon) at the bottom of the left panel.
-2. Navigate to `Community plugins`. Here you can see all your installed plugins with their current version numbers.
-3. Click `Check for updates`. This scans for available updates but doesn't install them automatically.
-4. If an update is available for Relay, click `Update` next to the Relay plugin to install it.
-5. After installing an update, reload Obsidian by opening the command palette (`Cmd+P` on Mac, `Ctrl+P` on Windows/Linux) and selecting `Reload app without saving`.
+These are Obsidian's [standard community plugin update steps](https://help.obsidian.md/community-plugins#Update%20plugins). Repeat them in each vault where you use Relay.
 
-> **Tip:** Obsidian saves your work automatically every few seconds, so using "Reload app without saving" is generally safe and faster than fully restarting.
+## Troubleshoot an update
 
-![](/assets/CleanShot 2025-06-25 at 13.18.04.png)
+If the update fails, check your internet connection and try **Check for updates** again. If Relay does not work after updating, close and reopen Obsidian.
 
-## Why updates matter
+If the problem continues, [contact Relay support on Discord](https://discord.relay.md) with your Obsidian version, installed Relay version, and any error message.
 
-Staying current with Relay updates is important because:
+## Try new features early
 
-- Bug fixes: Resolves sync issues, authentication problems, and other stability improvements
-- Compatibility: Ensures Relay works properly with the latest Obsidian versions
-- New features: Access to the latest collaboration and productivity enhancements
-- Performance: Optimizations that make Relay faster and more reliable
-
-## Troubleshooting update issues
-
-If you have trouble updating or the update doesn't seem to work:
-
-1. Restart Obsidian completely: Close Obsidian entirely and reopen it
-2. Check your internet connection: Updates require downloading new files
-3. Disable and re-enable: Try disabling Relay in Community plugins, then re-enabling it
-4. Manual reinstall: Uninstall and reinstall Relay from the Community plugins directory
-
-## See also
-
-- [Install the latest Relay beta](/guides/install-relay-beta/) - Test the latest prerelease version with BRAT or a local agent
-- [Gray stack icon](/troubleshooting/stack-icon-gray/) - Fix common issues after updates
+Want the latest features before the next stable release? [Install the Relay beta](/guides/install-relay-beta/) to try them and help us test what’s coming next.

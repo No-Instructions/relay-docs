@@ -61,7 +61,7 @@ Webhooks are off by default, and they are an exit if you turn them on. A Relay S
 
 ## What about Relay cloud hosting?
 
-If you're hosting on our cloud, your data plane is on our network: your documents live on infrastructure we operate. This is the standard arrangement for cloud software like Google Docs and Notion. Because Relay isn't end-to-end encrypted, we have the technical ability to access synced content if required. We don't look at your data as a matter of [policy](https://system3.md/privacy); but we could be compelled to by a legal process. Self-hosting removes our access and it's free on [every plan](/features/hosting-options/).
+If you're hosting on our cloud, your data plane is on our network: your documents live on infrastructure we operate. This is the standard arrangement for cloud software like Google Docs and Notion. Because Relay isn't end-to-end encrypted, we have the technical ability to access synced content if required. We don't look at your data as a matter of [policy](https://system3.md/privacy); but we could be compelled to by a legal process. Self-hosting removes our access and it's free on [every plan](/guides/choose-how-to-host-relay/).
 
 ## Setting up your private network
 

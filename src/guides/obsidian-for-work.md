@@ -76,7 +76,7 @@ Relay offers two deployment options with different privacy guarantees:
 
   For exactly what data reaches which servers under each hosting option, see [What Relay can see](/how-relay-works/what-relay-can-see/). We do not offer end-to-end encryption.
 
-  See [Hosting options](/features/hosting-options/) and [Pricing](https://relay.md/pricing) for details.
+  See [Hosting options](/guides/choose-how-to-host-relay/) and [Pricing](https://relay.md/pricing) for details.
 
 ### Comments and notifications?
 

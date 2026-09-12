@@ -9,7 +9,7 @@ Relay is an Obsidian plugin for real-time multiplayer collaboration. Use the sid
 **Quick links**
 
 - [Introduction](/introduction/) — overview, quick start, key features
-- [Hosting options](/features/hosting-options/) — cloud vs self-hosted
-- [Canvas multiplayer](/features/canvas-multiplayer/) — real-time Canvas collaboration
-- [Guides](/guides/upgrade-to-relay-for-teams/) — setup, migration, and configuration
+- [Hosting options](/guides/choose-how-to-host-relay/) — cloud vs self-hosted
+- [Canvas multiplayer](/how-relay-works/canvas-collaboration/) — real-time Canvas collaboration
+- [Guides](/guides/upgrade-to-a-paid-plan/) — setup, migration, and configuration
 - [Troubleshooting](/troubleshooting/stack-icon-gray/) — common issues
