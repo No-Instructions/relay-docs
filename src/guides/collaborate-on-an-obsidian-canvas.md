@@ -8,11 +8,12 @@ Relay lets you collaborate in real time on Obsidian Canvas files in a Shared Fol
 
 Canvas collaboration is enabled by default and available on all plans, including Free. Images and other attachments require [storage](/how-relay-works/attachment-storage/) to sync.
 
-<video width="560" height="315" class="docs-video" controls playsinline preload="metadata" aria-label="Create and edit a Canvas together in two Obsidian vaults" poster="/assets/canvas-collaboration-20260911/canvas-storyboard-v14-poster.png">
-  <source src="/assets/canvas-collaboration-20260911/canvas-storyboard-v14.webm" type="video/webm">
-  <source src="/assets/canvas-collaboration-20260911/canvas-storyboard-v14.mp4" type="video/mp4">
-  <a href="/assets/canvas-collaboration-20260911/canvas-storyboard-v14.mp4">Download the short demonstration</a>.
+<video width="1408" height="792" class="docs-video" controls muted loop playsinline preload="none" data-autoplay-loop aria-label="Two collaborators edit the same Canvas, shown at twice the recorded speed" poster="/assets/canvas-collaboration-loop-20260914/canvas-collaboration-loop-poster.webp">
+  <source src="/assets/canvas-collaboration-loop-20260914/canvas-collaboration-loop.webm" type="video/webm">
+  <source src="/assets/canvas-collaboration-loop-20260914/canvas-collaboration-loop.mp4" type="video/mp4">
+  <a href="/assets/canvas-collaboration-loop-20260914/canvas-collaboration-loop.mp4">Download the collaboration demonstration</a>.
 </video>
+<script src="/assets/js/video-loop.js" defer></script>
 
 ## Prepare your shared folder
 
@@ -41,6 +42,14 @@ When you add a Canvas to the Shared Folder, everyone syncing that folder receive
 ## Check changes on both devices
 
 Ask your collaborator to check that the text, card positions, and connection appear on their Canvas. Have them move a card, then check that its new position appears on yours.
+
+## Full walkthrough: create and share a Canvas
+
+<video width="560" height="315" class="docs-video" controls playsinline preload="metadata" aria-label="Create and edit a Canvas together in two Obsidian vaults" poster="/assets/canvas-collaboration-20260911/canvas-storyboard-v14-poster.png">
+  <source src="/assets/canvas-collaboration-20260911/canvas-storyboard-v14.webm" type="video/webm">
+  <source src="/assets/canvas-collaboration-20260911/canvas-storyboard-v14.mp4" type="video/mp4">
+  <a href="/assets/canvas-collaboration-20260911/canvas-storyboard-v14.mp4">Download the full walkthrough</a>.
+</video>
 
 ## Include notes and attachments
 
