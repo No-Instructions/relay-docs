@@ -4,7 +4,7 @@ description: Share an Obsidian Canvas with your team and edit cards and connecti
 layout: doc.njk
 ---
 
-Relay lets you collaborate in real time on Obsidian Canvas files in a Shared Folder. You can edit text cards, arrange ideas, and connect cards while your collaborators work on the same Canvas.
+Relay lets you collaborate with people and agents in real time on Obsidian Canvas files. You can edit text cards, arrange ideas, and connect cards while your collaborators work on the same Canvas at the same time.
 
 Canvas collaboration is enabled by default and available on all plans, including Free. Images and other attachments require [storage](/how-relay-works/attachment-storage/) to sync.
 
@@ -15,35 +15,22 @@ Canvas collaboration is enabled by default and available on all plans, including
 </video>
 <script src="/assets/js/video-loop.js" defer></script>
 
-## Prepare your shared folder
+## Quickstart
 
-You and your collaborator each need Obsidian with Relay 0.8.12 or later installed. Before you start, [check your installed version and update Relay if needed](/guides/update-relay/).
+If you already share a folder with your collaborator:
 
-You both need access to the same Shared Folder. Each person must add that folder to their own vault; joining the Relay Server alone does not add its folders.
+1. [Update Relay](/guides/update-relay/) on both devices if needed. Canvas collaboration requires Relay 0.8.12 or later.
+2. Create a new Canvas in that Shared Folder, or drag an existing `.canvas` file into it using Obsidian’s file explorer.
 
-For setup instructions, see [Invite someone to collaborate](/guides/invite-a-collaborator/).
-
-## Open the Canvas together
-
-To find the folder you share, open **Settings → Relay**, select your Relay Server, then open its Shared Folder. Both people must have added that folder to their vaults before continuing.
-
-When you add a Canvas to the Shared Folder, everyone syncing that folder receives it automatically. You don't need a separate invitation for the Canvas.
-
-1. Create a new Canvas in your Shared Folder, or drag an existing `.canvas` file into it using Obsidian’s file explorer.
-2. Ask your collaborator to open that Canvas from their copy of the Shared Folder.
-3. Look for your avatars on the right of the Canvas to see who is there.
-4. To add a text card, double-click an empty area of the Canvas and type in it.
-5. Ask your collaborator to add a second text card.
-6. To connect the cards, hover over a card's edge and drag its connector circle to the other card.
-
-![Three connected text cards in a Shared Folder, with both collaborators’ avatars outlined on the right.](/assets/canvas-collaboration-20260911/canvas-two-avatars-v7.png)
-*The Canvas is inside the Shared Folder. Both collaborators’ avatars are highlighted on the right.*
-
-## Check changes on both devices
-
-Ask your collaborator to check that the text, card positions, and connection appear on their Canvas. Have them move a card, then check that its new position appears on yours.
+Everyone syncing that folder receives the Canvas automatically. Open it together and start editing; you don't need a separate invitation for the Canvas.
 
 ## Full walkthrough: create and share a Canvas
+
+### Prepare your shared folder
+
+Each person needs Obsidian with Relay installed and access to the same Shared Folder. For installation, creating a Relay Server, and sharing a local folder, follow the [Relay quick start](/introduction/#quick-start).
+
+[Invite your collaborator](/guides/invite-a-collaborator/#invite-your-collaborator), then have them [join the server and add the Shared Folder to their vault](/guides/invite-a-collaborator/#your-collaborator-joins). Joining the server alone does not add its folders.
 
 <video width="560" height="315" class="docs-video" controls playsinline preload="metadata" aria-label="Create and edit a Canvas together in two Obsidian vaults" poster="/assets/canvas-collaboration-20260911/canvas-storyboard-v14-poster.png">
   <source src="/assets/canvas-collaboration-20260911/canvas-storyboard-v14.webm" type="video/webm">
@@ -51,13 +38,21 @@ Ask your collaborator to check that the text, card positions, and connection app
   <a href="/assets/canvas-collaboration-20260911/canvas-storyboard-v14.mp4">Download the full walkthrough</a>.
 </video>
 
+### Open the Canvas together
+
+Create a Canvas inside the Shared Folder, or move an existing Canvas into it.
+
+Ask your collaborator to open the Canvas from their copy of the Shared Folder. Look for your avatars on the right of the Canvas to see who is there.
+
+To add a text card, double-click an empty area of the Canvas and type. To connect two cards, hover over a card's edge and drag its connector circle to the other card. For more Canvas controls, see [Obsidian’s Canvas guide](https://obsidian.md/help/plugins/canvas).
+
 ## Include notes and attachments
 
 To share a note through a Canvas, keep the note inside the Shared Folder too. Referencing a file from the Canvas does not share a file elsewhere in your vault.
 
 To sync images or other attachments, put them inside the Shared Folder and make sure the folder has storage available. For attachment-location settings, see [Configure attachments for sharing](/guides/configure-attachments-for-sharing/).
 
-## Check missing content
+## Troubleshooting
 
 If your collaborator cannot find the Canvas, check that the `.canvas` file is inside the Shared Folder and that both people have added that folder to their vaults.
 
