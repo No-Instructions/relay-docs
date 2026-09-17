@@ -1163,6 +1163,8 @@ body.no-toc .layout {
 .docs-nav-toggle { display: none; }
 @media (max-width: 768px) {
   .docs-nav-toggle { display: flex; align-items: center; justify-content: space-between; gap: .75rem; width: 100%; min-height: 44px; text-align: left; padding: .75rem .5rem; color: inherit; background: none; border: 0; border-radius: var(--radius); font: inherit; font-weight: 500; cursor: pointer; }
+  .docs-nav-label { display: inline-flex; align-items: center; gap: .625rem; }
+  .docs-nav-menu-icon { flex: none; }
   .docs-nav-toggle:hover { background: var(--color-active-bg); }
   .docs-nav-toggle:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
   .docs-nav-chevron { flex-shrink: 0; transition: transform 150ms ease; }
