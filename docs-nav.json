@@ -49,49 +49,79 @@
       "group": "Guides",
       "pages": [
         {
-          "title": "Hosting options",
-          "slug": "choose-how-to-host-relay",
-          "path": "guides/choose-how-to-host-relay"
+          "title": "Set up Relay",
+          "children": [
+            {
+              "title": "Choose hosting",
+              "slug": "choose-how-to-host-relay",
+              "path": "guides/choose-how-to-host-relay"
+            },
+            {
+              "title": "Share a folder",
+              "slug": "share-a-folder",
+              "path": "guides/share-a-folder"
+            },
+            {
+              "title": "Invite collaborators",
+              "slug": "invite-a-collaborator",
+              "path": "guides/invite-a-collaborator"
+            }
+          ]
         },
         {
-          "title": "Invite collaborators",
-          "slug": "invite-a-collaborator",
-          "path": "guides/invite-a-collaborator"
+          "title": "Collaborate",
+          "children": [
+            {
+              "title": "Collaborate on a Canvas",
+              "slug": "collaborate-on-an-obsidian-canvas",
+              "path": "guides/collaborate-on-an-obsidian-canvas"
+            },
+            {
+              "title": "Share attachments",
+              "slug": "configure-attachments-for-sharing",
+              "path": "guides/configure-attachments-for-sharing"
+            }
+          ]
         },
         {
-          "title": "Create a private folder",
-          "slug": "private-shared-folders",
-          "path": "guides/private-shared-folders"
+          "title": "Manage access",
+          "children": [
+            {
+              "title": "Create a private folder",
+              "slug": "private-shared-folders",
+              "path": "guides/private-shared-folders"
+            }
+          ]
         },
         {
-          "title": "Collaborate on a Canvas",
-          "slug": "collaborate-on-an-obsidian-canvas",
-          "path": "guides/collaborate-on-an-obsidian-canvas"
-        },
-        {
-          "title": "Share attachments",
-          "slug": "configure-attachments-for-sharing",
-          "path": "guides/configure-attachments-for-sharing"
-        },
-        {
-          "title": "Use other sync services",
-          "slug": "using-relay-with-other-sync-services",
-          "path": "guides/using-relay-with-other-sync-services"
-        },
-        {
-          "title": "Back up your vault",
-          "slug": "backing-up-your-obsidian-vault",
-          "path": "guides/backing-up-your-obsidian-vault"
-        },
-        {
-          "title": "Update Relay",
-          "slug": "update-relay",
-          "path": "guides/update-relay"
-        },
-        {
-          "title": "Install Relay beta",
-          "slug": "install-relay-beta",
-          "path": "guides/install-relay-beta"
+          "title": "Maintain your setup",
+          "children": [
+            {
+              "title": "Back up your vault",
+              "slug": "backing-up-your-obsidian-vault",
+              "path": "guides/backing-up-your-obsidian-vault"
+            },
+            {
+              "title": "Use other sync services",
+              "slug": "using-relay-with-other-sync-services",
+              "path": "guides/using-relay-with-other-sync-services"
+            },
+            {
+              "title": "Update Relay",
+              "slug": "update-relay",
+              "path": "guides/update-relay"
+            },
+            {
+              "title": "Install Relay beta",
+              "slug": "install-relay-beta",
+              "path": "guides/install-relay-beta"
+            },
+            {
+              "title": "Delete a Shared Folder",
+              "slug": "delete-a-shared-folder",
+              "path": "guides/delete-a-shared-folder"
+            }
+          ]
         },
         {
           "title": "Upgrade your plan",
@@ -104,14 +134,24 @@
       "group": "Troubleshooting",
       "pages": [
         {
-          "title": "Stack icon is gray",
+          "title": "Resolve local conflicts",
+          "slug": "resolve-local-conflicts",
+          "path": "guides/resolve-local-conflicts"
+        },
+        {
+          "title": "Conflict backlog",
+          "slug": "resolve-a-backlog-of-local-conflicts",
+          "path": "guides/resolve-a-backlog-of-local-conflicts"
+        },
+        {
+          "title": "Local conflicts",
           "slug": "stack-icon-gray",
           "path": "troubleshooting/stack-icon-gray"
         }
       ]
     },
     {
-      "group": "User interface",
+      "group": "Reference",
       "pages": [
         {
           "title": "Icons",

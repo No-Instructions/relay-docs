@@ -11,6 +11,7 @@
 const fs = require('fs');
 const path = require('path');
 
+const { leaves } = require('./nav-pages.js');
 const ROOT = __dirname;
 const SITE_DIR = path.join(ROOT, '_site');
 const SITE_URL = 'https://docs.relay.md';
@@ -76,7 +77,7 @@ function generateLlmsTxt() {
   const pageLines = [];
 
   for (const group of nav.groups) {
-    for (const page of group.pages) {
+    for (const page of leaves(group.pages)) {
       const htmlFile = path.join(SITE_DIR, page.path, 'index.html');
       if (!fs.existsSync(htmlFile)) continue;
       const html = fs.readFileSync(htmlFile, 'utf-8');

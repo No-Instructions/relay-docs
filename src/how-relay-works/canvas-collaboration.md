@@ -14,8 +14,10 @@ To try it with someone, see [collaborate on an Obsidian Canvas](/guides/collabor
 
 A `.canvas` file stores the board as readable JSON. Cards are entries in a `nodes` list, and connections are entries in an `edges` list. Each has an ID; a connection identifies the cards at its two ends by their IDs.
 
-![Two connected Canvas cards headed Each card is a node and Each connection is an edge, with smaller instructions beneath.](/assets/canvas-collaboration-20260911/canvas-nodes-and-edge-v3.png)
-*Each card has its own ID; the connection refers to those IDs.*
+<figure>
+  <img src="/assets/canvas-collaboration-20260911/canvas-nodes-and-edge-v3.png" alt="Two connected Canvas cards headed Each card is a node and Each connection is an edge, with smaller instructions beneath.">
+  <figcaption>Each card has its own ID; the connection refers to those IDs.</figcaption>
+</figure>
 
 This Canvas is stored as two nodes and one edge:
 

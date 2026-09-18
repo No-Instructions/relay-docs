@@ -23,10 +23,18 @@
       <ul>
         {% for item in group.pages %}
         <li>
-          <a href="/{{ item.path }}/"
-             {% if page.url == "/" + item.path + "/" %}class="active"{% endif %}>
-            {{ item.title }}
-          </a>
+          {% if item.children %}
+          <details class="nav-subgroup"{% if page.url in item.urls %} open{% endif %}>
+            <summary>{{ item.title }}</summary>
+            <ul>
+              {% for child in item.children %}
+              <li><a href="/{{ child.path }}/"{% if page.url == "/" + child.path + "/" %} class="active" aria-current="page"{% endif %}>{{ child.title }}</a></li>
+              {% endfor %}
+            </ul>
+          </details>
+          {% else %}
+          <a href="/{{ item.path }}/"{% if page.url == "/" + item.path + "/" %} class="active" aria-current="page"{% endif %}>{{ item.title }}</a>
+          {% endif %}
         </li>
         {% endfor %}
       </ul>

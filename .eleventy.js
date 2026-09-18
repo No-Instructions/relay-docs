@@ -4,7 +4,13 @@ const anchor = require('markdown-it-anchor');
 const pluginTOC = require('eleventy-plugin-nesting-toc');
 const Toc = require('eleventy-plugin-nesting-toc/toc');
 
+const { decorateExternalLinks } = require('./external-links');
+
 module.exports = function (eleventyConfig) {
+  eleventyConfig.addTransform('external-doc-links', function (html) {
+    if (!this.page.outputPath || !this.page.outputPath.endsWith('.html')) return html;
+    return decorateExternalLinks(html, { previewOrigin: process.env.DOCS_PREVIEW_ORIGIN });
+  });
   eleventyConfig.addGlobalData('stylesVersion', () =>
     createHash('sha256').update(readFileSync('styles.css')).digest('hex').slice(0, 12)
   );

@@ -11,8 +11,10 @@ You can check your installed Relay version and update it from Obsidian's communi
 2. Select **Community plugins**.
 3. Under **Installed plugins**, find **Relay** and read the version displayed beneath its name.
 
-![Relay version 0.8.12 displayed under Installed plugins in Obsidian settings.](/assets/canvas-collaboration-20260911/relay-version.png)
-*The installed version appears beneath Relay's name.*
+<figure>
+  <img src="/assets/canvas-collaboration-20260911/relay-version.png" alt="Relay version 0.8.12 displayed under Installed plugins in Obsidian settings.">
+  <figcaption>The installed version appears beneath Relay's name.</figcaption>
+</figure>
 
 If a feature requires a later version than the one installed, check for an update using the steps below. The [Relay release notes](https://relay.md/relay/releases) describe what each release includes.
 

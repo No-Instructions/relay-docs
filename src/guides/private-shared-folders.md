@@ -30,9 +30,10 @@ This video shows how to create a Shared Folder with private access in Relay sett
 
 Open Relay settings in Obsidian and select a Relay Server that has a plan with private access.
 
-![](/assets/private-shared-folders/private-shared-folder-01-paid-relay.png)
-
-*Private access for Shared Folders is enabled per paid Relay Server, not globally on your account.*
+<figure>
+  <img src="/assets/private-shared-folders/private-shared-folder-01-paid-relay.png" alt="">
+  <figcaption>Private access for Shared Folders is enabled per paid Relay Server, not globally on your account.</figcaption>
+</figure>
 
 ### 2. Click `Share local folder`
 
@@ -40,9 +41,10 @@ In the Relay Server settings, click `Share local folder`.
 
 Relay opens the folder selector first. The private access controls are behind this selector, and they may be hidden if your folder list is long. Choose or create the folder you want to share before looking for the `Private` toggle.
 
-![](/assets/private-shared-folders/private-shared-folder-02-folder-selector.png)
-
-*The folder selector appears in front of the share dialog. Select the folder first.*
+<figure>
+  <img src="/assets/private-shared-folders/private-shared-folder-02-folder-selector.png" alt="">
+  <figcaption>The folder selector appears in front of the share dialog. Select the folder first.</figcaption>
+</figure>
 
 ### 3. Turn on `Private`
 
@@ -50,9 +52,10 @@ After selecting the folder, turn on `Private`.
 
 When `Private` is on, only selected Relay Server users can access this Shared Folder.
 
-![](/assets/private-shared-folders/private-shared-folder-03-private-toggle.png)
-
-*The `Private` toggle appears after the folder is selected.*
+<figure>
+  <img src="/assets/private-shared-folders/private-shared-folder-03-private-toggle.png" alt="">
+  <figcaption>The <code>Private</code> toggle appears after the folder is selected.</figcaption>
+</figure>
 
 ### 4. Add the users who should have access
 
@@ -60,9 +63,10 @@ Click `Add Users`, then select the users who should be able to access the Shared
 
 Relay adds you automatically as the Shared Folder owner. Select the other Relay Server users who should have access.
 
-![](/assets/private-shared-folders/private-shared-folder-04-add-users.png)
-
-*Select the Relay Server users who should have access to the folder.*
+<figure>
+  <img src="/assets/private-shared-folders/private-shared-folder-04-add-users.png" alt="">
+  <figcaption>Select the Relay Server users who should have access to the folder.</figcaption>
+</figure>
 
 ### 5. Click `Share`
 
@@ -70,9 +74,10 @@ Click `Share` to create the Shared Folder.
 
 The folder appears under `Shared Folders on this Relay Server`.
 
-![](/assets/private-shared-folders/private-shared-folder-05-folder-shared.png)
-
-*The Shared Folder appears on the Relay Server after sharing.*
+<figure>
+  <img src="/assets/private-shared-folders/private-shared-folder-05-folder-shared.png" alt="">
+  <figcaption>The Shared Folder appears on the Relay Server after sharing.</figcaption>
+</figure>
 
 ## Troubleshooting
 
