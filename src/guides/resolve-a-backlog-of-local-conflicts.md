@@ -65,7 +65,7 @@ If the local folder has everything you want to keep, you can use it to create a 
 4. **Check that the new Shared Folder works.** Compare its notes and attachments with your backup, then confirm that edits sync between collaborators and devices. Check the replacement on every device before retiring the old folder.
 5. **Retire the old Shared Folder.** Once everyone has checked the replacement, [delete the old Shared Folder from the Relay Server](/guides/delete-a-shared-folder/#delete-the-folder-from-a-relay-server). Then, on every device, archive or delete the old local folder.
 
-<!-- Replacement procedure source-reviewed against immutable release22c2aa8 and currentd9bce2a; no end-to-end runtime test performed. Detailed evidence: deletion-research/replacement-evidence.md in91 handoff. -->
+
 
 ## Related guides
 

@@ -20,7 +20,7 @@ For images, PDFs, and other attachments, check the [attachment storage requireme
 4. In **Choose or create folder...**, find and select the folder from your vault.
 5. If a **Share local folder** dialog remains open, leave **Private** off and click **Share**.
 
-<!-- MEASURED: retained Relay 0.8.12, 2026-09-17, native Share local folder > selection > remote row. Conditional confirmation supported by ShareFolderModalContent.svelte; not exercised on this free-server run. Evidence in thr_p74bnm3v82/share-folder. -->
+
 
 ## Check the result
 

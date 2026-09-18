@@ -142,6 +142,22 @@ function checkInternalLinks(htmlFile, html) {
   return errors;
 }
 
+// Authoring evidence belongs in private page records, never served HTML comments.
+function checkInternalEvidence(htmlFile, html) {
+  const { load } = require('cheerio');
+  const $ = load(html);
+  const errors = [];
+  const marker = /^\s*(?:MEASURED|OPEN|REPORTED|SOURCE|VERIFIED)\s*[:\u2014-]|\bthr_[a-z0-9]+\b|\.bb\/thread-storage|\/Users\/[^/]+\/|\/private\/tmp\/|\b(?:Detailed evidence|Evidence in)\b/i;
+  function visit(node) {
+    if (node.type === 'comment' && marker.test(node.data)) {
+      errors.push(`${path.relative(SITE_DIR, htmlFile)}: internal authoring evidence in HTML comment`);
+    }
+    for (const child of node.children || []) visit(child);
+  }
+  visit($.root()[0]);
+  return errors;
+}
+
 function checkNavCoverage(htmlFiles) {
   const errors = [];
 
@@ -179,6 +195,7 @@ function main() {
   for (const htmlFile of htmlFiles) {
     const html = fs.readFileSync(htmlFile, 'utf-8');
     errors.push(...checkMeta(htmlFile, html));
+    errors.push(...checkInternalEvidence(htmlFile, html));
     errors.push(...checkInternalLinks(htmlFile, html));
   }
 
@@ -198,4 +215,5 @@ function main() {
   console.log(`  Internal links: OK.`);
 }
 
-main();
+if (require.main === module) main();
+module.exports = { checkInternalEvidence };
