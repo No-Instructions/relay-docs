@@ -1008,6 +1008,11 @@ body.no-toc .layout {
   font-size: 0.8125rem;
 }
 
+.toc-rail .toc ol ol ol a,
+.toc-disclosure .toc ol ol ol a {
+  padding-left: 2.5rem;
+}
+
 .toc-rail .toc a:hover,
 .toc-disclosure .toc a:hover {
   color: var(--color-text);

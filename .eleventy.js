@@ -31,7 +31,7 @@ module.exports = function (eleventyConfig) {
   // manual <h2 id="..."> anchors in guides/install-relay-beta.md survive.
   eleventyConfig.amendLibrary('md', (md) =>
     md.use(anchor, {
-      level: [2, 3],
+      level: [2, 3, 4],
       permalink: false,
       slugify: (s) =>
         s
@@ -48,7 +48,7 @@ module.exports = function (eleventyConfig) {
   // landmark gets a stable name — the plugin does not support
   // wrapperLabel, so the template owns the landmark.
   eleventyConfig.addPlugin(pluginTOC, {
-    tags: ['h2', 'h3'],
+    tags: ['h2', 'h3', 'h4'],
     wrapper: 'div',
     wrapperClass: 'toc',
     headingText: '',
@@ -71,7 +71,7 @@ module.exports = function (eleventyConfig) {
   }
   eleventyConfig.addFilter('tocEntryCount', (content) => {
     if (!content || typeof content !== 'string') return 0;
-    const t = new Toc(content, { tags: ['h2', 'h3'] });
+    const t = new Toc(content, { tags: ['h2', 'h3', 'h4'] });
     return countAllTocNodes(t.get());
   });
 

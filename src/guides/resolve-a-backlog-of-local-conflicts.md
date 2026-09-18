@@ -46,7 +46,7 @@ Give your agent the following request, replacing the vault name:
 If you have many conflicts and want to use the server’s copy instead of resolving each note individually, you can remove this device’s copy and download it again.
 
 1. Make sure your [backup](/guides/backing-up-your-obsidian-vault/) includes the latest contents of the local folder, including edits that haven’t synced up.
-2. [Remove the Shared Folder from this device](/guides/delete-a-shared-folder/#delete-the-folder-from-your-vault). Leave the server's copy intact.
+2. [Remove the Shared Folder from this device](/guides/delete-folders-and-notes/#remove-this-devices-copy-of-the-shared-folder). Leave the server's copy intact.
 
    Do not use *Delete from Relay Server* — that option removes the Shared Folder from the server. Use **Delete from vault** for this procedure.
 
@@ -63,7 +63,7 @@ If the local folder has everything you want to keep, you can use it to create a 
 2. **Make the copy a Shared Folder.** Follow [Share a folder](/guides/share-a-folder/) to share the copied folder on your Relay Server. Set up private access again if needed.
 3. **Have everyone add the new Shared Folder.** Each collaborator and device must [add that same new Shared Folder to their vault](/guides/invite-a-collaborator/#3-add-the-shared-folder-to-the-vault), including your other devices. Share the copy only once; everyone else adds it from the server.
 4. **Check that the new Shared Folder works.** Compare its notes and attachments with your backup, then confirm that edits sync between collaborators and devices. Check the replacement on every device before retiring the old folder.
-5. **Retire the old Shared Folder.** Once everyone has checked the replacement, [delete the old Shared Folder from the Relay Server](/guides/delete-a-shared-folder/#delete-the-folder-from-a-relay-server). Then, on every device, archive or delete the old local folder.
+5. **Retire the old Shared Folder.** Once everyone has checked the replacement, [delete the old Shared Folder from the Relay Server](/guides/delete-folders-and-notes/#end-collaboration-on-this-shared-folder-for-everyone). Then, on every device, archive or delete the old local folder.
 
 
 
@@ -72,6 +72,6 @@ If the local folder has everything you want to keep, you can use it to create a 
 - [Troubleshooting local conflicts](/guides/resolve-local-conflicts/#troubleshooting)
 - [Resolve local conflicts](/guides/resolve-local-conflicts/)
 - [Back up your Obsidian vault](/guides/backing-up-your-obsidian-vault/)
-- [Delete a Shared Folder](/guides/delete-a-shared-folder/)
+- [Delete a Shared Folder](/guides/delete-folders-and-notes/)
 - [Share a folder](/guides/share-a-folder/)
 - [Invite a collaborator](/guides/invite-a-collaborator/)
