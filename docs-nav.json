@@ -52,6 +52,11 @@
           "title": "Set up Relay",
           "children": [
             {
+              "title": "Open Relay settings",
+              "slug": "open-relay-settings",
+              "path": "guides/open-relay-settings"
+            },
+            {
               "title": "Choose hosting",
               "slug": "choose-how-to-host-relay",
               "path": "guides/choose-how-to-host-relay"
@@ -90,6 +95,16 @@
               "title": "Create a private folder",
               "slug": "private-shared-folders",
               "path": "guides/private-shared-folders"
+            },
+            {
+              "title": "Remove a user",
+              "slug": "remove-a-user",
+              "path": "guides/remove-a-user"
+            },
+            {
+              "title": "Rotate a share key",
+              "slug": "rotate-a-share-key",
+              "path": "guides/rotate-a-share-key"
             }
           ]
         },
