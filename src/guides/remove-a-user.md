@@ -65,7 +65,9 @@ Rotating a key does not remove existing members. Give the replacement key only t
 
 Removal does not erase the person's local files. A copy remaining on their device is expected and does not by itself mean they still receive updates.
 
-## Find missing controls
+<span id="find-missing-controls"></span>
+
+## Troubleshooting
 
 If the edit icon is missing, check your role on that Relay Server. The user-management controls are available to Owners. If you are a Member, ask an Owner to remove the person.
 
