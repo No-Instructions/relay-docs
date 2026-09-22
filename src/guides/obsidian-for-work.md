@@ -11,7 +11,7 @@ There are significant advantages to using Obsidian+Relay over traditional tools 
 
   - You get the tool you love, but your team needs to learn it (vs everyone knows Google Docs)
   - You get the power and flexibility of local files, but you make more decisions
-  - You can get total privacy with self-hosting, but that requires setup (vs cloud is instant)
+  - You keep your documents on hardware you control with self-hosting, but that requires setup (vs cloud is instant)
 
 This guide explains what you need to know.
 
@@ -51,42 +51,39 @@ Whether you're offline or not, Relay tracks every change as an operation and sto
 
 CRDTs are 'conflict-free' in the technical sense — they make all merges automatically — but they can't resolve social disagreements.
 
-For example: suppose you and your partner have a shopping list containing "milk". While offline, you specify "oat" while your partner specifies "almond". When you come back online you'll get something like "oatalmond milk." Changes merged automatically and you're guaranteed to see the same document — but you'll have to resolve the milk decision socially.
+For example: suppose a project brief says "Deadline: Friday". While offline, you change it to "Thursday" while a teammate changes it to "Monday". When you come back online you'll get something like "Deadline: ThursdayMonday". Changes merged automatically and you're guaranteed to see the same document — but you'll have to settle the deadline with your teammate.
 
-One other conflict type: if you edit files on disk while Relay isn't running, Relay will ask what to do when it notices the difference.
+Files can also change on disk while Relay isn't running, for example from Claude Code or a local script. When Relay starts again, it detects the changed file, works out what changed since the version everyone last agreed on, and merges that with your collaborators' edits. In the rare case when the file on disk and a collaborator changed the same lines in different ways, Relay marks the note with a local conflict and asks you to choose what to keep. See [Resolve local conflicts](/guides/resolve-local-conflicts/).
 
 ### What about version history?
 
-These are local files. We recommend you use Git for version history. The Git plugin for Obsidian is excellent and can be set to commit every five minutes. In addition, Obsidian has a core File Recovery plugin that can be used to recover past versions of a file.
+These are local files. We recommend you use Git for version history. The Git plugin for Obsidian is excellent and can be set to commit every five minutes. In addition, Obsidian has a core File Recovery plugin that can be used to recover past versions of a file. For backup options, see [Back up your Obsidian vault](/guides/backing-up-your-obsidian-vault/).
 
 ### Is it private? Is it secure? Can I self-host?
 
-Obsidian alone is private — like a house with no windows or doors. Add collaboration and you need a server to coordinate edits. That server introduces questions: who controls it? Are they trustworthy? What can they see if trust isn't enough?
+Obsidian alone is private — like a house with no windows or doors. Add collaboration and that changes: your edits need a way to reach your teammates, and each teammate keeps a copy of the shared notes on their own machine. Relay uses a server to pass edits between those copies. So the questions apply to the server and to your teammates' machines alike: who controls them? Are they trustworthy? What can they see if trust isn't enough?
 
-Relay offers two deployment options with different privacy guarantees:
+Relay is built to be self-hosted, and self-hosting is free on every plan. If you'd rather not run a server, we can host it for you.
+
+  Self-hosted
+  - Your Relay Server runs on your private network, so document content never touches our servers — we couldn't see it if we wanted to
+  - Relay isn't end-to-end encrypted, so the server that can read your documents still exists; with self-hosting, that server is yours
+  - Our control plane sees limited metadata: accounts, permissions, and folder membership
+  - You set up and maintain the server
 
   Cloud (we host)
   - Fastest setup
-  - Our company could see your data if compelled to by a court. This has never happened. We do not read, sell, or train on your data.
+  - Your document content moves through our servers, like any traditional SaaS service
 
-  Hybrid (you host relay server, we host identity)
-  - Your Relay Server runs on your private network, so document content never touches our servers — we couldn't see it if we wanted to
-  - We see limited metadata
-  - Good for teams wanting privacy guarantees
-
-  For exactly what data reaches which servers under each hosting option, see [What Relay can see](/how-relay-works/what-relay-can-see/). We do not offer end-to-end encryption.
+  For exactly what data reaches which servers under each hosting option, see [What Relay can see](/how-relay-works/what-relay-can-see/).
 
   See [Hosting options](/guides/choose-how-to-host-relay/) and [Pricing](https://relay.md/pricing) for details.
 
 ### Comments and notifications?
 
-Obsidian doesn't have native comments or notifications. This is part of the flexibility tradeoff — you get more power but need to figure out your own solutions. You can use plugins, write custom scripts, or simply develop team social protocols that work for you.
+For comments, use [Relay Comments](https://github.com/No-Instructions/Relay-Comments), in beta. Select text and add a comment, reply in a thread, or suggest edits that the author can accept or reject. Comments are stored in the note itself as plain CriticMarkup, so they sync with the note and stay readable in any editor.
 
-For comments: Because files are markdown, you can create whatever system works for you. Internally at System 3, we use hotkeys to insert tags with highlighting:
-
-==@Matt at 2025-10-15 Wed 05:15pm: This is a comment==
-
-For notifications: We handle this socially. If someone updates a doc and wants it seen, they ping in Slack or add a line to the next day's standup agenda. It works well for us and minimizes notification spam. Teams can also create custom file watchers and Slack or Discord bots.
+Obsidian doesn't have native notifications. We handle this socially: if someone updates a doc and wants it seen, they ping in Slack or add a line to the next day's standup agenda. Individuals can also have a local coding agent set up file watchers and alerts.
 
 ### Task and project management?
 
@@ -96,7 +93,7 @@ But if task management is your primary need, you might still use a dedicated too
 
 ### Cost
 
-Relay has a free plan, but most business users will want to use the product on one of our paid tiers. See our [pricing page](https://relay.md/pricing) for details on our plans.
+Relay has a free plan, and paid plans for larger teams. See our [pricing page](https://relay.md/pricing) for details.
 
 ### Try Relay
 
