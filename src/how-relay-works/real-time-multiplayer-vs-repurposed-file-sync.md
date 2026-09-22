@@ -32,7 +32,7 @@ The fundamental difference is how each handles conflicts arising from concurrent
 Relay uses CRDTs (Conflict-free Replicated Data Types) — a data structure designed specifically for merging concurrent edits. When two people type in the same paragraph:
 
 1. Each keystroke is captured as an *update operation* with metadata (position, timestamp, user)
-2. Operations are sent up instantly to the central Relay servers, then relayed on to collaborators the next time they are online
+2. Operations are sent to your Relay Server, self-hosted or Relay-hosted, then relayed on to collaborators the next time they are online
 3. On the collaborators' side, Relay processes the operations and from them replicates the document locally
 4. Everyone sees the same final result
 
@@ -50,4 +50,4 @@ For knowledge work teams, a great setup uses all three:
 - **Relay** for Real-time multiplayer and active collaboration
 - **Git** for version history and backup
 
-Relay offers a Git sync feature so that your Relay Server can automatically update eg a GitHub repo every time someone makes an edit. This is a paid feature.
+Relay also offers Git sync, which keeps a Git repository such as GitHub updated from your Relay Server. It's included in the [Premium plan](https://relay.md/pricing).
