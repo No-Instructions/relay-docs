@@ -89,8 +89,6 @@ Obsidian doesn't have native notifications. We handle this socially: if someone 
 
 With plugins like TaskNotes, Dataview, and Bases, some teams manage projects entirely in Obsidian.
 
-But if task management is your primary need, you might still use a dedicated tool like Asana or Linear. Obsidian's strength is networked thinking and knowledge management. Task workflows are quickly improving, but still require considerable attention to set up.
-
 ### Cost
 
 Relay has a free plan, and paid plans for larger teams. See our [pricing page](https://relay.md/pricing) for details.
