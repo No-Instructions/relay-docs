@@ -157,11 +157,6 @@
           "title": "Conflict backlog",
           "slug": "resolve-a-backlog-of-local-conflicts",
           "path": "guides/resolve-a-backlog-of-local-conflicts"
-        },
-        {
-          "title": "Local conflicts",
-          "slug": "stack-icon-gray",
-          "path": "troubleshooting/stack-icon-gray"
         }
       ]
     },

@@ -1,55 +1,104 @@
 ---
-title: Understanding Relay's UI icons
-description: Relay adds several icons to your Obsidian interface to give you status information and quick access to controls.
+title: Relay UI icons
+description: Identify Relay’s note tracking, connection, external file, and settings icons in Obsidian.
 layout: doc.njk
 ---
-Relay adds several icons to your Obsidian interface to give you important status information and quick access to controls.
+Relay’s icons show note tracking and connection status and provide access to sync controls and settings.
 
-![](/assets/relay-ui-icons.png)
 
-## Stack icons (1, 3)
+## Stack icons
 
-The stack icons tell you whether or not Relay is successfully tracking changes to your files.
+Relay keeps a local record of edits to each shared note. The stack icon in the note header shows whether Relay is recording your edits.
 
-On your local machine, Relay works by making sure three things stay in sync:
+<figure style="max-width:305px">
+  <svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Note header controls: a purple stack, a purple satellite, a book, and a three-dot menu." viewBox="0 0 305 130" style="display:block;width:100%;max-width:305px;height:auto">
+    <image href="/assets/icons/note-header-detail.png" x="0" y="40" width="305" height="90"/>
+    <path d="M 94 8 L 67.63 60.74 M 67.18 48.22 L 67.63 60.74 L 77.91 53.59" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 94 8 L 67.63 60.74 M 67.18 48.22 L 67.63 60.74 L 77.91 53.59" fill="none" stroke="#075ee8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <figcaption>The stack is the leftmost icon in the note header.</figcaption>
+</figure>
 
-- the content you see in your Obsidian editor
-- the content stored on your hard disk
-- the content in your database of CRDT updates
+- Colored: Relay is recording your edits in its local CRDT record.
+- Gray: Relay is not tracking edits in the open note. The icon can turn gray briefly while the note loads or Relay merges changes.
 
-When Relay is successfully tracking updates in the editor and storing them in the CRDT database, the stack icon will be colored to indicate that Relay is tracking. This is the foundation of Relay's [true multiplayer](/how-relay-works/real-time-multiplayer-vs-repurposed-file-sync/) system.
+If the **Merge conflict -- click to resolve** banner appears, click it to resolve the conflict. If the stack icon stays gray without a banner, open Obsidian’s command palette and run **Relay: Show sync status: [folder name]** to inspect the folder’s status.
 
-If these three things fall out of sync, a problem has occurred, and the stack icons will turn gray.
+In the **Sync status** sidebar, look under **Conflicts** for notes that need attention. For the steps, see [Find other notes with conflicts](/guides/resolve-local-conflicts/#find-other-notes-with-conflicts).
 
-- Colored stack icon = Good. Relay is tracking your changes at the keystroke level and maintaining them in your local CRDT update database.
-- Gray stack icon = Problem. Relay is not able to track your changes properly. See [Gray stack icon troubleshooting](/troubleshooting/stack-icon-gray/).
-- No stack icon = This note is not in a Shared Folder, or it's a file type that Relay doesn't support for CRDT tracking, or there's a problem.
+An unresolved local conflict keeps the icon gray while the banner is shown or the conflict is open. For Markdown notes, Relay also marks the note in Obsidian’s file explorer with a dot in your theme’s warning color.
 
-The icon in the note (3, in the diagram above) gives you status about the current note, and the icon in the folder tree (1 above) gives you status of the Shared Folder as a whole.
+<figure>
+  <svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The note Check conflict indicators has an orange dot at the right of its row in Obsidian’s file explorer." viewBox="0 0 552 92" style="display:block;width:100%;max-width:552px;height:auto">
+    <image href="/assets/icons/conflict-dot.png" x="0" y="40" width="552" height="52"/>
+    <path d="M 480 8 L 510.33 54.29 M 499.28 48.38 L 510.33 54.29 L 509.32 41.80" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 480 8 L 510.33 54.29 M 499.28 48.38 L 510.33 54.29 L 509.32 41.80" fill="none" stroke="#075ee8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <figcaption>A note with a local conflict in Obsidian’s file explorer.</figcaption>
+</figure>
 
-## Satellite icons (2, 4)
+When you’re signed out, the stack and satellite icons disappear from the note header. A **Login to enable Live edits** banner appears.
 
-The satellite icons tell you whether or not Relay is syncing with remote servers.
+<figure>
+  <img src="/assets/icons/signed-out.png" alt="A shared note with a Login to enable Live edits banner and no stack or satellite icons in its header." width="1360" height="145">
+  <figcaption>A shared note while signed out.</figcaption>
+</figure>
 
-- Colored satellite icon = Connected. Your changes are being synced to the server, and from there they will be relayed on to any connected collaborators. You'll also receive updates from collaborators.
-- Gray or missing satellite icon = Not connected. This could mean you're not signed in, have connection issues, or there's an authentication problem.
+The folder’s stack icon identifies a Shared Folder; it does not change color with the note’s tracking state. For a folder connected to a Relay Server, it appears when you hover over the folder.
 
-The icon in the note (4 above) pertains to that specific note. You can click the icon to intentionally toggle syncing on or off. For example, you might like to turn syncing off to have a bit of privacy while you're writing, and turn it back on when you're done.
+<figure style="max-width:560px">
+  <img src="/assets/icons/shared-folder-detail.png" alt="The Bases guide folder row with a stack and satellite on its right." width="678" height="72" style="width:100%;height:auto">
+  <figcaption>The stack identifies the Shared Folder; the satellite shows its connection.</figcaption>
+</figure>
 
-The icon in the file tree (2 above) pertains to the entire Shared Folder. You can right-click the folder and toggle connect/disconnect in the menu.
+## Satellite icons
 
-## External file icon (5)
+Relay sends updates from your device to a Relay Server, which passes them to your collaborators. Their updates reach you through the same server. The satellite icons show whether Relay is connected to that server.
 
-When your note contains a link to another note that is not within the same Shared Folder, Relay shows a small file icon with an exclamation point next to the link (see 5 in the image above).
+- Colored: Connected.
+- Gray: Disconnected, or syncing is paused for the note.
 
-This warns you that your collaborators may not be able to access the linked file (unless they have access to it via a different Shared Folder). If a collaborator clicks the link, it will create a new empty note in their vault.
+The icon in the note header controls that note. To toggle syncing on or off for the note, click its satellite icon.
 
-To make the icon go away, move the linked-to file into the same Shared Folder, or move the link to a file in the same Shared Folder as the target file.
+<figure style="max-width:305px">
+  <svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Note header controls with the purple satellite beside the stack." viewBox="0 0 305 130" style="display:block;width:100%;max-width:305px;height:auto">
+    <image href="/assets/icons/note-header-detail.png" x="0" y="40" width="305" height="90"/>
+    <path d="M 162 8 L 135.63 60.74 M 135.18 48.22 L 135.63 60.74 L 145.91 53.59" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 162 8 L 135.63 60.74 M 135.18 48.22 L 135.63 60.74 L 145.91 53.59" fill="none" stroke="#075ee8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <figcaption>The satellite sits immediately to the right of the stack.</figcaption>
+</figure>
 
-## Ribbon icon (6)
+The icon in the file explorer applies to the Shared Folder. To connect or disconnect the folder, right-click it and select **Relay: Connect** or **Relay: Disconnect**.
 
-The Relay ribbon icon provides quick access the Relay settings screens.
+## External file icon
+
+When your note links to a file outside the same Shared Folder, Relay shows a file icon with an exclamation point next to the link. Your collaborators may not have access to the linked file.
+
+<figure>
+  <svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Private reference link in a note has a file icon with an exclamation point beside it." viewBox="0 0 610 115" style="display:block;width:100%;max-width:420px;height:auto">
+    <image href="/assets/icons/external-link-inline.png" x="0" y="40" width="610" height="75"/>
+    <path d="M 322 8 L 288.42 55.32 M 289.89 42.88 L 288.42 55.32 L 299.68 49.82" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 322 8 L 288.42 55.32 M 289.89 42.88 L 288.42 55.32 L 299.68 49.82" fill="none" stroke="#075ee8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <figcaption>A link outside the Shared Folder in Live Preview.</figcaption>
+</figure>
+
+To include the linked file in the Shared Folder, move it into that folder.
+
+## Ribbon icon
+
+To open Relay settings, click the Relay satellite icon in Obsidian’s ribbon.
+
+<figure style="max-width:300px">
+  <svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Part of Obsidian’s vertical ribbon, with Relay’s satellite icon below the other controls." viewBox="0 0 108 258" style="display:block;width:100%;max-width:80px;height:auto">
+    <image href="/assets/icons/ribbon-detail.png" x="0" y="40" width="108" height="218"/>
+    <path d="M 95 165 L 71.33 193.29 M 73.78 181.01 L 71.33 193.29 L 82.99 188.71" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 95 165 L 71.33 193.29 M 73.78 181.01 L 71.33 193.29 L 82.99 188.71" fill="none" stroke="#075ee8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <figcaption>The Relay satellite icon in the ribbon.</figcaption>
+</figure>
 
 ## Troubleshooting
 
-For help with icon-related issues, see our [Gray stack icon troubleshooting](/troubleshooting/stack-icon-gray/) guide, or join the discord server at https://discord.relay.md.
+For help with an icon state you cannot explain, contact us in the [Relay Discord](https://discord.relay.md). Include your Relay version and a screenshot.

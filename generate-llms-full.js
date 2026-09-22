@@ -119,6 +119,7 @@ function generateLlmsFullTxt() {
     if (url === '/') continue;
 
     const html = fs.readFileSync(htmlFile, 'utf-8');
+    if (extractMeta(html, 'robots').split(/[\s,]+/).includes('noindex')) continue;
     const titleMatch = html.match(/<title>([^<]+)<\/title>/i);
     const title = titleMatch ? titleMatch[1].replace(/ — Relay Docs$/, '').trim() : url;
     const text = stripHtml(html);

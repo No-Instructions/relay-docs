@@ -119,6 +119,11 @@
       "source": "/guides/upgrade-to-a-paid-plan",
       "destination": "/guides/upgrade-to-a-paid-plan/",
       "permanent": true
+    },
+    {
+      "source": "/troubleshooting/stack-icon-gray",
+      "destination": "/troubleshooting/stack-icon-gray/",
+      "permanent": true
     }
   ]
 }

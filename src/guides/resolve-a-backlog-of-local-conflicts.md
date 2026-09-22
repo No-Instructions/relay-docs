@@ -22,7 +22,7 @@ If you work with collaborators, agree on a time to do the cleanup and ask them t
 
 ## Choose how to work through the backlog
 
-Start by reviewing and resolving the conflicts. You can do this yourself or with an agent’s help, keeping useful changes from either version without replacing the Shared Folder. Follow [Resolve local conflicts](/guides/resolve-local-conflicts/) for the steps, or use the agent workflow below.
+Start by reviewing and resolving the conflicts. You can do this yourself or with an agent’s help, keeping useful changes from either version without replacing the Shared Folder. To find affected notes in the **Sync status** sidebar, follow [Find other notes with conflicts](/guides/resolve-local-conflicts/#find-other-notes-with-conflicts), or use the agent workflow below.
 
 If you know one copy already contains everything you want to keep, you can choose an alternative:
 

@@ -20,6 +20,16 @@ Before resolving conflicts, make sure your [backup system](/guides/backing-up-yo
 
 Relay shows a warning when you open a note with a local conflict. You can follow that warning, or use the Sync status sidebar to look for other notes that need attention.
 
+<span id="what-the-gray-stack-icon-means"></span>
+
+### Gray stack icon
+
+The stack icon in a note’s header is gray when Relay is not tracking edits in the open note. It can turn gray briefly while the note loads or Relay merges changes.
+
+If the **Merge conflict -- click to resolve** banner appears, click it to resolve the conflict. If the stack icon stays gray without a banner, open Obsidian’s command palette and run **Relay: Show sync status: [folder name]** to inspect the folder’s status.
+
+An unresolved local conflict keeps the icon gray while the banner is shown or the conflict is open. For Markdown notes, Relay also marks the note in Obsidian’s file explorer with a dot in your theme’s warning color.
+
 ### Open the conflict in the current note
 
 If the note you’re reading has a local conflict, click its **Merge conflict -- click to resolve** banner to open **File diff**.
