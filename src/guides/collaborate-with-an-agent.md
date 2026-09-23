@@ -14,6 +14,8 @@ Agents also work with Relay versions before 0.8.12, but edits saved outside Obsi
 
 For setup, install Relay, [share a folder](/guides/share-a-folder/), and [invite your collaborators](/guides/invite-a-collaborator/).
 
+Before a broad rewrite, [back up the notes you want to preserve](/guides/backing-up-your-obsidian-vault/).
+
 ## Have your agent edit a shared note
 
 Give your agent the path to the note and describe the change you want. The agent reads and edits the file, then saves it to disk. Relay picks up the saved file, merges it with your teammates' edits, and syncs the result.
@@ -39,8 +41,6 @@ Give your agent the path to the note and describe the change you want. The agent
   </div>
   <figcaption>The path of one saved edit: your agent saves the file on disk, and Relay carries the edit to your teammates’ copies of the note.</figcaption>
 </figure>
-
-Before a broad rewrite, [back up the notes you want to preserve](/guides/backing-up-your-obsidian-vault/).
 
 ## What to expect
 
