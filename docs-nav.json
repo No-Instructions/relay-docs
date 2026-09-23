@@ -90,6 +90,11 @@
               "title": "Share attachments",
               "slug": "configure-attachments-for-sharing",
               "path": "guides/configure-attachments-for-sharing"
+            },
+            {
+              "title": "Work with agents",
+              "slug": "collaborate-with-an-agent",
+              "path": "guides/collaborate-with-an-agent"
             }
           ]
         },
