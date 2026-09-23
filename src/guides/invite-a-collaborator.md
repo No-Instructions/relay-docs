@@ -36,7 +36,7 @@ Your collaborator does these steps on their own device.
 
 ### 1. Install Obsidian and Relay
 
-If they are new to Relay, they install Obsidian and the Relay plugin first. See the [Introduction](/introduction/) for the full setup.
+If they are new to Relay, they install Obsidian and the Relay plugin first. See [Install Relay for Obsidian](/guides/install-relay-for-obsidian/) for the setup steps.
 
 ### 2. Enter the Share Key
 

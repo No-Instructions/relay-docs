@@ -52,6 +52,11 @@
           "title": "Set up Relay",
           "children": [
             {
+              "title": "Install Relay for Obsidian",
+              "slug": "install-relay-for-obsidian",
+              "path": "guides/install-relay-for-obsidian"
+            },
+            {
               "title": "Open Relay settings",
               "slug": "open-relay-settings",
               "path": "guides/open-relay-settings"
@@ -60,6 +65,11 @@
               "title": "Choose hosting",
               "slug": "choose-how-to-host-relay",
               "path": "guides/choose-how-to-host-relay"
+            },
+            {
+              "title": "Create a Relay Server",
+              "slug": "create-a-relay-server",
+              "path": "guides/create-a-relay-server"
             },
             {
               "title": "Share a folder",
