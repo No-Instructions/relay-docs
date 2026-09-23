@@ -82,6 +82,11 @@
               "path": "guides/collaborate-on-an-obsidian-canvas"
             },
             {
+              "title": "Collaborate with Bases",
+              "slug": "collaborate-with-bases",
+              "path": "guides/collaborate-with-bases"
+            },
+            {
               "title": "Share attachments",
               "slug": "configure-attachments-for-sharing",
               "path": "guides/configure-attachments-for-sharing"
