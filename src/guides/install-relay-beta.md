@@ -366,7 +366,7 @@ After restoring, disable then re-enable Relay in Community plugins, or run `Relo
 
 ## Report problems
 
-Use the Obsidian command `Relay: Send bug report` when available. If that does not work, post in the `new-sync-beta` channel in the [Relay Discord](https://discord.relay.md).
+Use the Obsidian command `Relay: Send bug report` when available. If that does not work, post in the `relay-beta` channel in the [Relay Discord](https://discord.relay.md).
 
 </textarea>
 
@@ -689,7 +689,7 @@ After restoring, disable then re-enable Relay in Community plugins, or run `Relo
 
 ## Report problems
 
-Use the Obsidian command `Relay: Send bug report` when available. If that does not work, post in the `new-sync-beta` channel in the [Relay Discord](https://discord.relay.md).
+Use the Obsidian command `Relay: Send bug report` when available. If that does not work, post in the `relay-beta` channel in the [Relay Discord](https://discord.relay.md).
 
 <script>
 (() => {

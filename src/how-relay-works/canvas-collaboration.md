@@ -79,7 +79,7 @@ Relay's shared representation lets it merge changes within the board. The unit b
 
 Relay's collaboration state and the `.canvas` file are two representations of the board. Relay exports its shared cards, connections, and text into Canvas JSON for the local file. It also keeps local collaboration state in Obsidian's IndexedDB storage.
 
-Receiving an update and writing the file are separate parts of the implementation. Relay coordinates file writes with the open Canvas view; the network update is not a replacement `.canvas` file downloaded on every edit.
+Receiving an update and writing the file are separate steps. When the Canvas is open, Relay applies updates through the open view. When it's closed, Relay's background sync merges updates into the shared state and writes the `.canvas` file itself. Either way, the network update is not a replacement `.canvas` file downloaded on every edit.
 
 ## Notes and attachments on the board
 
