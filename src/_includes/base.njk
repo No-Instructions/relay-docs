@@ -17,7 +17,7 @@
     <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
 
     {% set ogSlug = page.fileSlug if page.fileSlug else "index" %}
-    {% set ogImage = "/assets/og/" + ogSlug + ".png" %}
+    {% set ogImage = "/assets/og/" + ogSlug + ".png?v=black-1" %}
     <meta property="og:image" content="{{ site.url }}{{ ogImage }}" />
 
     <meta name="twitter:card" content="summary_large_image" />

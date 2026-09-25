@@ -18,10 +18,10 @@ const OG_DIR = path.join(SITE_DIR, 'assets', 'og');
 const WIDTH = 1200;
 const HEIGHT = 630;
 
-const BG = '#052e1c';
-const ACCENT = '#0D9373';
+const BG = '#000000';
+const ACCENT = '#ffffff';
 const WHITE = '#ffffff';
-const MUTED = '#6ee7b7'; // emerald-300 — readable on dark green
+const MUTED = '#ffffff';
 
 // ── helpers ──────────────────────────────────────────────────────────────────
 
@@ -172,7 +172,7 @@ function buildElement(title, description, logoDataUri) {
               justifyContent: 'space-between',
               padding: '0 80px',
               height: '56px',
-              borderTop: `1px solid rgba(13, 147, 115, 0.3)`,
+              borderTop: `1px solid rgba(255, 255, 255, 0.3)`,
             },
             children: [
               {
