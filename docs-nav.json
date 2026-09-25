@@ -13,7 +13,8 @@
           "slug": "obsidian-for-work",
           "path": "guides/obsidian-for-work"
         }
-      ]
+      ],
+      "path": "getting-started"
     },
     {
       "group": "How Relay works",
@@ -43,7 +44,8 @@
           "slug": "canvas-collaboration",
           "path": "how-relay-works/canvas-collaboration"
         }
-      ]
+      ],
+      "path": "how-relay-works"
     },
     {
       "group": "Guides",
@@ -81,7 +83,8 @@
               "slug": "invite-a-collaborator",
               "path": "guides/invite-a-collaborator"
             }
-          ]
+          ],
+          "path": "guides/set-up-relay"
         },
         {
           "title": "Collaborate",
@@ -111,7 +114,8 @@
               "slug": "collaborate-with-an-agent",
               "path": "guides/collaborate-with-an-agent"
             }
-          ]
+          ],
+          "path": "guides/collaborate"
         },
         {
           "title": "Manage access",
@@ -131,7 +135,8 @@
               "slug": "rotate-a-share-key",
               "path": "guides/rotate-a-share-key"
             }
-          ]
+          ],
+          "path": "guides/manage-access"
         },
         {
           "title": "Maintain your setup",
@@ -161,14 +166,16 @@
               "slug": "delete-folders-and-notes",
               "path": "guides/delete-folders-and-notes"
             }
-          ]
+          ],
+          "path": "guides/maintain-your-setup"
         },
         {
           "title": "Upgrade your plan",
           "slug": "upgrade-to-a-paid-plan",
           "path": "guides/upgrade-to-a-paid-plan"
         }
-      ]
+      ],
+      "path": "guides"
     },
     {
       "group": "Troubleshooting",
@@ -183,7 +190,8 @@
           "slug": "resolve-a-backlog-of-local-conflicts",
           "path": "guides/resolve-a-backlog-of-local-conflicts"
         }
-      ]
+      ],
+      "path": "troubleshooting"
     },
     {
       "group": "Reference",
@@ -193,7 +201,8 @@
           "slug": "icons",
           "path": "user-interface/icons"
         }
-      ]
+      ],
+      "path": "reference"
     }
   ]
 }

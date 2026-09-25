@@ -11,7 +11,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const { leaves } = require('./nav-pages.js');
+const { leaves, sections } = require('./nav-pages.js');
 const ROOT = __dirname;
 const docsEdition = require('./src/_data/docsEdition.json');
 const SITE_DIR = path.join(ROOT, '_site');
@@ -75,7 +75,7 @@ function extractMeta(html, name) {
 function generateLlmsTxt() {
   const nav = JSON.parse(fs.readFileSync(path.join(ROOT, 'docs-nav.json'), 'utf-8'));
 
-  const pageLines = [];
+  const pageLines = sections(nav).map(section => `- [${section.title}](${SITE_URL}/${section.path}/)`);
 
   for (const group of nav.groups) {
     for (const page of leaves(group.pages)) {

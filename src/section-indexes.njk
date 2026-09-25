@@ -1,0 +1,22 @@
+---
+layout: doc.njk
+pagination:
+  data: sections
+  size: 1
+  alias: section
+  addAllPagesToCollections: true
+permalink: "/{{ section.path }}/"
+eleventyComputed:
+  title: "{{ section.title }}"
+  description: "Browse {{ section.title | lower }} documentation for Relay."
+  ogSlug: "{{ section.path.split('/') | last }}"
+---
+<ul class="section-index">
+{% for item in section.pages %}
+  <li><a href="/{{ item.path }}/">{{ item.title }}</a>{% if item.children %}
+    <ul>{% for child in item.children %}
+      <li><a href="/{{ child.path }}/">{{ child.title }}</a></li>{% endfor %}
+    </ul>{% endif %}
+  </li>
+{% endfor %}
+</ul>

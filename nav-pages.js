@@ -7,4 +7,12 @@ function leaves(items) {
   });
 }
 function allPages(nav) { return nav.groups.flatMap(group => leaves(group.pages)); }
-module.exports = { leaves, allPages };
+function sections(nav) {
+  return nav.groups.flatMap(group => [
+    { title: group.group, path: group.path, pages: group.pages },
+    ...group.pages.filter(item => item.children).map(item => ({
+      title: item.title, path: item.path, pages: item.children
+    }))
+  ]);
+}
+module.exports = { leaves, allPages, sections };

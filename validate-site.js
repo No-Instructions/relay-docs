@@ -19,8 +19,8 @@ const SITE_DIR = path.join(ROOT, '_site');
 
 // Load nav
 const NAV = JSON.parse(fs.readFileSync(path.join(ROOT, 'docs-nav.json'), 'utf-8'));
-const { allPages } = require('./nav-pages.js');
-const NAV_PATHS = new Set(allPages(NAV).map(page => page.path));
+const { allPages, sections } = require('./nav-pages.js');
+const NAV_PATHS = new Set([...allPages(NAV), ...sections(NAV)].map(page => page.path));
 
 // Load unlisted allowlist
 const UNLISTED_FILE = path.join(ROOT, 'docs-unlisted.json');

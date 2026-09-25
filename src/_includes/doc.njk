@@ -20,7 +20,7 @@
     <div class="docs-nav-items" id="docs-nav-items">
     {% for group in navigation.groups %}
     <div class="nav-group">
-      <p class="nav-group-label">{{ group.group }}</p>
+      <p class="nav-group-label"><a href="/{{ group.path }}/"{% if page.url == "/" + group.path + "/" %} aria-current="page"{% endif %}>{{ group.group }}</a></p>
       <ul>
         {% for item in group.pages %}
         <li>
