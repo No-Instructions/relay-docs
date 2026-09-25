@@ -57,7 +57,17 @@
     },
     {
       "source": "/guides/configure-attachments-for-sharing",
-      "destination": "/guides/configure-attachments-for-sharing/",
+      "destination": "/guides/set-attachment-location/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/configure-attachments-for-sharing/",
+      "destination": "/guides/set-attachment-location/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/set-attachment-location",
+      "destination": "/guides/set-attachment-location/",
       "permanent": true
     },
     {

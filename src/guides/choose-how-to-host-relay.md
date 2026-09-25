@@ -38,7 +38,7 @@ Self-hosting a Relay Server on a private network is available separately. It sti
 
 Images, PDFs, and videos are separate files, even when a note or Canvas displays them. Keep those files inside the Shared Folder so collaborators can receive them.
 
-See [Attachment storage](/how-relay-works/attachment-storage/) for why server-side storage is needed and how to keep referenced files available to collaborators.
+See [Storage for shared files](/how-relay-works/attachment-storage/) for why server-side storage is needed and how to keep referenced files available to collaborators.
 
 ## Understand the architecture
 

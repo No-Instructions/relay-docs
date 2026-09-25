@@ -34,7 +34,7 @@
           "path": "how-relay-works/what-relay-can-see"
         },
         {
-          "title": "Attachment storage",
+          "title": "Storage for shared files",
           "slug": "attachment-storage",
           "path": "how-relay-works/attachment-storage"
         },
@@ -102,9 +102,9 @@
               "path": "guides/sync-non-markdown-files"
             },
             {
-              "title": "Share attachments",
-              "slug": "configure-attachments-for-sharing",
-              "path": "guides/configure-attachments-for-sharing"
+              "title": "Set attachment location",
+              "slug": "set-attachment-location",
+              "path": "guides/set-attachment-location"
             },
             {
               "title": "Work with agents",

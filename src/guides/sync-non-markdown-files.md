@@ -10,8 +10,8 @@ Markdown notes (`.md`) and Canvases (`.canvas`) sync in every Shared Folder, wit
 
 For a Base, image, audio file, video, PDF, or other file to sync, all three of these must be true:
 
-1. The file is inside the Shared Folder. A link from a shared note doesn't share a file stored elsewhere in your vault. For Obsidian settings that keep attachments in the folder, see [Configure attachments for sharing](/guides/configure-attachments-for-sharing/).
-2. The folder's Relay Server has storage. For your options, see [Attachment storage](/how-relay-works/attachment-storage/).
+1. The file is inside the Shared Folder. A link from a shared note doesn't share a file stored elsewhere in your vault. For Obsidian settings that keep attachments in the folder, see [Save attachments next to your notes](/guides/set-attachment-location/).
+2. The folder's Relay Server has storage. For your options, see [Storage for shared files](/how-relay-works/attachment-storage/).
 3. The setting for that file type is on for the folder, on the device that has the file and on each device that needs it.
 
 The settings for Bases, images, audio, video, and PDFs are on by default. **Other files**, which covers every extension not in those categories, is off until you turn it on.

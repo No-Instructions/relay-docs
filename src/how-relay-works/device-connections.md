@@ -24,7 +24,7 @@ For example, you can edit a note while your collaborator is offline. Once your d
 
 {% include "storage-sequence.njk" %}
 
-Your device’s local files and the server-side data serve different purposes: you work with the files in your vault, and the server keeps shared content available between connections. For how attachment files fit into this model, see [Attachment storage](/how-relay-works/attachment-storage/).
+Your device’s local files and the server-side data serve different purposes: you work with the files in your vault, and the server keeps shared content available between connections. For which files need server storage, see [Storage for shared files](/how-relay-works/attachment-storage/).
 
 ## Server, storage, and Control Plane
 

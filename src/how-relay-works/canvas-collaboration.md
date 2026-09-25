@@ -83,6 +83,6 @@ Receiving an update and writing the file are separate steps. When the Canvas is 
 
 ## Notes and attachments on the board
 
-A card can refer to a note or attachment elsewhere in your vault. That reference does not put the file's contents inside the Canvas. To share the referenced file with your collaborators, keep it inside the Shared Folder too. For attachment-location settings, see [Configure attachments for sharing](/guides/configure-attachments-for-sharing/).
+A card can refer to a note or attachment elsewhere in your vault. That reference does not put the file's contents inside the Canvas. To share the referenced file with your collaborators, keep it inside the Shared Folder too. For attachment-location settings, see [Save attachments next to your notes](/guides/set-attachment-location/).
 
 Canvas collaboration is enabled by default and available on all plans, including Free. Images and other attachments require [storage](/how-relay-works/attachment-storage/) to sync. Each collaborator uses Obsidian with Relay installed.

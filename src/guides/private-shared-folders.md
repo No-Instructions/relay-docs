@@ -107,4 +107,4 @@ Use the Relay Server `Users` section for server-level user management. For priva
 
 - [Upgrade to a paid plan](/guides/upgrade-to-a-paid-plan/)
 - [Update Relay](/guides/update-relay/)
-- [Configure attachments for sharing](/guides/configure-attachments-for-sharing/)
+- [Save attachments next to your notes](/guides/set-attachment-location/)

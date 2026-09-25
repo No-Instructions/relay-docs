@@ -5,7 +5,7 @@ layout: doc.njk
 ---
 Relay is entirely funded by subscriptions from our users. We don't sell your data or show you advertisements. If you like what we're doing and you want to see us continue, we'd love to have your support.
 
-Relay's free tier supports up to 3 users per Relay Server. Upgrade to a paid plan for larger teams or cloud storage for attachments. You can also provide attachment storage through self-hosting; see [Attachment storage](/how-relay-works/attachment-storage/) for both options.
+Relay's free tier supports up to 3 users per Relay Server. Upgrade to a paid plan for larger teams or cloud storage for attachments. You can also provide attachment storage through self-hosting; see [Storage for shared files](/how-relay-works/attachment-storage/) for both options.
 
 Follow these steps to upgrade your server to a paid subscription.
 

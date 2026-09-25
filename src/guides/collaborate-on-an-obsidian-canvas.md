@@ -50,7 +50,7 @@ To add a text card, double-click an empty area of the Canvas and type. To connec
 
 To share a note through a Canvas, keep the note inside the Shared Folder too. Referencing a file from the Canvas does not share a file elsewhere in your vault.
 
-To sync images or other attachments, put them inside the Shared Folder and make sure the folder has storage available. For attachment-location settings, see [Configure attachments for sharing](/guides/configure-attachments-for-sharing/).
+To sync images or other attachments, put them inside the Shared Folder and make sure the folder has storage available. For attachment-location settings, see [Save attachments next to your notes](/guides/set-attachment-location/).
 
 ## Troubleshooting
 

@@ -57,6 +57,7 @@ Use a tag or note property to select the shared notes where possible. Check that
 
 - [Share a folder](/guides/share-a-folder/)
 - [Invite a collaborator](/guides/invite-a-collaborator/)
-- [Share attachments](/guides/configure-attachments-for-sharing/)
-- [Attachment storage](/how-relay-works/attachment-storage/)
+- [Sync non-Markdown files](/guides/sync-non-markdown-files/)
+- [Save attachments next to your notes](/guides/set-attachment-location/)
+- [Storage for shared files](/how-relay-works/attachment-storage/)
 - [Obsidian Bases documentation](https://obsidian.md/help/bases) for creating views, filters, and formulas.
