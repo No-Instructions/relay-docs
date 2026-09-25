@@ -97,6 +97,11 @@
               "path": "guides/collaborate-with-bases"
             },
             {
+              "title": "Sync non-Markdown files",
+              "slug": "sync-non-markdown-files",
+              "path": "guides/sync-non-markdown-files"
+            },
+            {
               "title": "Share attachments",
               "slug": "configure-attachments-for-sharing",
               "path": "guides/configure-attachments-for-sharing"
