@@ -13,6 +13,7 @@ const path = require('path');
 
 const { leaves } = require('./nav-pages.js');
 const ROOT = __dirname;
+const docsEdition = require('./src/_data/docsEdition.json');
 const SITE_DIR = path.join(ROOT, '_site');
 const SITE_URL = 'https://docs.relay.md';
 const SKIP_DIRS = new Set(['assets']);
@@ -90,6 +91,7 @@ function generateLlmsTxt() {
 
   const content = [
     '# Relay Docs',
+    `Relay edition: ${docsEdition.productVersion}`,
     '',
     '> Relay is an Obsidian plugin for real-time multiplayer collaboration on notes and Canvases.',
     '',
@@ -110,6 +112,7 @@ function generateLlmsFullTxt() {
   const htmlFiles = collectHtmlFiles(SITE_DIR).sort();
   const parts = [
     '# Relay Docs — full content\n',
+    `Relay edition: ${docsEdition.productVersion}\n`,
     '> Relay is an Obsidian plugin for real-time multiplayer collaboration on notes and Canvases.\n',
   ];
 
