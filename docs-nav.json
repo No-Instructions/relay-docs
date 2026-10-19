@@ -85,7 +85,7 @@
             }
           ],
           "path": "guides/set-up-relay",
-          "outcome": "When you finish, a folder in your Obsidian vault is shared with the people you work with, and you edit its notes together in real time.",
+          "outcome": "When you've finished setting up Relay, you and the people you work with share a folder in your Obsidian vaults and edit its notes together in real time.",
           "paths": [
             {
               "title": "You have a Share Key",
