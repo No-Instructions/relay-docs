@@ -31,6 +31,7 @@
     <!-- Anti-flash: apply saved/system theme before first paint -->
     <script>
       (function () {
+        document.documentElement.classList.add('js');
         var stored = localStorage.getItem('relay-docs-theme');
         if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
           document.documentElement.setAttribute('data-theme', 'dark');
@@ -423,7 +424,7 @@
           toggle.addEventListener('click', function () {
             var open = toggle.getAttribute('aria-expanded') !== 'true';
             toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-            list.hidden = !open;
+            list.toggleAttribute('data-closed', !open);
           });
         });
         var btn = document.getElementById('theme-toggle');
