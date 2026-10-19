@@ -1285,9 +1285,10 @@ html.js .nav-subgroup > ul[data-closed] { display: none; }
   text-decoration: none;
   transition: border-color 0.15s, background-color 0.15s;
 }
-.section-card:hover, .section-card:focus-visible {
+.doc-content .section-card:hover, .doc-content .section-card:focus-visible {
   border-color: var(--color-accent);
   background: var(--color-active-bg);
+  text-decoration: none;
 }
 .section-card-title { font-weight: 600; }
 .section-card-description { color: var(--color-muted); font-size: 0.875rem; line-height: 1.5; }
