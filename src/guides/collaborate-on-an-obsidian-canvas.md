@@ -32,12 +32,6 @@ Each person needs Obsidian with Relay installed and access to the same Shared Fo
 
 [Invite your collaborator](/guides/invite-a-collaborator/#invite-your-collaborator), then have them [join the server and add the Shared Folder to their vault](/guides/invite-a-collaborator/#your-collaborator-joins). Joining the server alone does not add its folders.
 
-<video width="560" height="315" class="docs-video" controls playsinline preload="metadata" aria-label="Create and edit a Canvas together in two Obsidian vaults" poster="/assets/canvas-collaboration-20260911/canvas-storyboard-v14-poster.png">
-  <source src="/assets/canvas-collaboration-20260911/canvas-storyboard-v14.webm" type="video/webm">
-  <source src="/assets/canvas-collaboration-20260911/canvas-storyboard-v14.mp4" type="video/mp4">
-  <a href="/assets/canvas-collaboration-20260911/canvas-storyboard-v14.mp4">Download the full walkthrough</a>.
-</video>
-
 ### Open the Canvas together
 
 Create a Canvas inside the Shared Folder, or move an existing Canvas into it.
