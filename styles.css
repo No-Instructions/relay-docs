@@ -1303,3 +1303,39 @@ html.js .nav-subgroup > ul[data-closed] { display: none; }
 .breadcrumbs a { color: var(--color-muted); text-decoration: none; }
 .breadcrumbs a:hover { color: var(--color-text); text-decoration: underline; }
 .breadcrumbs [aria-current="page"] { color: var(--color-text); }
+
+/* Guide steps: a numbered sequence with a line joining the steps. */
+.doc-content .guide-steps { list-style: none; counter-reset: guide-step; padding: 0; margin: 1.5rem 0; }
+.doc-content .guide-steps > li {
+  counter-increment: guide-step;
+  position: relative;
+  padding: 0 0 1.5rem 3rem;
+  margin: 0;
+}
+.doc-content .guide-steps > li::before {
+  content: counter(guide-step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-accent);
+  border-radius: 50%;
+  background: var(--color-bg);
+  color: var(--color-accent);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.doc-content .guide-steps > li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: calc(1rem - 0.5px);
+  top: 2.25rem;
+  bottom: 0.25rem;
+  border-left: 1px solid var(--color-border);
+}
+.doc-content .guide-steps h3 { margin: 0.25rem 0 0.5rem; }
+.doc-content .guide-steps p { margin: 0 0 0.5rem; }
