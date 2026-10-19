@@ -134,11 +134,6 @@
               "title": "Rotate a share key",
               "slug": "rotate-a-share-key",
               "path": "guides/rotate-a-share-key"
-            },
-            {
-              "title": "Upgrade your plan",
-              "slug": "upgrade-to-a-paid-plan",
-              "path": "guides/upgrade-to-a-paid-plan"
             }
           ],
           "path": "guides/manage-access"
@@ -173,6 +168,11 @@
             }
           ],
           "path": "guides/maintain-your-setup"
+        },
+        {
+          "title": "Upgrade your plan",
+          "slug": "upgrade-to-a-paid-plan",
+          "path": "guides/upgrade-to-a-paid-plan"
         }
       ],
       "path": "guides"
