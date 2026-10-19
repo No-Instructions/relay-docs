@@ -75,6 +75,12 @@ module.exports = function (eleventyConfig) {
     return countAllTocNodes(t.get());
   });
 
+  // Section index cards read each page's own title and description, so a
+  // card says what the page itself says in search results and link previews.
+  eleventyConfig.addFilter('pageAtPath', (pages, path) =>
+    pages.find((page) => page.url === `/${path}/`)
+  );
+
   return {
     dir: {
       input: 'src',

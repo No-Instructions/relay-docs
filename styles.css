@@ -1258,6 +1258,32 @@ body.no-toc .layout {
 /* Section indexes share their labels and destinations with the sidebar. */
 .nav-group-label a { color: inherit; text-decoration: none; }
 .nav-group-label a:hover, .nav-group-label a[aria-current="page"] { text-decoration: underline; }
-.section-index { padding-left: 1.25rem; }
-.section-index li { margin-block: 0.75rem; }
-.section-index ul { margin-top: 0.5rem; }
+.section-cards {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 0.75rem;
+}
+.section-cards li { margin: 0; }
+.section-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  height: 100%;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+.section-card:hover, .section-card:focus-visible {
+  border-color: var(--color-accent);
+  background: var(--color-active-bg);
+}
+.section-card-title { font-weight: 600; }
+.section-card-description { color: var(--color-muted); font-size: 0.875rem; line-height: 1.5; }
+.doc-content h2 > a { color: inherit; text-decoration: none; }
+.doc-content h2 > a:hover { text-decoration: underline; }

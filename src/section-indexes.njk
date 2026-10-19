@@ -11,12 +11,39 @@ eleventyComputed:
   description: "Browse {{ section.title | lower }} documentation for Relay."
   ogSlug: "{{ section.path.split('/') | last }}"
 ---
-<ul class="section-index">
-{% for item in section.pages %}
-  <li><a href="/{{ item.path }}/">{{ item.title }}</a>{% if item.children %}
-    <ul>{% for child in item.children %}
-      <li><a href="/{{ child.path }}/">{{ child.title }}</a></li>{% endfor %}
-    </ul>{% endif %}
-  </li>
-{% endfor %}
+{%- macro card(item) -%}
+{%- set target = collections.all | pageAtPath(item.path) -%}
+<li><a class="section-card" href="/{{ item.path }}/">
+  <span class="section-card-title">{{ target.data.title if target else item.title }}</span>
+  {%- if target and target.data.description %}
+  <span class="section-card-description">{{ target.data.description }}</span>
+  {%- endif %}
+</a></li>
+{%- endmacro -%}
+
+{%- set leaves = [] -%}
+{%- set subgroups = [] -%}
+{%- for item in section.pages -%}
+  {%- if item.children -%}{%- set subgroups = (subgroups.push(item), subgroups) -%}
+  {%- else -%}{%- set leaves = (leaves.push(item), leaves) -%}{%- endif -%}
+{%- endfor -%}
+
+{%- for group in subgroups %}
+<h2 id="{{ group.path.split('/') | last }}"><a href="/{{ group.path }}/">{{ group.title }}</a></h2>
+<ul class="section-cards">
+{%- for child in group.children %}
+  {{ card(child) }}
+{%- endfor %}
 </ul>
+{%- endfor %}
+
+{%- if leaves.length %}
+{%- if subgroups.length %}
+<h2 id="more">More</h2>
+{%- endif %}
+<ul class="section-cards">
+{%- for item in leaves %}
+  {{ card(item) }}
+{%- endfor %}
+</ul>
+{%- endif %}
