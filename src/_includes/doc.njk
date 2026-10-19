@@ -50,6 +50,25 @@
   </nav>
 
   <main id="main" class="doc-content">
+    {% set trail = navigation.trails[page.url] %}
+    {% if trail and trail.length > 1 %}
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <ol>
+        {% for crumb in trail %}
+        {% if loop.last %}
+        <li><span aria-current="page">{{ crumb.title }}</span></li>
+        {% else %}
+        <li><a href="{{ crumb.url }}">{{ crumb.title }}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ol>
+    </nav>
+    <script type="application/ld+json">{{ {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": trail | breadcrumbListItems(site.url)
+    } | dump | safe }}</script>
+    {% endif %}
     {% if title %}
     <h1>{{ title }}</h1>
     {% endif %}

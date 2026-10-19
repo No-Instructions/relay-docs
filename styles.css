@@ -1294,3 +1294,12 @@ html.js .nav-subgroup > ul[data-closed] { display: none; }
 .section-card-description { color: var(--color-muted); font-size: 0.875rem; line-height: 1.5; }
 .doc-content h2 > a { color: inherit; text-decoration: none; }
 .doc-content h2 > a:hover { text-decoration: underline; }
+
+/* Breadcrumbs: the page's place in the navigation, above its title. */
+.breadcrumbs { margin: 0 0 0.75rem; font-size: 0.8125rem; line-height: 1.4; }
+.breadcrumbs ol { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem; list-style: none; margin: 0; padding: 0; }
+.breadcrumbs li { display: flex; align-items: center; gap: 0.25rem; margin: 0; }
+.breadcrumbs li + li::before { content: '›'; color: var(--color-muted); }
+.breadcrumbs a { color: var(--color-muted); text-decoration: none; }
+.breadcrumbs a:hover { color: var(--color-text); text-decoration: underline; }
+.breadcrumbs [aria-current="page"] { color: var(--color-text); }

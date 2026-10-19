@@ -81,6 +81,16 @@ module.exports = function (eleventyConfig) {
     pages.find((page) => page.url === `/${path}/`)
   );
 
+  // schema.org BreadcrumbList entries, so search results can show the trail.
+  eleventyConfig.addFilter('breadcrumbListItems', (trail, origin) =>
+    trail.map((crumb, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: crumb.title,
+      item: origin + crumb.url,
+    }))
+  );
+
   return {
     dir: {
       input: 'src',
