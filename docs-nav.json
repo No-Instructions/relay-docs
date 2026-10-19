@@ -85,8 +85,25 @@
             }
           ],
           "path": "guides/set-up-relay",
-          "intro": "Install Relay, sign in, and share a folder from your Relay Server with the people you work with. If someone sent you a Share Key, install Relay and then join their server instead.",
-          "ordered": true
+          "outcome": "When you finish, a folder in your Obsidian vault is shared with the people you work with, and you edit its notes together in real time.",
+          "paths": [
+            {
+              "title": "You have a Share Key",
+              "description": "Install Relay, join the server you were invited to, and add its Shared Folder to your vault.",
+              "href": "/guides/invite-a-collaborator/#your-collaborator-joins"
+            },
+            {
+              "title": "You're starting your own",
+              "description": "Find your server, share a folder, and invite collaborators with the guides below.",
+              "href": "#guides"
+            }
+          ],
+          "video": {
+            "poster": "/assets/invite-a-collaborator/invite-a-collaborator-poster.png",
+            "webm": "/assets/invite-a-collaborator/invite-a-collaborator.webm",
+            "mp4": "/assets/invite-a-collaborator/invite-a-collaborator.mp4",
+            "caption": "An owner copies the Share Key, and a collaborator joins and adds the Shared Folder."
+          }
         },
         {
           "title": "Collaborate",

@@ -14,7 +14,7 @@ function sections(nav) {
     { kind: 'hub', title: group.group, path: group.path, pages: group.pages },
     ...group.pages.filter(item => item.children).map(item => ({
       kind: 'guide', title: item.title, path: item.path, pages: item.children,
-      intro: item.intro, ordered: Boolean(item.ordered)
+      outcome: item.outcome, paths: item.paths, video: item.video, ordered: Boolean(item.ordered)
     }))
   ]);
 }

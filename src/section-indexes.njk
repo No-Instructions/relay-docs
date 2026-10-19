@@ -8,7 +8,7 @@ pagination:
 permalink: "/{{ section.path }}/"
 eleventyComputed:
   title: "{{ section.title }}"
-  description: "{{ section.intro or ('Browse ' + (section.title | lower) + ' documentation for Relay.') }}"
+  description: "{{ section.outcome or ('Browse ' + (section.title | lower) + ' documentation for Relay.') }}"
   ogSlug: "{{ section.path.split('/') | last }}"
 ---
 {%- macro card(item) -%}
@@ -23,10 +23,31 @@ eleventyComputed:
 
 {%- if section.kind == 'guide' -%}
 
-{%- if section.intro %}
-<p>{{ section.intro }}</p>
+{%- if section.outcome %}
+<p class="guide-outcome">{{ section.outcome }}</p>
 {%- endif %}
-<ol class="guide-steps{% if not section.ordered %} guide-steps-unordered{% endif %}">
+{%- if section.video %}
+<figure class="guide-video">
+  <video controls playsinline preload="metadata" poster="{{ section.video.poster }}">
+    <source src="{{ section.video.webm }}" type="video/webm">
+    <source src="{{ section.video.mp4 }}" type="video/mp4">
+    <a href="{{ section.video.mp4 }}">Download the video</a>.
+  </video>
+  <figcaption>{{ section.video.caption }}</figcaption>
+</figure>
+{%- endif %}
+{%- if section.paths %}
+<ul class="section-cards guide-paths" role="list">
+{%- for path in section.paths %}
+  <li><a class="section-card" href="{{ path.href }}">
+    <span class="section-card-title">{{ path.title }}</span>
+    <span class="section-card-description">{{ path.description }}</span>
+  </a></li>
+{%- endfor %}
+</ul>
+{%- endif %}
+{%- set listTag = 'ol' if section.ordered else 'ul' %}
+<{{ listTag }} id="guides" class="guide-steps{% if not section.ordered %} guide-steps-unordered{% endif %}" role="list">
 {%- for item in section.pages %}
 {%- set target = collections.all | pageAtPath(item.path) %}
   <li>
@@ -36,7 +57,7 @@ eleventyComputed:
     {%- endif %}
   </li>
 {%- endfor %}
-</ol>
+</{{ listTag }}>
 
 {%- else -%}
 
