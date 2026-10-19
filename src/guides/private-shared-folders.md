@@ -8,16 +8,6 @@ A Shared Folder lets you share a folder and everything inside it with people on 
 
 The `Private` toggle appears only on Relay Servers whose subscription includes private access for Shared Folders. If you upgraded Relay but do not see the toggle, make sure you are sharing from the Relay Server that has the subscription. Plans apply to Relay Servers, not to your user account.
 
-## Watch the flow
-
-This video shows how to create a Shared Folder with private access in Relay settings.
-
-<video controls playsinline preload="metadata" poster="/assets/private-shared-folders/private-shared-folders-poster.png" style="display:block;width:100%;max-width:100%;margin:1.25rem 0;border:1px solid var(--color-border);border-radius:var(--radius);background:#f4f6f8;">
-  <source src="/assets/private-shared-folders/private-shared-folders.webm" type="video/webm">
-  <source src="/assets/private-shared-folders/private-shared-folders.mp4" type="video/mp4">
-  <a href="/assets/private-shared-folders/private-shared-folders.mp4">Download the video</a>.
-</video>
-
 ## Before you start
 
 - The Relay Server must be on a paid plan that includes private access for Shared Folders. If needed, see [our pricing plans](https://relay.md/pricing).

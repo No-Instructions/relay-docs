@@ -97,13 +97,7 @@
               "description": "Find your server, share a folder, and invite collaborators with the guides below.",
               "href": "#guides"
             }
-          ],
-          "video": {
-            "poster": "/assets/invite-a-collaborator/invite-a-collaborator-poster.png",
-            "webm": "/assets/invite-a-collaborator/invite-a-collaborator.webm",
-            "mp4": "/assets/invite-a-collaborator/invite-a-collaborator.mp4",
-            "caption": "An owner copies the Share Key, and a collaborator joins and adds the Shared Folder."
-          }
+          ]
         },
         {
           "title": "Collaborate",

@@ -56,16 +56,6 @@ After joining, your collaborator opens the Relay Server from their `Relay Server
   <figcaption>The download-arrow icon opens <strong>Add to vault</strong>; check the folder name and location, then click <strong>Confirm</strong>. The <code>Users</code> list shows server membership, not whether each person has added the folder.</figcaption>
 </figure>
 
-## Watch the flow
-
-This video shows the whole flow: an owner copies the Share Key, and a collaborator joins and adds the Shared Folder.
-
-<video controls playsinline preload="metadata" poster="/assets/invite-a-collaborator/invite-a-collaborator-poster.png" style="display:block;width:100%;max-width:100%;margin:1.25rem 0;border:1px solid var(--color-border);border-radius:var(--radius);background:#f4f6f8;">
-  <source src="/assets/invite-a-collaborator/invite-a-collaborator.webm" type="video/webm">
-  <source src="/assets/invite-a-collaborator/invite-a-collaborator.mp4" type="video/mp4">
-  <a href="/assets/invite-a-collaborator/invite-a-collaborator.mp4">Download the video</a>.
-</video>
-
 ## Related guides
 
 - [Create a Shared Folder with private access](/guides/private-shared-folders/)
