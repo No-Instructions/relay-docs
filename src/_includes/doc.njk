@@ -25,14 +25,19 @@
         {% for item in group.pages %}
         <li>
           {% if item.children %}
-          <details class="nav-subgroup"{% if page.url in item.urls %} open{% endif %}>
-            <summary>{{ item.title }}</summary>
-            <ul>
+          {% set subgroupOpen = page.url in item.urls %}
+          {% set subgroupId = "nav-" + (item.path | replace("/", "-")) %}
+          <div class="nav-subgroup">
+            <div class="nav-subgroup-row">
+              <a href="/{{ item.path }}/"{% if page.url == "/" + item.path + "/" %} class="active" aria-current="page"{% endif %}>{{ item.title }}</a>
+              <button type="button" class="nav-subgroup-toggle" aria-expanded="{{ 'true' if subgroupOpen else 'false' }}" aria-controls="{{ subgroupId }}" aria-label="{{ item.title }} pages"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6" /></svg></button>
+            </div>
+            <ul id="{{ subgroupId }}"{% if not subgroupOpen %} hidden{% endif %}>
               {% for child in item.children %}
               <li><a href="/{{ child.path }}/"{% if page.url == "/" + child.path + "/" %} class="active" aria-current="page"{% endif %}>{{ child.title }}</a></li>
               {% endfor %}
             </ul>
-          </details>
+          </div>
           {% else %}
           <a href="/{{ item.path }}/"{% if page.url == "/" + item.path + "/" %} class="active" aria-current="page"{% endif %}>{{ item.title }}</a>
           {% endif %}

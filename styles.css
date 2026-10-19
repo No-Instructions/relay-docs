@@ -1202,25 +1202,28 @@ body.no-toc .layout {
 @media(max-width:450px){.storage-arrow[aria-label="Uploads"]{transform:translateX(-6.375px)}.storage-arrow[aria-label="Receives"]{transform:translateX(6.375px)}}.doc-content .storage-caption{padding:14px 24px;margin:0;background:#f0f5f1;color:#334c3c}
 @media(max-width:450px){.storage-moment{padding:16px 12px}.storage-row{grid-template-columns:64px minmax(0,1fr) 96px minmax(0,1fr) 64px;gap:3px}.doc-content .storage-caption{padding:14px 12px}}
 
-/* Preview navigation: one native disclosure level, usable without JavaScript. */
-.nav-subgroup > summary {
+/* Subgroups: the name links to the subgroup page; the chevron only folds it. */
+.nav-subgroup-row { display: flex; align-items: center; gap: 0.25rem; }
+.nav-subgroup-row > a { flex: 1; min-width: 0; }
+.nav-subgroup-toggle {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  list-style: none;
-  cursor: pointer;
-  padding: 0.3rem 0.5rem;
+  justify-content: center;
+  flex: none;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  color: var(--color-muted);
+  background: none;
+  border: 0;
   border-radius: calc(var(--radius) - 2px);
-  font-size: 0.875rem;
-  line-height: 1.4;
+  cursor: pointer;
 }
-.nav-subgroup > summary::-webkit-details-marker { display: none; }
-.nav-subgroup > summary::after { content: '›'; font-size: 1rem; transform: rotate(0deg); }
-.nav-subgroup[open] > summary::after { transform: rotate(90deg); }
-.nav-subgroup > summary:hover { background: var(--color-active-bg); }
-.nav-subgroup > summary:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
-.nav-subgroup > ul { margin: 0.1rem 0 0.3rem 0.75rem; padding-left: 0.35rem; border-left: 1px solid var(--color-border); }
+.nav-subgroup-toggle svg { transition: transform 0.15s; }
+.nav-subgroup-toggle[aria-expanded="true"] svg { transform: rotate(90deg); }
+.nav-subgroup-toggle:hover { color: var(--color-text); background: var(--color-active-bg); }
+.nav-subgroup-toggle:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+.nav-group .nav-subgroup > ul { margin: 0.1rem 0 0.3rem 0.75rem; padding-left: 0.35rem; border-left: 1px solid var(--color-border); }
 
 /* Decorative external web-link indicator in authored docs content. */
 .doc-content .external-link-icon { display: inline-block; width: .75em; height: .75em; margin-left: .2em; vertical-align: -.05em; flex: none; }

@@ -417,6 +417,15 @@
             navToggle.setAttribute('aria-expanded', navToggle.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
           });
         }
+        // Subgroup chevrons fold their list; the subgroup name is a link.
+        document.querySelectorAll('.nav-subgroup-toggle').forEach(function (toggle) {
+          var list = document.getElementById(toggle.getAttribute('aria-controls'));
+          toggle.addEventListener('click', function () {
+            var open = toggle.getAttribute('aria-expanded') !== 'true';
+            toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            list.hidden = !open;
+          });
+        });
         var btn = document.getElementById('theme-toggle');
         if (!btn) return;
         function syncLabel() {
