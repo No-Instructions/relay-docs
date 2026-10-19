@@ -30,7 +30,7 @@ eleventyComputed:
 
 {%- for group in subgroups %}
 <h2 id="{{ group.path.split('/') | last }}"><a href="/{{ group.path }}/">{{ group.title }}</a></h2>
-<ul class="section-cards">
+<ul class="section-cards" role="list">
 {%- for child in group.children %}
   {{ card(child) }}
 {%- endfor %}
@@ -41,7 +41,7 @@ eleventyComputed:
 {%- if subgroups.length %}
 <h2 id="more">More</h2>
 {%- endif %}
-<ul class="section-cards">
+<ul class="section-cards" role="list">
 {%- for item in leaves %}
   {{ card(item) }}
 {%- endfor %}
