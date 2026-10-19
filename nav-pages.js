@@ -7,11 +7,14 @@ function leaves(items) {
   });
 }
 function allPages(nav) { return nav.groups.flatMap(group => leaves(group.pages)); }
+// Top-level groups render as hubs; subgroups render as guides, numbered
+// when their pages are steps to follow in order.
 function sections(nav) {
   return nav.groups.flatMap(group => [
-    { title: group.group, path: group.path, pages: group.pages },
+    { kind: 'hub', title: group.group, path: group.path, pages: group.pages },
     ...group.pages.filter(item => item.children).map(item => ({
-      title: item.title, path: item.path, pages: item.children
+      kind: 'guide', title: item.title, path: item.path, pages: item.children,
+      intro: item.intro, ordered: Boolean(item.ordered)
     }))
   ]);
 }

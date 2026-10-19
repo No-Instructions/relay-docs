@@ -1339,3 +1339,17 @@ html.js .nav-subgroup > ul[data-closed] { display: none; }
 }
 .doc-content .guide-steps h3 { margin: 0.25rem 0 0.5rem; }
 .doc-content .guide-steps p { margin: 0 0 0.5rem; }
+.doc-content .guide-step-title { font-weight: 600; font-size: 1.0625rem; margin: 0.3rem 0 0.35rem; }
+.doc-content .guide-step-title a { text-decoration: none; }
+.doc-content .guide-step-title a:hover { text-decoration: underline; }
+.doc-content .guide-steps > li p:not(.guide-step-title) { color: var(--color-muted); }
+/* Unordered guides keep the line and swap numbers for a dot. */
+.doc-content .guide-steps-unordered > li::before {
+  content: '';
+  width: 0.625rem;
+  height: 0.625rem;
+  left: calc(1rem - 0.3125rem);
+  top: 0.65rem;
+  background: var(--color-accent);
+}
+.doc-content .guide-steps-unordered > li:not(:last-child)::after { top: 1.6rem; }

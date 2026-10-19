@@ -84,7 +84,9 @@
               "path": "guides/invite-a-collaborator"
             }
           ],
-          "path": "guides/set-up-relay"
+          "path": "guides/set-up-relay",
+          "intro": "Install Relay, sign in, and share a folder from your Relay Server with the people you work with. If someone sent you a Share Key, install Relay and then join their server instead.",
+          "ordered": true
         },
         {
           "title": "Collaborate",

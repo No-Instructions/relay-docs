@@ -8,7 +8,7 @@ pagination:
 permalink: "/{{ section.path }}/"
 eleventyComputed:
   title: "{{ section.title }}"
-  description: "Browse {{ section.title | lower }} documentation for Relay."
+  description: "{{ section.intro or ('Browse ' + (section.title | lower) + ' documentation for Relay.') }}"
   ogSlug: "{{ section.path.split('/') | last }}"
 ---
 {%- macro card(item) -%}
@@ -20,6 +20,25 @@ eleventyComputed:
   {%- endif %}
 </a></li>
 {%- endmacro -%}
+
+{%- if section.kind == 'guide' -%}
+
+{%- if section.intro %}
+<p>{{ section.intro }}</p>
+{%- endif %}
+<ol class="guide-steps{% if not section.ordered %} guide-steps-unordered{% endif %}">
+{%- for item in section.pages %}
+{%- set target = collections.all | pageAtPath(item.path) %}
+  <li>
+    <p class="guide-step-title"><a href="/{{ item.path }}/">{{ target.data.title if target else item.title }}</a></p>
+    {%- if target and target.data.description %}
+    <p>{{ target.data.description }}</p>
+    {%- endif %}
+  </li>
+{%- endfor %}
+</ol>
+
+{%- else -%}
 
 {%- set leaves = [] -%}
 {%- set subgroups = [] -%}
@@ -46,4 +65,6 @@ eleventyComputed:
   {{ card(item) }}
 {%- endfor %}
 </ul>
+{%- endif %}
+
 {%- endif %}
