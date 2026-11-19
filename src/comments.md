@@ -43,3 +43,9 @@ For shared-note agent editing, see [Let your agent edit shared notes](/guides/co
 ## Privacy
 
 Relay Comments has no client-side telemetry. If an author’s profile picture uses a web URL, Obsidian loads the image from that address when the review sidebar displays it.
+
+## Use with a team
+
+If you’re using Relay Comments with a team, [Relay for Obsidian](/introduction/) lets you share a folder and edit notes together in real time. Comments and suggested edits sync with the note.
+
+[Set up Relay Comments for your team](/comments/use-with-collaborators/).

@@ -77,6 +77,10 @@
             "path": "comments/comment-on-a-canvas"
           },
           {
+            "title": "Use with a team",
+            "path": "comments/use-with-collaborators"
+          },
+          {
             "title": "Use with agents",
             "path": "comments/use-relay-comments-with-agents"
           }
