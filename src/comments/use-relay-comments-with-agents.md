@@ -10,9 +10,9 @@ Your agent can also suggest edits for review and accept or reject suggestions.
 
 ## Prepare your agent
 
-Any agent that can read and edit Markdown files can work with the markup in your notes. For plugin setup, see [Install Relay Comments](/comments/install-relay-comments/).
+If Relay Comments isn’t installed yet, give your agent the [agent installation instructions](/comments/install-relay-comments/#install-with-an-agent) and the path to your vault.
 
-To use Relay Comments commands in the [Obsidian CLI](https://obsidian.md/help/cli), enable the command line interface in Obsidian and open your vault in the desktop app. The commands require Relay Comments 0.5.0 or later and Obsidian desktop 1.12.2 or later.
+Your agent can read and write [comment markup](/comments/comment-markup/) directly in the Markdown file. If you already use the Obsidian CLI, your agent can use its `comments` commands with the vault open in Obsidian desktop.
 
 ## Give your agent the skill
 

@@ -4,13 +4,9 @@ description: Install the plugin from Obsidian’s community directory and open t
 layout: doc.njk
 ---
 
-Relay Comments adds comment threads and suggested edits to your notes. Install the plugin from Obsidian’s community directory, enable it, and open the review sidebar.
+[Install by hand](#install-by-hand) in Obsidian, or [install with an agent](#install-with-an-agent) that can write to your vault. Both methods need Obsidian 1.7.2 or later.
 
-## Before you start
-
-You need Obsidian 1.7.2 or later. Relay Comments supports desktop and mobile.
-
-## Install the plugin
+## Install by hand
 
 1. In Obsidian, open **Settings** → **Community plugins**.
 2. If Restricted mode is on, select **Turn on community plugins**.
@@ -25,6 +21,27 @@ You need Obsidian 1.7.2 or later. Relay Comments supports desktop and mobile.
 </figure>
 
 You can also open the [Relay Comments entry in the community plugin catalog](https://community.obsidian.md/plugins/relay-comments).
+
+## Install with an agent
+
+Give your agent the link to this page and the path to your vault. Ask it to **install Relay Comments in that vault using the steps below**.
+
+1. Download `main.js`, `manifest.json`, and `styles.css` from the [official Relay Comments 0.6.0 release](https://github.com/No-Instructions/Relay-Comments/releases/tag/0.6.0).
+2. Check that the manifest names `relay-comments` as the plugin ID and `0.6.0` as the version. Verify the files against the SHA-256 digests on the release.
+3. Place those three files in the vault’s plugin directory, normally `.obsidian/plugins/relay-comments/`. Keep existing settings in `data.json`.
+
+When your agent finishes, open **Settings → Community plugins** and enable **Relay Comments**. If Restricted mode is on, select **Turn on community plugins** first. If the plugin doesn’t appear in the list, reload Obsidian.
+
+<details>
+<summary>Already using the Obsidian CLI?</summary>
+
+Your agent can install and enable the plugin in one command. Replace `Work` with your vault name:
+
+```shell
+obsidian vault="Work" plugin:install id=relay-comments enable
+```
+
+</details>
 
 ## Check the installation
 
