@@ -8,8 +8,8 @@ layout: doc.njk
 
 ## Open the same note
 
-If you already share a folder through Relay, open a Markdown note from that folder on both devices. To comment, reply, or suggest an edit, each person needs write access to the note and [Relay Comments enabled in their vault](/comments/install-relay-comments/).
+Each person needs to be [signed in to Relay](/guides/install-relay-for-obsidian/#sign-in-to-relay). If you already share a folder, open the same note from that folder in your own vaults.
 
-If you’re setting this up for the first time, each person [installs Relay and signs in](/guides/install-relay-for-obsidian/#sign-in-to-relay). Then [share the folder](/guides/share-a-folder/) and [invite your collaborator](/guides/invite-a-collaborator/). After joining your Relay Server, your collaborator selects **Add to vault** for the Shared Folder. Once the folder has synced, you can both open the note.
+To set up a Shared Folder, one person [shares the folder](/guides/share-a-folder/) and [invites the team](/guides/invite-a-collaborator/). Each teammate joins the Relay Server, then selects **Add to vault** for the Shared Folder. Once it syncs, the note appears in their vault.
 
-Once you’re in the same note, anyone with write access can [comment on a passage, reply to a thread, or resolve it](/comments/comment-on-a-note/) and [suggest edits or accept or reject a teammate’s changes](/comments/suggest-edits/).
+Once you’re in the same note, anyone with write access and [Relay Comments enabled](/comments/install-relay-comments/) can [comment on a passage, reply to a thread, or resolve it](/comments/comment-on-a-note/) and [suggest edits or accept or reject a teammate’s changes](/comments/suggest-edits/).
