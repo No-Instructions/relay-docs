@@ -1563,3 +1563,8 @@ html:not([data-relay-signed-in-hint="1"]) [data-console-label="console"] { displ
 @container (max-width: 499px) {
   .home-editing-demo iframe { aspect-ratio: 358 / 300; }
 }
+
+.home-demo-action { position: relative; }
+.home-demo-link { display: inline-block; margin-top: .5rem; }
+.home-demo-link::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.home-demo-link:focus-visible::after { outline: 2px solid var(--color-accent); outline-offset: 3px; border-radius: 7px; }
