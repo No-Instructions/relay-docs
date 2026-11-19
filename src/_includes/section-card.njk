@@ -1,0 +1,8 @@
+{% macro sectionCard(title, description, url) -%}
+<a class="section-card" href="{{ url }}">
+  <span class="section-card-title">{{ title }}</span>
+  {%- if description %}
+  <span class="section-card-description">{{ description }}</span>
+  {%- endif %}
+</a>
+{%- endmacro %}

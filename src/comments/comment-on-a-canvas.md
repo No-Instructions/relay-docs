@@ -37,4 +37,16 @@ A pin marks a spot on the Canvas. For example, you can place one between two car
 
 To add a comment to selected text, press Command+Option+M on macOS or Ctrl+Alt+M on Windows and Linux. The shortcut also works for selected text inside Canvas notes and native text cards. On a Canvas without a focused text editor, **Add comment** starts pin placement.
 
+## Comment with an agent
+
+Give your agent the [Relay Comments skill](/comments/use-relay-comments-with-agents/#give-your-agent-the-skill) and tell it which Canvas and card to comment on. For example: “On my Launch plan Canvas, ask who owns the announcement on the card that says ‘Draft announcement.’”
+
+With the [Obsidian CLI](https://obsidian.md/help/cli) enabled, the agent can quote a passage in a text card:
+
+```shell
+obsidian vault="Work" comments:comment path="Launch plan.canvas" quote="Draft announcement" text="Who owns the announcement?"
+```
+
+To pin the comment to the whole card, the agent can pass `node=<card ID>` in place of `quote=`.
+
 For discussion in Markdown notes, see [Comment on a note](/comments/comment-on-a-note/).

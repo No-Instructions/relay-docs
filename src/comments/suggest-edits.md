@@ -50,6 +50,16 @@ Accepting a replacement leaves the proposed text in the note; rejecting it leave
 
 To accept all review markup in the note at once, run **Accept all comments and suggestions**. This also removes comments and highlight markup, so finish the discussions you need before using it.
 
+## Suggest edits with an agent
+
+Give your agent the [Relay Comments skill](/comments/use-relay-comments-with-agents/#give-your-agent-the-skill) and tell it which note to work on. Ask it to leave suggestions for you to accept or reject in Obsidian.
+
+With the [Obsidian CLI](https://obsidian.md/help/cli) enabled, the agent can quote the exact text and propose a replacement. For example, to suggest changing a date in `Launch plan.md`:
+
+```shell
+obsidian vault="Work" comments:suggest path="Launch plan.md" quote="Ship on Friday" replace="Ship on Monday"
+```
+
 ## Related guides
 
 - [Comment on a note](/comments/comment-on-a-note/)

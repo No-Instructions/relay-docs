@@ -11,14 +11,10 @@ eleventyComputed:
   description: "{{ section.outcome or ('Browse ' + (section.title | lower) + ' documentation for Relay.') }}"
   ogSlug: "{{ section.path.split('/') | last }}"
 ---
+{% from "section-card.njk" import sectionCard %}
 {%- macro card(item) -%}
 {%- set target = collections.all | pageAtPath(item.path) -%}
-<li><a class="section-card" href="/{{ item.path }}/">
-  <span class="section-card-title">{{ target.data.title if target else item.title }}</span>
-  {%- if target and target.data.description %}
-  <span class="section-card-description">{{ target.data.description }}</span>
-  {%- endif %}
-</a></li>
+<li>{{ sectionCard(target.data.title if target else item.title, target.data.description if target else "", "/" + item.path + "/") }}</li>
 {%- endmacro -%}
 
 {%- if section.kind == 'guide' -%}

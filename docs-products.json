@@ -10,7 +10,7 @@
         "url": "/introduction/"
       }
     ],
-    "releaseNotesUrl": "https://github.com/No-Instructions/Relay/releases",
+    "releaseNotesUrl": "https://relay.md/releases",
     "status": "shipped",
     "visible": true,
     "navFile": "docs-nav.json",

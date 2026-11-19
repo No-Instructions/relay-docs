@@ -1,12 +1,29 @@
-<section class="product-grid" aria-label="Documentation products">
+{% from "section-card.njk" import sectionCard %}
+<p>Relay tools help people and agents work together on the same files. Use them separately or together.</p>
+<ul class="section-cards" aria-label="Documentation products">
   {% for product in products %}
-  <article class="product-card{% if product.status != 'shipped' %} product-card--soon{% endif %}" data-product="{{ product.id }}">
-    <h2>{{ (product.name) }}</h2>
-    <p>{{ product.description }}</p>
+  <li data-product="{{ product.id }}">
     {% if product.status == 'shipped' %}
-    <span class="product-version">{{ product.version }}</span>
-    <div class="product-card-links"><a href="{{ product.landingUrl }}">{{ (product.name) }} docs</a><a href="{{ product.releaseNotesUrl }}">Release notes<span class="sr-only"> for {{ (product.name) }}</span></a></div>
-    {% else %}<span class="product-version">Coming soon</span>{% endif %}
-  </article>
+    {{ sectionCard(product.name, product.description, product.landingUrl) }}
+    {% else %}
+    <span class="section-card" aria-disabled="true"><span class="section-card-title">{{ product.name }}</span><span class="section-card-description">Coming soon</span></span>
+    {% endif %}
+  </li>
   {% endfor %}
-</section>
+</ul>
+
+<h2>What do you want to do?</h2>
+<ul>
+  <li><a href="/guides/share-a-folder/">Share a folder with your team</a></li>
+  <li><a href="/guides/invite-a-collaborator/#your-collaborator-joins">Join a folder someone shared with you</a></li>
+  <li><a href="/comments/comment-on-a-note/#add-a-comment">Leave a comment on a passage</a></li>
+  <li><a href="/comments/install-relay-comments/#install-with-an-agent">Have your agent install Relay Comments</a></li>
+</ul>
+
+<h2>Edit notes with your team in real time</h2>
+<iframe src="/assets/same-line-editing/8280192/index.html?v=8280192-de613a984988" title="Two collaborators editing the same line" width="600" height="338" style="display:block;width:100%;max-width:600px;height:auto;aspect-ratio:600 / 338;border:0" loading="eager"></iframe>
+
+<h2>Discuss a passage</h2>
+<figure class="comments-thread-hero">
+  <iframe data-comments-animation src="/assets/relay-comments/hero-a-composer/index.html?v=b47f3b2f" title="Adding a comment, replying, and resolving the thread in Obsidian"></iframe>
+</figure>
