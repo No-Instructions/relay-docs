@@ -45,17 +45,4 @@
     });
   }
 
-  // Consult CTA — Plausible custom event.
-  // site: 'docs' differentiates from marketing's site: 'relay' so the
-  // conversion attribution stays clean across surfaces.
-  var consult = document.getElementById('consult-cta');
-  if (consult) {
-    consult.addEventListener('click', function () {
-      if (typeof window.plausible === 'function') {
-        window.plausible('Consult Nav Click', {
-          props: { page: window.location.pathname, site: 'docs' }
-        });
-      }
-    });
-  }
 })();

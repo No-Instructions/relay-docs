@@ -1,3 +1,9 @@
+{% macro externalIcon() %}<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="external-link-icon" aria-hidden="true">
+                            <path d="M15 3h6v6"/>
+                            <path d="M10 14 21 3"/>
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                          </svg>{% endmacro %}
+{% macro consoleLabel() %}<span class="console-label"><span aria-hidden="true">Console</span><span data-console-label="login">Login</span><span data-console-label="console">Console</span></span>{% endmacro %}
 {% set currentProduct = page.url | productForUrl %}
 {% from "logo-wordmark.njk" import logo %}<!doctype html>
 <html lang="en"{% if products.length > 1 %} class="multi-product"{% endif %}>
@@ -35,6 +41,7 @@
     <script>
       (function () {
         document.documentElement.classList.add('js');
+        document.documentElement.dataset.relaySignedInHint = document.cookie.split(';').some(function (part) { return part.trim() === 'relay_signed_in_hint=1'; }) ? '1' : '0';
         var stored = localStorage.getItem('relay-docs-theme');
         if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
           document.documentElement.setAttribute('data-theme', 'dark');
@@ -61,13 +68,8 @@
         {# Mobile cluster — visible < md, hidden at ≥ md #}
         <button id="mobile-nav-trigger" class="mobile-nav-trigger" type="button"
                 aria-label="Toggle menu" aria-controls="mobile-nav-dialog" aria-expanded="false">
-          {# Lucide Hamburger, 20px #}
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-               stroke-linejoin="round" aria-hidden="true">
-            <line x1="4" x2="20" y1="12" y2="12"/>
-            <line x1="4" x2="20" y1="6"  y2="6"/>
-            <line x1="4" x2="20" y1="18" y2="18"/>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <path d="M3 5h8 M3 12h13 M3 19h18"/>
           </svg>
         </button>
 
@@ -97,13 +99,9 @@
                       <a href="{{ sub.href }}" class="dropdown-link" role="menuitem"
                          {% if sub.href.startsWith("http") %}target="_blank" rel="noopener noreferrer"{% endif %}>
                         {{ sub.title }}
-                        {% if sub.href.startsWith("http") %}
+                        {% if not sub.href.startsWith("https://relay.md/") %}
                           {# Lucide ExternalLink, 12px #}
-                          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="external-link-icon" aria-hidden="true">
-                            <path d="M15 3h6v6"/>
-                            <path d="M10 14 21 3"/>
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                          </svg>
+                          {{ externalIcon() }}
                         {% endif %}
                       </a>
                     {% endfor %}
@@ -115,12 +113,8 @@
                    {% if item.active %}aria-current="page"{% endif %}
                    {% if item.href.startsWith("http") %}target="_blank" rel="noopener noreferrer"{% endif %}>
                   {{ item.title }}
-                  {% if item.href.startsWith("http") %}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="external-link-icon" aria-hidden="true">
-                      <path d="M15 3h6v6"/>
-                      <path d="M10 14 21 3"/>
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                    </svg>
+                  {% if item.active %}
+                    {{ externalIcon() }}
                   {% endif %}
                 </a>
               {% endif %}
@@ -128,34 +122,15 @@
           </nav>
         </div>
 
-        <nav class="header-nav">
-          <a id="consult-cta" href="https://system3.md/consulting" class="consult-cta"
-             target="_blank" rel="noopener noreferrer">
-            {# Lucide Compass, 16px #}
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                 stroke-linejoin="round" aria-hidden="true">
-              <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/>
-              <circle cx="12" cy="12" r="10"/>
-            </svg>
-            Consult with us
-          </a>
+        <nav class="header-nav" aria-label="Account and community">
           <a href="https://discord.relay.md" class="header-icon-btn" aria-label="Discord" target="_blank" rel="noopener noreferrer">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
               <path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
             </svg>
           </a>
-          <button id="theme-toggle" class="header-icon-btn theme-toggle" aria-label="Switch to dark mode">
-            <!-- Moon: shown in light mode -->
-            <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-            </svg>
-            <!-- Sun: shown in dark mode -->
-            <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="4"/>
-              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
-            </svg>
-          </button>
+          <a href="https://console.relay.md/" class="console-link console-link-desktop">{{ consoleLabel() }}</a>
+          <a href="https://console.relay.md/start" class="relay-start-cta"><span class="relay-start-mobile">Get started</span><span class="relay-start-desktop">Get started - it's free</span></a>
+
         </nav>
       </div>
       {% if products.length > 1 %}{% include "product-tabs.njk" %}{% endif %}
@@ -182,19 +157,23 @@
              class="mobile-nav-link{% if item.active %} mobile-nav-link--active{% endif %}"
              {% if item.active %}aria-current="page"{% endif %}
              {% if item.href.startsWith("http") %}target="_blank" rel="noopener noreferrer"{% endif %}>
-            {{ item.title }}
+            {{ item.title }}{% if item.active %} {{ externalIcon() }}{% endif %}
           </a>
           {% if item.items %}
             <div class="mobile-nav-section">
               {% for sub in item.items %}
                 <a href="{{ sub.href }}" class="mobile-nav-sublink"
                    {% if sub.href.startsWith("http") %}target="_blank" rel="noopener noreferrer"{% endif %}>
-                  {{ sub.title }}
+                  {{ sub.title }}{% if not sub.href.startsWith("https://relay.md/") %} {{ externalIcon() }}{% endif %}
                 </a>
               {% endfor %}
             </div>
           {% endif %}
         {% endfor %}
+        <div class="mobile-account-links">
+          <a class="console-link" href="https://console.relay.md/">{{ consoleLabel() }}</a>
+          <a class="relay-start-cta" href="https://console.relay.md/start">Get started - it's free</a>
+        </div>
       </nav>
     </dialog>
 
@@ -409,6 +388,17 @@
             <a href="https://system3.md" target="_blank" rel="noopener noreferrer">System 3</a>
           </p>
           <div class="footer-bottom-right">
+          <button id="theme-toggle" class="header-icon-btn theme-toggle" aria-label="Switch to dark mode">
+            <!-- Moon: shown in light mode -->
+            <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+            <!-- Sun: shown in dark mode -->
+            <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"/>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+            </svg>
+          </button>
             <a href="https://discord.relay.md" target="_blank" rel="noopener noreferrer">Join us on Discord</a>
           </div>
         </div>
