@@ -59,12 +59,6 @@ For comments inside rendered tables and callouts, hover over the highlighted tex
 
 To add a comment to selected text, press Command+Option+M on macOS or Ctrl+Alt+M on Windows and Linux. The shortcut also works for selected text inside Canvas notes and native text cards. On a Canvas without a focused text editor, **Add comment** starts pin placement.
 
-## Review a read-only note
-
-When Relay marks a note read-only, you can read its discussions, but you can't add comments or use thread actions. The selection button stays hidden, the comment command and context-menu item are refused, and the sidebar shows **Read-only** without a reply box.
-
-Relay Comments 0.5.2 follows changes to Relay read-only access while the note is open. If your access changes, check the sidebar's **Read-only** badge before continuing the review.
-
 ## Related guides
 
 - [Comment on a Canvas](/comments/0.5.2/comment-on-a-canvas/)

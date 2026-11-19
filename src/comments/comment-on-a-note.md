@@ -84,7 +84,7 @@ The sidebar lists the note's comments, suggestions, and highlights. To open the 
   <figcaption>A thread with a reply, a suggested replacement, and a highlight in the review sidebar.</figcaption>
 </figure>
 
-A standalone comment’s card quotes the preceding word when the editor uses that word as its anchor. If there’s no anchor word, the card is labeled **Comment**.
+If someone writes a comment directly in the Markdown without marking a passage, the sidebar uses nearby text to identify it. For example, a comment immediately after the word “bridge” shows **bridge** above the message. A comment at the start of a line shows **Comment** instead.
 
 <figure class="comments-guide-animation comments-native-column" id="standalone-sidebar-demo">
   <iframe data-comments-animation style="--phone-scene-height: 360" src="/assets/relay-comments/standalone-sidebar/index.html?v=t14-fd35e81c" title="Read standalone comments with and without an anchor word in the sidebar"></iframe>
@@ -96,11 +96,15 @@ For comments inside rendered tables and callouts, hover over the highlighted tex
 
 To add a comment to selected text, press Command+Option+M on macOS or Ctrl+Alt+M on Windows and Linux. The shortcut also works for selected text inside Canvas notes and native text cards. On a Canvas without a focused text editor, **Add comment** starts pin placement.
 
-## Review a read-only note
+## Comment with an agent
 
-When Relay marks a note read-only, you can read its discussions, but you can't add comments or use thread actions. The selection button stays hidden, the comment command and context-menu item are refused, and the sidebar shows **Read-only** without a reply box.
+Give your agent the [Relay Comments skill](/comments/use-relay-comments-with-agents/#give-your-agent-the-skill), the note path, and the passage you want it to comment on. For example: “In Launch plan.md, ask who owns the announcement beside ‘Draft announcement.’”
 
-Relay Comments follows changes to Relay read-only access while the note is open. If your access changes, check the sidebar's **Read-only** badge before continuing the review.
+With the [Obsidian CLI](https://obsidian.md/help/cli) enabled, the agent can run:
+
+```shell
+obsidian vault="Work" comments:comment path="Launch plan.md" quote="Draft announcement" text="Who owns the announcement?"
+```
 
 ## Related guides
 
