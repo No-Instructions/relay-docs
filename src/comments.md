@@ -5,7 +5,7 @@ layout: doc.njk
 commentsAnimation: true
 ---
 
-Relay Comments brings Google Docs-style comment threads and suggested changes to Obsidian.
+Relay Comments brings Google Docs-style comment threads and suggested changes to Obsidian. Comments are stored as plain text in the Markdown note itself.
 
 
 <figure class="comments-hero comments-thread-hero">
