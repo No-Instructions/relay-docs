@@ -51,7 +51,7 @@
         "path": "comments/getting-started",
         "pages": [
           {
-            "title": "Overview",
+            "title": "Quick start",
             "path": "comments"
           },
           {
@@ -77,7 +77,7 @@
             "path": "comments/comment-on-a-canvas"
           },
           {
-            "title": "Use Relay Comments with agents",
+            "title": "Use with agents",
             "path": "comments/use-relay-comments-with-agents"
           }
         ]
