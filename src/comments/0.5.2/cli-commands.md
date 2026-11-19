@@ -28,7 +28,7 @@ For `quote`, `text`, `replace`, `insert`, and `comment` values, literal `\n` and
 
 Every write command accepts `author=` as a configured identity's ID or name, or a plain display name. The response's `undoable` describes whether the plugin treats the edit as yours: writes as another identity stay outside your undo history.
 
-If a CLI write is made while the note is open and the response has `undoable: true`, click in that note and press ⌘Z on macOS. A write made as another identity remains in the note.
+If you edit a note through the Obsidian CLI while the note is open and the response has `undoable: true`, click in that note and press ⌘Z on macOS. A write made as another identity remains in the note.
 
 ## Command outputs
 

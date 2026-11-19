@@ -6,7 +6,7 @@ layout: doc.njk
 
 {% raw %}
 
-Review marks live in the Markdown file. To work without the CLI, read and edit those marks directly.
+Review marks live in the Markdown file. To work without the Obsidian CLI, read and edit those marks directly.
 
 ## Marks
 
@@ -42,7 +42,7 @@ To preserve a note's block structure, wrap the passage after heading hashes, lis
 
 `authorId` identifies an author, and `author` preserves a readable name when identity resolution is unavailable. With only one identity value, the plugin writes `author` alone.
 
-CLI-written comments add `date` as an ISO-8601 UTC timestamp, after the identity fields. Sidebar-written comments omit the date. This is an exact expected value from the plugin's formatter tests:
+Comments written through the Obsidian CLI include `date` as an ISO-8601 UTC timestamp, after the identity fields. Sidebar-written comments omit the date. This is an exact expected value from the plugin's formatter tests:
 
 ```text
 {{authorId="123456" author="Bongo Cat" date="2026-09-26T12:00:00.000Z">>Looks good<<}}
@@ -52,7 +52,7 @@ For direct edits, preserve the other messages' authors and dates. To sign your o
 
 ## Resolution and suggestion outcomes
 
-Resolving a Markdown discussion removes its comment markup from the note. For direct edits, apply the same transformations as the CLI:
+Resolving a Markdown discussion removes its comment markup from the note. For direct edits, apply the same transformations as the Obsidian CLI:
 
 | Thread | Resolve |
 | --- | --- |

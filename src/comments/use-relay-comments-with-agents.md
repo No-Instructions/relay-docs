@@ -12,7 +12,7 @@ Your agent can also suggest edits for review and accept or reject suggestions.
 
 Any agent that can read and edit Markdown files can work with the markup in your notes. For plugin setup, see [Install Relay Comments](/comments/install-relay-comments/).
 
-For the CLI, you need Relay Comments 0.5.0 or later, Obsidian desktop 1.12.2 or later with the command line interface enabled, and the vault open in the running app.
+To use Relay Comments commands in the [Obsidian CLI](https://obsidian.md/help/cli), enable the command line interface in Obsidian and open your vault in the desktop app. The commands require Relay Comments 0.5.0 or later and Obsidian desktop 1.12.2 or later.
 
 ## Give your agent the skill
 
@@ -33,9 +33,9 @@ The [relay-skills repository](https://github.com/No-Instructions/relay-skills) i
 
    For manual installation in Claude Code, add the repository's contents to the `.claude` folder at the root of your vault or working folder. For Codex, copy its `skills/` directory into your Codex skills path, typically `~/.codex/skills`.
 2. Give your agent the vault name, note path, and task. Say whether you want it to participate in the discussion, suggest changes for review, or edit the note.
-3. If the agent has its own review identity, have it pass that identity as `author=` on CLI writes. Without an override, the CLI uses your configured reviewer identity.
+3. If the agent has its own review identity, have it pass that identity as `author=` when writing through the Obsidian CLI. Without an override, the Obsidian CLI uses your configured reviewer identity.
 
-The skill repository lists Obsidian 1.12.4 or later as its requirement. Relay Comments' CLI itself requires 1.12.2 or later.
+The skill repository lists Obsidian 1.12.4 or later as its requirement. Relay Comments commands in the Obsidian CLI require 1.12.2 or later.
 
 ## Start a review
 
@@ -93,7 +93,7 @@ After a write, list the threads again and reread the note. Check the passage, re
 
 ## Follow a note's review activity
 
-The scoped watch introduced with the CLI in 0.5.0 lets your agent wait for comments, replies, resolutions, and suggestions.
+The `comments:watch` command in the Obsidian CLI lets your agent wait for comments, replies, resolutions, and suggestions.
 
 1. To start tracking a note without waiting, arm its scope with a zero-second timeout:
 
@@ -130,7 +130,7 @@ When `gap` is true, list threads again to recover the note's review state. After
 
 If the JSON response has `ok: false`, use `code` and `message` before retrying. For an ambiguous quote, add `line=`; quote errors report occurrence lines in `occurrences`. If a passage overlaps a mark, reply to its thread instead of adding nested markup. If a thread has moved or changed, list it again.
 
-If the command family is unavailable, check that Relay Comments is enabled, the vault is open in Obsidian desktop, and Obsidian meets the CLI requirements. Your agent can also edit CriticMarkup directly.
+If the command family is unavailable, check that Relay Comments is enabled, the vault is open in Obsidian desktop, and your version of Obsidian supports the plugin’s Obsidian CLI commands. Your agent can also edit CriticMarkup directly.
 
 ## Related guides
 
