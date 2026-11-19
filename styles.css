@@ -1554,3 +1554,9 @@ html:not([data-relay-signed-in-hint="1"]) [data-console-label="console"] { displ
 .main-nav-item--has-dropdown .dropdown-menu::before {
   content: ""; position: absolute; inset: -.5rem 0 100%;
 }
+
+.home-editing-demo { width: 100%; max-width: 600px; container-type: inline-size; }
+.home-editing-demo iframe { display: block; width: 100%; aspect-ratio: 740 / 390; border: 0; }
+@container (max-width: 499px) {
+  .home-editing-demo iframe { aspect-ratio: 358 / 300; }
+}
