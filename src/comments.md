@@ -9,7 +9,7 @@ Relay Comments brings Google Docs-style comment threads and suggested changes to
 
 
 <figure class="comments-hero comments-thread-hero">
-  <iframe data-comments-animation src="/assets/relay-comments/hero-a-composer/index.html?v=b47f3b2f" title="Adding a comment, replying, and resolving the thread in Obsidian"></iframe>
+  <iframe data-comments-animation src="/assets/relay-comments/hero-claude-norelay-6735fb76/index.html?v=6735fb76" title="Adding a comment, replying, and resolving the thread in Obsidian"></iframe>
 </figure>
 
 ## Add a comment
