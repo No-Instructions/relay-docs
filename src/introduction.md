@@ -1,5 +1,5 @@
 ---
-title: Introduction
+title: Relay for Obsidian
 description: Relay is an Obsidian plugin that enables real-time multiplayer collaboration on notes and Canvases.
 layout: doc.njk
 ---
@@ -10,7 +10,11 @@ Relay is an Obsidian plugin that enables real-time multiplayer collaboration on 
 - tabletop gamers at home
 
 It is the most popular multiplayer solution in the Obsidian world.
-![](/assets/work-together-in-real-time.gif)
+
+<figure style="max-width:600px;margin-inline:auto">
+  <iframe src="/assets/same-line-editing/8280192/index.html?v=8280192-de613a984988" title="Two collaborators editing the same line" width="600" height="338" style="display:block;width:100%;max-width:600px;height:auto;aspect-ratio:600 / 338;border:0" loading="eager"></iframe>
+</figure>
+
 ## How is Relay different?
 
 Relay differs from other popular Obsidian collaboration tools like Obsidian Sync in that it uses a purpose-built, open-source collaboration system called a CRDT to support true real-time multiplayer. [It's not just multiparty file sync](/how-relay-works/real-time-multiplayer-vs-repurposed-file-sync/).

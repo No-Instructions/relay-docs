@@ -19,9 +19,9 @@
   /* Tokens aligned to relay-marketing */
   --color-bg: #ffffff;
   --color-text: #09090b;
-  --color-muted: #71717a;
+  --color-muted: #6e6e77;
   --color-border: #e4e4e7;
-  --color-accent: #0D9373;
+  --color-accent: #0b7f63;
   --color-active-bg: #f0fdf4;
   --color-code-bg: #f4f4f5;
   --radius: 0.5rem;
@@ -31,6 +31,7 @@
 }
 
 [data-theme="dark"] {
+  --color-accent: #0fa381;
   --color-bg: #09090b;
   --color-text: #fafafa;
   --color-muted: #a1a1aa;
@@ -654,18 +655,28 @@ body.no-toc .layout {
 /* Images */
 .doc-content img {
   max-width: 100%;
-  border-radius: var(--radius);
-  border: 1px solid var(--color-border);
+  /* House treatment: clean native panel crops. The asset owns its UI edges,
+     chrome, radius and shadow; never add a second frame or clip its corners.
+     Diagrams, icons and GIFs share the same unframed canvas. */
+  border-radius: 0;
+  border: 0;
   display: block;
   margin: 1.25rem 0;
 }
 
-/* Captions: use figure + figcaption for every captioned image or video. */
+/* The figure owns the display width, so media and caption share one edge. */
 .doc-content figure {
+  width: 100%;
+  max-width: 100%;
   margin: 1.25rem 0;
 }
 
-.doc-content figure > img {
+.doc-content figure > img,
+.doc-content figure > a > img,
+.doc-content figure > svg {
+  display: block;
+  width: 100%;
+  max-width: 100%;
   margin: 0;
   height: auto;
 }
@@ -677,6 +688,14 @@ body.no-toc .layout {
   line-height: 1.5;
   font-style: italic;
   color: var(--color-muted);
+  text-align: left;
+}
+
+.doc-content figure:has(.comments-screenshot) {
+  margin-inline: auto;
+}
+
+.doc-content figure:has(.comments-screenshot) figcaption {
   text-align: center;
 }
 
@@ -724,6 +743,23 @@ body.no-toc .layout {
 .copy-agent-status {
   color: var(--color-muted);
   font-size: 0.9rem;
+}
+
+/* Keyboard access to horizontal content, including browsers that skip scrollers. */
+.doc-content pre[tabindex="0"]:focus-visible,
+.doc-content .table-scroll-region:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Keep the table's native semantics; its named wrapper owns scrolling. */
+.doc-content .table-scroll-region {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+.doc-content .table-scroll-region > table {
+  margin: 0;
+  overflow: visible;
 }
 
 /* Tables */
@@ -1174,7 +1210,7 @@ body.no-toc .layout {
 }
 
 /* Task demonstrations share the content column width. */
-.docs-video { display: block; width: 100%; max-width: 100%; height: auto; aspect-ratio: 16 / 9; margin: 1.25rem 0; border: 1px solid var(--color-border); border-radius: var(--radius); }
+.docs-video { display: block; width: 100%; max-width: 100%; height: auto; aspect-ratio: 16 / 9; margin: 1.25rem 0; border: 0; border-radius: 0; }
 .docs-nav-toggle { display: none; }
 @media (max-width: 768px) {
   .docs-nav-toggle { display: flex; align-items: center; justify-content: space-between; gap: .75rem; width: 100%; min-height: 44px; text-align: left; padding: .75rem .5rem; color: inherit; background: none; border: 0; border-radius: var(--radius); font: inherit; font-weight: 500; cursor: pointer; }
@@ -1195,7 +1231,7 @@ body.no-toc .layout {
 .toc-disclosure summary:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; border-radius: var(--radius); }
 
 /* Shared files remain available between device connections. */
-.doc-content .storage-sequence{margin:1.5rem 0;color:#202725;border:1px solid #dce3dd;border-radius:12px;background:#fbfcfa;overflow:hidden}.storage-moment{padding:20px 24px}.storage-moment+.storage-moment{border-top:1px solid #dce3dd}.doc-content .storage-moment-title{font-size:16px;line-height:1.4;margin:0 0 14px;font-weight:600}.storage-row{display:grid;grid-template-columns:90px minmax(0,1fr) 172px minmax(0,1fr) 90px;align-items:center;max-width:550px;margin:auto;text-align:center;gap:6px}.storage-device{min-width:0;font-size:14px}.storage-device svg{display:block;margin:0 auto 5px;width:42px;height:34px}.storage-device .status{display:block;font-size:12px;color:#67736b}.storage-device.offline{color:#758077}.storage-server{border:1px solid #a7c5b1;background:#eaf4ed;border-radius:9px;padding:12px 6px;color:#204c35;font-size:14px;line-height:1.3}.storage-file{display:flex;align-items:center;justify-content:center;gap:5px;margin-top:8px;font-size:12px}.storage-file svg{width:21px;height:26px}.storage-arrow{display:block;width:100%;max-width:34px;height:24px;justify-self:center;align-self:center;color:#28744c}
+.doc-content .storage-sequence{margin:1.5rem 0;color:#202725;border:1px solid #dce3dd;border-radius:12px;background:#fbfcfa;overflow:hidden}.storage-moment{padding:20px 24px}.storage-moment+.storage-moment{border-top:1px solid #dce3dd}.doc-content .storage-moment-title{font-size:16px;line-height:1.4;margin:0 0 14px;font-weight:600}.storage-row{display:grid;grid-template-columns:90px minmax(0,1fr) 172px minmax(0,1fr) 90px;align-items:center;max-width:550px;margin:auto;text-align:center;gap:6px}.storage-device{min-width:0;font-size:14px}.storage-device svg{display:block;margin:0 auto 5px;width:42px;height:34px}.storage-device .status{display:block;font-size:12px;color:#67736b}.storage-device.offline{color:#6b766c}.storage-server{border:1px solid #a7c5b1;background:#eaf4ed;border-radius:9px;padding:12px 6px;color:#204c35;font-size:14px;line-height:1.3}.storage-file{display:flex;align-items:center;justify-content:center;gap:5px;margin-top:8px;font-size:12px}.storage-file svg{width:21px;height:26px}.storage-arrow{display:block;width:100%;max-width:34px;height:24px;justify-self:center;align-self:center;color:#28744c}
 /* Center arrows between visible 38.5px device artwork and the server border. */
 .storage-arrow[aria-label="Uploads"]{transform:translateX(-12.875px)}
 .storage-arrow[aria-label="Receives"]{transform:translateX(12.875px)}
@@ -1230,36 +1266,6 @@ html.js .nav-subgroup > ul[data-closed] { display: none; }
 
 /* Decorative external web-link indicator in authored docs content. */
 .doc-content .external-link-icon { display: inline-block; width: .75em; height: .75em; margin-left: .2em; vertical-align: -.05em; flex: none; }
-
-/* One released edition: context only, without an inactive selector. */
-.docs-edition-label {
-  margin: 0 0 1.25rem;
-  padding: 0 0.5rem;
-  color: var(--color-muted);
-  font-size: 0.875rem;
-  line-height: 1.5;
-  white-space: nowrap;
-}
-@media (max-width: 768px) {
-  .sidebar.has-docs-edition {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    column-gap: 0.5rem;
-    align-items: center;
-  }
-  .has-docs-edition .docs-edition-label {
-    grid-column: 2;
-    grid-row: 1;
-    margin: 0;
-    padding: 0.75rem 0.5rem;
-  }
-  .has-docs-edition .docs-nav-toggle {
-    grid-column: 1;
-    grid-row: 1;
-    min-width: 0;
-  }
-  .has-docs-edition .docs-nav-items { grid-column: 1 / -1; }
-}
 
 /* Section indexes share their labels and destinations with the sidebar. */
 .nav-group-label a { color: inherit; text-decoration: none; }
@@ -1355,7 +1361,181 @@ html.js .nav-subgroup > ul[data-closed] { display: none; }
 .doc-content .guide-steps-unordered > li:not(:last-child)::after { top: 1.6rem; }
 .doc-content .guide-outcome { font-size: 1.0625rem; }
 .doc-content .guide-video { margin: 1.25rem 0; }
-.doc-content .guide-video video { display: block; width: 100%; border: 1px solid var(--color-border); border-radius: var(--radius); background: var(--color-code-bg); }
+.doc-content .guide-video video { display: block; width: 100%; border: 0; border-radius: 0; background: var(--color-code-bg); }
 .doc-content .guide-video figcaption { margin-top: 0.5rem; color: var(--color-muted); font-size: 0.875rem; }
 .doc-content .guide-paths { margin-bottom: 1.5rem; }
 .doc-content #guides { scroll-margin-top: 5rem; }
+
+/* Sidebar hierarchy: headings lead; regular-weight links sit beneath them.
+   Text/muted tokens reverse luminance with the theme to preserve hierarchy. */
+.sidebar .nav-group { margin: 0; padding: 1.5rem 0; }
+.sidebar .nav-group + .nav-group { border-top: 1px solid var(--color-border); }
+.sidebar .nav-group-label { margin: 0 0 .65rem .5rem; font-size: .75rem; font-weight: 600; line-height: 1.5; text-transform: uppercase; letter-spacing: .065em; color: var(--color-text); }
+.sidebar .nav-group-label a { color: inherit; text-decoration: none; }
+.sidebar .nav-group > ul { padding-left: 1rem; }
+.sidebar .nav-group li a { color: var(--color-muted); font-weight: 400; padding-top: .45rem; padding-bottom: .45rem; }
+.sidebar .nav-group li a:hover { color: var(--color-text); }
+.sidebar .nav-group li a.active { color: var(--color-accent); font-weight: 400; }
+/* All sidebar disclosure carets point right when closed and down when open. */
+
+/* Shared product catalog. */
+.product-version { font-size: .75rem; color: var(--color-muted); border: 1px solid var(--color-border); border-radius: .3rem; padding: .1rem .35rem; white-space: nowrap; font-weight: 400; letter-spacing: normal; text-transform: none; }
+.doc-content .product-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; margin: 0 0 2rem; }
+.doc-content .product-card { padding: 1rem; border: 1px solid var(--color-border); border-radius: var(--radius); }
+.doc-content .product-card h2 { margin: 0 0 .5rem; padding: 0; border: 0; font-size: 1rem; }
+.doc-content .product-card p { margin: 0 0 .75rem; font-size: .875rem; color: var(--color-muted); }
+.product-card-links { display: flex; flex-wrap: wrap; gap: .4rem 1rem; margin-top: .75rem; font-size: .8125rem; }
+.product-card--soon { background: var(--color-code-bg); color: var(--color-muted); }
+.product-release-notes { display: inline-block; margin: .4rem .5rem 1rem; font-size: .8125rem; }
+.product-tab:focus-visible, .product-section-heading a:focus-visible, .product-release-notes:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+@media (max-width: 480px) { .doc-content .product-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* Product tabs share the documentation shell and its left padding. */
+.product-tabs { overflow-x: auto; scrollbar-width: thin; border-top: 1px solid var(--color-border); }
+.product-tabs-inner { display: flex; gap: 1.5rem; width: 100%; max-width: var(--shell-max); margin: 0 auto; padding: 0 1rem; }
+.product-tab { display: flex; flex: none; align-items: center; gap: .4rem; min-height: 48px; padding: .5rem 0; color: var(--color-muted); font-size: .875rem; font-weight: 400; text-decoration: none; white-space: nowrap; border-bottom: 2px solid transparent; }
+.product-tab[aria-current] { color: var(--color-text); font-weight: 600; border-bottom-color: var(--color-accent); }
+.product-tab[href]:hover { color: var(--color-text); }
+.product-tab:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -2px; }
+html.multi-product { scroll-padding-top: 120px; }
+.toc-rail { top: var(--docs-header-height); max-height: calc(100vh - var(--docs-header-height)); }
+
+/* Products are a full typographic level above their small section labels. */
+:root { --docs-header-height: 56px; }
+html.multi-product { --docs-header-height: 106px; }
+.sidebar { padding: 0; overflow: hidden; }
+.sidebar-scroll { height: 100%; overflow-y: auto; padding: 1.5rem 1rem; scroll-behavior: auto; overflow-anchor: none; }
+.js .sidebar:not([data-ready]) .sidebar-scroll { visibility: hidden; }
+.sidebar .product-section { padding: 0 0 1.5rem; }
+.sidebar .product-section + .product-section { border-top: 1px solid var(--color-border); padding-top: 2rem; }
+.product-heading-row { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+.product-section-heading { margin: 0; color: var(--color-text); font-size: 1.125rem; line-height: 1.4; font-weight: 700; text-transform: none; letter-spacing: -.015em; }
+.product-section-heading a { color: inherit; text-decoration: none; }
+.product-section-heading a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.product-heading-row > .product-version { flex: 0 0 auto; max-width: 100%; }
+.product-version-picker {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  color: var(--color-muted);
+}
+.product-version-select {
+  appearance: none;
+  font-family: inherit;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.25rem;
+  color: var(--color-text);
+  background: var(--color-bg);
+  padding: .125rem 1.625rem .125rem .5rem;
+  cursor: pointer;
+}
+.product-version-picker > svg {
+  position: absolute;
+  inset-inline-end: .5rem;
+  pointer-events: none;
+}
+.product-version-select:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+.product-version[hidden] { display: none; }
+.product-pages { margin-top: 1rem; }
+.sidebar .nav-group { padding: 1rem 0; }
+.sidebar .nav-group:first-child { padding-top: 0; }
+.sidebar .product-section .nav-group-label { margin-left: 0; font-size: .6875rem; letter-spacing: .065em; font-weight: 600; color: var(--color-muted); }
+.sidebar .nav-group > ul { padding-left: 1rem; }
+.sidebar .nav-subgroup-row { position: relative; gap: 0; }
+.sidebar .nav-subgroup-toggle { position: absolute; right: 0; order: 0; width: 28px; height: 28px; }
+.sidebar .nav-subgroup-row > a { padding-right: 2rem; }
+.sidebar .nav-item-soon { display: flex; align-items: center; gap: .5rem; padding: .45rem .5rem; color: var(--color-muted); font-size: .875rem; line-height: 1.4; }
+.product-release-notes { display: block; margin: .75rem 0 0 1rem; padding: .45rem .5rem; color: var(--color-muted); font-size: .8125rem; line-height: 1.4; text-decoration: none; }
+.product-release-notes:hover { color: var(--color-text); text-decoration: underline; }
+.sidebar .nav-group a[aria-current="page"] { color: var(--color-accent); background: var(--color-active-bg); border-radius: calc(var(--radius) - 2px); }
+.sidebar-scroll-space { pointer-events: none; }
+.combined-nav-toggle { display: none; }
+.combined-nav-toggle[aria-expanded="true"] svg { transform: rotate(90deg); }
+@media (min-width: 769px) { .sidebar { top: var(--docs-header-height); height: calc(100vh - var(--docs-header-height)); } }
+@media (max-width: 768px) {
+  .product-tabs-inner { gap: 1.25rem; }
+  .product-tab--soon .product-version { display: none; }
+  .sidebar { position: static; height: auto; width: 100%; padding: 1.5rem 1rem; }
+  /* Long URLs and inline paths must fit narrow article columns. */
+  .doc-content { overflow-wrap: break-word; }
+  .combined-nav-toggle { display: flex; justify-content: space-between; width: 100%; min-height: 48px; padding: .75rem 1rem; border: 0; background: var(--color-bg); color: var(--color-text); font: inherit; text-align: left; }
+  .sidebar-scroll { height: min(55vh, 440px); mask-image: linear-gradient(to bottom, transparent, #000 16px, #000 calc(100% - 16px), transparent); }
+  /* A closed panel has no layout box; the toggle repositions it on open. */
+  .js .combined-nav-toggle[aria-expanded="false"] + .sidebar-scroll { display: none; }
+}
+
+/* Give animated guides the full 720px reading column inside the desktop shell. */
+@media (min-width: 1024px) {
+  .layout:has(.comments-guide-animation) { --toc-width: 220px; }
+}
+.comments-overview .doc-content { grid-column: 2 / -1; }
+.comments-overview .toc-rail { display: none; }
+.comments-overview .toc-disclosure { display: none; }
+.doc-content .comments-hero { max-width: var(--content-max); margin: 1.5rem 0 2.5rem; }
+.comments-hero video,
+.comments-hero-embed,
+.comments-hero-poster img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1300 / 472;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  object-fit: contain;
+}
+/* Temporary raster exports contain white pixels outside their native window.
+   Mask to that exact silhouette, scaled with the asset; no second frame. The
+   live iframe owns its own transparent corners and needs no parent mask. */
+.comments-hero video,
+.comments-hero-poster img { clip-path: inset(0 round 1.231% / 3.39%); }
+.comments-hero-embed { aspect-ratio: 1100 / 680; }
+.comments-hero-embed[hidden] { display: none; }
+.comments-hero .comments-hero-dark,
+.comments-hero .comments-hero-poster { display: none; }
+[data-theme="dark"] .comments-hero .comments-hero-light { display: none; }
+[data-theme="dark"] .comments-hero video.comments-hero-dark { display: block; }
+.comments-hero[data-media="embed"] video.comments-hero-light,
+.comments-hero[data-media="embed"] video.comments-hero-dark { display: none; }
+@media (max-width: 600px) {
+  .comments-overview .doc-content { grid-column: auto; }
+  .comments-hero video,
+  .comments-hero-poster img { clip-path: inset(0 round 3.352% / 3.449%); }
+  .comments-hero video,
+  .comments-hero-embed,
+  .comments-hero-poster img { aspect-ratio: 358 / 348; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .comments-hero video,
+  .comments-hero .comments-hero-embed { display: none !important; }
+  .comments-hero picture.comments-hero-light { display: block; }
+  [data-theme="dark"] .comments-hero picture.comments-hero-light { display: none; }
+  [data-theme="dark"] .comments-hero picture.comments-hero-dark { display: block; }
+}
+
+/* Comments UI captures: one 12px silhouette around a clean, padded native
+   surface. No border, inset frame, or extra shadow; all native UI stays inside
+   its capture gutter (24px around popups and Canvas objects). The system picture also works without JavaScript. */
+.doc-content .comments-screenshot { display: none; overflow: hidden; border-radius: 12px; }
+.doc-content .comments-screenshot--system { display: block; }
+.doc-content .comments-screenshot img { display: block; width: 100%; height: auto; margin: 0; border: 0; border-radius: 0; }
+[data-theme="dark"] .doc-content .comments-screenshot--system,
+[data-theme="light"] .doc-content .comments-screenshot--system { display: none; }
+[data-theme="dark"] .doc-content .comments-screenshot--dark,
+[data-theme="light"] .doc-content .comments-screenshot--light { display: block; }
+
+.comments-guide-animation figcaption { text-align: center; }
+.comments-guide-animation iframe,
+.comments-thread-hero iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1100 / 520;
+  border: 0;
+}
+
+:is(.comments-column-hero, .comments-native-column) iframe { aspect-ratio: 720 / var(--desktop-scene-height, 340); }
+:is(.comments-column-hero, .comments-native-column) { container-type: inline-size; }
+@container (max-width: 599px) {
+  :is(.comments-column-hero, .comments-native-column) iframe { aspect-ratio: 358 / var(--phone-scene-height); }
+}

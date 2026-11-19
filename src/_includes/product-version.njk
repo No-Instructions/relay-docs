@@ -1,0 +1,9 @@
+        {% set selectedVersion = product | versionForUrl(page.url) %}
+        {% if product.versions.length > 1 %}
+        <span class="product-version-picker">
+          <select class="product-version product-version-select" aria-label="{{ product.name }} version">
+            {% for version in product.versions %}<option value="{{ product | versionPageUrl(version, page.url) }}"{% if selectedVersion.url == version.url %} selected{% endif %}>{{ version.label }}</option>{% endfor %}
+          </select>
+          <svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="m3 4.5 3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        {% else %}<span class="product-version">{{ product.version or 'Soon' }}</span>{% endif %}

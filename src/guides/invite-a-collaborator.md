@@ -61,4 +61,4 @@ After joining, your collaborator opens the Relay Server from their `Relay Server
 - [Create a Shared Folder with private access](/guides/private-shared-folders/)
 - [Upgrade to a paid plan](/guides/upgrade-to-a-paid-plan/)
 - [Collaborate on an Obsidian Canvas](/guides/collaborate-on-an-obsidian-canvas/)
-- [Introduction](/introduction/)
+- [Relay for Obsidian](/introduction/)

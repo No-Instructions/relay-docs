@@ -11,6 +11,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { productOgSlug } = require('./products');
 
 const ROOT = __dirname;
 const SITE_DIR = path.join(ROOT, '_site');
@@ -248,7 +249,8 @@ async function main() {
   let count = 0;
 
   for (const htmlFile of htmlFiles) {
-    const slug = slugFromHtmlFile(htmlFile);
+    const route = '/' + path.relative(SITE_DIR, htmlFile).split(path.sep).join('/').replace(/index\.html$/, '');
+    const slug = productOgSlug(slugFromHtmlFile(htmlFile), route);
     const html = fs.readFileSync(htmlFile, 'utf-8');
     const { title, description } = extractPageMeta(html);
 

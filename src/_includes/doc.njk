@@ -7,21 +7,36 @@
 {% set tocEntryCount = content | tocEntryCount %}
 {% set showToc = tocEntryCount >= 2 %}
 
-{% block bodyClass %}{% if not showToc %}no-toc{% endif %}{% endblock %}
+{% block bodyClass %}{% if not showToc %}no-toc{% endif %}{% if currentProduct.id == "relay-comments" and page.url == (currentProduct | versionForUrl(page.url)).url %} comments-overview{% endif %}{% endblock %}
 
 {% block content %}
 <div class="layout">
-  <nav class="sidebar has-docs-edition" aria-label="Documentation navigation">
-    {% include "edition-label.njk" %}
-    <button class="docs-nav-toggle" aria-expanded="false" aria-controls="docs-nav-items">
-      <span class="docs-nav-label"><svg class="docs-nav-menu-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16" /></svg><span>Browse documentation</span></span>
-      <svg class="docs-nav-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6" /></svg>
-    </button>
-    <div class="docs-nav-items" id="docs-nav-items">
+  <nav class="sidebar" aria-label="Documentation navigation">
+    <button class="combined-nav-toggle" type="button" aria-expanded="false" aria-controls="combined-sidebar-scroll">Browse pages <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 6 6 6-6 6" /></svg></button>
+    <div class="sidebar-scroll" id="combined-sidebar-scroll">
+    {% for product in products %}
+    {% set edition = product | versionForUrl(page.url) %}
+    <section class="product-section{% if product.id == currentProduct.id %} product-section--current{% endif %}" data-product="{{ product.id }}" aria-labelledby="product-{{ product.id }}">
+      <div class="product-heading-row">
+        <h2 class="product-section-heading" id="product-{{ product.id }}">
+          {% if product.status == 'shipped' %}
+          <a href="{{ edition.url }}">{{ product.name }}</a>
+          {% else %}<span aria-disabled="true">{{ product.name }}</span>{% endif %}
+        </h2>
+        {% include "product-version.njk" %}
+      </div>
+      {% if product.status == 'shipped' %}
+      <div class="product-pages" id="pages-{{ product.id }}">
     {% for group in navigation.groups %}
+    {% if group.productId == product.id and (group.version or product.version) == edition.label %}
     <div class="nav-group">
-      <p class="nav-group-label"><a href="/{{ group.path }}/"{% if page.url == "/" + group.path + "/" %} aria-current="page"{% endif %}>{{ group.group }}</a></p>
+      {% if group.group != product.name %}
+      <h3 class="nav-group-label"><a href="/{{ group.path }}/"{% if page.url == "/" + group.path + "/" %} class="active" aria-current="page"{% endif %}>{{ group.group }}</a></h3>
+      {% endif %}
       <ul>
+        {% if group.group == product.name %}
+        <li><a href="{{ product.homePath }}"{% if page.url == product.homePath %} class="active" aria-current="page"{% endif %}>Overview</a></li>
+        {% endif %}
         {% for item in group.pages %}
         <li>
           {% if item.children %}
@@ -43,11 +58,23 @@
           {% endif %}
         </li>
         {% endfor %}
+        {% for addition in product.navAdditions %}{% if addition.section == group.path %}
+        <li><span class="nav-item-soon" aria-disabled="true">{{ addition.title }} <span class="product-version">Soon</span></span></li>
+        {% endif %}{% endfor %}
       </ul>
     </div>
+    {% endif %}
     {% endfor %}
+      <a class="product-release-notes" href="{{ product.releaseNotesUrl }}">Release notes<span class="sr-only"> for {{ product.name }}</span></a>
+      </div>
+      {% endif %}
+    </section>
+    {% endfor %}
+    <div class="sidebar-scroll-space" aria-hidden="true"></div>
     </div>
   </nav>
+  {# Blocking script initializes the sidebar before it can be painted. #}
+  <script src="/assets/js/combined-sidebar.js"></script>
 
   <main id="main" class="doc-content">
     {% set trail = navigation.trails[page.url] %}
@@ -82,6 +109,7 @@
     </details>
     {% endif %}
 
+    {% if page.url == "/" and products.length > 1 %}{% include "product-grid.njk" %}{% endif %}
     {{ content | safe }}
   </main>
 

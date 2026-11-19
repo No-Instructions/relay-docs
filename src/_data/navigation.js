@@ -1,7 +1,5 @@
-const fs = require('fs');
-const path = require('path');
 module.exports = function () {
-  const nav = JSON.parse(fs.readFileSync(path.join(__dirname, '../../docs-nav.json'), 'utf-8'));
+  const nav = require('../../products').getNavigation();
   // Breadcrumb trail for every page in the nav, keyed by URL: its group,
   // its subgroup if any, then the page itself.
   const crumb = (title, p) => ({ title, url: '/' + p + '/' });

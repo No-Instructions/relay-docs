@@ -1,9 +1,11 @@
+{% set currentProduct = page.url | productForUrl %}
 {% from "logo-wordmark.njk" import logo %}<!doctype html>
-<html lang="en">
+<html lang="en"{% if products.length > 1 %} class="multi-product"{% endif %}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="relay-docs-edition" content="{{ docsEdition.editionId }}" />
+    {% if currentProduct %}<meta name="relay-docs-edition" content="{{ (currentProduct | versionForUrl(page.url)).label }}" />{% endif %}
+    {% if docsPreview %}<meta name="robots" content="noindex, nofollow" />{% endif %}
 
     {% set pageTitle = (title + " — " + site.title) if (title and title != site.title) else site.title %}
     {% set pageDescription = description or site.description %}
@@ -18,6 +20,7 @@
     <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
 
     {% set ogSlug = ogSlug or page.fileSlug or "index" %}
+    {% set ogSlug = ogSlug | productOgSlug(page.url) %}
     {% set ogImage = "/assets/og/" + ogSlug + ".png?v=black-1" %}
     <meta property="og:image" content="{{ site.url }}{{ ogImage }}" />
 
@@ -35,6 +38,8 @@
         var stored = localStorage.getItem('relay-docs-theme');
         if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
           document.documentElement.setAttribute('data-theme', 'dark');
+        } else if (stored === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
         }
       })();
     </script>
@@ -45,6 +50,7 @@
 
     <!-- Plausible Analytics -->
     <script defer data-domain="docs.relay.md" src="https://plausible.io/js/script.js"></script>
+    {% if commentsAnimation %}<script src="/assets/js/comments-animation-size.js"></script>{% endif %}
   </head>
   <body class="{% block bodyClass %}{% endblock %}">
     <a href="#main" class="skip-link">Skip to content</a>
@@ -152,6 +158,7 @@
           </button>
         </nav>
       </div>
+      {% if products.length > 1 %}{% include "product-tabs.njk" %}{% endif %}
     </header>
 
     {# Mobile burger sheet — HTML5 dialog. Sibling of header, body-level. #}
@@ -411,13 +418,6 @@
     <script src="/assets/js/toc-scrollspy.js" defer></script>
     <script>
       (function () {
-        var navToggle = document.querySelector('.docs-nav-toggle');
-        if (navToggle) {
-          navToggle.closest('.sidebar').setAttribute('data-collapsible', '');
-          navToggle.addEventListener('click', function () {
-            navToggle.setAttribute('aria-expanded', navToggle.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
-          });
-        }
         // Subgroup chevrons fold their list; the subgroup name is a link.
         document.querySelectorAll('.nav-subgroup-toggle').forEach(function (toggle) {
           var list = document.getElementById(toggle.getAttribute('aria-controls'));
@@ -433,10 +433,16 @@
           var dark = document.documentElement.getAttribute('data-theme') === 'dark';
           btn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
         }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (event) {
+          if (localStorage.getItem('relay-docs-theme')) return;
+          if (event.matches) document.documentElement.setAttribute('data-theme', 'dark');
+          else document.documentElement.removeAttribute('data-theme');
+          syncLabel();
+        });
         btn.addEventListener('click', function () {
           var dark = document.documentElement.getAttribute('data-theme') === 'dark';
           if (dark) {
-            document.documentElement.removeAttribute('data-theme');
+            document.documentElement.setAttribute('data-theme', 'light');
             localStorage.setItem('relay-docs-theme', 'light');
           } else {
             document.documentElement.setAttribute('data-theme', 'dark');

@@ -34,8 +34,8 @@ An unresolved local conflict keeps the icon gray while the banner is shown or th
 
 If the note you’re reading has a local conflict, click its **Merge conflict -- click to resolve** banner to open **File diff**.
 
-<figure style="margin:1.25rem 0">
-  <img src="/assets/resolve-local-conflicts/banner.png" alt="The purple Merge conflict -- click to resolve banner appears above the open note." width="832" height="400" style="display:block;width:100%;max-width:416px;height:auto;margin:0 auto">
+<figure style="max-width:416px">
+  <img src="/assets/resolve-local-conflicts/banner.png" alt="The purple Merge conflict -- click to resolve banner appears above the open note." width="832" height="400" style="display:block;width:100%;height:auto;margin:0 auto">
 </figure>
 
 ### Find other notes with conflicts
@@ -47,8 +47,8 @@ To look for conflicts across a Shared Folder:
 3. In the **Sync status** sidebar, look under **Conflicts** and click a note’s name.
 4. Click the banner in that note to open **File diff**.
 
-<figure style="margin:1.25rem 0">
-  <img src="/assets/resolve-local-conflicts/sidebar.png" alt="Relay’s Sync status sidebar lists Keep local edits under Conflicts (1), with Open to resolve beneath the name. The folder heading also says Synced." width="600" height="600" style="display:block;width:100%;max-width:300px;height:auto;margin:0 auto">
+<figure style="max-width:300px">
+  <img src="/assets/resolve-local-conflicts/sidebar.png" alt="Relay’s Sync status sidebar lists Keep local edits under Conflicts (1), with Open to resolve beneath the name. The folder heading also says Synced." width="600" height="600" style="display:block;width:100%;height:auto;margin:0 auto">
   <figcaption>The folder’s Synced heading does not mean its listed conflicts are resolved. Check the Conflicts section.</figcaption>
 </figure>
 
@@ -62,8 +62,8 @@ File diff shows two versions of the note. In Relay 0.8.12, **Local file** means 
 
 Read the highlighted text before choosing. A note you never opened on this device can still contain local differences worth keeping. If a label seems inconsistent with the text you recognize, compare the actual text with your backup before proceeding.
 
-<figure style="margin:1.25rem 0">
-  <img src="/assets/resolve-local-conflicts/differ.png" alt="File diff shows whole-note choices at the top and separate choices above a highlighted block. The Remote text says to review the shared copy; the Local text says to recover missing edits one note at a time." width="784" height="572" style="display:block;width:100%;max-width:392px;height:auto;margin:0 auto">
+<figure style="max-width:392px">
+  <img src="/assets/resolve-local-conflicts/differ.png" alt="File diff shows whole-note choices at the top and separate choices above a highlighted block. The Remote text says to review the shared copy; the Local text says to recover missing edits one note at a time." width="784" height="572" style="display:block;width:100%;height:auto;margin:0 auto">
   <figcaption>In this example, Remote is the upper text and Local is the lower text. Read the labels and contents in your own conflict.</figcaption>
 </figure>
 

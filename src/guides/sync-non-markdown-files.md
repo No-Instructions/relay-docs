@@ -40,8 +40,8 @@ To sync files with extensions outside the listed categories, such as `.html`, `.
 3. Under **Sync settings for this device**, turn on **Other files**, the last setting in the list. Its description reads *Sync unsupported file types*.
 4. Repeat these steps on each of your other devices that needs the files.
 
-<figure>
-  <svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sync settings for this device, listing Markdown, Canvas, Bases, Images, Audio, Videos, PDFs, and Other files. Every setting is on except Other files, which is outlined." viewBox="0 0 902 1368" style="display:block;width:100%;max-width:560px;height:auto">
+<figure style="max-width:560px">
+  <svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sync settings for this device, listing Markdown, Canvas, Bases, Images, Audio, Videos, PDFs, and Other files. Every setting is on except Other files, which is outlined." viewBox="0 0 902 1368" style="display:block;width:100%;height:auto">
     <image href="/assets/sync-non-markdown-files/folder-sync-settings.png" x="0" y="0" width="902" height="1368"/>
     <rect x="46" y="1236" width="834" height="112" rx="12" fill="none" stroke="white" stroke-width="8"/>
     <rect x="46" y="1236" width="834" height="112" rx="12" fill="none" stroke="#075ee8" stroke-width="4"/>

@@ -1,9 +1,10 @@
 {
   "scripts": {
-    "build": "npx @11ty/eleventy && node generate-llms-full.js && node generate-og-images.js",
-    "build:prod": "npx @11ty/eleventy && node generate-llms-full.js && node generate-og-images.js && node validate-site.js",
+    "build": "node prepare-build.js && npx @11ty/eleventy && node generate-llms-full.js && node generate-og-images.js",
+    "build:prod": "npm run build && node validate-site.js",
     "serve": "npx @11ty/eleventy --serve",
-    "validate": "node validate-site.js"
+    "validate": "node validate-site.js",
+    "test": "node --test *.test.js"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",

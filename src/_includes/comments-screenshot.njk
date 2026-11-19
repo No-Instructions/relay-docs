@@ -1,0 +1,11 @@
+{# Native captures have a system fallback and explicit overrides. Keeping the
+   light override separate lets a saved light preference beat a dark OS theme. #}
+{% for variant in ["system", "light", "dark"] %}
+{% set imageSuffix = "-dark" if variant == "dark" else "" %}
+{% if screenshot.full %}<a class="comments-screenshot comments-screenshot--{{ variant }}" href="/assets/relay-comments/{{ screenshot.full }}{{ imageSuffix }}.png">{% endif %}
+<picture{% if not screenshot.full %} class="comments-screenshot comments-screenshot--{{ variant }}"{% endif %}>
+  {% if variant == "system" %}<source media="(prefers-color-scheme: dark)" srcset="/assets/relay-comments/{{ screenshot.name }}-dark.png">{% endif %}
+  <img src="/assets/relay-comments/{{ screenshot.name }}{{ imageSuffix }}.png" alt="{{ screenshot.alt }}" width="{{ screenshot.width }}" height="{{ screenshot.height }}" loading="lazy">
+</picture>
+{% if screenshot.full %}</a>{% endif %}
+{% endfor %}

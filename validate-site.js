@@ -18,7 +18,7 @@ const ROOT = __dirname;
 const SITE_DIR = path.join(ROOT, '_site');
 
 // Load nav
-const NAV = JSON.parse(fs.readFileSync(path.join(ROOT, 'docs-nav.json'), 'utf-8'));
+const NAV = require('./products').getNavigation();
 const { allPages, sections } = require('./nav-pages.js');
 const NAV_PATHS = new Set([...allPages(NAV), ...sections(NAV)].map(page => page.path));
 
@@ -188,7 +188,7 @@ function readSourcePolicy(srcDir = path.join(ROOT, 'src')) {
       } else if (entry.isFile() && /\.(md|html|njk)$/.test(entry.name)) {
         const file = path.join(dir, entry.name), data = matter(fs.readFileSync(file, 'utf8')).data;
         const inferred = '/' + path.relative(srcDir, file).split(path.sep).join('/').replace(/\.(md|html|njk)$/, '').replace(/(^|\/)index$/, '$1');
-        const route = routeKey(typeof data.permalink === 'string' ? data.permalink : inferred);
+        const route = routeKey(typeof data.permalink === 'string' ? data.permalink : inferred.replace(/\/?$/, '/'));
         if (data.permalink === false || data.draft === true || ['deferred-draft', 'review-only'].includes(data.status)) privateRoutes.add(route);
         if (data.eleventyExcludeFromCollections === true) collectionExcluded.add(route);
       }
@@ -200,7 +200,7 @@ function readSourcePolicy(srcDir = path.join(ROOT, 'src')) {
 
 function checkDiscovery({ siteDir = SITE_DIR, navPaths = NAV_PATHS, privateRoutes = new Set(), collectionExcluded = new Set() } = {}) {
   const errors = [];
-  const navRoutes = new Set([...navPaths].map(routeKey));
+  const navRoutes = new Set([...navPaths].map(navPath => routeKey(navPath.replace(/\/?$/, '/'))));
   for (const route of privateRoutes) {
     const target = path.join(siteDir, route);
     if (fs.existsSync(target) || fs.existsSync(path.join(target, 'index.html'))) errors.push(`private draft output exists: ${route}`);
@@ -308,7 +308,11 @@ function main() {
   }
 
   errors.push(...checkNavCoverage(htmlFiles));
-  errors.push(...checkDiscovery(readSourcePolicy()));
+  const policy = readSourcePolicy();
+  if (require('./products').previewDrafts) for (const route of [...policy.privateRoutes]) {
+    if (require('./products').productForUrl(route)?.draft) policy.privateRoutes.delete(route);
+  }
+  errors.push(...checkDiscovery(policy));
 
   if (errors.length > 0) {
     console.error(`Validation failed (${errors.length} error${errors.length === 1 ? '' : 's'}):`);

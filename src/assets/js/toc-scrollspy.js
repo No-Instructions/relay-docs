@@ -4,10 +4,10 @@
   // Tunable: the "reading band" for scroll-spy. Single named constant at
   // the top of the module so we can tune without ceremony (Lead hard
   // requirement on design open question #4).
-  //   -80px top:   just below the 57px sticky header plus a hair
+  //   -130px top: below the header and the product tab row
   //   -70% bottom: lower 70% of viewport is "out of band"
   // Net: the band is the top 30% of the viewport minus the header.
-  var TOC_ROOT_MARGIN = '-80px 0px -70% 0px';
+  var TOC_ROOT_MARGIN = '-130px 0px -70% 0px';
 
   var headings = Array.prototype.slice.call(
     document.querySelectorAll('.doc-content h2[id], .doc-content h3[id]')
@@ -99,7 +99,7 @@
   // the observer fallback (for large scroll jumps where no heading is
   // currently in the reading band).
   function pickByScroll() {
-    var bandTop = window.scrollY + 80; // matches TOC_ROOT_MARGIN's top inset
+    var bandTop = window.scrollY + 130; // matches TOC_ROOT_MARGIN's top inset
     var candidate = null;
     headings.forEach(function (h) {
       var docTop = h.getBoundingClientRect().top + window.scrollY;

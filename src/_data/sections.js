@@ -6,4 +6,4 @@ const { sections } = require('../../nav-pages');
 // generated card index; every other section keeps the generated page.
 const authored = section => fs.existsSync(path.join(__dirname, '..', section.path + '.md'));
 
-module.exports = () => sections(require('../../docs-nav.json')).filter(section => !authored(section));
+module.exports = () => sections(require('../../products').getNavigation()).filter(section => !authored(section));

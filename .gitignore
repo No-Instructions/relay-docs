@@ -9,3 +9,9 @@ node_modules/
 # Local draft workflow (unreviewed source + local preview build)
 drafts/
 _draft_site/
+
+# Previous generated output, preserved when starting a clean build
+_build-history/
+
+# Local worktree custody metadata
+.checkout-meta

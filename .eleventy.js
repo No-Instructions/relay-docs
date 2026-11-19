@@ -5,16 +5,35 @@ const pluginTOC = require('eleventy-plugin-nesting-toc');
 const Toc = require('eleventy-plugin-nesting-toc/toc');
 
 const { decorateExternalLinks } = require('./external-links');
+const { makeScrollRegionsAccessible } = require('./scroll-regions');
+const { productForUrl, versionForUrl, versionPageUrl, productOgSlug, previewBuild, privateAssetDirectories } = require('./products');
 
 module.exports = function (eleventyConfig) {
+  eleventyConfig.addFilter('productForUrl', productForUrl);
+  eleventyConfig.addFilter('versionForUrl', versionForUrl);
+  eleventyConfig.addFilter('versionPageUrl', versionPageUrl);
+  eleventyConfig.addFilter('productOgSlug', productOgSlug);
+  eleventyConfig.addGlobalData('docsPreview', previewBuild);
+  eleventyConfig.addWatchTarget('./docs-products.json');
   eleventyConfig.addTransform('external-doc-links', function (html) {
     if (!this.page.outputPath || !this.page.outputPath.endsWith('.html')) return html;
     return decorateExternalLinks(html, { previewOrigin: process.env.DOCS_PREVIEW_ORIGIN });
   });
+  eleventyConfig.addTransform('keyboard-scroll-regions', function (html) {
+    if (!this.page.outputPath || !this.page.outputPath.endsWith('.html')) return html;
+    return makeScrollRegionsAccessible(html);
+  });
   eleventyConfig.addGlobalData('stylesVersion', () =>
     createHash('sha256').update(readFileSync('styles.css')).digest('hex').slice(0, 12)
   );
-  eleventyConfig.addPassthroughCopy({ 'src/assets': 'assets' });
+  // Embedded demos are static assets. Copy their HTML without rendering it as a docs page.
+  eleventyConfig.ignores.add('src/assets/**');
+  const passthroughIgnores = privateAssetDirectories;
+  eleventyConfig.addPassthroughCopy({ 'src/assets': 'assets' }, {
+    filter: relativePath => !passthroughIgnores.some(
+      assetPath => relativePath === assetPath || relativePath.startsWith(assetPath + '/')
+    ),
+  });
   eleventyConfig.addPassthroughCopy({ 'src/robots.txt': 'robots.txt' });
   eleventyConfig.addPassthroughCopy({ 'styles.css': 'styles.css' });
   eleventyConfig.addPassthroughCopy({ 'favicon.ico': 'favicon.ico' });

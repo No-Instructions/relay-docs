@@ -1,11 +1,6 @@
 {
   "redirects": [
     {
-      "source": "/",
-      "destination": "/introduction/",
-      "permanent": true
-    },
-    {
       "source": "/relay-docs-introduction",
       "destination": "/introduction/",
       "permanent": true

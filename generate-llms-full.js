@@ -13,7 +13,7 @@ const path = require('path');
 
 const { leaves, sections } = require('./nav-pages.js');
 const ROOT = __dirname;
-const docsEdition = require('./src/_data/docsEdition.json');
+const { products, productForUrl, versionForUrl, previewBuild } = require('./products');
 const SITE_DIR = path.join(ROOT, '_site');
 const SITE_URL = 'https://docs.relay.md';
 const SKIP_DIRS = new Set(['assets']);
@@ -40,13 +40,13 @@ function collectHtmlFiles(dir) {
 }
 
 function stripHtml(html) {
-  html = html.replace(/<head[\s\S]*?<\/head>/gi, '');
-  html = html.replace(/<header[\s\S]*?<\/header>/gi, '');
-  html = html.replace(/<nav[\s\S]*?<\/nav>/gi, '');
-  html = html.replace(/<footer[\s\S]*?<\/footer>/gi, '');
-  // Strip skip-link anchor (sits before <header>, outside stripped regions)
-  html = html.replace(/<a[^>]*class="skip-link"[^>]*>[\s\S]*?<\/a>/gi, '');
-  html = html.replace(/<[^>]+>/g, ' ');
+  // Read article content only: JSON-LD, dialogs, product navigation and TOC
+  // are presentation metadata, not documentation excerpts.
+  const $ = require('cheerio').load(html);
+  const main = $('main').first();
+  main.find('script, style, nav, .toc-disclosure').remove();
+  main.find('p, li, h1, h2, h3, h4, tr, pre, figcaption').append(' ');
+  html = main.text();
   return html.replace(/\s+/g, ' ').trim();
 }
 
@@ -73,29 +73,29 @@ function extractMeta(html, name) {
 // ── generate llms.txt ─────────────────────────────────────────────────────────
 
 function generateLlmsTxt() {
-  const nav = JSON.parse(fs.readFileSync(path.join(ROOT, 'docs-nav.json'), 'utf-8'));
+  const nav = require('./products').getNavigation();
 
-  const pageLines = sections(nav).map(section => `- [${section.title}](${SITE_URL}/${section.path}/)`);
-
-  for (const group of nav.groups) {
-    for (const page of leaves(group.pages)) {
-      const htmlFile = path.join(SITE_DIR, page.path, 'index.html');
-      if (!fs.existsSync(htmlFile)) continue;
-      const html = fs.readFileSync(htmlFile, 'utf-8');
-      const description = extractMeta(html, 'description');
-      const url = `${SITE_URL}/${page.path}/`;
-      const desc = description ? `: ${description}` : '';
-      pageLines.push(`- [${page.title}](${url})${desc}`);
+  const pageLines = [];
+  for (const product of products.filter(p => p.status === 'shipped')) {
+    for (const version of product.versions) {
+      const productNav = { groups: nav.groups.filter(g => g.productId === product.slug && (g.version || product.version) === version.label) };
+      pageLines.push(`## ${product.name} ${version.label}`, '');
+      pageLines.push(...sections(productNav).map(section => `- [${section.title}](${SITE_URL}/${section.path}/)`));
+      for (const group of productNav.groups) for (const page of leaves(group.pages)) {
+        const htmlFile = path.join(SITE_DIR, page.path, 'index.html');
+        if (!fs.existsSync(htmlFile)) continue;
+        const description = extractMeta(fs.readFileSync(htmlFile, 'utf-8'), 'description');
+        pageLines.push(`- [${page.title}](${SITE_URL}/${page.path}/)${description ? ': ' + description : ''}`);
+      }
+      pageLines.push('');
     }
   }
 
   const content = [
     '# Relay Docs',
-    `Relay edition: ${docsEdition.productVersion}`,
+    'Documentation for Relay products.',
     '',
-    '> Relay is an Obsidian plugin for real-time multiplayer collaboration on notes and Canvases.',
-    '',
-    '## Docs',
+    '> Each page identifies its product and documented version.',
     '',
     ...pageLines,
     '',
@@ -103,7 +103,7 @@ function generateLlmsTxt() {
 
   const out = path.join(SITE_DIR, 'llms.txt');
   fs.writeFileSync(out, content, 'utf-8');
-  console.log(`llms.txt written (${pageLines.length} pages)`);
+  console.log(`llms.txt written (${pageLines.filter(line => line.startsWith('- ')).length} pages)`);
 }
 
 // ── generate llms-full.txt ────────────────────────────────────────────────────
@@ -112,8 +112,8 @@ function generateLlmsFullTxt() {
   const htmlFiles = collectHtmlFiles(SITE_DIR).sort();
   const parts = [
     '# Relay Docs — full content\n',
-    `Relay edition: ${docsEdition.productVersion}\n`,
-    '> Relay is an Obsidian plugin for real-time multiplayer collaboration on notes and Canvases.\n',
+    'Documentation for Relay products.\n',
+    '> Each page identifies its product and documented version.\n',
   ];
 
   let count = 0;
@@ -122,11 +122,12 @@ function generateLlmsFullTxt() {
     if (url === '/') continue;
 
     const html = fs.readFileSync(htmlFile, 'utf-8');
-    if (extractMeta(html, 'robots').split(/[\s,]+/).includes('noindex')) continue;
+    if (!previewBuild && extractMeta(html, 'robots').split(/[\s,]+/).includes('noindex')) continue;
     const titleMatch = html.match(/<title>([^<]+)<\/title>/i);
     const title = titleMatch ? titleMatch[1].replace(/ — Relay Docs$/, '').trim() : url;
     const text = stripHtml(html);
-    parts.push(`\n## ${title}\n\nURL: ${SITE_URL}${url}\n\n${text}\n`);
+    const product = productForUrl(url);
+    parts.push(`\n## ${title}\n\nURL: ${SITE_URL}${url}\nProduct: ${product?.name || 'Relay'} ${product ? versionForUrl(product, url)?.label || '' : ''}\n\n${text}\n`);
     count++;
   }
 
@@ -137,10 +138,12 @@ function generateLlmsFullTxt() {
 
 // ── main ──────────────────────────────────────────────────────────────────────
 
-if (!fs.existsSync(SITE_DIR)) {
-  console.error('_site/ not found. Run npm run build first.');
-  process.exit(1);
+if (require.main === module) {
+  if (!fs.existsSync(SITE_DIR)) {
+    console.error('_site/ not found. Run npm run build first.');
+    process.exit(1);
+  }
+  generateLlmsTxt();
+  generateLlmsFullTxt();
 }
-
-generateLlmsTxt();
-generateLlmsFullTxt();
+module.exports = { stripHtml };

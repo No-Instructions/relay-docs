@@ -1,0 +1,12 @@
+<section class="product-grid" aria-label="Documentation products">
+  {% for product in products %}
+  <article class="product-card{% if product.status != 'shipped' %} product-card--soon{% endif %}" data-product="{{ product.id }}">
+    <h2>{{ (product.name) }}</h2>
+    <p>{{ product.description }}</p>
+    {% if product.status == 'shipped' %}
+    <span class="product-version">{{ product.version }}</span>
+    <div class="product-card-links"><a href="{{ product.landingUrl }}">{{ (product.name) }} docs</a><a href="{{ product.releaseNotesUrl }}">Release notes<span class="sr-only"> for {{ (product.name) }}</span></a></div>
+    {% else %}<span class="product-version">Coming soon</span>{% endif %}
+  </article>
+  {% endfor %}
+</section>

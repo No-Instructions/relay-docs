@@ -1,0 +1,12 @@
+<nav class="product-tabs" aria-label="Documentation products" tabindex="0">
+  <div class="product-tabs-inner">
+  {% for product in products %}
+    {% set tabName = product.tabLabel or product.name %}
+    {% if product.status == 'shipped' %}
+    <a class="product-tab" data-product="{{ product.id }}" href="{{ (product | versionForUrl(page.url)).url }}"{% if page.url != '/' and product.id == currentProduct.id %} aria-current="true"{% endif %}>{{ tabName }}</a>
+    {% else %}
+    <span class="product-tab product-tab--soon" data-product="{{ product.id }}" aria-disabled="true">{{ tabName }} <span class="product-version">Soon</span></span>
+    {% endif %}
+  {% endfor %}
+  </div>
+</nav>

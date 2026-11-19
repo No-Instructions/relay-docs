@@ -11,7 +11,7 @@ Relay’s icons show note tracking and connection status and provide access to s
 Relay keeps a local record of edits to each shared note. The stack icon in the note header shows whether Relay is recording your edits.
 
 <figure style="max-width:305px">
-  <svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Note header controls: a purple stack, a purple satellite, a book, and a three-dot menu." viewBox="0 0 305 130" style="display:block;width:100%;max-width:305px;height:auto">
+  <svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Note header controls: a purple stack, a purple satellite, a book, and a three-dot menu." viewBox="0 0 305 130" style="display:block;width:100%;height:auto">
     <image href="/assets/icons/note-header-detail.png" x="0" y="40" width="305" height="90"/>
     <path d="M 94 8 L 67.63 60.74 M 67.18 48.22 L 67.63 60.74 L 77.91 53.59" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M 94 8 L 67.63 60.74 M 67.18 48.22 L 67.63 60.74 L 77.91 53.59" fill="none" stroke="#075ee8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -28,8 +28,8 @@ In the **Sync status** sidebar, look under **Conflicts** for notes that need att
 
 An unresolved local conflict keeps the icon gray while the banner is shown or the conflict is open. For Markdown notes, Relay also marks the note in Obsidian’s file explorer with a dot in your theme’s warning color.
 
-<figure>
-  <svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The note Check conflict indicators has an orange dot at the right of its row in Obsidian’s file explorer." viewBox="0 0 552 92" style="display:block;width:100%;max-width:552px;height:auto">
+<figure style="max-width:552px">
+  <svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The note Check conflict indicators has an orange dot at the right of its row in Obsidian’s file explorer." viewBox="0 0 552 92" style="display:block;width:100%;height:auto">
     <image href="/assets/icons/conflict-dot.png" x="0" y="40" width="552" height="52"/>
     <path d="M 480 8 L 510.33 54.29 M 499.28 48.38 L 510.33 54.29 L 509.32 41.80" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M 480 8 L 510.33 54.29 M 499.28 48.38 L 510.33 54.29 L 509.32 41.80" fill="none" stroke="#075ee8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -61,7 +61,7 @@ Relay sends updates from your device to a Relay Server, which passes them to you
 The icon in the note header controls that note. To toggle syncing on or off for the note, click its satellite icon.
 
 <figure style="max-width:305px">
-  <svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Note header controls with the purple satellite beside the stack." viewBox="0 0 305 130" style="display:block;width:100%;max-width:305px;height:auto">
+  <svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Note header controls with the purple satellite beside the stack." viewBox="0 0 305 130" style="display:block;width:100%;height:auto">
     <image href="/assets/icons/note-header-detail.png" x="0" y="40" width="305" height="90"/>
     <path d="M 162 8 L 135.63 60.74 M 135.18 48.22 L 135.63 60.74 L 145.91 53.59" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M 162 8 L 135.63 60.74 M 135.18 48.22 L 135.63 60.74 L 145.91 53.59" fill="none" stroke="#075ee8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -75,8 +75,8 @@ The icon in the file explorer applies to the Shared Folder. To connect or discon
 
 When your note links to a file outside the same Shared Folder, Relay shows a file icon with an exclamation point next to the link. Your collaborators may not have access to the linked file.
 
-<figure>
-  <svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Private reference link in a note has a file icon with an exclamation point beside it." viewBox="0 0 610 115" style="display:block;width:100%;max-width:420px;height:auto">
+<figure style="max-width:420px">
+  <svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Private reference link in a note has a file icon with an exclamation point beside it." viewBox="0 0 610 115" style="display:block;width:100%;height:auto">
     <image href="/assets/icons/external-link-inline.png" x="0" y="40" width="610" height="75"/>
     <path d="M 322 8 L 288.42 55.32 M 289.89 42.88 L 288.42 55.32 L 299.68 49.82" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M 322 8 L 288.42 55.32 M 289.89 42.88 L 288.42 55.32 L 299.68 49.82" fill="none" stroke="#075ee8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -91,7 +91,7 @@ To include the linked file in the Shared Folder, move it into that folder.
 To open Relay settings, click the Relay satellite icon in Obsidian’s ribbon.
 
 <figure style="max-width:300px">
-  <svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Part of Obsidian’s vertical ribbon, with Relay’s satellite icon below the other controls." viewBox="0 0 108 258" style="display:block;width:100%;max-width:80px;height:auto">
+  <svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Part of Obsidian’s vertical ribbon, with Relay’s satellite icon below the other controls." viewBox="0 0 108 258" style="display:block;width:80px;max-width:100%;height:auto">
     <image href="/assets/icons/ribbon-detail.png" x="0" y="40" width="108" height="218"/>
     <path d="M 95 165 L 71.33 193.29 M 73.78 181.01 L 71.33 193.29 L 82.99 188.71" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M 95 165 L 71.33 193.29 M 73.78 181.01 L 71.33 193.29 L 82.99 188.71" fill="none" stroke="#075ee8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>

@@ -23,8 +23,8 @@ The community directory provides the stable release. To test a prerelease, follo
 5. When installation finishes, select **Enable**.
 6. In the Settings sidebar, select **Relay**. For other ways to reach it, see [Open Relay settings](/guides/open-relay-settings/).
 
-<figure style="margin: 1.25rem 0;">
-  <img src="/assets/install-relay/relay-community-plugin.png" alt="Relay by Relay.md in Obsidian’s community plugin directory." loading="lazy" style="max-width: 340px; width: 100%; height: auto;">
+<figure style="max-width:340px">
+  <img src="/assets/install-relay/relay-community-plugin.png" alt="Relay by Relay.md in Obsidian’s community plugin directory." loading="lazy" style="width: 100%; height: auto;">
   <figcaption>Choose Relay by Relay.md in the community directory.</figcaption>
 </figure>
 
@@ -36,8 +36,8 @@ For help with Obsidian’s plugin controls, see [Community plugins](https://help
 2. Follow the provider’s sign-in prompts.
 3. Return to Relay settings in Obsidian and check that your account appears under **Account**.
 
-<figure style="margin: 1.25rem 0;">
-  <img src="/assets/install-relay/sign-in-options.png" alt="Relay sign-in buttons for GitHub, Google, and Microsoft." loading="lazy" style="max-width: 340px; width: 100%; height: auto;">
+<figure style="max-width:340px">
+  <img src="/assets/install-relay/sign-in-options.png" alt="Relay sign-in buttons for GitHub, Google, and Microsoft." loading="lazy" style="width: 100%; height: auto;">
   <figcaption>Select a sign-in provider in Relay settings.</figcaption>
 </figure>
 

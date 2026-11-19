@@ -18,8 +18,8 @@ You must be an Owner of the Relay Server to rotate its share key. If you're a Me
 4. With **Enable key sharing** on, click **Rotate key**. Relay replaces the **Share Key**; the previous key no longer works for joining.
 5. To invite someone, copy the replacement **Share Key** and send it only to the people you want to join. Treat it like a password.
 
-<figure>
-  <div style="position:relative;width:100%;max-width:441px;margin:0 auto">
+<figure style="max-width:441px">
+  <div style="position:relative;width:100%;margin:0 auto">
     <img src="/assets/rotate-a-share-key/sharing-enabled.png" width="882" height="524" alt="Sharing controls with the Share Key concealed and a blue arrow pointing to Rotate key." style="display:block;width:100%;height:auto;margin:0">
     <svg viewBox="0 0 882 524" aria-hidden="true" focusable="false" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none">
       <path d="M 745 353 L 745 389 M 734 375 L 745 389 L 756 375" fill="none" stroke="white" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
@@ -43,7 +43,7 @@ People who have already joined remain members when you rotate the key.  To remov
 
 When **Enable key sharing** is off, Relay hides **Share Key** and **Rotate key**. Leave key sharing off if you want to prevent joins through a share key.
 
-<figure><img src="/assets/rotate-a-share-key/sharing-disabled.png" width="882" height="174" alt="Enable key sharing switched off; the Share Key and Rotate key controls are hidden." style="width:100%;max-width:441px;height:auto;margin:0 auto"><figcaption>With key sharing off, the key and rotation controls are hidden.</figcaption></figure>
+<figure style="max-width:441px"><img src="/assets/rotate-a-share-key/sharing-disabled.png" width="882" height="174" alt="Enable key sharing switched off; the Share Key and Rotate key controls are hidden." style="width:100%;height:auto;margin:0 auto"><figcaption>With key sharing off, the key and rotation controls are hidden.</figcaption></figure>
 
 To make key invitations available again, turn **Enable key sharing** on. Check the key before sending it. Enabling sharing is a separate action from rotating the key.
 

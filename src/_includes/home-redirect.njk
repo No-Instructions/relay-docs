@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ description }}">
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:url" content="{{ site.url }}{{ homeDestination }}">
+  <meta name="twitter:card" content="summary_large_image">
+  {% if docsPreview %}<meta name="robots" content="noindex, nofollow">{% endif %}
+  <meta http-equiv="refresh" content="0;url={{ homeDestination }}">
+  <link rel="canonical" href="{{ site.url }}{{ homeDestination }}">
+  <script>location.replace({{ homeDestination | dump | safe }});</script>
+</head>
+<body><a href="{{ homeDestination }}">Continue to {{ products[0].name }}</a></body>
+</html>

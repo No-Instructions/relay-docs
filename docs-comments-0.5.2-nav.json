@@ -1,0 +1,54 @@
+{
+  "groups": [
+    {
+      "group": "Getting started",
+      "path": "comments/0.5.2/getting-started",
+      "pages": [
+        {
+          "title": "Overview",
+          "path": "comments/0.5.2"
+        },
+        {
+          "title": "Install Relay Comments",
+          "path": "comments/0.5.2/install-relay-comments"
+        }
+      ]
+    },
+    {
+      "group": "Guides",
+      "path": "comments/0.5.2/guides",
+      "pages": [
+        {
+          "title": "Comment on a note",
+          "path": "comments/0.5.2/comment-on-a-note"
+        },
+        {
+          "title": "Suggest edits",
+          "path": "comments/0.5.2/suggest-edits"
+        },
+        {
+          "title": "Comment on a Canvas",
+          "path": "comments/0.5.2/comment-on-a-canvas"
+        },
+        {
+          "title": "Use Relay Comments with agents",
+          "path": "comments/0.5.2/use-relay-comments-with-agents"
+        }
+      ]
+    },
+    {
+      "group": "Reference",
+      "path": "comments/0.5.2/reference",
+      "pages": [
+        {
+          "title": "Comment markup",
+          "path": "comments/0.5.2/comment-markup"
+        },
+        {
+          "title": "Obsidian CLI commands",
+          "path": "comments/0.5.2/cli-commands"
+        }
+      ]
+    }
+  ]
+}
