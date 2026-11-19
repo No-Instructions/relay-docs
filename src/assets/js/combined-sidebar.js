@@ -9,6 +9,18 @@
   scroller.querySelectorAll('.product-version-select').forEach(select => {
     select.addEventListener('change', () => { location.assign(select.value); });
   });
+  // The alignment spacer can extend past the final link. Fade only for actual links.
+  const links = scroller.querySelectorAll('a[href]');
+  const lastLink = links[links.length - 1];
+  function updateBottomFade() {
+    const hasMore = lastLink && scroller.clientHeight > 0 &&
+      lastLink.getBoundingClientRect().bottom > scroller.getBoundingClientRect().bottom + 1;
+    scroller.toggleAttribute('data-more-below', Boolean(hasMore));
+  }
+  scroller.addEventListener('scroll', updateBottomFade, { passive: true });
+  const resizeObserver = new ResizeObserver(updateBottomFade);
+  resizeObserver.observe(scroller);
+  scroller.querySelectorAll('.product-section').forEach(section => resizeObserver.observe(section));
   function positionSidebar() {
     if (!current) { scroller.scrollTop = 0; return; }
     const heading = current.querySelector('.product-section-heading');
@@ -37,6 +49,7 @@
   function initialize() {
     positionSidebar();
     sidebar.setAttribute('data-ready', '');
+    updateBottomFade();
   }
   mobileToggle.addEventListener('click', () => {
     const open = mobileToggle.getAttribute('aria-expanded') !== 'true';

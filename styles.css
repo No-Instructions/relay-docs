@@ -1413,6 +1413,9 @@ html.multi-product { --docs-header-height: 106px; }
 .product-release-notes:hover { color: var(--color-text); text-decoration: underline; }
 .sidebar .nav-group a[aria-current="page"] { color: var(--color-accent); background: var(--color-active-bg); border-radius: calc(var(--radius) - 2px); }
 .sidebar-scroll-space { pointer-events: none; }
+.sidebar-scroll[data-more-below] {
+  mask-image: linear-gradient(to bottom, black calc(100% - 20px), transparent);
+}
 .combined-nav-toggle { display: none; }
 .combined-nav-toggle[aria-expanded="true"] svg { transform: rotate(90deg); }
 @media (min-width: 769px) { .sidebar { top: var(--docs-header-height); height: calc(100vh - var(--docs-header-height)); } }
@@ -1423,7 +1426,7 @@ html.multi-product { --docs-header-height: 106px; }
   /* Long URLs and inline paths must fit narrow article columns. */
   .doc-content { overflow-wrap: break-word; }
   .combined-nav-toggle { display: flex; justify-content: space-between; width: 100%; min-height: 48px; padding: .75rem 1rem; border: 0; background: var(--color-bg); color: var(--color-text); font: inherit; text-align: left; }
-  .sidebar-scroll { height: min(55vh, 440px); mask-image: linear-gradient(to bottom, transparent, #000 16px, #000 calc(100% - 16px), transparent); }
+  .sidebar-scroll { height: min(55vh, 440px); }
   /* A closed panel has no layout box; the toggle repositions it on open. */
   .js .combined-nav-toggle[aria-expanded="false"] + .sidebar-scroll { display: none; }
 }
