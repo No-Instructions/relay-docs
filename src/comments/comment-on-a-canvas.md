@@ -19,13 +19,11 @@ To comment on a node, follow these steps:
 2. Choose **Add comment**.
 3. Enter your comment in **Comment…**, then select **Comment**.
 
-<figure style="max-width:429px">
-  {% set screenshot = {"name": "relay-comments-canvas-node-comment", "alt": "A comment pin at the edge of a Canvas card, with Priya’s thread and a Reply field open.", "width": 429, "height": 287} %}
-{% include "comments-screenshot.njk" %}
-  <figcaption>Open a Canvas card’s comment pin to read and reply to its thread.</figcaption>
-</figure>
+To comment on selected text inside an embedded note or native text card, select the passage and choose **Add comment** from the context menu. Comments in native text cards stay in the card's Markdown text as CriticMarkup.
 
-To place a pin in the Canvas layout, follow these steps:
+## Place a comment pin
+
+A pin marks a spot on the Canvas. For example, you can place one between two cards to ask how they relate. Click the pin to open its comment thread.
 
 1. With the Canvas open, run **Add comment to canvas (click to place)** from the command palette.
 2. Click or tap the position for the pin.
@@ -34,8 +32,6 @@ To place a pin in the Canvas layout, follow these steps:
 <figure class="comments-guide-animation comments-native-column" id="canvas-pin-demo">
   <iframe data-comments-animation loading="eager" style="--desktop-scene-height: 492; --phone-scene-height: 520" src="/assets/relay-comments/comment-on-a-canvas/index.html?v=11a8b1f-bbbb0a4d" title="Place a comment pin on a Canvas"></iframe>
 </figure>
-
-To comment on selected text inside an embedded note or native text card, select the passage and choose **Add comment** from the context menu. Comments in native text cards stay in the card's Markdown text as CriticMarkup.
 
 ## Use the comment shortcut
 
