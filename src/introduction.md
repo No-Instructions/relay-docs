@@ -2,6 +2,7 @@
 title: Relay for Obsidian
 description: Relay is an Obsidian plugin that enables real-time multiplayer collaboration on notes and Canvases.
 layout: doc.njk
+commentsAnimation: true
 ---
 Relay is an Obsidian plugin that enables real-time multiplayer collaboration on notes and Canvases. It's used by:
 
@@ -11,8 +12,8 @@ Relay is an Obsidian plugin that enables real-time multiplayer collaboration on 
 
 It is the most popular multiplayer solution in the Obsidian world.
 
-<figure style="max-width:600px;margin-inline:auto">
-  <iframe src="/assets/same-line-editing/8280192/index.html?v=8280192-de613a984988" title="Two collaborators editing the same line" width="600" height="338" style="display:block;width:100%;max-width:600px;height:auto;aspect-ratio:600 / 338;border:0" loading="eager"></iframe>
+<figure class="home-editing-demo" style="margin-inline:auto">
+  <iframe data-comments-animation src="/assets/same-line-editing/framed-dbf0ac83/index.html?v=dbf0ac83" title="Two people editing the same line in an Obsidian note" loading="eager"></iframe>
 </figure>
 
 ## How is Relay different?
