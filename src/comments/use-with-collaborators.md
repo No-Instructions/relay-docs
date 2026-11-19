@@ -4,7 +4,9 @@ description: Share a note through Relay so you and a collaborator can discuss a 
 layout: doc.njk
 ---
 
-Open the same note in a Relay Shared Folder to work together from your own vaults. You can ask a question beside a passage, reply to each other, or suggest new wording.
+[Relay for Obsidian](/introduction/) is a live document sharing plugin for teams. It lets teammates edit the same notes in real time from their own vaults. If you don’t have Relay yet, [install Relay for Obsidian](/guides/install-relay-for-obsidian/).
+
+With Relay Comments, you can ask a question beside a passage in a shared note, reply to each other, or suggest new wording.
 
 ## Open the same note
 
