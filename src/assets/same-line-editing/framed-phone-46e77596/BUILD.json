@@ -1,0 +1,12 @@
+{
+  "exampleId": "docs-home-same-line-framed-embed",
+  "gitCommit": "2fac430",
+  "indexHash": "46e77596",
+  "buildTime": "2026-11-20T08:26:10.919Z",
+  "versions": {
+    "obsidian": "1.12.7",
+    "obsidianMobile": "1.12.7",
+    "relay": "0.8.12",
+    "relayComments": "off"
+  }
+}
