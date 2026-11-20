@@ -23,6 +23,10 @@ module.exports = function (eleventyConfig) {
     if (!this.page.outputPath || !this.page.outputPath.endsWith('.html')) return html;
     return makeScrollRegionsAccessible(html);
   });
+  eleventyConfig.addTransform('clip-surfaces', function (html) {
+    if (!this.page.outputPath?.endsWith('.html')) return html;
+    return require('./clip-surfaces').wrapClips(html);
+  });
   eleventyConfig.addGlobalData('stylesVersion', () =>
     createHash('sha256').update(readFileSync('styles.css')).digest('hex').slice(0, 12)
   );
