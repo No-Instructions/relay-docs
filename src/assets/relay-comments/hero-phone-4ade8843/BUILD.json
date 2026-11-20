@@ -1,0 +1,12 @@
+{
+  "exampleId": "docs-hero-a-thread-claude-norelay-embed",
+  "gitCommit": "66f3f13",
+  "indexHash": "4ade8843",
+  "buildTime": "2026-11-20T07:04:18.804Z",
+  "versions": {
+    "obsidian": "1.12.7",
+    "obsidianMobile": "1.12.7",
+    "relay": "off",
+    "relayComments": "0.6.0"
+  }
+}

@@ -1576,3 +1576,10 @@ html:not([data-theme="dark"]) .clip-surface > :is(iframe, video) {
   border-radius: 7px;
 }
 .doc-content .clip-surface > :is(iframe, video) { display: block; margin: 0; }
+
+.clip-surface > iframe[data-clip-desktop] {
+  aspect-ratio: var(--clip-desktop-ratio);
+}
+.clip-surface > iframe[data-clip-layout="phone"] {
+  aspect-ratio: var(--clip-phone-ratio);
+}

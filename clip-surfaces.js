@@ -2,7 +2,7 @@ const { load } = require('cheerio');
 
 function wrapClips(html) {
   const $ = load(html, { sourceCodeLocationInfo: true });
-  const clips = $('.doc-content iframe[src^="/assets/"], .doc-content video').toArray();
+  const clips = $('.doc-content iframe[src^="/assets/"], .doc-content iframe[data-clip-desktop], .doc-content video').toArray();
   for (const clip of clips.reverse()) {
     if ($(clip).parent().hasClass('clip-surface')) continue;
     const { startOffset, endOffset } = clip.sourceCodeLocation;

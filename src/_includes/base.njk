@@ -57,6 +57,7 @@
 
     <!-- Plausible Analytics -->
     <script defer data-domain="docs.relay.md" src="https://plausible.io/js/script.js"></script>
+    {% if responsiveClips %}<script defer src="/assets/js/responsive-clips.js"></script>{% endif %}
     {% if commentsAnimation %}<script src="/assets/js/comments-animation-size.js"></script>{% endif %}
   </head>
   <body class="{% block bodyClass %}{% endblock %}">

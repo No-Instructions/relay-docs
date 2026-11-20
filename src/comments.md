@@ -2,14 +2,15 @@
 title: Relay Comments
 description: Discuss passages in Obsidian with comment threads saved in the Markdown file.
 layout: doc.njk
-commentsAnimation: true
+responsiveClips: true
 ---
 
 Relay Comments brings Google Docs-style comment threads and suggested changes to Obsidian. Comments are stored as plain text in the Markdown note itself.
 
 
+{% from "responsive-clip.njk" import commentsHero %}
 <figure class="comments-hero comments-thread-hero">
-  <iframe data-comments-animation src="/assets/relay-comments/hero-claude-norelay-6735fb76/index.html?v=6735fb76" title="Adding a comment, replying, and resolving the thread in Obsidian"></iframe>
+  {{ commentsHero() | trim }}
 </figure>
 
 ## Add a comment

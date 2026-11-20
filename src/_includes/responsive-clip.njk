@@ -1,0 +1,11 @@
+{% macro responsiveClip(desktop, phone, desktopRatio, phoneRatio, title, linked = false) %}
+<iframe data-clip-desktop="{{ desktop }}" data-clip-phone="{{ phone }}" style="--clip-desktop-ratio: {{ desktopRatio }}; --clip-phone-ratio: {{ phoneRatio }}" title="{{ title }}"{% if linked %} tabindex="-1"{% endif %}></iframe>
+{% endmacro %}
+
+{% macro commentsHero(linked = false) %}
+{{ responsiveClip("/assets/relay-comments/hero-desktop-7f3f4716/index.html", "/assets/relay-comments/hero-phone-4ade8843/index.html", "1100 / 520", "360 / 800", "Adding a comment, replying, and resolving the thread in Obsidian", linked) }}
+{% endmacro %}
+
+{% macro sameLineEditing() %}
+{{ responsiveClip("/assets/same-line-editing/framed-desktop-579f276f/index.html", "/assets/same-line-editing/framed-phone-fb1dbd7a/index.html", "600 / 316", "360 / 800", "Two people editing the same line in an Obsidian note", true) }}
+{% endmacro %}
