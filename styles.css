@@ -1569,12 +1569,10 @@ html:not([data-relay-signed-in-hint="1"]) [data-console-label="console"] { displ
 .home-demo-link::after { content: ""; position: absolute; inset: 0; z-index: 1; }
 .home-demo-link:focus-visible::after { outline: 2px solid var(--color-accent); outline-offset: 3px; border-radius: 7px; }
 
-.clip-surface {
-  display: block;
-  box-sizing: content-box;
-  margin-inline: -8px;
-  padding: 8px;
-  border-radius: 12px;
-  background-color: var(--color-code-bg);
+.clip-surface { display: block; }
+html:not([data-theme="dark"]) .clip-surface > :is(iframe, video) {
+  outline: 1px solid rgb(9 9 11 / 12%);
+  outline-offset: -1px;
+  border-radius: 7px;
 }
 .doc-content .clip-surface > :is(iframe, video) { display: block; margin: 0; }
