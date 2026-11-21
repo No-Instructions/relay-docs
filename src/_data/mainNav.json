@@ -12,7 +12,11 @@
   {
     "title": "Docs",
     "href": "/",
-    "active": true
+    "items": [
+      { "title": "Docs home", "href": "/" },
+      { "title": "Relay for Obsidian", "href": "/introduction/" },
+      { "title": "Relay Comments", "href": "/comments/" }
+    ]
   },
   {
     "title": "Company",
