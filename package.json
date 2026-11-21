@@ -1,8 +1,8 @@
 {
   "scripts": {
-    "build": "node prepare-build.js && npx @11ty/eleventy && node generate-llms-full.js && node generate-og-images.js",
-    "build:prod": "npm run build && node validate-site.js",
-    "serve": "npx @11ty/eleventy --serve",
+    "build": "node prepare-build.js",
+    "build:prod": "node prepare-build.js --validate",
+    "serve": "npx @11ty/eleventy --serve --output=_serve-site",
     "validate": "node validate-site.js",
     "test": "node --test *.test.js"
   },

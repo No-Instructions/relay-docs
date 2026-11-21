@@ -10,8 +10,11 @@ node_modules/
 drafts/
 _draft_site/
 
-# Previous generated output, preserved when starting a clean build
+# Legacy history and managed build output
 _build-history/
+_build-retention/
+.docs-build.lock
+_serve-site/
 
 # Local worktree custody metadata
 .checkout-meta
