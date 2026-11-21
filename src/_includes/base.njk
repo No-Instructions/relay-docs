@@ -3,6 +3,8 @@
                             <path d="M10 14 21 3"/>
                             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
                           </svg>{% endmacro %}
+{% macro outsideNavAttributes(href) %}{% if href | outsidePrimaryNav %} target="_blank" rel="noopener noreferrer"{% endif %}{% endmacro %}
+{% macro outsideNavLabel(href) %}{% if href | outsidePrimaryNav %}{{ externalIcon() }}<span class="sr-only"> (opens in new tab)</span>{% endif %}{% endmacro %}
 {% macro consoleLabel() %}<span class="console-label"><span aria-hidden="true">Console</span><span data-console-label="login">Login</span><span data-console-label="console">Console</span></span>{% endmacro %}
 {% set currentProduct = page.url | productForUrl %}
 {% from "logo-wordmark.njk" import logo %}<!doctype html>
@@ -103,8 +105,7 @@
             {% for item in mainNav %}
               {% if item.items %}
                 <div class="main-nav-item main-nav-item--has-dropdown">
-                  <a href="{{ item.href }}" class="main-nav-link"
-                     {% if item.href.startsWith("http") %}target="_blank" rel="noopener noreferrer"{% endif %}>
+                  <a href="{{ item.href }}" class="main-nav-link"{{ outsideNavAttributes(item.href) }}>
                     {{ item.title }}
                     {# Lucide ChevronDown, 16px #}
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -113,13 +114,8 @@
                   </a>
                   <div class="dropdown-menu" role="menu">
                     {% for sub in item.items %}
-                      <a href="{{ sub.href }}" class="dropdown-link" role="menuitem"
-                         {% if sub.href.startsWith("http") %}target="_blank" rel="noopener noreferrer"{% endif %}>
-                        {{ sub.title }}
-                        {% if not sub.href.startsWith("https://relay.md/") %}
-                          {# Lucide ExternalLink, 12px #}
-                          {{ externalIcon() }}
-                        {% endif %}
+                      <a href="{{ sub.href }}" class="dropdown-link" role="menuitem"{{ outsideNavAttributes(sub.href) }}>
+                        {{ sub.title }}{{ outsideNavLabel(sub.href) }}
                       </a>
                     {% endfor %}
                   </div>
@@ -127,12 +123,8 @@
               {% else %}
                 <a href="{{ item.href }}"
                    class="main-nav-link{% if item.active %} main-nav-link--active{% endif %}"
-                   {% if item.active %}aria-current="page"{% endif %}
-                   {% if item.href.startsWith("http") %}target="_blank" rel="noopener noreferrer"{% endif %}>
-                  {{ item.title }}
-                  {% if item.active %}
-                    {{ externalIcon() }}
-                  {% endif %}
+                   {% if item.active %}aria-current="page"{% endif %}{{ outsideNavAttributes(item.href) }}>
+                  {{ item.title }}{{ outsideNavLabel(item.href) }}
                 </a>
               {% endif %}
             {% endfor %}
@@ -172,16 +164,14 @@
         {% for item in mainNav %}
           <a href="{{ item.href }}"
              class="mobile-nav-link{% if item.active %} mobile-nav-link--active{% endif %}"
-             {% if item.active %}aria-current="page"{% endif %}
-             {% if item.href.startsWith("http") %}target="_blank" rel="noopener noreferrer"{% endif %}>
-            {{ item.title }}{% if item.active %} {{ externalIcon() }}{% endif %}
+             {% if item.active %}aria-current="page"{% endif %}{{ outsideNavAttributes(item.href) }}>
+            {{ item.title }}{{ outsideNavLabel(item.href) }}
           </a>
           {% if item.items %}
             <div class="mobile-nav-section">
               {% for sub in item.items %}
-                <a href="{{ sub.href }}" class="mobile-nav-sublink"
-                   {% if sub.href.startsWith("http") %}target="_blank" rel="noopener noreferrer"{% endif %}>
-                  {{ sub.title }}{% if not sub.href.startsWith("https://relay.md/") %} {{ externalIcon() }}{% endif %}
+                <a href="{{ sub.href }}" class="mobile-nav-sublink"{{ outsideNavAttributes(sub.href) }}>
+                  {{ sub.title }}{{ outsideNavLabel(sub.href) }}
                 </a>
               {% endfor %}
             </div>

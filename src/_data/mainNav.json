@@ -3,7 +3,8 @@
     "title": "Product",
     "href": "https://relay.md/relay",
     "items": [
-      { "title": "Relay overview", "href": "https://relay.md/relay" },
+      { "title": "Relay for Obsidian", "href": "https://relay.md/relay" },
+      { "title": "Relay Comments", "href": "https://relay.md/comments" },
       { "title": "Roadmap",        "href": "https://relay.md/roadmap" },
       { "title": "Releases",       "href": "https://relay.md/releases" }
     ]

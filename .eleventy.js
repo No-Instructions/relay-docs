@@ -8,7 +8,16 @@ const { decorateExternalLinks } = require('./external-links');
 const { makeScrollRegionsAccessible } = require('./scroll-regions');
 const { productForUrl, versionForUrl, versionPageUrl, productOgSlug, previewBuild, privateAssetDirectories } = require('./products');
 
+const firstPartyNavHosts = new Set([
+  'relay.md', 'docs.relay.md', 'console.relay.md', 'system3.md', 'observatory.md',
+]);
+
 module.exports = function (eleventyConfig) {
+  eleventyConfig.addFilter('outsidePrimaryNav', href => {
+    const url = new URL(href, 'https://docs.relay.md');
+    return ['http:', 'https:'].includes(url.protocol) &&
+      !firstPartyNavHosts.has(url.hostname.replace(/^www\./, ''));
+  });
   eleventyConfig.addFilter('productForUrl', productForUrl);
   eleventyConfig.addFilter('versionForUrl', versionForUrl);
   eleventyConfig.addFilter('versionPageUrl', versionPageUrl);
