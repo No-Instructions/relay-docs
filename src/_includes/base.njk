@@ -37,6 +37,8 @@
 
     <link rel="stylesheet" href="/styles.css?v={{ stylesVersion }}" />
 
+    <link id="docs-favicon" rel="icon" href="/assets/favicon.svg" type="image/svg+xml" sizes="any" />
+
     <!-- Anti-flash: apply saved/system theme before first paint -->
     <script>
       (function () {
@@ -48,12 +50,26 @@
         } else if (stored === 'light') {
           document.documentElement.setAttribute('data-theme', 'light');
         }
+
+        // Give the browser one icon candidate that follows the applied page theme.
+        var favicon = document.getElementById('docs-favicon');
+        function syncFavicon() {
+          var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+          var href = dark ? '/assets/favicon-dark.svg' : '/assets/favicon-light.svg';
+          if (favicon.getAttribute('href') === href) return;
+
+          var nextFavicon = favicon.cloneNode();
+          nextFavicon.setAttribute('href', href);
+          favicon.replaceWith(nextFavicon);
+          favicon = nextFavicon;
+        }
+        syncFavicon();
+        new MutationObserver(syncFavicon).observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ['data-theme']
+        });
       })();
     </script>
-
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
-    <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
 
     <!-- Plausible Analytics -->
     <script defer data-domain="docs.relay.md" src="https://plausible.io/js/script.js"></script>
