@@ -21,8 +21,8 @@
   --color-text: #09090b;
   --color-muted: #6e6e77;
   --color-border: #e4e4e7;
-  --color-accent: #0b7f63;
-  --color-active-bg: #f0fdf4;
+  --color-accent: #23689b;
+  --color-active-bg: #edf5fb;
   --color-code-bg: #f4f4f5;
   --radius: 0.5rem;
 
@@ -31,12 +31,12 @@
 }
 
 [data-theme="dark"] {
-  --color-accent: #0fa381;
+  --color-accent: #73b7e8;
   --color-bg: #09090b;
   --color-text: #fafafa;
   --color-muted: #a1a1aa;
   --color-border: #27272a;
-  --color-active-bg: #052e1c;
+  --color-active-bg: #122737;
   --color-code-bg: #18181b;
 }
 
