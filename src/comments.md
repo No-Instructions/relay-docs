@@ -7,10 +7,9 @@ responsiveClips: true
 
 Relay Comments brings Google Docs-style comment threads and suggested changes to Obsidian. Comments are stored as plain text in the Markdown note itself.
 
-
 {% from "responsive-clip.njk" import commentsHero %}
 <figure class="comments-hero comments-thread-hero">
-  {{ commentsHero() | trim }}
+  {{ commentsHero() }}
 </figure>
 
 ## Add a comment
@@ -33,13 +32,7 @@ Hover over the suggestion to **Accept** or **Reject** it. For additions, deletio
 
 ## Author names
 
-Relay Comments takes author names from Relay or Obsidian Sync. You can also configure an identity directory in the plugin's `data.json`: each entry maps an ID to a name, picture, and color. The plugin reloads this file when it changes.
-
-If you don't have a matching identity for a comment's author, you see the name saved in its inline `author` field. Comments remain readable when the identity provider is unavailable.
-
-For agent identities and file-based review, see [Use Relay Comments with agents](/comments/use-relay-comments-with-agents/).
-
-For shared-note agent editing, see [Let your agent edit shared notes](/guides/collaborate-with-an-agent/).
+Teammates can see who wrote each comment and reply. [Set your comment identity](/comments/set-your-comment-identity/) to use your name and picture or give an assistant its own byline.
 
 ## Privacy
 
@@ -47,6 +40,10 @@ Relay Comments has no client-side telemetry. If an author’s profile picture us
 
 ## Use with a team
 
-If you’re using Relay Comments with a team, [Relay for Obsidian](/introduction/) lets you share a folder and edit notes together in real time. Comments and suggested edits sync with the note.
+Comments and suggested edits are stored in the Markdown note, so they travel with it through Relay, Obsidian Sync, or another file sync service. With [Relay for Obsidian](/introduction/), teammates can edit the same note in real time from their own vaults. Each collaborator installs and enables Relay Comments to see threads and review suggestions in Obsidian.
 
 [Set up Relay Comments for your team](/comments/use-with-collaborators/).
+
+## Use with agents
+
+An agent with access to the Markdown file can leave a comment, reply to a thread, or suggest a change. If you already use the [Obsidian CLI](/comments/cli-commands/), your agent can also run Relay Comments commands while the vault is open in Obsidian. Give it the [agent guide](/comments/use-relay-comments-with-agents/), the note’s path, and a task. For example: “Review the launch checklist. Leave a comment beside any task that’s missing an owner.”

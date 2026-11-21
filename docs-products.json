@@ -77,6 +77,10 @@
             "path": "comments/comment-on-a-canvas"
           },
           {
+            "title": "Set your comment identity",
+            "path": "comments/set-your-comment-identity"
+          },
+          {
             "title": "Use with a team",
             "path": "comments/use-with-collaborators"
           },

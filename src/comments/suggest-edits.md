@@ -2,10 +2,11 @@
 title: Suggest edits
 description: Propose text changes in Obsidian, then accept or reject suggestions.
 layout: doc.njk
-commentsAnimation: true
+responsiveClips: true
 ---
 
-Use Relay Comments to propose a replacement, addition, or deletion for review. Suggested edits stay in the Markdown file.
+{% from "responsive-clip.njk" import responsiveClip %}
+Suggest text to add, replace, or remove. A reviewer can accept or reject each change in the note.
 
 ## Before you start
 
@@ -16,15 +17,11 @@ Use Relay Comments to propose a replacement, addition, or deletion for review. S
 To propose a replacement, use the substitution command:
 
 1. In Live Preview, select the text you want to replace.
-2. From the command palette, run **Mark selection as substitution**.
+2. Open the [command palette](https://obsidian.md/help/plugins/command-palette) and run **Mark selection as substitution**. On macOS, press Cmd+P. On Windows or Linux, press Ctrl+P. On mobile, pull down from the top of the app if [Quick Action](https://obsidian.md/help/mobile#Quick%20Action) uses its default setting.
 3. In **Replacement text**, enter the proposed text.
 4. Select **Insert substitution**.
 
 The replacement appears as a suggestion for review.
-
-<figure class="comments-guide-animation comments-native-column">
-  <iframe data-comments-animation style="--phone-scene-height: 364" src="/assets/relay-comments/suggest-edits/index.html?v=s14-85a477e2" title="Suggest a replacement and accept it in Obsidian"></iframe>
-</figure>
 
 To propose an addition, type and select the proposed text, then run **Mark selection as addition**. To propose a deletion, select the text to remove, then run **Mark selection as deletion**.
 
@@ -32,10 +29,8 @@ To propose an addition, type and select the proposed text, then run **Mark selec
 
 For a suggestion without an attached discussion, hover over it in your note, then select **Accept** or **Reject**. A suggestion with an attached discussion shows **Reply** and **Resolve** in its hover preview; use the sidebar’s **More actions** menu to accept or reject it.
 
-<figure style="max-width:408px">
-  {% set screenshot = {"name": "relay-comments-suggested-replacement", "alt": "A suggested-replacement hover card showing the source reminder, its proposed replacement, and Accept and Reject links.", "width": 408, "height": 206} %}
-{% include "comments-screenshot.njk" %}
-  <figcaption>Hover over a suggestion without an attached discussion to accept or reject it in place.</figcaption>
+<figure class="comments-guide-animation comments-native-column" id="accept-suggestion-demo">
+  {{ responsiveClip("/assets/relay-comments/suggested-edits-desktop-0692af4b/index.html", "/assets/relay-comments/suggested-edits-phone-f63c4dc6/index.html", "752 / 470", "360 / 800", "Preview a suggested edit and accept it in the note") }}
 </figure>
 
 To accept from the sidebar:
@@ -52,7 +47,7 @@ To accept all review markup in the note at once, run **Accept all comments and s
 
 ## Suggest edits with an agent
 
-Give your agent the [Relay Comments skill](/comments/use-relay-comments-with-agents/#give-your-agent-the-skill) and tell it which note to work on. Ask it to leave suggestions for you to accept or reject in Obsidian.
+Give your agent the [agent instructions](/comments/use-relay-comments-with-agents/#instructions-for-the-agent) and tell it which note to work on. Ask it to leave suggestions for you to accept or reject in Obsidian.
 
 With the [Obsidian CLI](https://obsidian.md/help/cli) enabled, the agent can quote the exact text and propose a replacement. For example, to suggest changing a date in `Launch plan.md`:
 

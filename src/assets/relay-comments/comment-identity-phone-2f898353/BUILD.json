@@ -1,0 +1,28 @@
+{
+  "exampleId": "comments-identity-close-up-phone-v7-20261120",
+  "layout": "phone",
+  "widths": [
+    360
+  ],
+  "sourcePins": {
+    "obsidian": "1.12.7",
+    "relay": {
+      "tag": "0.8.12",
+      "commit": "22c2aa8f8bba4d930a7918d334311bfbe1cd1676"
+    },
+    "relayComments": {
+      "tag": "0.6.0",
+      "commit": "a6da639b4d57160d1a586da4cbedce7abb9719a7"
+    }
+  },
+  "gitCommit": "71c6ff1",
+  "indexHash": "2f898353",
+  "indexSha256": "2f8983537c907c702c38a7ee890f27e861bd3e09dd1ac5549ef45acc0dcf1e5a",
+  "avatarSha256": "7ee385876f3638d92d9bf5e094feb3dfd31683ca8011e1cb118ef258e04ec4e2",
+  "assistantAvatarSha256": "f3a857f44b5b542ee79e200dd64a4b8ede3ce5f9b99693a39bd1024cb2b7f76a",
+  "payloadFiles": {
+    "index.html": "2f8983537c907c702c38a7ee890f27e861bd3e09dd1ac5549ef45acc0dcf1e5a"
+  },
+  "payloadSha256": "21c9c0eb2d5ca684f8d1bcb716e08502329d89663e984ad8516be7bddcdf06e0",
+  "buildTime": "2026-11-21T06:22:55.324Z"
+}

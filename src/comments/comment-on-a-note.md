@@ -2,10 +2,16 @@
 title: Comment on a note
 description: Discuss a passage, reply to its thread, and resolve the discussion in Obsidian.
 layout: doc.njk
+responsiveClips: true
 commentsAnimation: true
 ---
 
+{% from "responsive-clip.njk" import responsiveClip, commentsHero %}
 Use Relay Comments to discuss a passage in your notes. Comments and replies stay in the Markdown file.
+
+<figure class="comments-guide-animation comments-native-column" id="add-comment-demo">
+  {{ commentsHero() }}
+</figure>
 
 ## Prepare a note for review
 
@@ -22,25 +28,11 @@ Use Live Preview to select text and the review sidebar to discuss it. You can al
 
 The thread appears in the sidebar, with the selected passage attached to it.
 
-<figure class="comments-guide-animation comments-native-column">
-  <iframe data-comments-animation style="--phone-scene-height: 280" src="/assets/relay-comments/comment-on-a-note/index.html?v=c15-29f2e852" title="Add and resolve a comment in an Obsidian note"></iframe>
-</figure>
-
 You can also right-click the selected text and choose **Add comment**.
 
 When your selection includes Markdown markers for a heading, list item, task, blockquote, or callout, Relay Comments keeps that Markdown syntax outside the comment’s highlight.
 
-<figure class="comments-guide-animation comments-native-column" id="markdown-intact-demo">
-  <iframe data-comments-animation style="--phone-scene-height: 400" src="/assets/relay-comments/markdown-intact/index.html?v=m18-f6c64dc6" title="Comment on a callout title and a heading while preserving their Markdown markers"></iframe>
-</figure>
-
-If your selection extends into a later list item, task, blockquote line, or heading, select the passage within one block and try again.
-
-<figure class="comments-guide-animation comments-native-column" id="declined-selection-demo">
-  <iframe data-comments-animation style="--phone-scene-height: 310" src="/assets/relay-comments/declined-selection/index.html?v=d17-2fedd4eb" title="Retry a comment on a single list item after a selection crosses a block boundary"></iframe>
-</figure>
-
-If the selected passage overlaps another review mark or extends into another list item, task, blockquote line, or heading while your draft is open, Relay Comments keeps the draft text and displays **The commented text changed; select it again.**
+If Relay Comments asks you to select the text again, choose a passage within a single block.
 
 If **Add comment** asks you to edit a rendered table first, open the table for editing and select text inside a cell.
 
@@ -51,7 +43,7 @@ If **Add comment** asks you to edit a rendered table first, open the table for e
 3. In the sidebar’s **Write a comment…** field, enter your comment and select **Comment**.
 
 <figure class="comments-guide-animation comments-native-column" id="callout-comment-demo">
-  <iframe data-comments-animation style="--phone-scene-height: 340" src="/assets/relay-comments/callout-comment/index.html?v=k18-ad93fca9" title="Comment on a phrase inside a rendered callout using the keyboard shortcut"></iframe>
+  {{ responsiveClip("/assets/relay-comments/callout-comment-desktop-913c27c0/index.html", "/assets/relay-comments/callout-comment-phone-adbc4760/index.html", "720 / 340", "360 / 800", "Comment on a phrase inside a rendered callout using the keyboard shortcut") }}
 </figure>
 
 If the selection includes a link label or inline code, or the comment command asks you to edit the callout first, choose **Edit this block** and select the passage in the Markdown source.
@@ -76,12 +68,10 @@ If the discussion is attached to a suggestion, resolving the discussion leaves t
 
 ## Use the sidebar for discussion
 
-The sidebar lists the note's comments, suggestions, and highlights. To open the sidebar, run **Open review sidebar** from the command palette. To close it, run **Close review sidebar**.
+The sidebar lists the note's comments, suggestions, and highlights. Select **Open Relay Comments** in the ribbon, or run **Open review sidebar** from the command palette. To close it, run **Close review sidebar**.
 
-<figure style="max-width:430px">
-  {% set screenshot = {"name": "relay-comments-review-sidebar", "alt": "The review sidebar with Priya’s comment and Tomás’s reply, a suggested replacement, and a highlight.", "width": 430, "height": 463} %}
-{% include "comments-screenshot.njk" %}
-  <figcaption>A thread with a reply, a suggested replacement, and a highlight in the review sidebar.</figcaption>
+<figure class="comments-guide-animation comments-native-column" id="open-sidebar-demo">
+  {{ responsiveClip("/assets/relay-comments/open-sidebar-desktop-023b6ca3/index.html", "/assets/relay-comments/open-sidebar-phone-b90df6f0/index.html", "752 / 470", "360 / 800", "Open the Relay Comments sidebar from the ribbon") }}
 </figure>
 
 If someone writes a comment directly in the Markdown without marking a passage, the sidebar uses nearby text to identify it. For example, a comment immediately after the word “bridge” shows **bridge** above the message. A comment at the start of a line shows **Comment** instead.
@@ -98,7 +88,7 @@ To add a comment to selected text, press Command+Option+M on macOS or Ctrl+Alt+M
 
 ## Comment with an agent
 
-Give your agent the [Relay Comments skill](/comments/use-relay-comments-with-agents/#give-your-agent-the-skill), the note path, and the passage you want it to comment on. For example: “In Launch plan.md, ask who owns the announcement beside ‘Draft announcement.’”
+Give your agent the [agent instructions](/comments/use-relay-comments-with-agents/#instructions-for-the-agent), the note path, and the passage you want it to comment on. For example: “In Launch plan.md, ask who owns the announcement beside ‘Draft announcement.’”
 
 With the [Obsidian CLI](https://obsidian.md/help/cli) enabled, the agent can run:
 

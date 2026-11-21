@@ -1,0 +1,30 @@
+{
+  "exampleId": "comments-identity-close-up-desktop-v7-20261120",
+  "layout": "desktop",
+  "widths": [
+    600,
+    720,
+    760
+  ],
+  "sourcePins": {
+    "obsidian": "1.12.7",
+    "relay": {
+      "tag": "0.8.12",
+      "commit": "22c2aa8f8bba4d930a7918d334311bfbe1cd1676"
+    },
+    "relayComments": {
+      "tag": "0.6.0",
+      "commit": "a6da639b4d57160d1a586da4cbedce7abb9719a7"
+    }
+  },
+  "gitCommit": "71c6ff1",
+  "indexHash": "86299070",
+  "indexSha256": "86299070e87bc58929827b1f37145eab75b7589768592106e7a3df18fff2c260",
+  "avatarSha256": "7ee385876f3638d92d9bf5e094feb3dfd31683ca8011e1cb118ef258e04ec4e2",
+  "assistantAvatarSha256": "f3a857f44b5b542ee79e200dd64a4b8ede3ce5f9b99693a39bd1024cb2b7f76a",
+  "payloadFiles": {
+    "index.html": "86299070e87bc58929827b1f37145eab75b7589768592106e7a3df18fff2c260"
+  },
+  "payloadSha256": "d5260522fa51af809dbb6679ffe1bac907138696803677056886b25fe8b9bec4",
+  "buildTime": "2026-11-21T06:22:55.316Z"
+}
