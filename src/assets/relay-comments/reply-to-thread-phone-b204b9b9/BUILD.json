@@ -1,0 +1,12 @@
+{
+  "exampleId": "readme-comment-thread-embed",
+  "gitCommit": "f9dad5f",
+  "indexHash": "b204b9b9",
+  "buildTime": "2026-11-24T23:04:17.827Z",
+  "versions": {
+    "obsidian": "1.12.7",
+    "obsidianMobile": "1.12.7",
+    "relay": "0.8.12",
+    "relayComments": "0.6.0"
+  }
+}
