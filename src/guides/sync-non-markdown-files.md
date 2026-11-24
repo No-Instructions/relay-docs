@@ -51,7 +51,7 @@ To sync files with extensions outside the listed categories, such as `.html`, `.
 
 Each collaborator also turns on **Other files** for the same folder on each of their devices.
 
-Storage belongs to the folder's Relay Server, not to your account. On a Relay-hosted server, the server's owner adds storage by upgrading the server's plan. On a self-hosted server, whoever runs it provides the storage. If you joined someone else's server, ask its owner. A lock beside **Other files** means the folder's Relay Server has no storage.
+Storage belongs to the folder's Relay Server, not to your account. On Relay Cloud, the server's owner adds storage by upgrading the server's plan. On a self-hosted Relay Server, whoever runs it provides the storage. If you joined someone else's server, ask its owner. A lock beside **Other files** means the folder's Relay Server has no storage.
 
 ## Example: share an HTML file
 

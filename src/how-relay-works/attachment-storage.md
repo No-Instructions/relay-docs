@@ -1,10 +1,10 @@
 ---
 title: Storage for shared files
-description: How Relay stores shared files, which files count toward storage on a Relay-hosted server, and how to get storage by self-hosting or with a paid plan.
+description: How Relay stores shared files, which files count toward storage on Relay Cloud, and how to get storage by self-hosting or with a paid plan.
 layout: doc.njk
 ---
 
-Everything in a Shared Folder is stored on its Relay Server. On a self-hosted server, all of it goes in the storage you provide. On a Relay-hosted server, Markdown notes and Canvases don't count toward the server's storage, so they sync on every plan, including Free. Bases, images, audio, video, PDFs, and other files need storage from a paid plan, which only the server's owner can buy.
+Everything in a Shared Folder is stored on its Relay Server. On a self-hosted Relay Server, all of it goes in the storage you provide. On Relay Cloud, Markdown notes and Canvases don't count toward the server's storage, so they sync on every plan, including Free. Bases, images, audio, video, PDFs, and other files need storage from a paid plan, which only the server's owner can buy.
 
 ## Why the server stores your files
 
@@ -14,7 +14,7 @@ For how devices exchange updates through the server, see [How Relay connects you
 
 ## Which files count toward storage
 
-| Files | Count toward Relay-hosted storage |
+| Files | Count toward cloud storage |
 | --- | --- |
 | Markdown notes (`.md`) and Canvases (`.canvas`) | No |
 | Bases (`.base`), images, audio, video, and PDFs | Yes |
@@ -28,9 +28,11 @@ You can self-host a Relay Server with S3-compatible storage on your own infrastr
 
 For deployment instructions, use the [Relay Server template](https://github.com/No-Instructions/relay-server-template). For the broader choice of where to run Relay, see [Choose how to host Relay](/guides/choose-how-to-host-relay/).
 
-## Relay-hosted storage
+<span id="relay-hosted-storage"></span>
 
-If you prefer convenience, Relay can host the server and storage for you. Only the server's owner can upgrade its plan; if you joined someone else's server, ask its owner. To choose a plan, see [plans and storage allowances](https://relay.md/pricing), then [upgrade your Relay Server](/guides/upgrade-to-a-paid-plan/).
+## Cloud storage
+
+If you prefer convenience, Relay Cloud can host your Relay Server and provide its storage. Only the server's owner can upgrade its plan; if you joined someone else's server, ask its owner. To choose a plan, see [plans and storage allowances](https://relay.md/pricing), then [upgrade your Relay Server](/guides/upgrade-to-a-paid-plan/).
 
 ## Settings without storage
 

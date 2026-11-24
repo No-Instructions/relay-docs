@@ -1,12 +1,12 @@
 ---
 title: What Relay can see
-description: An explanation of the data that reaches Relay's servers under self-hosted vs Relay-hosted setups.
+description: An explanation of the data that reaches Relay's servers with a self-hosted Relay Server or Relay Cloud.
 layout: doc.njk
 ---
 Relay is how a team shares a set of markdown files without handing content to a vendor — so customers often ask exactly what data our servers can and cannot see. The answer depends on which hosting method you use. 
 
 - Under self-hosting, our primary deployment model, your Relay Server runs on your private network and your notes never touch our servers — we couldn't see your content if we wanted to. Our control plane sees certain metadata — anything you see in [console.relay.md](https://console.relay.md). 
-- Under our cloud hosting, offered as a convenience for those who prefer it, your note content does move through our servers — like a traditional SaaS service, it is not end-to-end encrypted. We don't look at customer data, but we could be compelled to (eg by a court). 
+- On Relay Cloud, offered as a convenience for those who prefer it, your note content does move through our servers — like a traditional SaaS service, it is not end-to-end encrypted. We don't look at customer data, but we could be compelled to (eg by a court).
 
 Our policy is that [we don't charge for privacy](https://relay.md/blog/we-dont-charge-for-privacy), and we think architectural privacy from vendors should be the default. That's why self-hosting is free. 
 
@@ -16,7 +16,7 @@ This page offers further details about what data we can see in each case.
 
 <table>
   <thead>
-    <tr><th><strong>Can our servers see it?</strong></th><th>Self-hosting *(free on every plan)*</th><th>Relay cloud hosting</th></tr>
+    <tr><th><strong>Can our servers see it?</strong></th><th>Self-hosting *(free on every plan)*</th><th>Relay Cloud</th></tr>
   </thead>
   <tbody>
     <tr class="divider"><td><strong>Data plane — your documents</strong></td><td>No — your server only</td><td>Yes — our servers</td></tr>
@@ -59,9 +59,11 @@ Whoever controls your network controls the first gate. If you use a VPN or mesh 
 
 Webhooks are off by default, and they are an exit if you turn them on. A Relay Server can be configured to POST event notifications to a URL you choose. Those notifications carry document IDs and sync metadata, though not your document content. No webhook is configured by default, so this only happens if you set one up.
 
-## What about Relay cloud hosting?
+<span id="what-about-relay-cloud-hosting"></span>
 
-If you're hosting on our cloud, your data plane is on our network: your documents live on infrastructure we operate. This is the standard arrangement for cloud software like Google Docs and Notion. Because Relay isn't end-to-end encrypted, we have the technical ability to access synced content if required. We don't look at your data as a matter of [policy](https://system3.md/privacy); but we could be compelled to by a legal process. Self-hosting removes our access and it's free on [every plan](/guides/choose-how-to-host-relay/).
+## Relay Cloud
+
+If you use Relay Cloud, your data plane is on our network: your documents live on infrastructure we operate. This is the standard arrangement for cloud software like Google Docs and Notion. Because Relay isn't end-to-end encrypted, we have the technical ability to access synced content if required. We don't look at your data as a matter of [policy](https://system3.md/privacy); but we could be compelled to by a legal process. Self-hosting removes our access and it's free on [every plan](/guides/choose-how-to-host-relay/).
 
 ## Setting up your private network
 

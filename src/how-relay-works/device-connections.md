@@ -10,7 +10,7 @@ Relay connects local Obsidian vaults through a Relay Server. Your files stay on 
 
 Obsidian keeps your files on your local disk. Relay builds on that local-first model to let you collaborate on shared files.
 
-Relay is built to be self-hosted. When you keep the server and storage on your private network, your shared content stays on infrastructure you control, where we cannot access it. If you prefer convenience, Relay can host the server and storage for you.
+Relay is built to be self-hosted. When you keep the server and storage on your private network, your shared content stays on infrastructure you control, where we cannot access it. If you prefer convenience, Relay Cloud can host your Relay Server and provide its storage.
 
 When you edit a shared document, Relay sends updates to that server. The server passes them to connected collaborators, whose Relay plugins apply them to their local copies. For Markdown notes and Canvas files, Relay uses shared data structures to merge edits within the document.
 
@@ -42,6 +42,6 @@ Your Obsidian plugin uses the Control Plane to sign in and obtain access to shar
 
 When you self-host a Relay Server, you operate the server and provide its storage. Relay operates the Control Plane. Shared document content goes to your server; account and permission metadata still reaches Relay’s cloud.
 
-When you use Relay cloud hosting, Relay operates the server and stores the shared content on its infrastructure too.
+When you use Relay Cloud, Relay operates the server and stores the shared content on its infrastructure too.
 
 For the privacy boundary in each setup, see [What Relay can see](/how-relay-works/what-relay-can-see/). To select a deployment, see [Choose how to host Relay](/guides/choose-how-to-host-relay/).

@@ -11,7 +11,7 @@ There are significant advantages to using Obsidian+Relay over traditional tools 
 
   - You get the tool you love, but your team needs to learn it (vs everyone knows Google Docs)
   - You get the power and flexibility of local files, but you make more decisions
-  - You keep your documents on hardware you control with self-hosting, but that requires setup (vs cloud is instant)
+  - You keep your documents on hardware you control with self-hosting, but that requires setup (vs Relay Cloud is instant)
 
 This guide explains what you need to know.
 
@@ -63,7 +63,7 @@ These are local files. We recommend you use Git for version history. The Git plu
 
 Obsidian alone is private — like a house with no windows or doors. Add collaboration and that changes: your edits need a way to reach your teammates, and each teammate keeps a copy of the shared notes on their own machine. Relay uses a server to pass edits between those copies. So the questions apply to the server and to your teammates' machines alike: who controls them? Are they trustworthy? What can they see if trust isn't enough?
 
-Relay is built to be self-hosted, and self-hosting is free on every plan. If you'd rather not run a server, we can host it for you.
+Relay is built to be self-hosted, and self-hosting is free on every plan. Relay Cloud is available if you prefer managed hosting.
 
   Self-hosted
   - Your Relay Server runs on your private network, so document content never touches our servers — we couldn't see it if we wanted to
@@ -71,7 +71,7 @@ Relay is built to be self-hosted, and self-hosting is free on every plan. If you
   - Our control plane sees limited metadata: accounts, permissions, and folder membership
   - You set up and maintain the server
 
-  Cloud (we host)
+  Relay Cloud
   - Fastest setup
   - Your document content moves through our servers, like any traditional SaaS service
 

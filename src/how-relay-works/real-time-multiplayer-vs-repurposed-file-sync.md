@@ -32,7 +32,7 @@ The fundamental difference is how each handles conflicts arising from concurrent
 Relay uses CRDTs (Conflict-free Replicated Data Types) — a data structure designed specifically for merging concurrent edits. When two people type in the same paragraph:
 
 1. Each keystroke is captured as an *update operation* with metadata (position, timestamp, user)
-2. Operations are sent to your Relay Server, self-hosted or Relay-hosted, then relayed on to collaborators the next time they are online
+2. Your device sends operations to your Relay Server, whether you run it yourself or use Relay Cloud. The server sends those operations to collaborators when they come online.
 3. On the collaborators' side, Relay processes the operations and from them replicates the document locally
 4. Everyone sees the same final result
 

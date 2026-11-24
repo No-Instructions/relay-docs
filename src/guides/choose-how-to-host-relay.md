@@ -1,10 +1,10 @@
 ---
 title: Choose how to host Relay
-description: Choose between self-hosting a Relay Server and using Relay cloud hosting, including storage and privacy considerations.
+description: Choose between self-hosting a Relay Server and using Relay Cloud, including storage and privacy considerations.
 layout: doc.njk
 ---
 
-You can host a Relay Server on your own infrastructure or use Relay’s cloud hosting. Your choice determines who operates the server and where your shared content is stored.
+You can host a Relay Server on your own infrastructure or use Relay Cloud. Your choice determines who operates the server and where your shared content is stored.
 
 Self-hosting a Relay Server is free on every Relay plan. For the philosophy behind that choice, see [Self-hosting Relay is free](https://relay.md/blog/self-hosting-is-free) and [We don’t charge for privacy](https://relay.md/blog/we-dont-charge-for-privacy).
 
@@ -20,13 +20,15 @@ You don’t pay Relay for self-hosted storage, but you remain responsible for yo
 
 To deploy a server, follow the [Relay Server template](https://github.com/No-Instructions/relay-server-template). It includes deployment guides and S3-compatible storage configuration.
 
-### Relay cloud hosting
+<span id="relay-cloud-hosting"></span>
 
-If you prefer convenience, Relay can operate the server and storage for you. Your shared content is stored on infrastructure Relay operates.
+### Relay Cloud
 
-Cloud hosting for Markdown notes and Canvas collaboration is included for free on every plan. Cloud storage for images, PDFs, videos, and other attachments requires a paid plan.
+Relay Cloud is the hosting service where Relay operates the server and storage for you. Your shared content is stored on infrastructure Relay operates.
 
-For user limits, storage allowances, and options such as cloud hosting with your own storage, see [Relay plans](https://relay.md/pricing).
+Relay Cloud includes Markdown note and Canvas collaboration on every plan, including Free. Cloud storage for images, PDFs, videos, and other attachments requires a paid plan.
+
+For user limits, storage allowances, and options such as running a server on Relay Cloud with your own storage, see [Relay plans](https://relay.md/pricing).
 
 ### Air-gapped deployment waitlist
 

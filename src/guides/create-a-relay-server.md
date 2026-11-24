@@ -6,11 +6,11 @@ layout: doc.njk
 
 A Relay Server brings your Shared Folders and collaborators together.
 
-When you sign up, Relay automatically creates a starter Relay Server for you using your first name. Your starter server is hosted by Relay. You can use that one, or create a new one.
+When you sign up, Relay automatically creates a starter Relay Server for you using your first name. Your starter Relay Server runs on Relay Cloud. You can use that one, or create a new one.
 
 ## Choose where to host Relay
 
-Relay is built to be self-hosted. Run it on your own infrastructure, or use Relay’s cloud hosting. See [Choose how to host Relay](/guides/choose-how-to-host-relay/) for setup and hosting options.
+Relay is built to be self-hosted. Run it on your own infrastructure, or use Relay Cloud. See [Choose how to host Relay](/guides/choose-how-to-host-relay/) for setup and hosting options.
 
 ## Find your starter server
 
