@@ -77,7 +77,7 @@ The sidebar lists the note's comments, suggestions, and highlights. Select **Ope
 If someone writes a comment directly in the Markdown without marking a passage, the sidebar uses nearby text to identify it. For example, a comment immediately after the word “bridge” shows **bridge** above the message. A comment at the start of a line shows **Comment** instead.
 
 <figure class="comments-guide-animation comments-native-column" id="standalone-sidebar-demo">
-  <iframe data-comments-animation style="--phone-scene-height: 360" src="/assets/relay-comments/standalone-sidebar/index.html?v=t14-fd35e81c" title="Read standalone comments with and without an anchor word in the sidebar"></iframe>
+  <iframe data-comments-animation style="--phone-scene-height: 360" src="/assets/relay-comments/standalone-sidebar/index.html?v=t14-5f3f280a" title="Read standalone comments with and without an anchor word in the sidebar"></iframe>
 </figure>
 
 For comments inside rendered tables and callouts, hover over the highlighted text to preview the thread, or select it to open the thread in the sidebar.
