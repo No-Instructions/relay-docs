@@ -30,7 +30,7 @@ To propose an addition, type and select the proposed text, then run **Mark selec
 For a suggestion without an attached discussion, hover over it in your note, then select **Accept** or **Reject**. A suggestion with an attached discussion shows **Reply** and **Resolve** in its hover preview; use the sidebar’s **More actions** menu to accept or reject it.
 
 <figure class="comments-guide-animation comments-native-column" id="accept-suggestion-demo">
-  {{ responsiveClip("/assets/relay-comments/suggested-edits-desktop-0692af4b/index.html", "/assets/relay-comments/suggested-edits-phone-f63c4dc6/index.html", "752 / 470", "360 / 800", "Preview a suggested edit and accept it in the note") }}
+  {{ responsiveClip("/assets/relay-comments/suggested-edits-desktop-f0a5fccb/index.html", "/assets/relay-comments/suggested-edits-phone-f63c4dc6/index.html", "752 / 470", "360 / 800", "Preview a suggested edit and accept it in the note") }}
 </figure>
 
 To accept from the sidebar:
