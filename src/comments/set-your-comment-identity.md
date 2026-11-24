@@ -14,19 +14,28 @@ If your team uses [Relay](/introduction/), your comments are signed with your Re
 
 ## What’s saved with a comment
 
-The note holds the comment and its author information as [CriticMarkup](/comments/comment-markup/). For example, a comment signed by an assistant can look like this:
+The note stores both the message and its byline. A plain [CriticMarkup comment](/comments/comment-markup/) puts the message between `{>>` and `<<}`. Relay Comments adds author fields for a signed comment:
 
 {% raw %}
 ```text
 {{authorId="review-bot" author="Checklist reviewer">>Who owns this task?<<}}
 ```
-{% endraw %}
 
-Here, `author` is a readable name that travels with the text. `authorId` lets a reader’s vault look up the reviewer. When the sidebar renders the comment, it first checks the selected identity service, then the vault’s own identity list. Without a match, a teammate sees **Checklist reviewer** from the note, with initials in place of a picture.
+<figure aria-label="Parts of a signed comment">
+<dl style="display:grid;grid-template-columns:minmax(0,auto) minmax(45%,1fr);overflow-wrap:anywhere;align-items:baseline;gap:.55rem 1rem;margin:0">
+  <dt><code>{{</code></dt><dd style="margin:0">Opens a signed comment.</dd>
+  <dt><code>authorId="review-bot"</code></dt><dd style="margin:0">Identifies the reviewer. The sidebar looks up this ID in the selected identity service, then in the vault’s identity list.</dd>
+  <dt><code>author="Checklist reviewer"</code></dt><dd style="margin:0">Saves the readable name in the note. If the ID has no match, teammates see this name and its initials.</dd>
+  <dt><code>&gt;&gt;</code></dt><dd style="margin:0">Ends the author fields and starts the message.</dd>
+  <dt><code>Who owns this task?</code></dt><dd style="margin:0">The reviewer’s words. This is the message teammates read in the comment thread. Replace it with your own comment.</dd>
+  <dt><code>&lt;&lt;}}</code></dt><dd style="margin:0">Ends the message and closes the signed comment.</dd>
+</dl>
+</figure>
+{% endraw %}
 
 ## Give your agent a name and picture
 
-If you want an assistant’s reviews to have a recognizable byline, you can give it this instruction:
+If your assistant works with local vault files or the Obsidian CLI, give it this instruction to sign comments with its own byline.
 
 > Use the reviewer ID `review-bot` and the name `Checklist reviewer` when you comment on notes in this vault. Keep my existing Relay Comments settings.
 
@@ -36,7 +45,7 @@ For an agent with file access, the identity list is the top-level `identities` a
 {"id": "review-bot", "name": "Checklist reviewer", "picture": "https://example.org/reviewer.png", "color": "#9a563b"}
 ```
 
-Replace the example URL with your image URL, or omit `picture` to show initials. The optional `color` sets the circle behind the initials. To change the byline this vault displays for that directory entry, keep the ID and update its name or picture. Relay Comments refreshes its identity list when Obsidian reports a settings change.
+Replace the example URL with a reachable HTTPS image URL. If the identity resolves without a picture, the sidebar shows initials. The optional `color` sets the circle behind the initials. To change the byline this vault displays for that directory entry, keep the ID and update its name or picture. Relay Comments refreshes its identity list when Obsidian reports a settings change.
 
 An agent using the [Obsidian CLI](/comments/cli-commands/) can sign a comment with `author=review-bot`. An agent editing Markdown directly can use the author fields shown above.
 
@@ -46,7 +55,7 @@ When you [review a shared note with your team](/comments/use-with-collaborators/
 
 [Relay](/introduction/) shows teammates your Relay name and, if you have one, your Relay profile picture.
 
-**Custom identities.** If you give an assistant a custom picture or color, its name still travels with its comments. The picture and color come from a matching entry in each teammate’s vault. Relay shares the note, so copy that entry to the other vaults if you want everyone to see the same custom identity.
+**Custom identities.** The name saved in the comment travels with the note. To see the same custom picture or color, each teammate’s vault must resolve the author ID to the matching identity entry. The teammate’s device also needs to reach the picture URL. Copy the identity entry to the other vaults to share the same custom identity.
 
 **With Obsidian Sync**, your own devices can sync the plugin settings file as well as the note. Use the same remote vault and settings profile, with **Installed community plugins** enabled on both devices. This shares the plugin’s settings as a file, including its identity list. See [Obsidian Sync settings](https://obsidian.md/help/sync/settings).
 
