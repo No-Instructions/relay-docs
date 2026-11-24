@@ -71,7 +71,7 @@ If the discussion is attached to a suggestion, resolving the discussion leaves t
 The sidebar lists the note's comments, suggestions, and highlights. Select **Open Relay Comments** in the ribbon, or run **Open review sidebar** from the command palette. To close it, run **Close review sidebar**.
 
 <figure class="comments-guide-animation comments-native-column" id="open-sidebar-demo">
-  {{ responsiveClip("/assets/relay-comments/open-sidebar-desktop-023b6ca3/index.html", "/assets/relay-comments/open-sidebar-phone-b90df6f0/index.html", "752 / 470", "360 / 800", "Open the Relay Comments sidebar from the ribbon") }}
+  {{ responsiveClip("/assets/relay-comments/open-sidebar-desktop-34cd96f9/index.html", "/assets/relay-comments/open-sidebar-phone-fdf8fe28/index.html", "752 / 470", "360 / 800", "Open the Relay Comments sidebar from the ribbon") }}
 </figure>
 
 With the sidebar open, click a highlighted passage in Live Preview to select its comment thread in the sidebar.
