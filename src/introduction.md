@@ -14,7 +14,7 @@ It is the most popular multiplayer solution in the Obsidian world.
 
 {% from "responsive-clip.njk" import sameLineEditing %}
 <figure class="home-editing-demo" style="margin-inline:auto">
-  {{ sameLineEditing(false) | trim }}
+  {{ sameLineEditing(false, "/assets/same-line-editing/framed-phone-a2f551de/index.html") | trim }}
 </figure>
 
 ## How is Relay different?
