@@ -18,14 +18,14 @@ The note stores both the message and its byline. A plain [CriticMarkup comment](
 
 {% raw %}
 ```text
-{{authorId="review-bot" author="Checklist reviewer">>Who owns this task?<<}}
+{{authorId="matts-claude" author="Matt's Claude">>Who owns this task?<<}}
 ```
 
 <figure aria-label="Parts of a signed comment">
 <dl style="display:grid;grid-template-columns:minmax(0,auto) minmax(45%,1fr);overflow-wrap:anywhere;align-items:baseline;gap:.55rem 1rem;margin:0">
   <dt><code>{{</code></dt><dd style="margin:0">Opens a signed comment.</dd>
-  <dt><code>authorId="review-bot"</code></dt><dd style="margin:0">Identifies the reviewer. The sidebar looks up this ID in the selected identity service, then in the vault’s identity list.</dd>
-  <dt><code>author="Checklist reviewer"</code></dt><dd style="margin:0">Saves the readable name in the note. If the ID has no match, teammates see this name and its initials.</dd>
+  <dt><code>authorId="matts-claude"</code></dt><dd style="margin:0">Identifies the reviewer. The sidebar looks up this ID in the selected identity service, then in the vault’s identity list.</dd>
+  <dt><code>author="Matt's Claude"</code></dt><dd style="margin:0">Saves the readable name in the note. If the ID has no match, teammates see this name and its initials.</dd>
   <dt><code>&gt;&gt;</code></dt><dd style="margin:0">Ends the author fields and starts the message.</dd>
   <dt><code>Who owns this task?</code></dt><dd style="margin:0">The reviewer’s words. This is the message teammates read in the comment thread. Replace it with your own comment.</dd>
   <dt><code>&lt;&lt;}}</code></dt><dd style="margin:0">Ends the message and closes the signed comment.</dd>
@@ -37,17 +37,17 @@ The note stores both the message and its byline. A plain [CriticMarkup comment](
 
 If your assistant works with local vault files or the Obsidian CLI, give it this instruction to sign comments with its own byline.
 
-> Use the reviewer ID `review-bot` and the name `Checklist reviewer` when you comment on notes in this vault. Keep my existing Relay Comments settings.
+> Sign your comments as `Matt's Claude`. Use `matts-claude` as your author ID. Keep my existing Relay Comments settings.
 
 For an agent with file access, the identity list is the top-level `identities` array in `.obsidian/plugins/relay-comments/data.json`. If the vault uses a custom settings directory, substitute it for `.obsidian`. Add an entry to the array, or update the existing entry with the same ID. Preserve the other entries and settings.
 
 ```json
-{"id": "review-bot", "name": "Checklist reviewer", "picture": "https://example.org/reviewer.png", "color": "#9a563b"}
+{"id": "matts-claude", "name": "Matt's Claude", "picture": "https://example.org/reviewer.png", "color": "#9a563b"}
 ```
 
 Replace the example URL with a reachable HTTPS image URL. If the identity resolves without a picture, the sidebar shows initials. The optional `color` sets the circle behind the initials. To change the byline this vault displays for that directory entry, keep the ID and update its name or picture. Relay Comments refreshes its identity list when Obsidian reports a settings change.
 
-An agent using the [Obsidian CLI](/comments/cli-commands/) can sign a comment with `author=review-bot`. An agent editing Markdown directly can use the author fields shown above.
+An agent using the [Obsidian CLI](/comments/cli-commands/) can sign a comment with `author=matts-claude`. An agent editing Markdown directly can use the author fields shown above.
 
 ## What teammates see
 
