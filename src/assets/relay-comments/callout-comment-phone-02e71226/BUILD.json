@@ -1,0 +1,12 @@
+{
+  "exampleId": "docs-callout-comment-v2-embed",
+  "gitCommit": "4bf74cf",
+  "indexHash": "02e71226",
+  "buildTime": "2026-11-24T23:04:41.307Z",
+  "versions": {
+    "obsidian": "1.12.7",
+    "obsidianMobile": "1.12.7",
+    "relay": "off",
+    "relayComments": "0.6.0"
+  }
+}

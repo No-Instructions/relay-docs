@@ -43,7 +43,7 @@ If **Add comment** asks you to edit a rendered table first, open the table for e
 3. In the sidebar’s **Write a comment…** field, enter your comment and select **Comment**.
 
 <figure class="comments-guide-animation comments-native-column" id="callout-comment-demo">
-  {{ responsiveClip("/assets/relay-comments/callout-comment-desktop-913c27c0/index.html", "/assets/relay-comments/callout-comment-phone-adbc4760/index.html", "720 / 340", "360 / 800", "Comment on a phrase inside a rendered callout using the keyboard shortcut") }}
+  {{ responsiveClip("/assets/relay-comments/callout-comment-desktop-913c27c0/index.html", "/assets/relay-comments/callout-comment-phone-02e71226/index.html", "720 / 340", "360 / 800", "Comment on a phrase inside a rendered callout using the keyboard shortcut") }}
 </figure>
 
 If the selection includes a link label or inline code, or the comment command asks you to edit the callout first, choose **Edit this block** and select the passage in the Markdown source.
