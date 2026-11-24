@@ -17,4 +17,52 @@ Use the Obsidian CLI when it’s available. With the vault open in Obsidian and 
 
 Install the [Relay Comments skill](https://raw.githubusercontent.com/No-Instructions/relay-skills/main/skills/relay-comments/SKILL.md) using the [Relay Skills installation instructions](https://github.com/No-Instructions/relay-skills#installation) for your agent. The skill covers command syntax and markup format. Give your agent this page’s URL and the job you want done.
 
-> Read [https://docs.relay.md/comments/use-relay-comments-with-agents/](/comments/use-relay-comments-with-agents/) for instructions and get the Relay Comments skill linked there. Review the “Launch checklist” note. Leave a comment on each task that needs an owner.
+<pre aria-label="Example agent prompt" style="white-space: pre-wrap; overflow-wrap: anywhere"><code id="relay-comments-agent-prompt">Read https://docs.relay.md/comments/use-relay-comments-with-agents/ for instructions and get the Relay Comments skill linked there. Review the “Launch checklist” note. Leave a comment on each task that needs an owner.</code></pre>
+
+<div class="copy-agent-instructions">
+  <button type="button" class="copy-agent-button" id="copy-relay-comments-agent-prompt">Copy prompt</button>
+  <span class="copy-agent-status" aria-live="polite"></span>
+</div>
+
+<script>
+(() => {
+  const prompt = document.getElementById('relay-comments-agent-prompt');
+  const button = document.getElementById('copy-relay-comments-agent-prompt');
+  const status = button.parentElement.querySelector('.copy-agent-status');
+
+  async function copyText(text) {
+    if (window.isSecureContext && navigator.clipboard) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return;
+      } catch {
+        // Cross-origin previews can deny the Clipboard API.
+      }
+    }
+
+    const field = document.createElement('textarea');
+    field.value = text;
+    field.readOnly = true;
+    field.style.position = 'fixed';
+    field.style.left = '-9999px';
+    document.body.appendChild(field);
+    try {
+      field.select();
+      if (!document.execCommand('copy')) throw new Error('Copy command unavailable');
+    } finally {
+      field.remove();
+      button.focus({ preventScroll: true });
+    }
+  }
+
+  button.addEventListener('click', async () => {
+    status.textContent = '';
+    try {
+      await copyText(prompt.textContent);
+      status.textContent = 'Copied.';
+    } catch {
+      status.textContent = 'Copy failed. Select the prompt above to copy it.';
+    }
+  });
+})();
+</script>
