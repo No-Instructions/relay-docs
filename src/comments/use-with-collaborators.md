@@ -9,7 +9,7 @@ Relay Comments saves comments, replies, and suggested edits directly in the Mark
 
 {% from "responsive-clip.njk" import responsiveClip %}
 <figure class="comments-guide-animation comments-native-column" id="reply-to-thread-demo">
-  {{ responsiveClip("/assets/relay-comments/reply-to-thread-desktop-f4d0de0c/index.html", "/assets/relay-comments/reply-to-thread-phone-ca560fe4/index.html", "752 / 470", "360 / 800", "Open an incoming comment and reply in the Relay Comments sidebar") }}
+  {{ responsiveClip("/assets/relay-comments/reply-to-thread-desktop-1a5d8f07/index.html", "/assets/relay-comments/reply-to-thread-phone-ca560fe4/index.html", "752 / 470", "360 / 800", "Open an incoming comment and reply in the Relay Comments sidebar") }}
 </figure>
 
 ## Prepare each vault
