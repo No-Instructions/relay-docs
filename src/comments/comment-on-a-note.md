@@ -74,7 +74,9 @@ The sidebar lists the note's comments, suggestions, and highlights. Select **Ope
   {{ responsiveClip("/assets/relay-comments/open-sidebar-desktop-023b6ca3/index.html", "/assets/relay-comments/open-sidebar-phone-b90df6f0/index.html", "752 / 470", "360 / 800", "Open the Relay Comments sidebar from the ribbon") }}
 </figure>
 
-If someone writes a comment directly in the Markdown without marking a passage, the sidebar uses nearby text to identify it. For example, a comment immediately after the word “bridge” shows **bridge** above the message. A comment at the start of a line shows **Comment** instead.
+With the sidebar open, click a highlighted passage in Live Preview to select its comment thread in the sidebar.
+
+A comment written directly in Markdown can stand on its own. If it follows a word, the sidebar shows that word above the message, like **2007** in the first card below. If there’s no preceding word on the line, the sidebar shows **Comment** instead, as it does for Arlo’s “Link Kay’s original talk.”
 
 <figure class="comments-guide-animation comments-native-column" id="standalone-sidebar-demo">
   <iframe data-comments-animation style="--phone-scene-height: 360" src="/assets/relay-comments/standalone-sidebar/index.html?v=t14-5f3f280a" title="Read standalone comments with and without an anchor word in the sidebar"></iframe>
