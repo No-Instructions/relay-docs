@@ -20,7 +20,7 @@ If you haven’t installed the plugin yet, [install Relay Comments](/comments/in
 2. Click the **Add comment** button beside the selection. It looks like a speech bubble with a plus sign.
 3. In the sidebar, type your comment and click **Comment**.
 
-You can also right-click the selected text and choose **Add comment**, or run **Add comment** from the command palette. To reply to a thread or resolve it, see [Comment on a note](/comments/comment-on-a-note/).
+You can also right-click the selected text and choose **Add comment**, or run **Add comment** from the [command palette](https://obsidian.md/help/plugins/command-palette). To reply to a thread or resolve it, see [Comment on a note](/comments/comment-on-a-note/).
 
 ## Suggest an edit
 
@@ -46,4 +46,4 @@ Comments and suggested edits are stored in the Markdown note, so they travel wit
 
 ## Use with agents
 
-An agent with access to the Markdown file can leave a comment, reply to a thread, or suggest a change. If you already use the [Obsidian CLI](/comments/cli-commands/), your agent can also run Relay Comments commands while the vault is open in Obsidian. Give it the [agent guide](/comments/use-relay-comments-with-agents/), the note’s path, and a task. For example: “Review the launch checklist. Leave a comment beside any task that’s missing an owner.”
+An agent with access to the Markdown file can leave a comment, reply to a thread, or suggest a change. If you already use the [Obsidian CLI](/comments/cli-commands/), your agent can also run Relay Comments commands while the vault is open in Obsidian. Without the CLI, an agent with write access can add [CriticMarkup](/comments/comment-markup/) directly to the Markdown file. Give it the [agent guide](/comments/use-relay-comments-with-agents/), the note’s path, and a task. For example: “Review the launch checklist. Leave a comment beside any task that’s missing an owner.”
