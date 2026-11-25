@@ -1,0 +1,12 @@
+{
+  "exampleId": "readme-canvas-comments-embed",
+  "gitCommit": "133c4d4",
+  "indexHash": "d36b083e",
+  "buildTime": "2026-11-21T17:33:09.061Z",
+  "versions": {
+    "obsidian": "1.12.7",
+    "obsidianMobile": "1.12.7",
+    "relay": "off",
+    "relayComments": "0.6.0"
+  }
+}
